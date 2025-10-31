@@ -1,6 +1,6 @@
 import { assets } from "../../assets/assets.js";
 
-export default function ImgCard() {
+export default function ImgCard({ title, author }) {
   return (
     <div>
       <div className="max-w-80 flex items-center justify-center bg-white p-4 pb-10 rounded-3xl mt-20 shadow-xl/20">
@@ -11,13 +11,17 @@ export default function ImgCard() {
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0  from-black/70 via-black/30 to-transparent p-6 flex flex-col justify-end text-white">
-            <h2 className="text-3xl font-bold mb-2">Judul</h2>
-            <div className="flex justify-between">
-              <p className=" text-gray-200 text-sm">Author</p>
-              <button className="px-2 py-1 rounded-full bg-white/40 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition duration-200">
-                View
-              </button>
+          <div className="absolute inset-0 flex flex-col justify-end text-white">
+            <div className="bg-black/60 rounded-3xl py-3 ">
+              <h2 className="flex items-start text-3xl font-bold ml-6">
+                {title}
+              </h2>
+              <div className="flex justify-between">
+                <p className=" text-gray-200 text-sm mt-2 ml-6">{author}</p>
+                <button className="px-7 py-0.5 rounded-full mr-2 bg-white/40 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition duration-200">
+                  View
+                </button>
+              </div>
             </div>
           </div>
         </div>
