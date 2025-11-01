@@ -1,6 +1,0 @@
-/* CardList.css */
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}

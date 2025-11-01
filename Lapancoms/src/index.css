@@ -3,66 +3,60 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite/";
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+/* costume css variable */
+@theme {
+  --color-primary: #734a00; /* buat warna font utama */
+  --color-secondary: #ffa500; /* buat hover */
+  --color-dark: #131313; /* font hitam */
+  --color-bgMain: #ffff; /* background utama */
+  --color-bgPri: #fff7e8; /* backgorund buat priamry font */
+}
+
+/* custom html tag */
+@layer base {
+  a {
+    font-weight: 500;
+    color: #734a00;
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #ffa500;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+}
+
+/* custom css class */
+@layer components {
+  .card-container {
+    display: flex; /* ✅ This is the magic line! */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line on small screens */
+    gap: 16px;
+  }
 }
 
 :root {
-  font-family: poppins;
+  font-family: poppins, sans-serif;
   line-height: 1.5;
-  font-weight: 200;
+  font-weight: 100;
 
   color-scheme: light;
-  color: black;
-  background-color: #f6f6f3;
+  color: #131313;
+  background-color: #ffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #734a00;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

@@ -21,7 +21,7 @@ export default function BlogCard({ title, date, author }) {
             <p className=" font-normal text-gray-900">{author}</p>
             <a
               href="#"
-              className="inline-flex items-center text-sm font-medium text-center text-white"
+              className="inline-flex items-center text-sm font-medium text-center py-1 px-5 rounded-4xl  bg-bgPri  transition duration-700 ease-in-out"
             >
               View
               <svg

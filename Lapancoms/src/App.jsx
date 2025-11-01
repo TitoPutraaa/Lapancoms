@@ -1,7 +1,5 @@
-import "./App.css";
 import Dashboard from "./components/layout/DashboardMain.jsx";
-
-import "./css/layout.css";
+import "./index.css";
 
 function App() {
   return (
