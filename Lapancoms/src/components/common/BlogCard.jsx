@@ -8,6 +8,7 @@ export default function BlogCard() {
           <img className="rounded-t-lg" src={assets.blogCardImg} alt="" />
         </a>
         <div className="p-5">
+<<<<<<< HEAD
           <a href="#">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
@@ -28,6 +29,17 @@ export default function BlogCard() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 14 10"
+=======
+          <h5 className="flex items-start mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            {title}
+          </h5>
+
+          <div className="flex justify-between">
+            <p className=" font-normal text-gray-900">{author}</p>
+            <a
+              href="#"
+              className="inline-flex items-center text-sm font-medium text-center py-1 px-5 rounded-4xl  bg-bgPri  transition duration-700 ease-in-out"
+>>>>>>> f5eee04 (add css variable dan componen di index.css dan selesai dashboard main)
             >
               <path
                 stroke="currentColor"
