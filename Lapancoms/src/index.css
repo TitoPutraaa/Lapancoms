@@ -33,6 +33,20 @@
   @apply text-primary;
 }
 
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-textfield-decoration-container,
+input::-webkit-clear-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
 /* 
 :root {
   font-family: poppins;
