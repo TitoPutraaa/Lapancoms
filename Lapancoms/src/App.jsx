@@ -1,12 +1,10 @@
-import "./App.css";
-import BlogCard from "./components/common/BlogCard.jsx";
-import Sidebar from "./components/layout/Sidebar.jsx";
+import Dashboard from "./components/layout/DashboardMain.jsx";
+import "./index.css";
 
 function App() {
   return (
-    <div className="App">
-      <Sidebar />
-      <BlogCard />
+    <div className="">
+      <Dashboard />
     </div>
   );
 }
