@@ -2,6 +2,7 @@ import "./App.css";
 import Dashboard from "./components/layout/DashboardMain.jsx";
 import Sidebar from "./components/layout/Sidebar.jsx";
 import Login from "./pages/Login.jsx";
+import ViewGallery from "./components/common/ViewGallery.jsx";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,13 +14,14 @@ import "./css/layout.css";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/admin" element={<Sidebar content={<Dashboard />} />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Navigate to="/login" />} />
+    //     <Route path="/admin" element={<Sidebar content={<Dashboard />} />} />
+    //     <Route path="/login" element={<Login />} />
+    //   </Routes>
+    // </Router>
+    <ViewGallery />
   );
 }
 
