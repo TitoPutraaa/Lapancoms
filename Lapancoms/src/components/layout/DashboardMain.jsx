@@ -1,6 +1,6 @@
 import BlogCard from "../common/BlogCard";
-import "../../css/cardList.css";
 import ImgCard from "../common/ImgCard";
+import "../../index.css";
 
 export default function DashboardMain() {
   const blogData = [
@@ -43,20 +43,26 @@ export default function DashboardMain() {
 
   return (
     <div className="">
-      <div className="card-container">
-        {blogData.map((data) => (
-          <BlogCard
-            key={data.title}
-            title={data.title}
-            date={data.date}
-            author={data.author}
-          />
-        ))}
+      <div className="mb-12 mx-5">
+        <h2 className="text-3xl mb-4">Blog</h2>
+        <div className="card-container">
+          {blogData.map((data) => (
+            <BlogCard
+              key={data.title}
+              title={data.title}
+              date={data.date}
+              author={data.author}
+            />
+          ))}
+        </div>
       </div>
-      <div className="card-container">
-        {imgData.map((data) => (
-          <ImgCard key={data.title} title={data.title} author={data.author} />
-        ))}
+      <div className="mb-12 mx-5">
+        <h2 className="text-3xl mb-4">Gallery</h2>
+        <div className="card-container">
+          {imgData.map((data) => (
+            <ImgCard key={data.title} title={data.title} author={data.author} />
+          ))}
+        </div>
       </div>
     </div>
   );

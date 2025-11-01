@@ -4,115 +4,55 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite/";
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-}
-
-* {
-  @apply font-poppins;
-}
-
+/* costume css variable */
 @theme {
-  --font-poppins: "Poppins", sans-serif;
-  --color-primary: #734a00;
-  --color-secondary: #fff7e8;
-  --color-tertiary: #f1b341;
-  --color-dark: #131313;
-  --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --color-primary: #734a00; /* buat warna font utama */
+  --color-secondary: #ffa500; /* buat hover */
+  --color-dark: #131313; /* font hitam */
+  --color-bgMain: #ffff; /* background utama */
+  --color-bgPri: #fff7e8; /* backgorund buat priamry font */
 }
 
-.sideMenu.active {
-  @apply bg-secondary;
-}
-.sideMenu.active svg {
-  @apply text-tertiary;
-}
-.sideMenu.active span {
-  @apply text-primary;
-}
-
-input::-ms-reveal,
-input::-ms-clear {
-  display: none;
-}
-
-input::-webkit-credentials-auto-fill-button,
-input::-webkit-textfield-decoration-container,
-input::-webkit-clear-button,
-input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
-
-/* 
-:root {
-  font-family: poppins;
-  line-height: 1.5;
-  font-weight: 200;
-
-  color-scheme: light;
-  color: black;
-  background-color: #f6f6f3;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #734a00;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* custom html tag */
+@layer base {
+  a {
+    font-weight: 500;
+    color: #734a00;
+    text-decoration: inherit;
   }
   a:hover {
-    color: #747bff;
+    color: #ffa500;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
   }
-} */
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+}
+
+/* custom css class */
+@layer components {
+  .card-container {
+    display: flex; /* ✅ This is the magic line! */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line on small screens */
+    gap: 16px;
+  }
+}
+
+:root {
+  font-family: poppins, sans-serif;
+  line-height: 1.5;
+  font-weight: 100;
+
+  color-scheme: light;
+  color: #131313;
+  background-color: #ffff;
+}

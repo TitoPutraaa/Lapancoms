@@ -6,12 +6,14 @@ export default function BlogCard({ title, date, author }) {
       <div className=" max-w-3xs bg-white border border-gray-200 rounded-3xl shadow-xl/20">
         <div className="relative">
           <img className="rounded-3xl" src={assets.blogCardImg} alt="" />
+
           <div className="">
             <div className="px-2 py-1 bg-white absolute bottom-2.5 left-2.5  rounded-lg ">
               {date}
             </div>
           </div>
         </div>
+
         <div className="p-5">
           <h5 className="flex items-start mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {title}
@@ -19,9 +21,10 @@ export default function BlogCard({ title, date, author }) {
 
           <div className="flex justify-between">
             <p className=" font-normal text-gray-900">{author}</p>
+
             <a
               href="#"
-              className="inline-flex items-center text-sm font-medium text-center text-white"
+              className="inline-flex items-center text-sm font-medium text-center py-1 px-5 rounded-4xl  bg-bgPri  transition duration-700 ease-in-out"
             >
               View
               <svg
