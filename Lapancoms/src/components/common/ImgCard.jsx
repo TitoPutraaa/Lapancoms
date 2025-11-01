@@ -1,23 +1,24 @@
 import { assets } from "../../assets/assets.js";
 
-export default function ImgCard({ title, author }) {
+export default function BlogCard({ title, author }) {
   return (
-    <div className="">
+    <div>
       <div className=" max-w-3xs bg-white border border-gray-200 rounded-3xl shadow-xl/20">
         <div className="relative">
           <img className="rounded-3xl" src={assets.blogCardImg} alt="" />
-          <div className=""></div>
         </div>
+
         <div className="p-5">
-          <h5 className="flex items-start mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          <h5 className="flex items-start mb-2 text-2xl tracking-tight text-gray-900">
             {title}
           </h5>
 
           <div className="flex justify-between">
             <p className=" font-normal text-gray-900">{author}</p>
+
             <a
               href="#"
-              className="inline-flex items-center text-sm font-medium text-center text-white"
+              className="inline-flex items-center text-sm text-center py-1 px-5 rounded-4xl  bg-secondary  transition duration-700 ease-in-out"
             >
               View
               <svg

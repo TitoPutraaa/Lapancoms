@@ -14,7 +14,7 @@ export default function Login() {
 
   return (
     <>
-      <div className=" flex w-full h-dvh justify-center items-center">
+      <div className="flex w-full h-dvh items-center justify-center">
         <div className="inset-0 fixed z-0 bg-black">
           <img
             src={assets.loginIMG}

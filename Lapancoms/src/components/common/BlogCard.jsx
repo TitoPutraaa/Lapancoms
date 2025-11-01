@@ -8,14 +8,14 @@ export default function BlogCard({ title, date, author }) {
           <img className="rounded-3xl" src={assets.blogCardImg} alt="" />
 
           <div className="">
-            <div className="px-2 py-1 bg-white absolute bottom-2.5 left-2.5  rounded-lg ">
+            <div className="px-1.5 py-1 bg-white font-normal absolute bottom-2.5 left-2.5  rounded-lg ">
               {date}
             </div>
           </div>
         </div>
 
         <div className="p-5">
-          <h5 className="flex items-start mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          <h5 className="flex items-start mb-2 text-2xl tracking-tight text-gray-900">
             {title}
           </h5>
 
@@ -24,7 +24,7 @@ export default function BlogCard({ title, date, author }) {
 
             <a
               href="#"
-              className="inline-flex items-center text-sm font-medium text-center py-1 px-5 rounded-4xl  bg-bgPri  transition duration-700 ease-in-out"
+              className="inline-flex items-center text-sm text-center py-1 px-5 rounded-4xl  bg-secondary  transition duration-700 ease-in-out"
             >
               View
               <svg

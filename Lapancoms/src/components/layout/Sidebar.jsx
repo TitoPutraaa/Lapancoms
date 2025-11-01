@@ -63,7 +63,7 @@ export default function Sidebar({ content }) {
               <h1 className="text-dark text-center font-medium text-2xl mb-2">
                 Leonard
               </h1>
-              <p className=" bg-tertiary text-xs w-fit rounded-full px-2 py-0.5 mx-auto">
+              <p className=" bg-secondary text-xs w-fit rounded-full px-2 py-0.5 mx-auto">
                 Admin
               </p>
             </div>
@@ -78,7 +78,7 @@ export default function Sidebar({ content }) {
                   }`}
                 >
                   <svg
-                    className="w-5 h-5 text-dark transition duration-75  group-hover:text-tertiary "
+                    className="w-5 h-5 text-dark transition duration-75  group-hover:text-secondary "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -104,7 +104,7 @@ export default function Sidebar({ content }) {
                   data-collapse-toggle="dropdown-example"
                 >
                   <svg
-                    className="shrink-0 w-5 h-5 text-dark transition duration-75 group-hover:text-tertiary  "
+                    className="shrink-0 w-5 h-5 text-dark transition duration-75 group-hover:text-secondary  "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -170,7 +170,7 @@ export default function Sidebar({ content }) {
                   }`}
                 >
                   <svg
-                    className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-tertiary "
+                    className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-secondary "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -199,7 +199,7 @@ export default function Sidebar({ content }) {
                     }`}
                   >
                     <svg
-                      className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-tertiary "
+                      className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-secondary "
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -222,7 +222,7 @@ export default function Sidebar({ content }) {
                     }`}
                   >
                     <svg
-                      className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-tertiary "
+                      className="shrink-0 w-5 h-5 text-dark transition duration-75  group-hover:text-secondary "
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"

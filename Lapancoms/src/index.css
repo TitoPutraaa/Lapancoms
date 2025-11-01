@@ -6,11 +6,17 @@
 
 /* costume css variable */
 @theme {
-  --color-primary: #734a00; /* buat warna font utama */
-  --color-secondary: #ffa500; /* buat hover */
-  --color-dark: #131313; /* font hitam */
-  --color-bgMain: #ffff; /* background utama */
-  --color-bgPri: #fff7e8; /* backgorund buat priamry font */
+  --font-poppins: "Poppins", sans-serif;
+  --color-primary: #734a00;
+  --color-secondary: #fff7e8;
+  --color-dark: #131313;
+  --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* --color-primary: #734a00;
+  --color-secondary: #ffa500;
+  --color-dark: #131313;
+  --color-bgMain: #ffff;
+  --color-bgPri: #fff7e8; */
 }
 
 /* custom html tag */
@@ -47,10 +53,34 @@
   }
 }
 
+.sideMenu.active {
+  @apply bg-secondary;
+}
+.sideMenu.active svg {
+  @apply text-secondary;
+}
+.sideMenu.active span {
+  @apply text-primary;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-textfield-decoration-container,
+input::-webkit-clear-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
 :root {
   font-family: poppins, sans-serif;
   line-height: 1.5;
-  font-weight: 100;
+  font-weight: 500;
 
   color-scheme: light;
   color: #131313;

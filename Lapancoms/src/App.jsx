@@ -9,8 +9,6 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import "./css/layout.css";
-
 function App() {
   return (
     <Router>
