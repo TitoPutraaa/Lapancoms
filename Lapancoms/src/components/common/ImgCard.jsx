@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { assets } from "../../assets/assets.js";
 
 export default function ImgCard({ title, author }) {
@@ -44,4 +42,3 @@ export default function ImgCard({ title, author }) {
     </div>
   );
 }
->>>>>>> f5eee04 (add css variable dan componen di index.css dan selesai dashboard main)
