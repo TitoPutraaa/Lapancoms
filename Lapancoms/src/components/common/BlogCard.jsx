@@ -1,6 +1,8 @@
 import { assets } from "../../assets/assets.js";
 
 export default function BlogCard({ title, date, author }) {
+
+  
   return (
     <div>
       <div className=" max-w-3xs bg-white border border-gray-200 rounded-3xl shadow-xl/20">
