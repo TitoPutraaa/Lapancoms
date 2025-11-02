@@ -1,5 +1,5 @@
-import "./App.css";
-import Dashboard from "./components/layout/DashboardMain.jsx";
+import "./index.css";
+import Dashboard from "./pages/Dashboard.jsx";
 import Sidebar from "./components/layout/Sidebar.jsx";
 import Login from "./pages/Login.jsx";
 import {
@@ -8,6 +8,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import AllBlogs from "./pages/AllBlogs.jsx";
+import AllGallery from "./pages/AllGallery.jsx";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/admin" element={<Sidebar content={<Dashboard />} />} />
+        <Route path="/allBlogs" element={<Sidebar content={<AllBlogs />} />} />
+        <Route path="/allGallery" element={<Sidebar content={<AllGallery />} />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>

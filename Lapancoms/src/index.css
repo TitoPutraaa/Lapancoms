@@ -4,13 +4,15 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite/";
 
+
+
 /* costume css variable */
 @theme {
   --font-poppins: "Poppins", sans-serif;
-  --color-primary: #734a00;
-  --color-secondary: #fff7e8;
+  --color-primary: #734a00; /* font Utama/bg-utama */
+  --color-secondary: #fff7e8; /* hover */
   --color-accent: #ffa500; /*for hover element/ highlight*/
-  --color-dark: #131313;
+  --color-dark: #131313; /* font judul */
   --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
 
   /* --color-primary: #734a00;
@@ -48,8 +50,8 @@
 /* custom css class */
 @layer components {
   .card-container {
-    display: flex; /* ✅ This is the magic line! */
-    flex-wrap: wrap; /* Allows cards to wrap to the next line on small screens */
+    display: flex; 
+    flex-wrap: wrap; 
     gap: 16px;
   }
 }
