@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css";
 import Dashboard from "./components/layout/DashboardMain.jsx";
 import Sidebar from "./components/layout/Sidebar.jsx";
 import Login from "./pages/Login.jsx";

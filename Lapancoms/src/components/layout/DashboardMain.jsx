@@ -1,5 +1,7 @@
 import BlogCard from "../common/BlogCard";
-import ImgCard from "../common/ImgCard";
+import ImgCard from "../common/GalleryCard";
+import BlogViewAll from "../common/BlogViewAll";
+import GalleryViewAll from "../common/GalleryViewAll";
 import "../../index.css";
 
 export default function DashboardMain() {
@@ -42,9 +44,12 @@ export default function DashboardMain() {
   ];
 
   return (
-    <div className="">
+    <>
       <div className="mb-12 mx-5">
-        <h2 className="text-3xl mb-4">Blog</h2>
+        <div className="flex justify-between mb-4">
+          <h2 className="text-3xl">Blog</h2> 
+          <BlogViewAll />
+        </div>
         <div className="card-container">
           {blogData.map((data) => (
             <BlogCard
@@ -57,13 +62,16 @@ export default function DashboardMain() {
         </div>
       </div>
       <div className="mb-12 mx-5">
-        <h2 className="text-3xl mb-4">Gallery</h2>
+        <div className="flex justify-between mb-4">
+        <h2 className="text-3xl">Gallery</h2>
+        <GalleryViewAll/>
+        </div>
         <div className="card-container">
           {imgData.map((data) => (
             <ImgCard key={data.title} title={data.title} author={data.author} />
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
