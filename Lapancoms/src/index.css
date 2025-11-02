@@ -9,6 +9,7 @@
   --font-poppins: "Poppins", sans-serif;
   --color-primary: #734a00;
   --color-secondary: #fff7e8;
+  --color-accent: #ffa500; /*for hover element/ highlight*/
   --color-dark: #131313;
   --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -32,8 +33,8 @@
 
   body {
     margin: 0;
-    display: flex;
-    place-items: center;
+    /* display: flex; */ /* blm terlalu dipakai */
+    /* place-items: center; */ /* blm terlalu dipakai */
     min-width: 320px;
     min-height: 100vh;
   }
@@ -53,21 +54,25 @@
   }
 }
 
+/* Setting sidebar for mobile view */
 .sideMenu.active {
   @apply bg-secondary;
 }
 .sideMenu.active svg {
-  @apply text-secondary;
+  @apply text-accent;
+}
+.sideMenu.active svg:nth-of-type(2) {
+  @apply text-primary rotate-360;
 }
 .sideMenu.active span {
   @apply text-primary;
 }
 
+/* this's for hidden eye in input element */
 input::-ms-reveal,
 input::-ms-clear {
   display: none;
 }
-
 input::-webkit-credentials-auto-fill-button,
 input::-webkit-textfield-decoration-container,
 input::-webkit-clear-button,
@@ -78,10 +83,9 @@ input::-webkit-outer-spin-button {
 }
 
 :root {
-  font-family: poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.5;
-  font-weight: 500;
-
+  font-weight: 400; /* Font weight normal */
   color-scheme: light;
   color: #131313;
   background-color: #ffff;
