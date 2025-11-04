@@ -1,6 +1,8 @@
 import { assets } from "../../assets/assets.js";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogCard({ title, date, author }) {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="max-w-3xs rounded-3xl border border-gray-200 bg-white shadow-xl/20">
@@ -31,9 +33,10 @@ export default function BlogCard({ title, date, author }) {
           <div className="flex justify-between">
             <p className="font-normal text-gray-900">{author}</p>
 
-            <a
-              href="#"
-              className="bg-secondary inline-flex items-center rounded-4xl px-5 py-1 text-center text-sm transition duration-700 ease-in-out"
+            <div
+              onClick={() => navigate("/admin/blogview")}
+              // href="#"
+              className="bg-secondary inline-flex cursor-pointer items-center rounded-4xl px-5 py-1 text-center text-sm transition duration-700 ease-in-out"
             >
               View
               <svg
@@ -51,7 +54,7 @@ export default function BlogCard({ title, date, author }) {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+            </div>
           </div>
         </div>
       </div>

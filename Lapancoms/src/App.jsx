@@ -11,6 +11,7 @@ import {
 import AllBlogs from "./pages/AllBlogs.jsx";
 import AllGallery from "./pages/AllGallery.jsx";
 import BlogView from "./components/common/BlogView.jsx";
+import ViewGallery from "./components/common/viewGallery.jsx";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           element={<Sidebar content={<AllGallery />} />}
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin/BlogView" element={<BlogView />} />
+        <Route path="/admin/blogview" element={<BlogView />} />
       </Routes>
     </Router>
   );

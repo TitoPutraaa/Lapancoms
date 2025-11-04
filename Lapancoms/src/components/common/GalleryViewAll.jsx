@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 export default function BlogViewAll() {
+  const navigate = useNavigate();
   return (
-    <a
-      href="/allGallery"
-      className="border-primary hover:bg-primary mr-5 flex rounded-3xl border-2 transition duration-1000 ease-in-out hover:text-white"
+    <button
+      // href="/allGallery"
+      onClick={() => navigate("/allGallery")}
+      className="border-primary hover:bg-primary text-primary mr-5 flex rounded-3xl border-2 transition duration-1000 ease-in-out hover:text-white"
     >
       <div className="bg-primary rounded-3xl px-3 py-1 text-white">
         View All
@@ -24,6 +27,6 @@ export default function BlogViewAll() {
           <polyline points="7 7 17 7 17 17"></polyline>
         </svg>
       </div>
-    </a>
+    </button>
   );
 }
