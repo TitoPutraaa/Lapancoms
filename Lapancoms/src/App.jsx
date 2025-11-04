@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import AllBlogs from "./pages/AllBlogs.jsx";
 import AllGallery from "./pages/AllGallery.jsx";
+import BlogView from "./components/common/BlogView.jsx";
 
 function App() {
   return (
@@ -18,8 +19,12 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/admin" element={<Sidebar content={<Dashboard />} />} />
         <Route path="/allBlogs" element={<Sidebar content={<AllBlogs />} />} />
-        <Route path="/allGallery" element={<Sidebar content={<AllGallery />} />} />
+        <Route
+          path="/allGallery"
+          element={<Sidebar content={<AllGallery />} />}
+        />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin/BlogView" element={<BlogView />} />
       </Routes>
     </Router>
   );
