@@ -22,7 +22,7 @@ export default function BlogCard({ title, author }) {
             <div
               onClick={() => setView(true)}
               // href="#"
-              className="bg-secondary inline-flex cursor-pointer items-center rounded-4xl px-5 py-1 text-center text-sm transition duration-700 ease-in-out"
+              className="bg-secondary text-primary inline-flex cursor-pointer items-center rounded-4xl px-5 py-1 text-center text-sm transition duration-700 ease-in-out"
             >
               View
               <svg
