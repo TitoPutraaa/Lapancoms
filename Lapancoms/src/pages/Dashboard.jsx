@@ -6,12 +6,11 @@ import { blogData, imgData } from "../assets/DataDummy.jsx";
 import "../index.css";
 
 export default function Dashboard() {
-
   return (
-    <>
-      <div className="mb-12 mx-5">
-        <div className="flex justify-between mb-4">
-          <h2 className="text-3xl">Blog</h2> 
+    <div className="mt-10 flex flex-col">
+      <div className="mx-5 mb-12">
+        <div className="mb-4 flex justify-between">
+          <h2 className="text-3xl">Blog</h2>
           <BlogViewAll />
         </div>
         <div className="card-container">
@@ -25,17 +24,21 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
-      <div className="mb-12 mx-5">
-        <div className="flex justify-between mb-4">
-        <h2 className="text-3xl">Gallery</h2>
-        <GalleryViewAll/>
+      <div className="mx-5 mb-12">
+        <div className="mb-4 flex justify-between">
+          <h2 className="text-3xl">Gallery</h2>
+          <GalleryViewAll />
         </div>
         <div className="card-container">
-          {imgData.slice(0, 3).map((data) => (
-            <GalleryCard key={data.title} title={data.title} author={data.author} />
+          {imgData.slice(0, 4).map((data) => (
+            <GalleryCard
+              key={data.title}
+              title={data.title}
+              author={data.author}
+            />
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
