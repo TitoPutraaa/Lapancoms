@@ -20,7 +20,7 @@ export default function BlogView() {
           </h1>
           <div className="mb-16 h-[474px] w-full overflow-hidden rounded-xl">
             <img
-              src={assets.viewBlog}
+              src={assets.blogCardImg}
               alt="viewBlog"
               className="h-full w-full object-cover"
             />
