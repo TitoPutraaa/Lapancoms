@@ -71,7 +71,7 @@ export default function Login() {
               <button
                 type="submit"
                 className="bg-primary hover:bg-primary/95 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
-                onClick={() => navigate("/admin")}
+                onClick={() => navigate("/admin/dashboard")}
               >
                 Login
               </button>
