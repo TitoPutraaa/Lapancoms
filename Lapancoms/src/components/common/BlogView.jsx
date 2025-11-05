@@ -7,7 +7,8 @@ export default function BlogView() {
     <div className="w-full p-10">
       <div className="mb-8">
         <button
-          onClick={() => navigate("/admin")}
+          type="button"
+          onClick={() => navigate("admin")}
           className="text-primary shadow-soft cursor-pointer rounded-lg px-10 py-3 text-sm"
         >
           Back
