@@ -1,34 +1,31 @@
 import "./index.css";
 import Dashboard from "./pages/Dashboard.jsx";
-import Sidebar from "./components/layout/Sidebar.jsx";
 import Login from "./pages/Login.jsx";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
 } from "react-router-dom";
 import AllBlogs from "./pages/AllBlogs.jsx";
 import AllGallery from "./pages/AllGallery.jsx";
-import BlogView from "./components/common/BlogView.jsx";
-import ViewGallery from "./components/common/viewGallery.jsx";
+import AdminLayout from "./components/layout/AdminLayout.jsx";
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/admin" element={<Sidebar content={<Dashboard />} />} />
-        <Route path="/allBlogs" element={<Sidebar content={<AllBlogs />} />} />
-        <Route
-          path="/allGallery"
-          element={<Sidebar content={<AllGallery />} />}
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin/blogview" element={<BlogView />} />
-      </Routes>
-    </Router>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="allBlogs" element={<AllBlogs />} />
+        <Route path="allGallery" element={<AllGallery />} />
+      </Route>,
+    ),
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
