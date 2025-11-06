@@ -55,7 +55,7 @@
 }
 
 /* Setting sidebar for mobile view */
-.sideMenu.active {
+.sideMenu.active div {
   @apply bg-secondary;
 }
 .sideMenu.active svg {

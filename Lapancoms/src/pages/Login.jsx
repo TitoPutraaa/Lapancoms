@@ -34,6 +34,7 @@ export default function Login() {
               Nice to see you again
             </h1>
             <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="mb-5">
                 <label
                   htmlFor="username"
@@ -77,7 +78,6 @@ export default function Login() {
               <button
                 type="submit"
                 className="bg-primary hover:bg-primary/95 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
-                onClick={() => navigate("/admin")}
               >
                 Login
               </button>

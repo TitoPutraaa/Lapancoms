@@ -1,17 +1,15 @@
 import { assets } from "../../assets/assets";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function BlogView() {
-  const navigate = useNavigate();
   return (
     <div className="w-full p-10">
       <div className="mb-8">
-        <button
-          onClick={() => navigate("/admin")}
-          className="text-primary shadow-soft cursor-pointer rounded-lg px-10 py-3 text-sm"
-        >
-          Back
-        </button>
+        <Link to="/admin" replace>
+          <div className="text-primary shadow-soft w-fit cursor-pointer rounded-lg px-10 py-3 text-sm">
+            Back
+          </div>
+        </Link>
       </div>
       <div>
         <div className="shadow-soft mx-auto w-4xl overflow-hidden rounded-xl px-10 py-4 lg:w-5xl xl:w-6xl">
