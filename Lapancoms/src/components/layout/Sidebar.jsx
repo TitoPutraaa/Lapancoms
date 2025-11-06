@@ -30,7 +30,7 @@ export default function Sidebar() {
           </svg>
         </button>
         <aside
-          className={`top-4 bottom-4 left-4 z-40 mr-6 w-64 shrink-0 rounded-2xl bg-white transition-transform lg:static lg:translate-x-0 lg:overflow-visible ${
+          className={`top-4 bottom-4 left-4 z-40 w-64 shrink-0 rounded-2xl bg-white transition-transform lg:static lg:translate-x-0 lg:overflow-visible ${
             isOpen
               ? "fixed translate-x-0"
               : "fixed -translate-x-full overflow-hidden"

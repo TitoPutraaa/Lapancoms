@@ -22,6 +22,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+        {/* <Route path="/" element={<Login />} />  */}
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
@@ -33,7 +34,7 @@ function App() {
           <Route path="allBlogs" element={<AllBlogs />} />
           <Route path="allGallery" element={<AllGallery />} />
         </Route>
-        <Route path="blogView" element={<BlogView />} />
+        <Route path="/admin/blogView" element={<BlogView />} />
       </>,
     ),
   );
