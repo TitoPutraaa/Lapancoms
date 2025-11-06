@@ -8,7 +8,7 @@ export default function AllGallery() {
     <div className="mx-5 mb-12">
       <div className="mb-4 flex justify-between">
         <h2 className="text-3xl">All Gallery</h2>
-        <Link to="/admin" replace>
+        <Link to="/admin/dashboard" replace>
           <div className="mr-12">
             <BackBtn />
           </div>

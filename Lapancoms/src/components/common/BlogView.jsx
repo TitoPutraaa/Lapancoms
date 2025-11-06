@@ -5,7 +5,7 @@ export default function BlogView() {
   return (
     <div className="w-full p-10">
       <div className="mb-8">
-        <Link to="/admin" replace>
+        <Link to="/admin/dashboard" replace>
           <div className="text-primary shadow-soft w-fit cursor-pointer rounded-lg px-10 py-3 text-sm">
             Back
           </div>

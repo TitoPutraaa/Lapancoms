@@ -34,7 +34,6 @@ export default function Login() {
               Nice to see you again
             </h1>
             <form onSubmit={handleSubmit}>
-            <form onSubmit={handleSubmit}>
               <div className="mb-5">
                 <label
                   htmlFor="username"
