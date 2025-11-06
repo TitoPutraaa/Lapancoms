@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { assets } from "../../assets/assets.js";
-import ViewGallery from "./viewGallery.jsx";
+import ViewGallery from "./GalleryView.jsx";
 
 export default function BlogCard({ title, author }) {
   const [view, setView] = useState(false);

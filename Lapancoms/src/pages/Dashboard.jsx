@@ -7,8 +7,8 @@ import "../index.css";
 
 export default function Dashboard() {
   return (
-    <div className="mt-5">
-      <div className="mx-5 mb-12">
+    <div>
+      <div className="mx-5 mb-12 h-full">
         <div className="mb-4 flex justify-between">
           <h2 className="text-3xl">Blog</h2>
           <BlogViewAll />
@@ -30,7 +30,7 @@ export default function Dashboard() {
           <GalleryViewAll />
         </div>
         <div className="card-container">
-          {imgData.slice(0, 4).map((data) => (
+          {imgData.slice(0, 3).map((data) => (
             <GalleryCard
               key={data.title}
               title={data.title}
