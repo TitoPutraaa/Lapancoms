@@ -33,7 +33,7 @@ export default function Login() {
             <h1 className="text-dark mb-8 text-3xl font-semibold">
               Nice to see you again
             </h1>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-5">
                 <label
                   htmlFor="username"
