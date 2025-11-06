@@ -4,8 +4,6 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite/";
 
-
-
 /* costume css variable */
 @theme {
   --font-poppins: "Poppins", sans-serif;
@@ -50,8 +48,8 @@
 /* custom css class */
 @layer components {
   .card-container {
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
   }
 }

@@ -12,6 +12,12 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); // untuk mencegah refresh
+
+    navigate("/admin/dashboard");
+  };
+
   return (
     <>
       <div className="flex h-screen w-full items-center justify-center">
@@ -71,7 +77,7 @@ export default function Login() {
               <button
                 type="submit"
                 className="bg-primary hover:bg-primary/95 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
-                onClick={() => navigate("/admin/dashboard")}
+                onClick={() => navigate("/admin")}
               >
                 Login
               </button>

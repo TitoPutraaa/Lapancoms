@@ -7,7 +7,7 @@ import "../index.css";
 
 export default function Dashboard() {
   return (
-    <div className="mt-5 flex flex-col">
+    <div className="mt-5">
       <div className="mx-5 mb-12">
         <div className="mb-4 flex justify-between">
           <h2 className="text-3xl">Blog</h2>
