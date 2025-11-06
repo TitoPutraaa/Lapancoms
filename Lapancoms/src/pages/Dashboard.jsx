@@ -7,11 +7,7 @@ import "../index.css";
 
 export default function Dashboard() {
   return (
-<<<<<<< HEAD
-    <div className="mt-10 flex flex-col">
-=======
-    <div className="mt-5 flex flex-col">
->>>>>>> 26664f4437b965e25e240a5ec1524f40d8347857
+    <div className="mt-5">
       <div className="mx-5 mb-12">
         <div className="mb-4 flex justify-between">
           <h2 className="text-3xl">Blog</h2>

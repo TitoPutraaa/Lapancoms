@@ -2,12 +2,12 @@
 import { useState } from "react";
 // import imgWisata from "../assets/images/image.png";
 
-export default function Sidebar({ content }) {
+export default function Sidebar() {
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative flex p-4">
+      <div className="min-h-screen w-fit">
         <button
           onClick={() => setIsOpen(true)}
           type="button"
@@ -31,7 +31,7 @@ export default function Sidebar({ content }) {
         </button>
         {/* <div className="lg:block w-64 rounded-2xl hidden"></div> */}
         <aside
-          className={`top-4 bottom-4 left-4 z-40 mr-6 w-64 shrink-0 rounded-2xl bg-white transition-transform lg:static lg:translate-x-0 lg:overflow-visible ${
+          className={`top-4 bottom-4 left-4 z-40 h-full w-64 shrink-0 rounded-2xl bg-white transition-transform lg:static lg:translate-x-0 lg:overflow-visible ${
             isOpen
               ? "fixed translate-x-0"
               : "fixed -translate-x-full overflow-hidden"
@@ -59,7 +59,7 @@ export default function Sidebar({ content }) {
             </svg>
           </button>
           <div className="shadow-soft h-full w-full overflow-y-auto rounded-2xl px-3 py-4">
-            <div className="mt-8 mb-10">
+            <div className="mt-5 mb-10">
               <h1 className="text-dark mb-2 text-center text-2xl font-medium">
                 Leonard
               </h1>
@@ -237,8 +237,6 @@ export default function Sidebar({ content }) {
             </div>
           </div>
         </aside>
-
-        <div className="mt-7 w-full">{content}</div>
       </div>
     </>
   );
