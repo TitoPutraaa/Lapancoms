@@ -1,4 +1,5 @@
 import "./index.css";
+<<<<<<< HEAD
 import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import {
@@ -10,6 +11,9 @@ import {
 import AllBlogs from "./pages/AllBlogs.jsx";
 import AllGallery from "./pages/AllGallery.jsx";
 import RootLayout from "./components/layout/RootLayout.jsx";
+=======
+import AppRouter from "./routes/AppRouter";
+>>>>>>> 26664f4437b965e25e240a5ec1524f40d8347857
 
 function App() {
   const routerAdmin = createBrowserRouter(
@@ -34,6 +38,7 @@ function App() {
   // ));
 
   return (
+<<<<<<< HEAD
     <RouterProvider router={routerAdmin} />
 
     // <Router>
@@ -48,6 +53,11 @@ function App() {
     //     <Route path="/login" element={<Login />} />
     //   </Routes>
     // </Router>
+=======
+    <div className="App">
+      <AppRouter />
+    </div>
+>>>>>>> 26664f4437b965e25e240a5ec1524f40d8347857
   );
 }
 
