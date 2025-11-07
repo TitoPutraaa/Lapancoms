@@ -8,10 +8,10 @@ export default function ViewGallery({ view, setView }) {
         <button
           onClick={() => setView(false)}
           type="button"
-          class="md:text-primary hover:text-tertiary absolute top-2 right-3 z-50 inline-flex h-8 w-8 cursor-pointer items-center justify-center bg-transparent text-sm text-white"
+          className="md:text-primary hover:text-tertiary absolute top-2 right-3 z-50 inline-flex h-8 w-8 cursor-pointer items-center justify-center bg-transparent text-sm text-white"
         >
           <svg
-            class="h-3 w-3"
+            className="h-3 w-3"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14"

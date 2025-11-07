@@ -12,7 +12,7 @@ export default function BlogCard({ title, date, author }) {
           <div className="">
             <div className="absolute bottom-2.5 left-2.5 flex rounded-lg bg-white px-1.5 py-1 font-normal">
               <svg
-                class="my-auto h-4 w-4 text-black"
+                className="my-auto h-4 w-4 text-black"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"

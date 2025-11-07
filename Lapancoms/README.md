@@ -1,16 +1,20 @@
-# React + Vite
+Lapancoms Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+cara Memulai :
 
-Currently, two official plugins are available:
+1. buat folder kosong untuk menempatkan folder ini
+2. buka command prop pada folder tersebut
+3. untuk mengcopy project ini ketik : git clone https://github.com/TitoPutraaa/Lapancoms.git
+4. untuk membuka vs code ketik : code .
+5. untuk masuk ke project ketik pada command promp di cmd : cd .\Lapancoms\Lapancoms
+6. ketik : npm install
+7. untuk menyalakan servernya ketik : npm run dev
+8. untuk membuka di webiste ketik : o
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Folder yang boleh di ubah :
 
-## React Compiler
+1. assets
+2. components
+3. pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+jika ada kendala tanyain ajeee
