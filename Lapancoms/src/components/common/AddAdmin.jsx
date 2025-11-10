@@ -1,33 +1,33 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function AddAdmin({ view, setView }) {
+export default function AddAdmin({
+  view,
+  username,
+  password,
+  setUsername,
+  setPassword,
+  handleAdd,
+}) {
   const [invisible, setInvisible] = useState(true);
-  const navigate = useNavigate();
   if (!view) return null;
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // untuk mencegah refresh
-
-    navigate("/admin/dashboard");
-  };
   return (
     <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
         <div className="mb-8 w-full text-center">
           <div className="text-dark mb-4 text-2xl">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <i className="fa-solid fa-arrow-right-to-bracket"></i>
           </div>
           <h2 className="text-dark text-2xl font-semibold">
             Sign Up new Admin
           </h2>
         </div>
         <div className="w-full">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleAdd}>
             <div className="mb-5">
               <label
                 htmlFor="username"
@@ -39,6 +39,8 @@ export default function AddAdmin({ view, setView }) {
                 type="text"
                 name="username"
                 id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                 placeholder="Enter new Username"
                 required
@@ -56,6 +58,8 @@ export default function AddAdmin({ view, setView }) {
                   type={invisible ? "password" : "text"}
                   name="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="••••••"
                   required
@@ -76,7 +80,6 @@ export default function AddAdmin({ view, setView }) {
             </button>
             <button
               type="button"
-              onClick={() => setView(false)}
               className="text-primary w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
             >
               Cancel

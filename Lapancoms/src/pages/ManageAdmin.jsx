@@ -1,28 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddAdmin from "../components/common/AddAdmin";
+import adminApi from "../api/adminApi";
 
 function ManageAdmin() {
-  const data = [
-    {
-      username: "Judul 1",
-      password: "13/06/2022",
-    },
-    {
-      username: "Judul 1",
-      password: "13/06/2022",
-    },
-    {
-      username: "Judul 1",
-      password: "13/06/2022",
-    },
-    {
-      username: "Judul 1",
-      password: "13/06/2022",
-    },
-  ];
-
   const [amount, setAmount] = useState("5");
   const [view, setView] = useState(false);
+
+  const [admins, setAdmins] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loadAdmins = async () => {
+    try {
+      const fetchAdmins = await adminApi.getAll();
+      console.log("Response from API:", fetchAdmins.data);
+      // check whether .data or .data.data is needed
+      setAdmins(fetchAdmins.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      await adminApi.add({ username, password });
+      setUsername("");
+      setPassword("");
+      loadAdmins(); // reload admins list after adding
+    } catch (error) {
+      console.error("Error adding admin:", error);
+    }
+    setView(false);
+  };
+
+  const handleDelete = async (idAdmin) => {
+    try {
+      await adminApi.destroy(idAdmin);
+      loadAdmins();
+    } catch (error) {
+      console.error("Error deleting admin:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadAdmins();
+  }, []); // just load the server once
 
   return (
     <div className="p-4">
@@ -56,18 +79,24 @@ function ManageAdmin() {
             </tr>
           </thead>
           <tbody>
-            {data.slice(0, amount).map((item, index) => (
-              <tr className="border-b border-gray-200 bg-white">
+            {admins.slice(0, amount).map((data, index) => (
+              <tr
+                key={data.idAdmin}
+                className="border-b border-gray-200 bg-white"
+              >
                 <td scope="row" className="px-6 py-4">
                   {index + 1}
                 </td>
                 <td className="px-6 py-4 font-medium whitespace-nowrap">
-                  {item.username}
+                  {data.username}
                 </td>
-                <td className="px-6 py-4">{item.password}</td>
+                <td className="px-6 py-4">{data.password}</td>
                 <td className="px-6 py-4">
-                  <button className="text-danger hover:text-danger/80 cursor-pointer">
-                    <i class="fa-solid fa-trash"></i>
+                  <button
+                    onClick={() => handleDelete(data.idAdmin)}
+                    className="text-danger hover:text-danger/80 cursor-pointer"
+                  >
+                    <i className="fa-solid fa-trash"></i>
                   </button>
                 </td>
               </tr>
@@ -80,7 +109,7 @@ function ManageAdmin() {
         <select
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          class="w-16 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+          className="w-16 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -93,7 +122,14 @@ function ManageAdmin() {
         </select>
         <span className="ml-4">1 - {amount} of 100 items</span>
       </div>
-      <AddAdmin view={view} setView={setView} />
+      <AddAdmin
+        view={view}
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        handleAdd={handleAdd}
+      />
     </div>
   );
 }
