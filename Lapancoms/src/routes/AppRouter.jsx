@@ -12,12 +12,14 @@ import PostImage from "../pages/PostImage";
 import Delete from "../pages/Delete";
 import ManageAdmin from "../pages/ManageAdmin";
 import BlogView from "../components/common/BlogView";
+import Demo from "../pages/Demo";
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/demo" element={<Demo />} />
         {/* up here add landing page main*/}
         {/* here add landingpage Pages */}
         <Route path="/admin" element={<Login />} />
