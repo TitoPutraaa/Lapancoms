@@ -1,3 +1,4 @@
+import ArrowBtn from "../components/common/ArrowBtn";
 import BackBtn from "../components/common/BackBtn";
 import CancelBtn from "../components/common/CancelBtn";
 import ComfirmBtn from "../components/common/ComfirmBtn";
@@ -10,6 +11,8 @@ export default function Demo() {
             <ComfirmBtn/>
             <br></br>
             <CancelBtn/>
+            <br></br>
+            <ArrowBtn/>
         </div>
     )
 }
