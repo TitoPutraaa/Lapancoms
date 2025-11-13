@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropM, setIsOpenDropM] = useState(false);
   const navigate = useNavigate();
+  const dropDownRef = useRef(null);
+
+  useClickOutside(dropDownRef, () => setIsOpenDropM(false));
   return (
     <>
-      <div className="relative flex w-fit p-4">
+      <div className="bg-accent relative flex w-fit">
         <button
           onClick={() => setIsOpen(true)}
           type="button"
-          className={`text-dark focus:ring-secondary z-10 cursor-pointer items-center rounded-lg text-sm focus:ring-2 focus:outline-none lg:hidden ${
+          className={`z-10 cursor-pointer items-center focus:outline-none lg:hidden ${
             isOpen ? "hidden" : "fixed"
           }`}
         >
-          <span className="sr-only">Open sidebar</span>
           <svg
             className="text-primary h-6 w-6"
             fill="currentColor"
@@ -29,6 +33,7 @@ export default function Sidebar() {
             ></path>
           </svg>
         </button>
+
         <aside
           className={`top-4 bottom-4 left-4 z-40 w-64 shrink-0 rounded-2xl bg-white transition-transform lg:static lg:translate-x-0 lg:overflow-visible ${
             isOpen
@@ -58,7 +63,7 @@ export default function Sidebar() {
             </svg>
           </button>
           <div className="shadow-soft h-full w-full overflow-y-auto rounded-2xl px-3 py-4">
-            <div className="mt-8 mb-10">
+            <div className="mt-6 mb-10">
               <h1 className="text-dark mb-2 text-center text-2xl font-medium">
                 Leonard
               </h1>
@@ -89,13 +94,14 @@ export default function Sidebar() {
                 </NavLink>
               </li>
               {/* Post */}
-              <li>
+              <li ref={dropDownRef} className="relative">
                 <button
                   type="button"
-                  onClick={() => navigate("postBlog")}
+                  onClick={() => {
+                    setIsOpenDropM(!isOpenDropM);
+                    navigate("/admin/postBlog");
+                  }}
                   className="sideMenu text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2 text-base transition duration-75"
-                  aria-controls="dropdown-example"
-                  data-collapse-toggle="dropdown-example"
                 >
                   <svg
                     className="text-dark group-hover:text-accent h-5 w-5 shrink-0 transition duration-75"
@@ -125,26 +131,28 @@ export default function Sidebar() {
                     />
                   </svg>
                 </button>
-                <ul id="dropdown-example" className="hidden space-y-2 py-2">
-                  <li>
-                    <NavLink className="sideMenu" to="postBlog">
-                      <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2 pl-11 transition duration-75">
-                        <span className="group-hover:text-primary">
-                          Post Blog
-                        </span>
-                      </div>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink className="sideMenu" to="postImage">
-                      <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2 pl-11 transition duration-75">
-                        <span className="group-hover:text-primary">
-                          Post Image
-                        </span>
-                      </div>
-                    </NavLink>
-                  </li>
-                </ul>
+                {isOpenDropM && (
+                  <ul className="space-y-2 py-2">
+                    <li>
+                      <NavLink className="sideMenu" to="postBlog">
+                        <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2 pl-11 transition duration-75">
+                          <span className="group-hover:text-primary">
+                            Post Blog
+                          </span>
+                        </div>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="sideMenu" to="postImage">
+                        <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2 pl-11 transition duration-75">
+                          <span className="group-hover:text-primary">
+                            Post Image
+                          </span>
+                        </div>
+                      </NavLink>
+                    </li>
+                  </ul>
+                )}
               </li>
               {/* Delete */}
               <li>
