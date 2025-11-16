@@ -18,11 +18,9 @@ export default function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* up here add landing page main*/}
-        {/* here add landingpage Pages */}
-        <Route path="/admin" element={<Login />} />
+        <Route path="/admin/login" element={<Login />} />
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
           <Route path="allBlogs" element={<AllBlogs />} />
           <Route path="allGallery" element={<AllGallery />} />
           <Route path="postBlog" element={<PostBlog />} />

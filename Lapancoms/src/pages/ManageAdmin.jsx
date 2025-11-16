@@ -5,33 +5,16 @@ import adminApi from "../api/adminApi";
 function ManageAdmin() {
   const [amount, setAmount] = useState("5");
   const [view, setView] = useState(false);
-
   const [admins, setAdmins] = useState([]);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
   const loadAdmins = async () => {
     try {
       const fetchAdmins = await adminApi.getAll();
       console.log("Response from API:", fetchAdmins.data);
-      // check whether .data or .data.data is needed
       setAdmins(fetchAdmins.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
     }
-  };
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-    try {
-      await adminApi.add({ username, password });
-      setUsername("");
-      setPassword("");
-      loadAdmins(); // reload admins list after adding
-    } catch (error) {
-      console.error("Error adding admin:", error);
-    }
-    setView(false);
   };
 
   const handleDelete = async (idAdmin) => {
@@ -45,6 +28,7 @@ function ManageAdmin() {
 
   useEffect(() => {
     loadAdmins();
+    console.log("admins:", admins);
   }, []); // just load the server once
 
   return (
@@ -122,14 +106,7 @@ function ManageAdmin() {
         </select>
         <span className="ml-4">1 - {amount} of 100 items</span>
       </div>
-      <AddAdmin
-        view={view}
-        username={username}
-        password={password}
-        setUsername={setUsername}
-        setPassword={setPassword}
-        handleAdd={handleAdd}
-      />
+      <AddAdmin view={view} setView={setView} loadAdmins={loadAdmins} />
     </div>
   );
 }

@@ -1,18 +1,41 @@
 import { useState } from "react";
+import { useImmer } from "use-immer";
+import adminApi from "../../api/adminApi";
 
-export default function AddAdmin({
-  view,
-  username,
-  password,
-  setUsername,
-  setPassword,
-  handleAdd,
-}) {
+export default function AddAdmin({ view, setView, loadAdmins }) {
   const [invisible, setInvisible] = useState(true);
+  const [form, setForm] = useImmer({ username: "", password: "" });
+
   if (!view) return null;
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
+  };
+
+  function handleUsernameChange(e) {
+    setForm((draft) => {
+      draft.username = e.target.value;
+    });
+  }
+
+  function handlePasswordChange(e) {
+    setForm((draft) => {
+      draft.password = e.target.value;
+    });
+  }
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      await adminApi.add({ username: form.username, password: form.password });
+      loadAdmins();
+      setForm((draft) => {
+        draft.username = "";
+        draft.password = "";
+      });
+    } catch (error) {
+      console.error("Error adding admin:", error, error.response?.data || null);
+    }
+    setView(false);
   };
 
   return (
@@ -39,8 +62,8 @@ export default function AddAdmin({
                 type="text"
                 name="username"
                 id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={form.username}
+                onChange={handleUsernameChange}
                 className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                 placeholder="Enter new Username"
                 required
@@ -58,8 +81,8 @@ export default function AddAdmin({
                   type={invisible ? "password" : "text"}
                   name="password"
                   id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={form.password}
+                  onChange={handlePasswordChange}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="••••••"
                   required
@@ -79,6 +102,7 @@ export default function AddAdmin({
               Confirm
             </button>
             <button
+              onClick={() => setView(false)}
               type="button"
               className="text-primary w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
             >
