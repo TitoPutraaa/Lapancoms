@@ -1,22 +1,44 @@
 import "../index.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { useImmer } from "use-immer";
+import axiosClient from "../api/axiosClient";
+import authApi, { login, logout, me } from "../api/authApi";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
+  const [error, setError] = useState({});
+  const [form, setForm] = useImmer({
+    username: "",
+    password: "",
+  });
+
+  function handleUsername(e) {
+    setForm((draft) => {
+      draft.username = e.target.value;
+    });
+  }
+  function handlePassword(e) {
+    setForm((draft) => {
+      draft.password = e.target.value;
+    });
+  }
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
   };
 
-  const navigate = useNavigate();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await authApi.login({
+      username: form.username,
+      password: form.password,
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // untuk mencegah refresh
-
-    navigate("/admin/dashboard");
-  };
+    // navigate("/admin");
+  }
 
   return (
     <>
@@ -45,10 +67,13 @@ export default function Login() {
                   type="text"
                   name="username"
                   id="username"
+                  value={form.username}
+                  onChange={handleUsername}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="Enter username"
                   required
                 />
+                {error.username}
               </div>
               <div className="mb-8">
                 <label
@@ -62,6 +87,8 @@ export default function Login() {
                     type={invisible ? "password" : "text"}
                     name="password"
                     id="password"
+                    value={form.password}
+                    onChange={handlePassword}
                     className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
                     placeholder="Enter password"
                     required
