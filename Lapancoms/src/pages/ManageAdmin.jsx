@@ -10,7 +10,6 @@ function ManageAdmin() {
   const loadAdmins = async () => {
     try {
       const fetchAdmins = await adminApi.getAll();
-      console.log("Response from API:", fetchAdmins.data);
       setAdmins(fetchAdmins.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
@@ -28,7 +27,6 @@ function ManageAdmin() {
 
   useEffect(() => {
     loadAdmins();
-    console.log("admins:", admins);
   }, []); // just load the server once
 
   return (

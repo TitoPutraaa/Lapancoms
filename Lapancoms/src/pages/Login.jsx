@@ -1,5 +1,6 @@
 import "../index.css";
 import { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../auth/AdminContext";
@@ -7,6 +8,7 @@ import { useImmer } from "use-immer";
 import adminApi from "../api/adminApi";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
   const [error, setError] = useState("");
   const { token, setToken } = useContext(AdminContext);
@@ -27,8 +29,6 @@ export default function Login() {
   const toggleInvisible = () => {
     setInvisible(!invisible);
   };
-
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -72,10 +72,13 @@ export default function Login() {
                   id="username"
                   value={form.username}
                   onChange={handleUsername}
+                  value={form.username}
+                  onChange={handleUsername}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="Enter username"
                   required
                 />
+                {error.username}
               </div>
               <div className="mb-8">
                 <label
@@ -89,6 +92,8 @@ export default function Login() {
                     type={invisible ? "password" : "text"}
                     name="password"
                     id="password"
+                    value={form.password}
+                    onChange={handlePassword}
                     value={form.password}
                     onChange={handlePassword}
                     className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
