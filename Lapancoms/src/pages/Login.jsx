@@ -1,6 +1,5 @@
 import "../index.css";
 import { useContext, useState } from "react";
-import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../auth/AdminContext";
@@ -11,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
   const [error, setError] = useState("");
-  const { token, setToken } = useContext(AdminContext);
+  const { setToken } = useContext(AdminContext);
 
   const [form, setForm] = useImmer({ username: "", password: "" });
 
@@ -34,12 +33,19 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      await adminApi.login({
+      const res = await adminApi.login({
         username: form.username,
         password: form.password,
       });
+      localStorage.getItem("token", res.data.token);
+      setToken(res.data.token);
+      localStorage.setItem("token", res.data.token);
+      console.log(res);
+
       navigate("/admin");
-    } catch (error) {}
+    } catch (error) {
+      setError(error.response.data.message);
+    }
   };
 
   return (
@@ -56,7 +62,6 @@ export default function Login() {
           <div className="max-w-lg px-16 py-20">
             <h1 className="text-dark mb-8 text-3xl font-semibold">
               Nice to see you again
-              {token}
             </h1>
             <form onSubmit={handleLogin}>
               <div className="mb-5">
@@ -70,8 +75,6 @@ export default function Login() {
                   type="text"
                   name="username"
                   id="username"
-                  value={form.username}
-                  onChange={handleUsername}
                   value={form.username}
                   onChange={handleUsername}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
@@ -92,8 +95,6 @@ export default function Login() {
                     type={invisible ? "password" : "text"}
                     name="password"
                     id="password"
-                    value={form.password}
-                    onChange={handlePassword}
                     value={form.password}
                     onChange={handlePassword}
                     className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "../../auth/AdminContext";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { admin } = useContext(AdminContext);
   return (
     <>
       <div className="relative flex w-fit p-4">
@@ -60,10 +62,10 @@ export default function Sidebar() {
           <div className="shadow-soft h-full w-full overflow-y-auto rounded-2xl px-3 py-4">
             <div className="mt-8 mb-10">
               <h1 className="text-dark mb-2 text-center text-2xl font-medium">
-                Leonard
+                {admin.username}
               </h1>
               <p className="bg-secondary mx-auto w-fit rounded-full px-2 py-0.5 text-xs">
-                Admin
+                {admin.role}
               </p>
             </div>
             <ul className="space-y-2.5 font-medium">

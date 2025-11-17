@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { AdminContext } from "./AdminContext";
+import axiosClient from "../api/adminApi";
 
 export default function AdminProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [admin, setAdmin] = useState({});
 
   async function getAdmin() {
-    const res = await fetch("/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-    setAdmin(data);
-    console.log(data);
+    try {
+      const res = await axiosClient.me();
+      const data = res.data;
+      setAdmin(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
