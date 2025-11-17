@@ -1,10 +1,28 @@
 import "../index.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "../auth/AdminContext";
+import { useImmer } from "use-immer";
+import adminApi from "../api/adminApi";
 
 export default function Login() {
   const [invisible, setInvisible] = useState(true);
+  const [error, setError] = useState("");
+  const { token, setToken } = useContext(AdminContext);
+
+  const [form, setForm] = useImmer({ username: "", password: "" });
+
+  function handleUsername(e) {
+    setForm((draft) => {
+      draft.username = e.target.value;
+    });
+  }
+  function handlePassword(e) {
+    setForm((draft) => {
+      draft.password = e.target.value;
+    });
+  }
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
@@ -12,10 +30,16 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // untuk mencegah refresh
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-    navigate("/admin/dashboard");
+    try {
+      await adminApi.login({
+        username: form.username,
+        password: form.password,
+      });
+      navigate("/admin");
+    } catch (error) {}
   };
 
   return (
@@ -32,8 +56,9 @@ export default function Login() {
           <div className="max-w-lg px-16 py-20">
             <h1 className="text-dark mb-8 text-3xl font-semibold">
               Nice to see you again
+              {token}
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="mb-5">
                 <label
                   htmlFor="username"
@@ -45,6 +70,8 @@ export default function Login() {
                   type="text"
                   name="username"
                   id="username"
+                  value={form.username}
+                  onChange={handleUsername}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="Enter username"
                   required
@@ -62,6 +89,8 @@ export default function Login() {
                     type={invisible ? "password" : "text"}
                     name="password"
                     id="password"
+                    value={form.password}
+                    onChange={handlePassword}
                     className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
                     placeholder="Enter password"
                     required
@@ -72,6 +101,7 @@ export default function Login() {
                   >
                     {invisible ? "👁" : "😫"}
                   </span>
+                  {error}
                 </div>
               </div>
               <button
