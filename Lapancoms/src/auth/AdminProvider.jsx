@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { AdminContext } from "./AdminContext";
-import axiosClient from "../api/adminApi";
+import adminApi from "../api/adminApi";
 
 export default function AdminProvider({ children }) {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [admin, setAdmin] = useState({});
 
   async function getAdmin() {
     try {
-      const res = await axiosClient.me();
+      const res = await adminApi.me();
       const data = res.data;
       setAdmin(data);
     } catch (error) {

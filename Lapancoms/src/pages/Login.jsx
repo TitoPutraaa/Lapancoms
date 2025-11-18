@@ -37,8 +37,18 @@ export default function Login() {
         username: form.username,
         password: form.password,
       });
-      localStorage.setItem("token", res.data.token);
-      setToken(res.data.token);
+      // store token first so axios interceptor can read it when AdminProvider fetches /me
+      const token = res.data?.token;
+      if (token) {
+        try {
+          localStorage.setItem("token", token);
+        } catch (e) {
+          console.log(e.error || "failed set token");
+        }
+        setToken(token);
+      }
+      console.log(res);
+
       navigate("/admin/dashboard");
     } catch (error) {
       setError(error.response.data.message);
