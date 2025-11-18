@@ -20,6 +20,7 @@ import BlogView from "../components/common/BlogView";
 import NotFound from "../pages/NotFound";
 import UpdateLP from "../pages/UpdateLP";
 import Demo from "../pages/Demo";
+import Template from "../components/layout/Template";
 
 export default function AppRouter() {
   return (
@@ -42,6 +43,7 @@ export default function AppRouter() {
             <Route path="postImage" element={<PostImage />} />
             <Route path="blogView" element={<BlogView />} />
             <Route path="delete" element={<Delete />} />
+            <Route path="template" element={<Template />} />
 
             {/* SUPERADMIN ONLY */}
             <Route element={<PrivateRoute allowedRoles={["superadmin"]} />}>

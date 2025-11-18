@@ -6,11 +6,12 @@ const AdminLayout = () => {
   const location = useLocation();
 
   const hideSidebar = location.pathname.startsWith("/admin/blogview");
+  const hideSidebar2 = location.pathname.startsWith("/admin/template");
 
   return (
     <div className="flex min-h-screen w-full p-4">
-      {!hideSidebar && <Sidebar />}
-      <div className="ml-3 flex-1 lg:ml-0">
+      {!hideSidebar2 && !hideSidebar && <Sidebar />}
+      <div className="flex-1 overflow-hidden lg:ml-3">
         <Suspense fallback>
           <Outlet />
         </Suspense>
