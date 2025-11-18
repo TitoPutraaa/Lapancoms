@@ -19,11 +19,13 @@ import ManageAdmin from "../pages/ManageAdmin";
 import BlogView from "../components/common/BlogView";
 import NotFound from "../pages/NotFound";
 import UpdateLP from "../pages/UpdateLP";
+import Demo from "../pages/Demo";
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
+        <Route path="/demo" element={<Demo />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/login" element={<Login />} />
