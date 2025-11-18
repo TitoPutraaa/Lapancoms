@@ -37,11 +37,8 @@ export default function Login() {
         username: form.username,
         password: form.password,
       });
-      localStorage.getItem("token", res.data.token);
-      setToken(res.data.token);
       localStorage.setItem("token", res.data.token);
-      console.log(res);
-
+      setToken(res.data.token);
       navigate("/admin/dashboard");
     } catch (error) {
       setError(error.response.data.message);

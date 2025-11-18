@@ -3,7 +3,7 @@ import { AdminContext } from "./AdminContext";
 import axiosClient from "../api/adminApi";
 
 export default function AdminProvider({ children }) {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(null);
   const [admin, setAdmin] = useState({});
 
   async function getAdmin() {

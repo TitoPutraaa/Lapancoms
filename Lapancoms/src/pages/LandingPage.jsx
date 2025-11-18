@@ -1,3 +1,7 @@
 export default function LandingPage() {
-  return <h1>this is landing page</h1>;
+  return (
+    <>
+      <h1>this is landing page</h1>
+    </>
+  );
 }
