@@ -7,7 +7,6 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { admin } = useContext(AdminContext);
-  console.log("admin : ", admin);
 
   return (
     <>

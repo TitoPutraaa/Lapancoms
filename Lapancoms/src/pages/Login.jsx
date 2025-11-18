@@ -47,7 +47,6 @@ export default function Login() {
         }
         setToken(token);
       }
-      console.log(res);
 
       navigate("/admin/dashboard");
     } catch (error) {
