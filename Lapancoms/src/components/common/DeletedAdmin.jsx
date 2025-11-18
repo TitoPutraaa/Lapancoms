@@ -1,60 +1,60 @@
-import { BsTrash } from 'react-icons/bs';
-import { IoClose } from 'react-icons/io5';
+import { useState } from "react";
+import { BsTrash } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 
-export default function DeletedAdmin(isOpen, onClose, onDelete) {
-     if (!isOpen) return null;
-    return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
-      <div className="bg-white rounded-xl shadow-xl p-6 max-w-lg w-full">
-        <div className="flex">
-          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-100 rounded-full">
-            <BsTrash className="text-red-600 w-6 h-6" />
+export default function DeletedAdmin() {
+  // const [onClose, setOnClose] = useState(false);
+  // const [onDelate, setonDelate] = useState(false);
+  // if (isOpen) return null;
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleClose = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+            <div className="flex">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+                <BsTrash className="h-6 w-6 text-red-600" />
+              </div>
+
+              <div className="ml-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Delete Admin
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Are you sure you want to remove this admin? You won't be able
+                  to undo this.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex justify-end gap-3">
+              <button
+                onClick={handleClose}
+                type="button"
+                className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleClose}
+                type="button"
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
           </div>
-
-          <div className="ml-4 flex-grow">
-            <h3 className="text-lg font-semibold font-poppins text-gray-900">Delete Admin</h3>
-            <p className="text-sm text-gray-500 mt-1 font-poppins">
-              Are you sure you want to remove this admin? You won't be able to undo this.
-            </p>
-          </div>
-
-          <button
-            onClick={onClose}
-            className="ml-4 text-gray-400 hover:text-gray-600"
-          >
-            <IoClose className="w-6 h-6" />
-          </button>
         </div>
-
-        <div className="flex items-center mt-6">
-          <input
-            id="dont-show"
-            type="checkbox"
-            className="w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary"
-          />
-          <label htmlFor="dont-show" className="ml-2 text-sm text-gray-500 font-poppins">
-            Don't show again
-          </label>
-        </div>
-
-        <div className="flex justify-end gap-3 mt-8">
-          <button
-            onClick={onClose}
-            type="button"
-            className="bg-white text-gray-700 border font-poppins border-gray-300 font-semibold rounded-lg text-sm py-2 px-4 hover:bg-gray-100"
-          >
-            Cancel
-          </button>
-
-          <button
-            onClick={onDelete}
-            type="button"
-            className="bg-red-600 text-white font-semibold rounded-lg text-sm py-2 px-4 hover:bg-red-700 font-poppins"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>
-    );
+      )}
+    </>
+  );
 }
