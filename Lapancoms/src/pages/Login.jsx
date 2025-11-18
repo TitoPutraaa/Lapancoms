@@ -42,7 +42,7 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       console.log(res);
 
-      navigate("/admin");
+      navigate("/admin/dashboard");
     } catch (error) {
       setError(error.response.data.message);
     }

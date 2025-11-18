@@ -1,6 +1,6 @@
-// navigate pages conect
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import PrivateRoute from "../auth/PrivateRoute";
+
 import AdminLayout from "../components/layout/AdminLayout";
 import Dashboard from "../pages/Dashboard";
 import LandingPage from "../pages/LandingPage";
@@ -12,24 +12,36 @@ import PostImage from "../pages/PostImage";
 import Delete from "../pages/Delete";
 import ManageAdmin from "../pages/ManageAdmin";
 import BlogView from "../components/common/BlogView";
+import NotFound from "../pages/NotFound";
+import UpdateLP from "../pages/UpdateLP";
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/login" element={<Login />} />
+
+        {/* Allow both Admin and SuperAdmin */}
+        {/* <Route element={<PrivateRoute allowedRoles={["admin"]} />}> */}
         <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
+          {/* ADMIN + SUPERADMIN PAGES */}
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="allBlogs" element={<AllBlogs />} />
           <Route path="allGallery" element={<AllGallery />} />
           <Route path="postBlog" element={<PostBlog />} />
           <Route path="postImage" element={<PostImage />} />
           <Route path="blogView" element={<BlogView />} />
           <Route path="delete" element={<Delete />} />
+
+          {/* SUPERADMIN ONLY */}
+          {/* <Route element={<PrivateRoute allowedRoles={["superadmin"]} />}> */}
           <Route path="manageAdmin" element={<ManageAdmin />} />
+          <Route path="updateLandingPage" element={<UpdateLP />} />
         </Route>
-        ,
+        {/* </Route> */}
+        {/* </Route> */}
       </Routes>
     </Router>
   );

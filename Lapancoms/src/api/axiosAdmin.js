@@ -3,7 +3,7 @@ import axios from "axios";
 // Use Vite env variable in production or fall back to relative '/api' for dev proxy
 const BASE = import.meta.env.VITE_API_BASE_URL || "/api";
 
-const axiosClient = axios.create({
+const axiosAdmin = axios.create({
   baseURL: BASE,
   headers: {
     "Content-Type": "application/json",
@@ -11,21 +11,20 @@ const axiosClient = axios.create({
   },
 });
 
-// Attach bearer token from localStorage when present
-axiosClient.interceptors.request.use(
+axiosAdmin.interceptors.request.use(
   (config) => {
     try {
-      const token = localStorage.getItem("access_token");
+      const token = localStorage.getItem("token");
       if (token) {
         config.headers = config.headers || {};
         config.headers.Authorization = `Bearer ${token}`;
       }
     } catch (e) {
-      // ignore storage errors in dev
+      console.log(e.error);
     }
     return config;
   },
   (error) => Promise.reject(error),
 );
 
-export default axiosClient;
+export default axiosAdmin;
