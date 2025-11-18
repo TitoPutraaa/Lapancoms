@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../../auth/AdminContext";
+import Logout from "../common/Logout";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -216,6 +217,10 @@ export default function Sidebar() {
                 </ul>
               </div>
             )}
+
+            <Link>
+              <Logout />
+            </Link>
           </div>
         </aside>
       </div>

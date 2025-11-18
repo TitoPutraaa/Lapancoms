@@ -5,6 +5,7 @@ const adminApi = {
   add: (data) => axiosAdmin.post("/admins", data),
   destroy: (idAdmin) => axiosAdmin.delete(`/admins/${idAdmin}`),
   login: (data) => axiosAdmin.post("/login", data),
+  logout: () => axiosAdmin.post("/logout"),
   me: () => axiosAdmin.get("/me"),
 };
 
