@@ -87,8 +87,8 @@ export default function Login() {
                   placeholder="Enter username"
                   required
                 />
-                {error.username}
               </div>
+
               <div className="mb-8">
                 <label
                   htmlFor="password"
@@ -113,8 +113,8 @@ export default function Login() {
                   >
                     {invisible ? "👁" : "😫"}
                   </span>
-                  {error}
                 </div>
+                <p className="text-danger">{error}</p>
               </div>
               <button
                 type="submit"

@@ -32,9 +32,7 @@ export default function AppRouter() {
           element={<PrivateRoute allowedRoles={["admin", "superadmin"]} />}
         >
           <Route path="/admin" element={<AdminLayout />}>
-            {/* Redirect /admin → /admin/dashboard */}
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
-            {/* ADMIN + SUPERADMIN PAGES */}
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="allBlogs" element={<AllBlogs />} />
             <Route path="allGallery" element={<AllGallery />} />
