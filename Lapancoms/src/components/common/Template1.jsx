@@ -1,65 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextEditor from "./TextEditor";
+import useImagePreview from "../../hooks/useImagePreview";
+import useFormPostBlog from "../../hooks/useFormPostBlog";
+import useEditorContent from "../../hooks/useEditorContent";
 
 export default function Template1() {
   const navigate = useNavigate();
-  const [dataForm, setDataForm] = useState(null); // for
-  const [preview, setPreview] = useState(null);
-  const [content, setContent] = useState(null);
 
-  useEffect(() => {
-    const dataFormPost = localStorage.getItem("formPostBlog");
-    if (dataFormPost) {
-      setDataForm(JSON.parse(dataFormPost));
-    }
-  }, []);
+  const { dataForm } = useFormPostBlog("formPostBlog");
+  const { preview, handleFileChange } = useImagePreview();
+  const { content, setContent } = useEditorContent();
 
-  // const handleSubmitAPI = async () => {
-  //   const response = await fetch("http://localhost:8000/api", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   });
-  //   console.log("response: ", await response.json());
-
-  //   localStorage.removeItem("fromData");
-  //   navigate("/admin", { replace: true });
-  // };
   const handleSubmitAPI = async () => {
     localStorage.removeItem("formPostBlog");
+    localStorage.removeItem("Image1");
+    localStorage.removeItem("EdContent1");
+
     navigate("/admin/dashboard", { replace: true });
   };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setPreview(reader.result);
-      localStorage.setItem("Image1", reader.result);
-    };
-    reader.readAsDataURL(file); // convert ke base64
-  };
-
-  useEffect(() => {
-    const dataImage = localStorage.getItem("Image1");
-    if (dataImage) {
-      setPreview(dataImage);
-    }
-  }, []);
-  useEffect(() => {
-    const dataEditor = localStorage.getItem("EditorContent");
-    if (dataEditor) setContent(dataEditor);
-  }, []);
-
-  useEffect(() => {
-    if (content !== null) {
-      localStorage.setItem("EditorContent", content);
-    }
-  }, [content]);
 
   if (!dataForm) return <p>Loading ... </p>;
 

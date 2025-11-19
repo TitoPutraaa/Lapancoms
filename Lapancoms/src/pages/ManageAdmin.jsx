@@ -124,6 +124,7 @@ function ManageAdmin() {
       </div>
       <AddAdmin
         view={view}
+        setView={setView}
         username={username}
         password={password}
         setUsername={setUsername}

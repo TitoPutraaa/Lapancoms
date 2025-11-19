@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function AddAdmin({
   view,
+  setView,
   username,
   password,
   setUsername,
   setPassword,
   handleAdd,
 }) {
+  const modalRef = useRef(null);
   const [invisible, setInvisible] = useState(true);
-  if (!view) return null;
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
   };
 
+  useClickOutside(modalRef, () => setView(false));
+
+  if (!view) return null;
   return (
     <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
-      <div className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
+      <div
+        ref={modalRef}
+        className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl"
+      >
         <div className="mb-8 w-full text-center">
           <div className="text-dark mb-4 text-2xl">
             <i className="fa-solid fa-arrow-right-to-bracket"></i>
@@ -80,6 +88,7 @@ export default function AddAdmin({
             </button>
             <button
               type="button"
+              onClick={() => setView(false)}
               className="text-primary w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
             >
               Cancel
