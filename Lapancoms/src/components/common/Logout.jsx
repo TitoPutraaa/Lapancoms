@@ -23,7 +23,7 @@ export default function Logout() {
     <>
       <div
         onClick={handleClick}
-        className="text-dark group hover:bg-danger flex w-full items-center rounded-lg p-2"
+        className="text-dark group hover:bg-danger flex w-full rounded-lg p-2 px-12"
       >
         <svg
           className="text-dark group-hover:text-dark h-5 w-5 shrink-0 transition duration-75"

@@ -28,7 +28,7 @@ export default function PrivateRoute({ allowedRoles = [] }) {
   if (allowed.length === 0) return <Outlet />;
 
   // Check if role is included
-  if (!allowed.includes(role)) return <Navigate to="/not-authorized" replace />;
+  if (!allowed.includes(role)) return <Navigate to="*" replace />;
 
   return <Outlet />;
 }
