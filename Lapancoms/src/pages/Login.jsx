@@ -50,7 +50,8 @@ export default function Login() {
 
       navigate("/admin/dashboard");
     } catch (error) {
-      setError(error.response.data.message);
+      setError(error.response?.data);
+      console.log(error.response);
     }
   };
 
@@ -87,6 +88,7 @@ export default function Login() {
                   placeholder="Enter username"
                   required
                 />
+                <p className="text-danger">{error?.errors?.username[0]}</p>
               </div>
 
               <div className="mb-8">
@@ -114,7 +116,7 @@ export default function Login() {
                     {invisible ? "👁" : "😫"}
                   </span>
                 </div>
-                <p className="text-danger">{error}</p>
+                <p className="text-danger">{error?.message?.password}</p>
               </div>
               <button
                 type="submit"
