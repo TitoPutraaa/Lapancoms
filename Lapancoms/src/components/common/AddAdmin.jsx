@@ -24,7 +24,7 @@ export default function AddAdmin({
     <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
       <div
         ref={modalRef}
-        className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl"
+        className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[500px] md:w-3xl lg:w-4xl"
       >
         <div className="mb-8 w-full text-center">
           <div className="text-dark mb-4 text-2xl">

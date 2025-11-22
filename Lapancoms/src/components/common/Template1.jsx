@@ -1,34 +1,27 @@
-import { useNavigate } from "react-router-dom";
 import TextEditor from "./TextEditor";
-import useImagePreview from "../../hooks/useImagePreview";
-import useFormPostBlog from "../../hooks/useFormPostBlog";
-import useEditorContent from "../../hooks/useEditorContent";
+import useTemplate1 from "../../hooks/useTemplate1";
 
 export default function Template1() {
-  const navigate = useNavigate();
+  const {
+    dataForm,
+    preview,
+    handleFileChange,
+    content,
+    setContent,
+    handleSubmit,
+    navigate,
+  } = useTemplate1();
 
-  const { dataForm } = useFormPostBlog("formPostBlog");
-  const { preview, handleFileChange } = useImagePreview();
-  const { content, setContent } = useEditorContent();
-
-  const handleSubmitAPI = async () => {
-    localStorage.removeItem("formPostBlog");
-    localStorage.removeItem("Image1");
-    localStorage.removeItem("EdContent1");
-
-    navigate("/admin/dashboard", { replace: true });
-  };
-
-  if (!dataForm) return <p>Loading ... </p>;
+  if (!dataForm) return <p>Loading 123... </p>;
 
   return (
     <div className="w-full p-0 md:p-6">
       <div className="mb-8 flex justify-between">
         <button
           onClick={() => {
-            localStorage.removeItem("formPostBlog");
+            localStorage.removeItem("dataFormPostB");
             localStorage.removeItem("Image1");
-            localStorage.removeItem("EditorContent");
+            localStorage.removeItem("EdContent1");
             navigate("/admin/postBlog");
           }}
           className="text-primary shadow-soft w-fit cursor-pointer rounded-lg bg-white px-10 py-3 text-sm font-medium"
@@ -37,7 +30,7 @@ export default function Template1() {
         </button>
 
         <button
-          onClick={handleSubmitAPI}
+          onClick={handleSubmit}
           className="text-dark/60 shadow-soft bg-success w-fit cursor-pointer rounded-lg px-10 py-3 text-sm font-medium"
         >
           Post

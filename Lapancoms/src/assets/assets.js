@@ -2,11 +2,11 @@ import blogCardImg from "./blogCard.jpg";
 import loginIMG from "./loginIMG.png";
 import viewBlog from "./viewBlog.png";
 import viewGallery from "./viewGallery.png";
-import template1 from "./temple1.png";
-import template2 from "./temple2.png";
-import template3 from "./temple3.png";
-import template4 from "./temple4.png";
-import template5 from "./temple5.png";
+import template1 from "./template1.png";
+import template2 from "./template2.png";
+import template3 from "./template3.png";
+import template4 from "./template4.png";
+import template5 from "./template5.png";
 
 export const assets = {
   blogCardImg,

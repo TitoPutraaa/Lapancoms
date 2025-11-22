@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useFormPostBlog(key = "FormPostBlog") {
+export default function useDataFormPB(key = "dataFormPostB") {
   const [dataForm, setDataForm] = useState(null);
 
   useEffect(() => {

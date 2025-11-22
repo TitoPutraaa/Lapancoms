@@ -1,23 +1,16 @@
+import useDataFormPB from "../../hooks/useDataFormPB";
 import Template1 from "../common/Template1";
 import Template2 from "../common/Template2";
 import Template3 from "../common/Template3";
 import Template4 from "../common/Template4";
 import Template5 from "../common/Template5";
-import { useState, useEffect } from "react";
 
 export default function Temple() {
-  const [data, setData] = useState(null);
+  const { dataForm } = useDataFormPB();
 
-  useEffect(() => {
-    const dataFormPost = localStorage.getItem("formPostBlog");
-    if (dataFormPost) {
-      setData(JSON.parse(dataFormPost));
-    }
-  }, []);
+  if (!dataForm) return <p>Loading</p>;
 
-  if (!data) return <p>Loading</p>;
-
-  switch (data.template) {
+  switch (dataForm.template) {
     case "1":
       return <Template1 />;
     case "2":
