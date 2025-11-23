@@ -4,8 +4,12 @@ import { Outlet } from "react-router-dom";
 export default function RootLayout() {
   return (
     <div className="flex">
-      <Sidebar />
-      <Outlet />
+      <div className="relative">
+        <Sidebar />
+      </div>
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 }

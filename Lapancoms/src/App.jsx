@@ -1,11 +1,14 @@
 import "./index.css";
 import AppRouter from "./routes/AppRouter";
+import AdminProvider from "./auth/AdminProvider";
 
 function App() {
   return (
-    <div className="App">
-      <AppRouter />
-    </div>
+    <AdminProvider>
+      <div className="App">
+        <AppRouter />
+      </div>
+    </AdminProvider>
   );
 }
 
