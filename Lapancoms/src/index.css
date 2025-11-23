@@ -12,6 +12,8 @@
   --color-accent: #ffa500; /*for hover element/ highlight*/
   --color-dark: #131313; /* font judul */
   --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --color-success: #a2f7b7;
+  --color-danger: #e0272a;
 
   /* --color-primary: #734a00;
   --color-secondary: #ffa500;
@@ -89,4 +91,25 @@ input::-webkit-outer-spin-button {
   color-scheme: light;
   color: #131313;
   background-color: #ffff;
+}
+
+/* Style text Editor */
+.ql-editor.ql-blank {
+  @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
+}
+.ql-editor {
+  @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
+}
+.ql-editor p,
+ol {
+  @apply text-primary font-poppins text-sm sm:text-base;
+}
+.ql-editor h1 {
+  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-5xl;
+}
+.ql-editor h2 {
+  @apply font-poppins text-primary text-2xl font-semibold md:text-3xl lg:text-4xl;
+}
+.ql-editor h3 {
+  @apply font-poppins text-primary text-xl font-semibold md:text-2xl lg:text-3xl;
 }

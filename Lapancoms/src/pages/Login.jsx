@@ -1,21 +1,58 @@
 import "../index.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "../auth/AdminContext";
+import { useImmer } from "use-immer";
+import adminApi from "../api/adminApi";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
+  const [error, setError] = useState("");
+  const { setToken } = useContext(AdminContext);
+
+  const [form, setForm] = useImmer({ username: "", password: "" });
+
+  function handleUsername(e) {
+    setForm((draft) => {
+      draft.username = e.target.value;
+    });
+  }
+  function handlePassword(e) {
+    setForm((draft) => {
+      draft.password = e.target.value;
+    });
+  }
 
   const toggleInvisible = () => {
     setInvisible(!invisible);
   };
 
-  const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // untuk mencegah refresh
+    try {
+      const res = await adminApi.login({
+        username: form.username,
+        password: form.password,
+      });
+      // store token first so axios interceptor can read it when AdminProvider fetches /me
+      const token = res.data?.token;
+      if (token) {
+        try {
+          localStorage.setItem("token", token);
+        } catch (e) {
+          console.log(e.error || "failed set token");
+        }
+        setToken(token);
+      }
 
-    navigate("/admin/dashboard");
+      navigate("/admin/dashboard");
+    } catch (error) {
+      setError(error.response?.data);
+      console.log(error.response);
+    }
   };
 
   return (
@@ -33,7 +70,7 @@ export default function Login() {
             <h1 className="text-dark mb-8 text-3xl font-semibold">
               Nice to see you again
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="mb-5">
                 <label
                   htmlFor="username"
@@ -45,11 +82,15 @@ export default function Login() {
                   type="text"
                   name="username"
                   id="username"
+                  value={form.username}
+                  onChange={handleUsername}
                   className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 text-sm focus:border-slate-500 focus:ring-slate-500"
                   placeholder="Enter username"
                   required
                 />
+                <p className="text-danger">{error?.errors?.username[0]}</p>
               </div>
+
               <div className="mb-8">
                 <label
                   htmlFor="password"
@@ -62,6 +103,8 @@ export default function Login() {
                     type={invisible ? "password" : "text"}
                     name="password"
                     id="password"
+                    value={form.password}
+                    onChange={handlePassword}
                     className="text-dark block w-full rounded-lg border border-slate-300 bg-slate-100 p-2.5 pr-10 text-sm focus:border-slate-500 focus:ring-slate-500"
                     placeholder="Enter password"
                     required
@@ -73,6 +116,7 @@ export default function Login() {
                     {invisible ? "👁" : "😫"}
                   </span>
                 </div>
+                <p className="text-danger">{error?.message?.password}</p>
               </div>
               <button
                 type="submit"
