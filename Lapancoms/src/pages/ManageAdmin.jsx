@@ -1,22 +1,37 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AddAdmin from "../components/common/AddAdmin";
-// import adminApi from "../api/adminApi";
-import useManageAdmin from "../hooks/useManageAdmin";
+import adminApi from "../api/adminApi";
+import DeletedAdmin from "../components/common/DeletedAdmin";
 
 function ManageAdmin() {
-  const {
-    amount,
-    setAmount,
-    view,
-    setView,
-    admins,
-    username,
-    setUsername,
-    password,
-    setPassword,
-    handleAdd,
-    handleDelete,
-  } = useManageAdmin();
+  const [amount, setAmount] = useState("10");
+  const [viewAdd, setViewAdd] = useState(false);
+  const [viewDelate, setViewDelate] = useState(false);
+  const [idDel, setIdDel] = useState(null);
+  const [admins, setAdmins] = useState([]);
+
+  const loadAdmins = async () => {
+    try {
+      const fetchAdmins = await adminApi.getAll();
+      setAdmins(fetchAdmins.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  async function handleDelete(idAdmin) {
+    try {
+      await adminApi.destroy(idAdmin);
+      loadAdmins();
+      setViewDelate(false);
+    } catch (error) {
+      console.error("Error deleting admin:", error);
+    }
+  }
+
+  useEffect(() => {
+    loadAdmins();
+  }, []); // just load the server once
 
   return (
     <div className="p-4">
@@ -25,12 +40,13 @@ function ManageAdmin() {
       <div className="mb-6 flex justify-end">
         <button
           type="button"
-          onClick={() => setView(true)}
+          onClick={() => setViewAdd(true)}
           className="bg-secondary text-primary hover:bg-secondary/90 cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold hover:shadow-lg"
         >
           Add new Admin
         </button>
       </div>
+      <h2 className="mb-2 ml-1"> total admins : {admins.length}</h2>
       <div className="relative mb-10 overflow-x-auto">
         <table className="text-primary w-full text-left text-sm rtl:text-right">
           <thead className="text-dark bg-gray-50 text-xs uppercase">
@@ -64,8 +80,12 @@ function ManageAdmin() {
                 <td className="px-6 py-4">{data.password}</td>
                 <td className="px-6 py-4">
                   <button
-                    onClick={() => handleDelete(data.idAdmin)}
+                    onClick={() => {
+                      setIdDel(data);
+                      setViewDelate(true);
+                    }}
                     className="text-danger hover:text-danger/80 cursor-pointer"
+                    aria-label={`Delete admin ${data.username}`}
                   >
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -82,25 +102,21 @@ function ManageAdmin() {
           onChange={(e) => setAmount(e.target.value)}
           className="w-16 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
+          <option value="999">All</option>
         </select>
-        <span className="ml-4">1 - {amount} of 100 items</span>
+        <span className="ml-4">
+          1 - {amount === "999" ? admins.length : amount}
+        </span>
       </div>
-      <AddAdmin
-        view={view}
-        setView={setView}
-        username={username}
-        password={password}
-        setUsername={setUsername}
-        setPassword={setPassword}
-        handleAdd={handleAdd}
+      <AddAdmin view={viewAdd} setView={setViewAdd} loadAdmins={loadAdmins} />
+      <DeletedAdmin
+        handleDelete={handleDelete}
+        view={viewDelate}
+        setView={setViewDelate}
+        idDel={idDel}
       />
     </div>
   );

@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside";
+import Logout from "../common/Logout";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -243,6 +244,11 @@ export default function Sidebar() {
                     </NavLink>
                   </li>
                 </ul>
+              </div>
+              <div className="">
+                <Link>
+                  <Logout />
+                </Link>
               </div>
             </div>
           </aside>
