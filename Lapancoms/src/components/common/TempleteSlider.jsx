@@ -43,7 +43,7 @@ export default function TempleSlider({ images, onSelect, errTmplt }) {
                 setSelect(index);
                 onSelect(item.value);
               }}
-              className={`shadow-soft hover:shadow-primary hover:border-primary w- h-full w-full rounded-lg border-2 bg-white ${select === index ? "shadow-primary border-primary " : errTmplt ? "border-danger " : "border-transparent"}`}
+              className={`shadow-soft hover:shadow-primary hover:border-primary w- h-full w-full cursor-pointer rounded-lg border-2 bg-white ${select === index ? "shadow-primary border-primary " : errTmplt ? "border-danger " : "border-transparent"}`}
             >
               <img
                 className="h-full w-full object-cover"
@@ -59,7 +59,7 @@ export default function TempleSlider({ images, onSelect, errTmplt }) {
         onClick={() => swiperRef.current.slideNext()}
         className="absolute top-1/2 -right-8 z-10 -translate-y-1/2 sm:-right-9 lg:-right-11 lg:hidden"
       >
-        <i class="fa-solid fa-circle-arrow-right text-primary hover:text-primary/80 cursor-pointer text-3xl lg:text-4xl"></i>
+        <i className="fa-solid fa-circle-arrow-right text-primary hover:text-primary/80 cursor-pointer text-3xl lg:text-4xl"></i>
       </button>
     </>
   );

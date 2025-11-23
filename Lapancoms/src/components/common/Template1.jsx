@@ -1,76 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import TextEditor from "./TextEditor";
+import useTemplate1 from "../../hooks/useTemplate1";
 
 export default function Template1() {
-  const navigate = useNavigate();
-  const [dataForm, setDataForm] = useState(null); // for
-  const [preview, setPreview] = useState(null);
-  const [content, setContent] = useState(null);
+  const {
+    dataForm,
+    preview,
+    handleFileChange,
+    content,
+    setContent,
+    handleSubmit,
+    navigate,
+  } = useTemplate1();
 
-  useEffect(() => {
-    const dataFormPost = localStorage.getItem("formPostBlog");
-    if (dataFormPost) {
-      setDataForm(JSON.parse(dataFormPost));
-    }
-  }, []);
-
-  // const handleSubmitAPI = async () => {
-  //   const response = await fetch("http://localhost:8000/api", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   });
-  //   console.log("response: ", await response.json());
-
-  //   localStorage.removeItem("fromData");
-  //   navigate("/admin", { replace: true });
-  // };
-  const handleSubmitAPI = async () => {
-    localStorage.removeItem("formPostBlog");
-    navigate("/admin/dashboard", { replace: true });
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setPreview(reader.result);
-      localStorage.setItem("Image1", reader.result);
-    };
-    reader.readAsDataURL(file); // convert ke base64
-  };
-
-  useEffect(() => {
-    const dataImage = localStorage.getItem("Image1");
-    if (dataImage) {
-      setPreview(dataImage);
-    }
-  }, []);
-  useEffect(() => {
-    const dataEditor = localStorage.getItem("EditorContent");
-    if (dataEditor) setContent(dataEditor);
-  }, []);
-
-  useEffect(() => {
-    if (content !== null) {
-      localStorage.setItem("EditorContent", content);
-    }
-  }, [content]);
-
-  if (!dataForm) return <p>Loading ... </p>;
+  if (!dataForm) return <p>Loading 123... </p>;
 
   return (
     <div className="w-full p-0 md:p-6">
       <div className="mb-8 flex justify-between">
         <button
           onClick={() => {
-            localStorage.removeItem("formPostBlog");
+            localStorage.removeItem("dataFormPostB");
             localStorage.removeItem("Image1");
-            localStorage.removeItem("EditorContent");
+            localStorage.removeItem("EdContent1");
             navigate("/admin/postBlog");
           }}
           className="text-primary shadow-soft w-fit cursor-pointer rounded-lg bg-white px-10 py-3 text-sm font-medium"
@@ -79,7 +30,7 @@ export default function Template1() {
         </button>
 
         <button
-          onClick={handleSubmitAPI}
+          onClick={handleSubmit}
           className="text-dark/60 shadow-soft bg-success w-fit cursor-pointer rounded-lg px-10 py-3 text-sm font-medium"
         >
           Post

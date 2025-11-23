@@ -1,40 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { tmpltImage } from "../assets/assets";
 import TempleSlider from "../components/common/TempleteSlider";
+import usePostBlogF from "../hooks/usePostBlogF";
 
 export default function PostBlog() {
   const navigate = useNavigate();
-  const [formPostBlog, setFormPostBlog] = useState({
-    title: "",
-    template: "",
-  });
-  const [errTmplt, setErrTmplt] = useState(false);
-
-  const handleChange = (e) => {
-    setFormPostBlog({
-      ...formPostBlog,
-      [e.target.name]: e.target.value,
-    });
-    setErrTmplt(false);
-  };
-
-  const handleSelect = (e) => {
-    setFormPostBlog({
-      ...formPostBlog,
-      template: e,
-    });
-    setErrTmplt(false);
-  };
+  const { dataFormPostB, errTmplt, handleChange, handleSelect, validateTmplt } =
+    usePostBlogF();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // untuk mencegah refresh
 
-    if (!formPostBlog.template) {
-      setErrTmplt(true);
-      return;
-    }
-    localStorage.setItem("formPostBlog", JSON.stringify(formPostBlog));
+    if (!validateTmplt()) return; // check template terpilih
+
+    localStorage.setItem("dataFormPostB", JSON.stringify(dataFormPostB));
     navigate("/admin/template");
   };
 
@@ -69,7 +48,7 @@ export default function PostBlog() {
         <div className="mr-2 flex w-full gap-4 sm:w-lg">
           <Link
             to="../dashboard"
-            className="text-primary hover:bg-primary w-full rounded-lg border-2 border-slate-300 bg-white py-3 text-center font-medium transition-colors duration-500 hover:border-slate-300 hover:text-white"
+            className="text-primary hover:border-primary w-full rounded-lg border-2 border-slate-300 bg-white py-3 text-center font-medium transition-colors duration-500"
           >
             Cancel
           </Link>
