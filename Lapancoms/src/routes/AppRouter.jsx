@@ -13,6 +13,7 @@ import Delete from "../pages/Delete";
 import ManageAdmin from "../pages/ManageAdmin";
 import BlogView from "../components/common/BlogView";
 import Demo from "../pages/Demo";
+import NotFound from "../pages/NotFound";
 
 export default function AppRouter() {
   return (
@@ -20,6 +21,7 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/demo" element={<Demo />} />
+        <Route path="*" element={<NotFound/>} />
         {/* up here add landing page main*/}
         {/* here add landingpage Pages */}
         <Route path="/admin" element={<Login />} />
