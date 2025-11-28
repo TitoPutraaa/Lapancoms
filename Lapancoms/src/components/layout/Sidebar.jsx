@@ -1,15 +1,16 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside";
 import Logout from "../common/Logout";
+import { AdminContext } from "../../auth/AdminContext";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDropM, setIsOpenDropM] = useState(false);
   const navigate = useNavigate();
   const sidebarRef = useRef(null);
-
+  const { admin } = useContext(AdminContext);
   useClickOutside(sidebarRef, () => setIsOpen(false));
   return (
     <>
@@ -70,10 +71,10 @@ export default function Sidebar() {
             <div className="shadow-soft h-full w-full overflow-y-auto rounded-2xl px-3 py-4">
               <div className="mt-6 mb-10">
                 <h1 className="text-dark mb-2 text-center text-2xl font-medium">
-                  Leonard
+                  {admin?.username}
                 </h1>
                 <p className="bg-secondary mx-auto w-fit rounded-full px-2 py-0.5 text-xs">
-                  Admin
+                  {admin?.role}
                 </p>
               </div>
               <ul className="space-y-2.5 font-medium">
@@ -195,56 +196,59 @@ export default function Sidebar() {
               </ul>
 
               {/* SuperAdmin */}
-              <div className="mt-16">
-                <h2 className="text-dark mb-4 font-medium">SUPER ADMIN</h2>
-                <ul className="space-y-2.5 font-medium">
-                  {/* Manage Admin */}
-                  <li>
-                    <NavLink className="sideMenu" to="manageAdmin">
-                      <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2">
-                        <svg
-                          className="text-dark group-hover:text-accent h-5 w-5 shrink-0 transition duration-75"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="File / Folder_Edit">
-                            <path
-                              id="Vector"
-                              d="M21 9.25V9.2C21 8.0799 21 7.51984 20.782 7.09202C20.5903 6.7157 20.2843 6.40974 19.908 6.21799C19.4802 6 18.9201 6 17.8 6L3 6M3 6L3 16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.7157 19.5903 4.09202 19.782C4.51984 20 5.0799 20 6.2 20H7M3 6L3 5.6C3 5.03995 3 4.75992 3.109 4.54601C3.20487 4.35785 3.35785 4.20487 3.54601 4.10899C3.75992 4 4.03995 4 4.6 4H9.33726C9.58185 4 9.70415 4 9.81923 4.02763C9.92127 4.05213 10.0188 4.09253 10.1083 4.14736C10.2092 4.2092 10.2957 4.29568 10.4686 4.46863L12 6M16 14L18 16M11 21V18.5L18.5 11L21 13.5L13.5 21H11Z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </g>
-                        </svg>
-                        <span className="group-hover:text-primary ms-3">
-                          Manage Admin
-                        </span>
-                      </div>
-                    </NavLink>
-                  </li>
-                  {/* Update LPage */}
-                  <li>
-                    <NavLink className="sideMenu" to="updateLandingPage">
-                      <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2">
-                        <svg
-                          className="text-dark group-hover:text-accent h-5 w-5 shrink-0 transition duration-75"
-                          fill="currentColor"
-                          viewBox="0 0 1024 1024"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M536.1 273H488c-4.4 0-8 3.6-8 8v275.3c0 2.6 1.2 5 3.3 6.5l165.3 120.7c3.6 2.6 8.6 1.9 11.2-1.7l28.6-39c2.7-3.7 1.9-8.7-1.7-11.2L544.1 528.5V281c0-4.4-3.6-8-8-8zm219.8 75.2l156.8 38.3c5 1.2 9.9-2.6 9.9-7.7l.8-161.5c0-6.7-7.7-10.5-12.9-6.3L752.9 334.1a8 8 0 0 0 3 14.1zm167.7 301.1l-56.7-19.5a8 8 0 0 0-10.1 4.8c-1.9 5.1-3.9 10.1-6 15.1-17.8 42.1-43.3 80-75.9 112.5a353 353 0 0 1-112.5 75.9 352.18 352.18 0 0 1-137.7 27.8c-47.8 0-94.1-9.3-137.7-27.8a353 353 0 0 1-112.5-75.9c-32.5-32.5-58-70.4-75.9-112.5A353.44 353.44 0 0 1 171 512c0-47.8 9.3-94.2 27.8-137.8 17.8-42.1 43.3-80 75.9-112.5a353 353 0 0 1 112.5-75.9C430.6 167.3 477 158 524.8 158s94.1 9.3 137.7 27.8A353 353 0 0 1 775 261.7c10.2 10.3 19.8 21 28.6 32.3l59.8-46.8C784.7 146.6 662.2 81.9 524.6 82 285 82.1 92.6 276.7 95 516.4 97.4 751.9 288.9 942 524.8 942c185.5 0 343.5-117.6 403.7-282.3 1.5-4.2-.7-8.9-4.9-10.4z" />
-                        </svg>
-                        <span className="group-hover:text-primary ms-3">
-                          Update Landing Page
-                        </span>
-                      </div>
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+              {admin.role === "superadmin" && (
+                <div className="mt-16">
+                  <h2 className="text-dark mb-4 font-medium">SUPER ADMIN</h2>
+                  <ul className="space-y-2.5 font-medium">
+                    {/* Manage Admin */}
+                    <li>
+                      <NavLink className="sideMenu" to="manageAdmin">
+                        <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2">
+                          <svg
+                            className="text-dark group-hover:text-accent h-5 w-5 shrink-0 transition duration-75"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="File / Folder_Edit">
+                              <path
+                                id="Vector"
+                                d="M21 9.25V9.2C21 8.0799 21 7.51984 20.782 7.09202C20.5903 6.7157 20.2843 6.40974 19.908 6.21799C19.4802 6 18.9201 6 17.8 6L3 6M3 6L3 16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.7157 19.5903 4.09202 19.782C4.51984 20 5.0799 20 6.2 20H7M3 6L3 5.6C3 5.03995 3 4.75992 3.109 4.54601C3.20487 4.35785 3.35785 4.20487 3.54601 4.10899C3.75992 4 4.03995 4 4.6 4H9.33726C9.58185 4 9.70415 4 9.81923 4.02763C9.92127 4.05213 10.0188 4.09253 10.1083 4.14736C10.2092 4.2092 10.2957 4.29568 10.4686 4.46863L12 6M16 14L18 16M11 21V18.5L18.5 11L21 13.5L13.5 21H11Z"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </g>
+                          </svg>
+                          <span className="group-hover:text-primary ms-3">
+                            Manage Admin
+                          </span>
+                        </div>
+                      </NavLink>
+                    </li>
+                    {/* Update LPage */}
+                    <li>
+                      <NavLink className="sideMenu" to="updateLandingPage">
+                        <div className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg p-2">
+                          <svg
+                            className="text-dark group-hover:text-accent h-5 w-5 shrink-0 transition duration-75"
+                            fill="currentColor"
+                            viewBox="0 0 1024 1024"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M536.1 273H488c-4.4 0-8 3.6-8 8v275.3c0 2.6 1.2 5 3.3 6.5l165.3 120.7c3.6 2.6 8.6 1.9 11.2-1.7l28.6-39c2.7-3.7 1.9-8.7-1.7-11.2L544.1 528.5V281c0-4.4-3.6-8-8-8zm219.8 75.2l156.8 38.3c5 1.2 9.9-2.6 9.9-7.7l.8-161.5c0-6.7-7.7-10.5-12.9-6.3L752.9 334.1a8 8 0 0 0 3 14.1zm167.7 301.1l-56.7-19.5a8 8 0 0 0-10.1 4.8c-1.9 5.1-3.9 10.1-6 15.1-17.8 42.1-43.3 80-75.9 112.5a353 353 0 0 1-112.5 75.9 352.18 352.18 0 0 1-137.7 27.8c-47.8 0-94.1-9.3-137.7-27.8a353 353 0 0 1-112.5-75.9c-32.5-32.5-58-70.4-75.9-112.5A353.44 353.44 0 0 1 171 512c0-47.8 9.3-94.2 27.8-137.8 17.8-42.1 43.3-80 75.9-112.5a353 353 0 0 1 112.5-75.9C430.6 167.3 477 158 524.8 158s94.1 9.3 137.7 27.8A353 353 0 0 1 775 261.7c10.2 10.3 19.8 21 28.6 32.3l59.8-46.8C784.7 146.6 662.2 81.9 524.6 82 285 82.1 92.6 276.7 95 516.4 97.4 751.9 288.9 942 524.8 942c185.5 0 343.5-117.6 403.7-282.3 1.5-4.2-.7-8.9-4.9-10.4z" />
+                          </svg>
+                          <span className="group-hover:text-primary ms-3">
+                            Update Landing Page
+                          </span>
+                        </div>
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              )}
+
               <div className="">
                 <Link>
                   <Logout />

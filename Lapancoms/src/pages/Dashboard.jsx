@@ -2,7 +2,7 @@ import BlogCard from "../components/common/BlogCard";
 import GalleryCard from "../components/common/GalleryCard";
 import BlogViewAll from "../components/common/BlogViewAll";
 import GalleryViewAll from "../components/common/GalleryViewAll";
-import { blogData, imgData } from "../assets/DataDummy.jsx";
+import { blogData } from "../assets/DataDummy.jsx";
 import galleryApi from "../api/galleryApi.js";
 import "../index.css";
 import { useEffect, useState } from "react";
@@ -12,13 +12,8 @@ export default function Dashboard() {
   const [idView, setIdView] = useState(null);
 
   async function loadGallery() {
-    try {
-      const fetchGallerys = await galleryApi.getAll();
-      setGallerys(fetchGallerys.data.data);
-      console.log(fetchGallerys.data.data);
-    } catch (error) {
-      console.log("failed to fetch gambar, ", error);
-    }
+    const { data } = await galleryApi.getAll();
+    setGallerys(data);
   }
 
   function handleImgClick(idView) {

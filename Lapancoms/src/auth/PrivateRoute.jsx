@@ -5,17 +5,14 @@ import { AdminContext } from "./AdminContext";
 export default function PrivateRoute({ allowedRoles = [] }) {
   const { admin, token } = useContext(AdminContext);
 
-  // 1. No token → redirect to login
   if (!token) return <Navigate to="/admin/login" replace />;
 
   // 2. Token exists but admin not loaded yet → show nothing (or spinner)
-  if (!admin) return null;
+  if (!admin) return "loading";
 
   // 3. Derive role safely from different possible shapes
   const role =
-    admin?.data?.role ??
     admin?.role ??
-    admin?.user?.role ??
     (Array.isArray(admin?.roles) ? admin.roles[0]?.name : undefined);
 
   // If role still not found, treat as unauthenticated

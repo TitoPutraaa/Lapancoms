@@ -1,10 +1,11 @@
+import { apiHandler } from "../utils/helper";
 import axiosAdmin from "./axiosAdmin";
 
 const galleryApi = {
-  getAll: () => axiosAdmin.get("/gallery"),
-  getById: (idGambar) => axiosAdmin.get(`/gallery/${idGambar}`),
-  add: (data) => axiosAdmin.post("/gallery", data),
-  delete: () => axiosAdmin.delete("/gallery"),
+  getAll: () => apiHandler(axiosAdmin.get("/gallery")),
+  getById: (idGambar) => apiHandler(axiosAdmin.get(`/gallery/${idGambar}`)),
+  add: (data) => apiHandler(axiosAdmin.post("/gallery", data)),
+  delete: () => apiHandler,
 };
 
 export default galleryApi;

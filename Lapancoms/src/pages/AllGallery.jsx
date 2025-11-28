@@ -1,9 +1,21 @@
-import { imgData } from "../assets/DataDummy";
+import { useEffect, useState } from "react";
+import galleryApi from "../api/galleryApi";
 import BackBtn from "../components/common/BackBtn";
 import GalleryCard from "../components/common/GalleryCard";
 import { Link } from "react-router-dom";
 
 export default function AllGallery() {
+  const [gallerys, setGallerys] = useState([]);
+
+  async function loadGallery() {
+    const { data } = await galleryApi.getAll();
+    setGallerys(data);
+  }
+
+  useEffect(() => {
+    loadGallery();
+  }, []);
+
   return (
     <div className="mx-5 mb-12">
       <div className="mb-4 flex justify-between">
@@ -15,11 +27,11 @@ export default function AllGallery() {
         </Link>
       </div>
       <div className="card-container">
-        {imgData.map((data) => (
+        {gallerys.map((data, index) => (
           <GalleryCard
-            key={data.title}
-            title={data.title}
-            author={data.author}
+            key={index}
+            title={data.judulGambar}
+            author={data.admin.username}
           />
         ))}
       </div>
