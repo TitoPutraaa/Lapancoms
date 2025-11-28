@@ -2,7 +2,7 @@ import { useState } from "react";
 import { assets } from "../../assets/assets.js";
 import ViewGallery from "./GalleryView.jsx";
 
-export default function BlogCard({ title, author }) {
+export default function BlogCard({ title, author, data }) {
   const [view, setView] = useState(false);
   return (
     <div>
@@ -44,7 +44,7 @@ export default function BlogCard({ title, author }) {
           </div>
         </div>
       </div>
-      <ViewGallery view={view} setView={setView} />
+      <ViewGallery view={view} setView={setView} data={data} />
     </div>
   );
 }

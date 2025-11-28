@@ -1,6 +1,6 @@
 import { assets } from "../../assets/assets";
 
-export default function ViewGallery({ view, setView }) {
+export default function ViewGallery({ view, setView, data }) {
   if (!view) return null;
   return (
     <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
@@ -34,10 +34,10 @@ export default function ViewGallery({ view, setView }) {
         </div>
         <div className="bg-dark/50 absolute bottom-0 left-0 w-full px-10 py-4 md:static md:w-1/2 md:bg-white md:p-10">
           <h1 className="md:text-primary mb-2 text-xl font-bold text-white sm:text-2xl md:mb-5 md:text-4xl">
-            Sunflower
+            {data.judulGambar}
           </h1>
           <p className="md:text-primary text-xs font-medium text-white md:text-base">
-            Ari
+            {data.admin.username}
           </p>
         </div>
       </div>
