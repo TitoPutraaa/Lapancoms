@@ -3,9 +3,35 @@ import GalleryCard from "../components/common/GalleryCard";
 import BlogViewAll from "../components/common/BlogViewAll";
 import GalleryViewAll from "../components/common/GalleryViewAll";
 import { blogData, imgData } from "../assets/DataDummy.jsx";
+import galleryApi from "../api/galleryApi.js";
 import "../index.css";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
+  const [gallerys, setGallerys] = useState([]);
+  const [idView, setIdView] = useState(null);
+
+  async function loadGallery() {
+    try {
+      const fetchGallerys = await galleryApi.getAll();
+      setGallerys(fetchGallerys.data.data);
+      console.log(fetchGallerys.data.data);
+    } catch (error) {
+      console.log("failed to fetch gambar, ", error);
+    }
+  }
+
+  function handleImgClick(idView) {
+    const fetchImg = galleryApi.getById(idView);
+    loadGallery();
+    setIdView(fetchImg.data.data);
+    console.log(idView);
+  }
+
+  useEffect(() => {
+    loadGallery();
+  }, []);
+
   return (
     <div>
       <div className="mx-5 mb-12 h-full">
@@ -30,11 +56,11 @@ export default function Dashboard() {
           <GalleryViewAll />
         </div>
         <div className="card-container">
-          {imgData.slice(0, 3).map((data) => (
+          {gallerys.slice(0, 3).map((data, index) => (
             <GalleryCard
-              key={data.title}
-              title={data.title}
-              author={data.author}
+              key={index}
+              title={data.judulGambar}
+              author={data.admin.username}
             />
           ))}
         </div>
