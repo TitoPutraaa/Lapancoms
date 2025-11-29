@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function AllGallery() {
   const [gallerys, setGallerys] = useState([]);
+  const [gallery, setGallery] = useState({});
 
   async function loadGallery() {
     const { data } = await galleryApi.getAll();
@@ -28,11 +29,14 @@ export default function AllGallery() {
       </div>
       <div className="card-container">
         {gallerys.map((data, index) => (
-          <GalleryCard
-            key={index}
-            title={data.judulGambar}
-            author={data.admin.username}
-          />
+          <div onClick={() => setGallery(data)}>
+            <GalleryCard
+              key={index}
+              title={data.judulGambar}
+              author={data.admin.username}
+              data={gallery}
+            />
+          </div>
         ))}
       </div>
     </div>

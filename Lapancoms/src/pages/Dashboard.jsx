@@ -9,20 +9,12 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [gallerys, setGallerys] = useState([]);
-  const [idView, setIdView] = useState(null);
   const [gallery, setGallery] = useState({});
 
   async function loadGallery() {
     const { data } = await galleryApi.getAll();
     setGallerys(data);
   }
-
-  // function handleImgClick(idView) {
-  //   const fetchImg = galleryApi.getById(idView);
-  //   loadGallery();
-  //   setIdView(fetchImg.data.data);
-  //   console.log(idView);
-  // }
 
   useEffect(() => {
     loadGallery();
