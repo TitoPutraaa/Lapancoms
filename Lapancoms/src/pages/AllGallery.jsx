@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
-import galleryApi from "../api/galleryApi";
+import { useContext, useState } from "react";
 import BackBtn from "../components/common/BackBtn";
 import GalleryCard from "../components/common/GalleryCard";
 import { Link } from "react-router-dom";
+import { GalleryContext } from "../api/content/ContentContext";
 
 export default function AllGallery() {
-  const [gallerys, setGallerys] = useState([]);
+  const { gallerys } = useContext(GalleryContext);
   const [gallery, setGallery] = useState({});
-
-  async function loadGallery() {
-    const { data } = await galleryApi.getAll();
-    setGallerys(data);
-  }
-
-  useEffect(() => {
-    loadGallery();
-  }, []);
+  console.log(gallerys);
 
   return (
     <div className="mx-5 mb-12">

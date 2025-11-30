@@ -3,21 +3,13 @@ import GalleryCard from "../components/common/GalleryCard";
 import BlogViewAll from "../components/common/BlogViewAll";
 import GalleryViewAll from "../components/common/GalleryViewAll";
 import { blogData } from "../assets/DataDummy.jsx";
-import galleryApi from "../api/galleryApi.js";
 import "../index.css";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { GalleryContext } from "../api/content/ContentContext.jsx";
 
 export default function Dashboard() {
-  const [gallerys, setGallerys] = useState([]);
+  const { gallerys } = useContext(GalleryContext);
   const [gallery, setGallery] = useState({});
-
-  async function loadGallery() {
-    const { data } = await galleryApi.getAll();
-    setGallerys(data);
-  }
-  useEffect(() => {
-    loadGallery();
-  }, []);
 
   return (
     <div>
@@ -27,9 +19,9 @@ export default function Dashboard() {
           <BlogViewAll />
         </div>
         <div className="card-container">
-          {blogData.slice(0, 4).map((data) => (
+          {blogData.slice(0, 4).map((data, index) => (
             <BlogCard
-              key={data.title}
+              key={index}
               title={data.title}
               date={data.date}
               author={data.author}
@@ -43,10 +35,10 @@ export default function Dashboard() {
           <GalleryViewAll />
         </div>
         <div className="card-container">
-          {gallerys.slice(0, 3).map((data, index) => (
+          {gallerys.slice(0, 3).map((data) => (
             <div onClick={() => setGallery(data)}>
               <GalleryCard
-                key={index}
+                key={data.idGambar}
                 title={data.judulGambar}
                 gambar={`${data.image_url}`}
                 author={data.admin.username}
