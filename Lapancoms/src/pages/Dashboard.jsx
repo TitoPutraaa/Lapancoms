@@ -15,7 +15,6 @@ export default function Dashboard() {
     const { data } = await galleryApi.getAll();
     setGallerys(data);
   }
-
   useEffect(() => {
     loadGallery();
   }, []);
@@ -49,6 +48,7 @@ export default function Dashboard() {
               <GalleryCard
                 key={index}
                 title={data.judulGambar}
+                gambar={`${data.image_url}`}
                 author={data.admin.username}
                 data={gallery}
               />

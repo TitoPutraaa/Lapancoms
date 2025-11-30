@@ -1,4 +1,5 @@
 import { useState } from "react";
+import galleryApi from "../api/galleryApi";
 
 export default function usePostImage() {
   const [titleImg, setTitleImg] = useState("");
@@ -20,8 +21,8 @@ export default function usePostImage() {
     }
 
     // validate size
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Image maximal 2MB");
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image maximal 5MB");
       return;
     }
 
@@ -29,12 +30,22 @@ export default function usePostImage() {
     setPreview(URL.createObjectURL(file));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!image) {
       alert("Pilih Gambar terlebih dahulu");
       return;
+    }
+
+    try {
+      const submit = await galleryApi.add({
+        judulGambar: titleImg,
+        namaGambar: image,
+      });
+      console.log(submit);
+    } catch (error) {
+      console.log(error);
     }
 
     setTitleImg("");

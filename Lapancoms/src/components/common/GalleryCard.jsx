@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { assets } from "../../assets/assets.js";
 import ViewGallery from "./GalleryView.jsx";
 
-export default function BlogCard({ title, author, data }) {
+export default function BlogCard({ title, author, gambar, data }) {
   const [view, setView] = useState(false);
   return (
     <div>
       <div className="max-w-3xs rounded-3xl border border-gray-200 bg-white shadow-xl/20">
         <div className="relative">
-          <img className="rounded-3xl" src={assets.blogCardImg} alt="" />
+          <img className="rounded-3xl" src={gambar} alt="" />
         </div>
-
         <div className="p-5">
           <h5 className="mb-2 flex items-start text-2xl tracking-tight text-gray-900">
             {title}

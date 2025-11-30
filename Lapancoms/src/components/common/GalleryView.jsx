@@ -1,7 +1,6 @@
-import { assets } from "../../assets/assets";
-
 export default function ViewGallery({ view, setView, data }) {
   if (!view) return null;
+
   return (
     <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative z-50 flex w-xs flex-row overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
@@ -27,7 +26,7 @@ export default function ViewGallery({ view, setView, data }) {
         </button>
         <div className="md:bg-dark w-full md:w-1/2">
           <img
-            src={assets.blogCardImg}
+            src={`${data.image_url}`}
             className="h-full w-full object-cover opacity-60"
             alt="viewGallery"
           />

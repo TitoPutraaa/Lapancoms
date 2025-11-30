@@ -32,6 +32,7 @@ export default function AllGallery() {
           <div onClick={() => setGallery(data)}>
             <GalleryCard
               key={index}
+              gambar={`${data.image_url}`}
               title={data.judulGambar}
               author={data.admin.username}
               data={gallery}
