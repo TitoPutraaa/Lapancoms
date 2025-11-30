@@ -7,7 +7,6 @@ import { GalleryContext } from "../api/content/ContentContext";
 export default function AllGallery() {
   const { gallerys } = useContext(GalleryContext);
   const [gallery, setGallery] = useState({});
-  console.log(gallerys);
 
   return (
     <div className="mx-5 mb-12">

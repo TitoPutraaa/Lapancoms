@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import usePostImage from "../hooks/usePostImage";
 
 export default function PostImage() {
-  const { titleImg, preview, handleChange, handleFileChange, handleSubmit } =
+  const { form, preview, handleChange, handleFileChange, handleSubmit } =
     usePostImage();
   return (
     <div className="mt-10">
@@ -28,7 +28,7 @@ export default function PostImage() {
             type="text"
             name="title"
             id="title"
-            value={titleImg}
+            value={form.judulGambar}
             required
             className="text-dark focus:border-primary focus:ring-primary block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm"
             placeholder="Input your title"
@@ -78,6 +78,7 @@ export default function PostImage() {
             type="file"
             className="hidden"
             name="image"
+            // value={() => form.namaGambar}
             onChange={handleFileChange}
           />
 
