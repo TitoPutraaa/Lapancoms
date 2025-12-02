@@ -8,8 +8,8 @@ export default function BlogCardV2({
   image,
   fromFeature,
 }) {
-  let url = `../dashboard/blog/${idBlog}`;
-  if (fromFeature === "dashboard") {
+  let url = `/admin`;
+  if (fromFeature === "view") {
     url = `../dashboard/blog/${idBlog}`;
   } else if (fromFeature === "delete") {
     url = `../delete/deleteBlog/${idBlog}`;

@@ -50,6 +50,7 @@ export default function Delete() {
                 title={data.title}
                 author={data.author}
                 image={data.namaGambar}
+                fromFeature={fromFeature}
               />
             ))}
           </div>

@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
 
-export default function GalleryCard({ idGambar, title, author, image }) {
+export default function GalleryCard({
+  idGambar,
+  title,
+  author,
+  image,
+  fromFeature,
+}) {
+  let url = `../dashboard/blog/${idGambar}`;
+  if (fromFeature === "view") {
+    url = `../dashboard/gallery/${idGambar}`;
+  } else if (fromFeature === "delete") {
+    url = `../delete/deleteGallery/${idGambar}`;
+  } else {
+    console.log("error");
+  }
   return (
     <>
       <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
@@ -17,11 +31,11 @@ export default function GalleryCard({ idGambar, title, author, image }) {
           </h3>
           <div className="flex items-center justify-between">
             <p className="text-xs font-normal md:text-sm">{author}</p>
-            <Link to={`../delete/deleteGallery/${idGambar}`}>
+            <Link to={url} state={{ fromFeature: fromFeature }}>
               <div className="bg-secondary border-primary/20 group relative w-19 cursor-pointer overflow-hidden rounded-2xl border py-0.5 text-left leading-none md:w-20">
                 <span className="bg-primary absolute top-0 bottom-0 left-0 w-13 -translate-x-full rounded-r-2xl transition duration-600 group-hover:translate-x-0 md:w-14"></span>
                 <span className="text-primary group-hover:text-secondary relative z-1 ml-2 w-fit text-xs transition duration-500 md:text-sm">
-                  Select
+                  {fromFeature === "delete" ? "Select" : "View"}
                 </span>
                 <svg
                   className="text-primary absolute top-1/2 right-2 ml-2 h-3 w-3 -translate-y-1/2 transition duration-500 group-hover:-rotate-45"

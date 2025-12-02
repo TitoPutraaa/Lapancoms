@@ -7,10 +7,11 @@ const AdminLayout = () => {
 
   const hideSidebar = location.pathname.startsWith("/admin/delete/deleteBlog/");
   const hideSidebar2 = location.pathname.startsWith("/admin/template");
+  const hideSidebar3 = location.pathname.startsWith("/admin/dashboard/blog/");
 
   return (
     <div className="flex min-h-screen w-full p-4">
-      {!hideSidebar2 && !hideSidebar && <Sidebar />}
+      {!hideSidebar3 && !hideSidebar2 && !hideSidebar && <Sidebar />}
       <div className="flex-1 overflow-hidden pb-5 lg:ml-3">
         <Suspense fallback>
           <Outlet />

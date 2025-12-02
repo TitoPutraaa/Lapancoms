@@ -7,7 +7,7 @@ export default function AllGallery() {
   const location = useLocation();
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
   let url = "/admin";
-  if (fromFeature === "dashboard") {
+  if (fromFeature === "view") {
     url = "../dashboard";
   } else if (fromFeature === "delete") {
     url = "../delete";
@@ -32,6 +32,7 @@ export default function AllGallery() {
             title={data.title}
             author={data.author}
             image={data.namaGambar}
+            fromFeature={fromFeature}
           />
         ))}
       </div>
