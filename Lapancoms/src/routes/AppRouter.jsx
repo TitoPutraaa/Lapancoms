@@ -38,7 +38,6 @@ export default function AppRouter() {
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />}>
             <Route path="blog/:id" element={<BlogView />} />
-            <Route path="gallery/:id" element={<GalleryView />} />
           </Route>
           <Route path="allBlogs" element={<AllBlogs />} />
           <Route path="allGallery" element={<AllGallery />} />
@@ -46,7 +45,6 @@ export default function AppRouter() {
           <Route path="postImage" element={<PostImage />} />
           <Route path="delete" element={<Delete />}>
             <Route path="deleteBlog/:id" element={<BlogView />} />
-            <Route path="deleteGallery/:id" element={<GalleryView />} />
           </Route>
           <Route path="template" element={<Template />} />
 

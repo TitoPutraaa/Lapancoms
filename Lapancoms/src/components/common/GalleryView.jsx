@@ -1,33 +1,20 @@
 import { useEffect, useState } from "react";
 import { imgData } from "../../assets/DataDummy";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
 
-export default function GalleryView() {
-  const { id } = useParams(); // ini id url
+export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
   const [gallery, setGallery] = useState(null);
-  const navigate = useNavigate();
 
   const [viewDelate, setViewDelate] = useState(false);
+  // const [viewGallery, setViewGallery] = useState(false);
   const [targetId, setTargetId] = useState(null);
 
   useEffect(() => {
     // ini bisa dihapus nanti dan diganti data API
-    const galleryData = imgData.find((b) => b.idGambar === Number(id));
+    const galleryData = imgData.find((b) => b.idGambar === Number(idGambar));
     setGallery(galleryData);
-  }, [id]);
-
-  const location = useLocation();
-  const fromFeature = location.state?.fromFeature;
-  let url = "/admin";
-  if (fromFeature === "view") {
-    url = "/admin/dashboard";
-  } else if (fromFeature === "delete") {
-    url = "/admin/delete";
-  } else {
-    console.log("error");
-  } // ngecek feature itu delete atau view
+  }, [idGambar]);
 
   const handleDelete = () => {
     console.log("Hallo");
@@ -38,7 +25,7 @@ export default function GalleryView() {
     <div className="bg-dark/70 fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
         <button
-          onClick={() => navigate(url)}
+          onClick={() => setViewGallery(false)}
           type="button"
           className="md:text-primary hover:text-tertiary hover:text-danger md: absolute top-4 right-4 z-50 inline-flex size-3 cursor-pointer items-center justify-center bg-transparent text-sm text-white transition duration-500 hover:scale-110 md:size-4"
         >
