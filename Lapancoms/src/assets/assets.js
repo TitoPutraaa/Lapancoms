@@ -8,6 +8,8 @@ import imageAbout from "./imageAbout.png";
 import imageFacility from "./imageFacility.png";
 import logo from "./logo.png";
 import logoFooter from "./logoFooter.png";
+import imageMaps from "./imageMaps.png";
+import imageAlamat from "./imageAlamat.png";
 
 export const assets = {
   blogCardImg,
@@ -19,6 +21,8 @@ export const assets = {
   imageAbout,
   imageFacility,
   logo,
-  logoFooter
-
+  logoFooter,
+  imageMaps,
+  imageAlamat,
+  
 };
