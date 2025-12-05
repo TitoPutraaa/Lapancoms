@@ -1,75 +1,63 @@
 import { useState } from "react";
 import galleryApi from "../api/galleryApi";
-import { useImmer } from "use-immer";
 
 export default function usePostImage() {
-  const [form, setForm] = useImmer({ judulGambar: "", namaGambar: "" });
-  const [preview, setPreview] = useState(null); // only for preview
+  const [judulGambar, setJudulGambar] = useState("");
+  const [namaGambar, setNamaGambar] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
-    setForm((draft) => {
-      draft.judulGambar = e.target.value;
-    });
+    setJudulGambar(e.target.value);
   };
 
   const handleFileChange = (e) => {
-    e.preventDefault();
-    console.log("hFile", e.target.files[0]);
-
     const file = e.target.files[0];
     if (!file) return;
 
-    // validate type
+    // VALIDATE using "file" — NOT namaGambar state
     if (!file.type.startsWith("image/")) {
       alert("File harus gambar");
       return;
     }
 
-    // validate size
     if (file.size > 5 * 1024 * 1024) {
-      alert("Image maximal 5MB");
+      alert("Max file size 5MB");
       return;
     }
 
-    setForm((draft) => {
-      draft.namaGambar = file;
-    });
+    // Set state
+    setNamaGambar(file);
     setPreview(URL.createObjectURL(file));
-    console.log(URL.createObjectURL(file));
+
+    console.log("Selected:", file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.namaGambar) {
-      alert("Pilih Gambar terlebih dahulu");
+    if (!namaGambar) {
+      alert("Pilih gambar dulu");
       return;
     }
 
-    try {
-      const submit = await galleryApi.add({
-        judulGambar: form.judulGambar,
-        namaGambar: form.namaGambar,
-      });
-      console.log("sub", submit);
-    } catch (error) {
-      console.log(error);
-    }
+    const formData = new FormData();
+    formData.append("judulGambar", judulGambar);
+    formData.append("namaGambar", namaGambar);
 
-    setForm((draft) => {
-      draft.judulGambar = "";
-      draft.namaGambar = "";
-    });
-    setPreview("");
+    try {
+      const response = await galleryApi.add(formData);
+      console.log("Uploaded:", response.data);
+    } catch (err) {
+      console.log("FAILED:", err.response?.data);
+    }
   };
 
   return {
-    form,
+    judulGambar,
     preview,
+    namaGambar,
     handleChange,
     handleFileChange,
     handleSubmit,
   };
 }
-
-// Note : namaGambar field masih belum bisa masuk, antar pemanggilan nama file salah, atau di page nya belum ada value

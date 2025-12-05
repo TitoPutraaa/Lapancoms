@@ -1,13 +1,10 @@
 import axios from "axios";
 
-// Use Vite env variable in production or fall back to relative '/api' for dev proxy
-const BASE = import.meta.env.VITE_API_BASE_URL || "/api";
-
 const axiosAdmin = axios.create({
-  baseURL: BASE,
+  baseURL: "http://localhost:8000/api",
   headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
+    // "Content-Type": "application/json",
+    // Accept: "application/json",
     // withCredentials: true,
   },
 });

@@ -12,7 +12,7 @@ const galleryApi = {
         },
       }),
     ),
-  delete: (idGambar) => apiHandler(axiosAdmin.delete(`/gallery/${idGambar}`)), //not update end?
+  delete: (idGambar) => apiHandler(axiosAdmin.put(`/gallery/${idGambar}`)), //not update end?
 };
 
 export default galleryApi;
