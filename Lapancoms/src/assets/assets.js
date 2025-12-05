@@ -7,6 +7,7 @@ import template2 from "./template2.png";
 import template3 from "./template3.png";
 import template4 from "./template4.png";
 import template5 from "./template5.png";
+import blogOrImg from "./blogOrImg.jpg";
 
 export const assets = {
   blogCardImg,
@@ -18,6 +19,7 @@ export const assets = {
   template3,
   template4,
   template5,
+  blogOrImg,
 };
 
 export const tmpltImage = [

@@ -1,17 +1,36 @@
-import { assets } from "../../assets/assets";
+import { useEffect, useState } from "react";
+import { imgData } from "../../assets/DataDummy";
+import { BsTrash } from "react-icons/bs";
+import BtnDeleteM from "./BtnDeleteM";
 
-export default function ViewGallery({ view, setView }) {
-  if (!view) return null;
+export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
+  const [gallery, setGallery] = useState(null);
+
+  const [viewDelate, setViewDelate] = useState(false);
+  // const [viewGallery, setViewGallery] = useState(false);
+  const [targetId, setTargetId] = useState(null);
+
+  useEffect(() => {
+    // ini bisa dihapus nanti dan diganti data API
+    const galleryData = imgData.find((b) => b.idGambar === Number(idGambar));
+    setGallery(galleryData);
+  }, [idGambar]);
+
+  const handleDelete = () => {
+    console.log("Hallo");
+  };
+
+  if (!gallery) return <div>Loading...</div>;
   return (
-    <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
-      <div className="relative z-50 flex w-xs flex-row overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
+    <div className="bg-dark/70 fixed inset-0 z-50 flex items-center justify-center">
+      <div className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
         <button
-          onClick={() => setView(false)}
+          onClick={() => setViewGallery(false)}
           type="button"
-          className="md:text-primary hover:text-tertiary absolute top-2 right-3 z-50 inline-flex h-8 w-8 cursor-pointer items-center justify-center bg-transparent text-sm text-white"
+          className="md:text-primary hover:text-tertiary hover:text-danger md: absolute top-4 right-4 z-50 inline-flex size-3 cursor-pointer items-center justify-center bg-transparent text-sm text-white transition duration-500 hover:scale-110 md:size-4"
         >
           <svg
-            className="h-3 w-3"
+            className=""
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14"
@@ -25,22 +44,47 @@ export default function ViewGallery({ view, setView }) {
             />
           </svg>
         </button>
-        <div className="md:bg-dark w-full md:w-1/2">
-          <img
-            src={assets.blogCardImg}
-            className="h-full w-full object-cover opacity-60"
-            alt="viewGallery"
-          />
+        <div className="group flex h-full w-full">
+          <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">
+            <img
+              src={gallery.namaGambar}
+              className="h-full w-full object-cover opacity-60 transition-all duration-600 group-hover:scale-105"
+              alt="viewGallery"
+            />
+          </div>
+          <div className="bg-dark/80 group-hover:bg-dark/20 absolute bottom-0 left-0 w-full px-10 py-4 transition duration-500 group-hover:translate-y-2 md:top-0 md:right-0 md:left-auto md:w-5/12 md:bg-white md:group-hover:translate-y-0 md:group-hover:bg-white">
+            <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
+              {gallery.title}
+            </h3>
+            <p className="md:text-primary text-xs font-medium text-white md:text-base">
+              {gallery.author}
+            </p>
+          </div>
         </div>
-        <div className="bg-dark/50 absolute bottom-0 left-0 w-full px-10 py-4 md:static md:w-1/2 md:bg-white md:p-10">
-          <h1 className="md:text-primary mb-2 text-xl font-bold text-white sm:text-2xl md:mb-5 md:text-4xl">
-            Sunflower
-          </h1>
-          <p className="md:text-primary text-xs font-medium text-white md:text-base">
-            Ari
-          </p>
-        </div>
+        {fromFeature === "delete" && (
+          <button
+            onClick={() => {
+              setViewDelate(true);
+            }}
+            className="bg-secondary border-danger/20 group absolute right-4 bottom-4 w-19 cursor-pointer overflow-hidden rounded-2xl border py-1 text-left md:w-26 md:py-1.5"
+          >
+            <span className="bg-danger absolute top-0 bottom-0 left-0 w-19 rounded-2xl transition duration-600 group-hover:translate-x-6 md:w-26 md:group-hover:translate-x-8"></span>
+            <span className="text-danger absolute top-1/2 left-1.5 -translate-y-1/2 scale-110 text-sm opacity-0 transition duration-500 group-hover:opacity-100 md:text-lg">
+              <BsTrash />
+            </span>
+            <span className="group-hover:text-secondary relative z-1 block w-19 text-center text-xs text-white transition duration-600 group-hover:translate-x-3 md:w-26 md:text-base md:group-hover:translate-x-4">
+              Delete
+            </span>
+          </button>
+        )}
       </div>
+      <BtnDeleteM
+        content={"gallery"}
+        handleDelete={handleDelete}
+        view={viewDelate}
+        setView={setViewDelate}
+        targetId={targetId}
+      />
     </div>
   );
 }

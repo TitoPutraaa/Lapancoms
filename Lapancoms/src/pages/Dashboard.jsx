@@ -1,44 +1,62 @@
-import BlogCard from "../components/common/BlogCard";
 import GalleryCard from "../components/common/GalleryCard";
-import BlogViewAll from "../components/common/BlogViewAll";
-import GalleryViewAll from "../components/common/GalleryViewAll";
 import { blogData, imgData } from "../assets/DataDummy.jsx";
-import "../index.css";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import BlogCardV2 from "../components/common/BlogCardV2.jsx";
+import BtnViewAll from "../components/common/BtnViewAll.jsx";
 
 export default function Dashboard() {
+  const location = useLocation();
+  const hideContent = location.pathname.startsWith("/admin/dashboard/blog/"); // if open blog
+  const fromFeature = "view";
   return (
-    <div>
-      <div className="mx-5 mb-12 h-full">
-        <div className="mb-4 flex justify-between">
-          <h2 className="text-3xl">Blog</h2>
-          <BlogViewAll />
+    <>
+      {!hideContent && (
+        <div className="mt-10">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-dark text-2xl font-medium">Blog</h2>
+            <Link to={"../allBlogs"} state={{ fromFeature: fromFeature }}>
+              <BtnViewAll />
+            </Link>
+          </div>
+          <div className="flex flex-row gap-2">
+            {blogData.slice(0, 4).map((data) => (
+              <BlogCardV2
+                key={data.idBlog}
+                idBlog={data.idBlog}
+                title={data.title}
+                date={data.date}
+                author={data.author}
+                image={data.tamnel}
+                fromFeature={fromFeature}
+              />
+            ))}
+          </div>
         </div>
-        <div className="card-container">
-          {blogData.slice(0, 4).map((data) => (
-            <BlogCard
-              key={data.title}
-              title={data.title}
-              date={data.date}
-              author={data.author}
-            />
-          ))}
+      )}
+
+      {!hideContent && (
+        <div className="mt-10">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-dark text-2xl font-medium">Gallery</h2>
+            <Link to={"../allGallery"} state={{ fromFeature: fromFeature }}>
+              <BtnViewAll />
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-x-2 gap-y-4">
+            {imgData.slice(0, 8).map((data) => (
+              <GalleryCard
+                key={data.idGambar}
+                idGambar={data.idGambar}
+                title={data.title}
+                author={data.author}
+                image={data.namaGambar}
+                fromFeature={fromFeature}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="mx-5 mb-12">
-        <div className="mb-4 flex justify-between">
-          <h2 className="text-3xl">Gallery</h2>
-          <GalleryViewAll />
-        </div>
-        <div className="card-container">
-          {imgData.slice(0, 3).map((data) => (
-            <GalleryCard
-              key={data.title}
-              title={data.title}
-              author={data.author}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+      )}
+      <Outlet />
+    </>
   );
 }
