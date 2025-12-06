@@ -51,7 +51,7 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-4">
-            {gallerys.slice(0, 15).map((data, index) => (
+            {gallerys.slice(0, 4).map((data, index) => (
               <div
                 onClick={() => {
                   (setViewGallery(true), setGallery(data));

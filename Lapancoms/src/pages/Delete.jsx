@@ -1,13 +1,20 @@
 import BlogCardV2 from "../components/common/BlogCardV2";
-import { blogData, imgData } from "../assets/DataDummy.jsx";
+import { blogData } from "../assets/DataDummy.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import GalleryCard from "../components/common/GalleryCard.jsx";
+import { useContext, useState } from "react";
+import { GalleryContext } from "../api/content/ContentContext.jsx";
+import GalleryView from "../components/common/GalleryView.jsx";
 // import { useState } from "react";
 export default function Delete() {
   const location = useLocation();
   const hideContent = location.pathname.startsWith("/admin/delete/deleteBlog/"); // if open blog
   const fromFeature = "delete";
+
+  const { gallerys } = useContext(GalleryContext);
+  const [gallery, setGallery] = useState({});
+  const [viewGallery, setViewGallery] = useState(false);
   return (
     <>
       {!hideContent && (
@@ -43,18 +50,30 @@ export default function Delete() {
             </Link>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-4">
-            {imgData.slice(0, 8).map((data) => (
-              <GalleryCard
-                key={data.idGambar}
-                idGambar={data.idGambar}
-                title={data.title}
-                author={data.author}
-                image={data.namaGambar}
-                fromFeature={fromFeature}
-              />
+            {gallerys.slice(0, 4).map((data, index) => (
+              <div
+                onClick={() => {
+                  (setViewGallery(true), setGallery(data));
+                }}
+              >
+                <GalleryCard
+                  key={index}
+                  title={data.judulGambar}
+                  gambar={`http://localhost:8000/storage/${data.namaGambar}`}
+                  author={data.admin.username}
+                  fromFeature={fromFeature}
+                />
+              </div>
             ))}
           </div>
         </div>
+      )}
+      {viewGallery && (
+        <GalleryView
+          setViewGallery={setViewGallery}
+          fromFeature={fromFeature}
+          data={gallery}
+        />
       )}
       <Outlet />
     </>

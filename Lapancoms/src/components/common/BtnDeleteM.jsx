@@ -1,13 +1,18 @@
 import { BsTrash } from "react-icons/bs";
+import galleryApi from "../../api/galleryApi";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GalleryContext } from "../../api/content/ContentContext";
 
-export default function BtnDeleteM({
-  content,
-  view,
-  setView,
-  handleDelete,
-  targetId,
-}) {
+export default function BtnDeleteM({ content, view, setView, targetId }) {
+  const { loadGallerys } = useContext(GalleryContext);
+  const navigate = useNavigate();
   if (!view) return null;
+  const handleDelete = async (id) => {
+    await galleryApi.delete(id);
+    await loadGallerys();
+    navigate("/admin/delete");
+  };
 
   return (
     <>

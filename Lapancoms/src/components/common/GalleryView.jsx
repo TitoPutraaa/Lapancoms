@@ -6,9 +6,6 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
   const [viewDelate, setViewDelate] = useState();
   const img_url = `http://localhost:8000/storage/${data.namaGambar}`;
 
-  const handleDelete = () => {
-    console.log("Hallo");
-  };
   return (
     <div className="bg-dark/70 fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
@@ -67,8 +64,8 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
         )}
       </div>
       <BtnDeleteM
+        targetId={data.idGambar}
         content={"gallery"}
-        handleDelete={handleDelete}
         view={viewDelate}
         setView={setViewDelate}
       />
