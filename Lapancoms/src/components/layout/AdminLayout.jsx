@@ -13,9 +13,9 @@ const AdminLayout = () => {
     <div className="flex min-h-screen w-full p-4">
       {!hideSidebar3 && !hideSidebar2 && !hideSidebar && <Sidebar />}
       <div className="flex-1 overflow-hidden pb-5 lg:ml-3">
-        <Suspense fallback>
+        {/* <Suspense fallback>
           <Outlet />
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );
