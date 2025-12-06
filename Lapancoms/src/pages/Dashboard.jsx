@@ -5,6 +5,7 @@ import BlogCardV2 from "../components/common/BlogCardV2.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { useContext, useState } from "react";
 import { GalleryContext } from "../api/content/ContentContext.jsx";
+import GalleryView from "../components/common/GalleryView.jsx";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -12,6 +13,8 @@ export default function Dashboard() {
   const fromFeature = "view";
 
   const { gallerys } = useContext(GalleryContext);
+  const [gallery, setGallery] = useState({});
+  const [viewGallery, setViewGallery] = useState(false);
 
   return (
     <>
@@ -48,17 +51,30 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-4">
-            {gallerys.slice(0, 8).map((data, index) => (
-              <GalleryCard
-                key={index}
-                title={data.judulGambar}
-                gambar={`http://localhost:8000/storage/${data.namaGambar}`}
-                author={data.admin.username}
-                fromFeature={fromFeature}
-              />
+            {gallerys.slice(0, 15).map((data, index) => (
+              <div
+                onClick={() => {
+                  (setViewGallery(true), setGallery(data));
+                }}
+              >
+                <GalleryCard
+                  key={index}
+                  title={data.judulGambar}
+                  gambar={`http://localhost:8000/storage/${data.namaGambar}`}
+                  author={data.admin.username}
+                  fromFeature={fromFeature}
+                />
+              </div>
             ))}
           </div>
         </div>
+      )}
+      {viewGallery && (
+        <GalleryView
+          setViewGallery={setViewGallery}
+          fromFeature={fromFeature}
+          data={gallery}
+        />
       )}
       <Outlet />
     </>

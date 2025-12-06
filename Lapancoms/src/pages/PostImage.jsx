@@ -2,14 +2,8 @@ import { Link } from "react-router-dom";
 import usePostImage from "../hooks/usePostImage";
 
 export default function PostImage() {
-  const {
-    judulGambar,
-    namaGambar,
-    preview,
-    handleChange,
-    handleFileChange,
-    handleSubmit,
-  } = usePostImage();
+  const { judulGambar, preview, handleChange, handleFileChange, handleSubmit } =
+    usePostImage();
   return (
     <div className="mt-10">
       <h1 className="text-dark text-2xl font-medium">Post Image</h1>

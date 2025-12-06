@@ -1,14 +1,10 @@
-import { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
+import { useState } from "react";
 
-export default function GalleryView({
-  setViewGallery,
-  fromFeature,
-  data,
-  target,
-}) {
-  const [viewDelate, setViewDelate] = useState(false);
+export default function GalleryView({ setViewGallery, fromFeature, data }) {
+  const [viewDelate, setViewDelate] = useState();
+  const img_url = `http://localhost:8000/storage/${data.namaGambar}`;
 
   const handleDelete = () => {
     console.log("Hallo");
@@ -38,18 +34,18 @@ export default function GalleryView({
         </button>
         <div className="group flex h-full w-full">
           <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">
-            {/* <img
-              src={url_img}
+            <img
+              src={img_url}
               className="h-full w-full object-cover opacity-60 transition-all duration-600 group-hover:scale-105"
               alt="viewGallery"
-            /> */}
+            />
           </div>
           <div className="bg-dark/80 group-hover:bg-dark/20 absolute bottom-0 left-0 w-full px-10 py-4 transition duration-500 group-hover:translate-y-2 md:top-0 md:right-0 md:left-auto md:w-5/12 md:bg-white md:group-hover:translate-y-0 md:group-hover:bg-white">
             <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
-              {target.role}
+              {data.judulGambar}
             </h3>
             <p className="md:text-primary text-xs font-medium text-white md:text-base">
-              {target.username}
+              {data.admin.username}
             </p>
           </div>
         </div>

@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import galleryApi from "../api/galleryApi";
+import { Navigate, useNavigate } from "react-router-dom";
+import { GalleryContext } from "../api/content/ContentContext";
 
 export default function usePostImage() {
   const [judulGambar, setJudulGambar] = useState("");
   const [namaGambar, setNamaGambar] = useState(null);
   const [preview, setPreview] = useState(null);
+  const { loadGallerys } = useContext(GalleryContext);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setJudulGambar(e.target.value);
@@ -47,6 +51,8 @@ export default function usePostImage() {
     try {
       const response = await galleryApi.add(formData);
       console.log("Uploaded:", response.data);
+      await loadGallerys();
+      navigate("/admin/dashboard", { replace: true });
     } catch (err) {
       console.log("FAILED:", err.response?.data);
     }

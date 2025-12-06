@@ -14,7 +14,7 @@ export default function GallerysProvider({ children }) {
   }, []);
 
   return (
-    <GalleryContext.Provider value={{ setGallerys, gallerys }}>
+    <GalleryContext.Provider value={{ setGallerys, gallerys, loadGallerys }}>
       {children}
     </GalleryContext.Provider>
   );
