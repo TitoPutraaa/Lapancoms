@@ -1,13 +1,18 @@
 import GalleryCard from "../components/common/GalleryCard";
-import { blogData, imgData } from "../assets/DataDummy.jsx";
+import { blogData } from "../assets/DataDummy.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
+import { useContext, useState } from "react";
+import { GalleryContext } from "../api/content/ContentContext.jsx";
 
 export default function Dashboard() {
   const location = useLocation();
   const hideContent = location.pathname.startsWith("/admin/dashboard/blog/"); // if open blog
   const fromFeature = "view";
+
+  const { gallerys } = useContext(GalleryContext);
+
   return (
     <>
       {!hideContent && (
@@ -43,13 +48,12 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="flex flex-wrap gap-x-2 gap-y-4">
-            {imgData.slice(0, 8).map((data) => (
+            {gallerys.slice(0, 8).map((data, index) => (
               <GalleryCard
-                key={data.idGambar}
-                idGambar={data.idGambar}
-                title={data.title}
-                author={data.author}
-                image={data.namaGambar}
+                key={index}
+                title={data.judulGambar}
+                gambar={`http://localhost:8000/storage/${data.namaGambar}`}
+                author={data.admin.username}
                 fromFeature={fromFeature}
               />
             ))}

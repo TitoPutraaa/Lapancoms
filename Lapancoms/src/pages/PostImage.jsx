@@ -2,8 +2,14 @@ import { Link } from "react-router-dom";
 import usePostImage from "../hooks/usePostImage";
 
 export default function PostImage() {
-  const { titleImg, preview, handleChange, handleFileChange, handleSubmit } =
-    usePostImage();
+  const {
+    judulGambar,
+    namaGambar,
+    preview,
+    handleChange,
+    handleFileChange,
+    handleSubmit,
+  } = usePostImage();
   return (
     <div className="mt-10">
       <h1 className="text-dark text-2xl font-medium">Post Image</h1>
@@ -26,9 +32,9 @@ export default function PostImage() {
           </label>
           <input
             type="text"
-            name="title"
+            name="judulGambar"
             id="title"
-            value={titleImg}
+            value={judulGambar}
             required
             className="text-dark focus:border-primary focus:ring-primary block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm"
             placeholder="Input your title"
@@ -77,8 +83,9 @@ export default function PostImage() {
             id="dropzone-file"
             type="file"
             className="hidden"
-            name="image"
+            name="namaGambar"
             onChange={handleFileChange}
+            accept="image/*"
           />
 
           {preview && (

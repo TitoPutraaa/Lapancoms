@@ -1,26 +1,18 @@
-import { useEffect, useState } from "react";
-import { imgData } from "../../assets/DataDummy";
+import { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
 
-export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
-  const [gallery, setGallery] = useState(null);
-
+export default function GalleryView({
+  setViewGallery,
+  fromFeature,
+  data,
+  target,
+}) {
   const [viewDelate, setViewDelate] = useState(false);
-  // const [viewGallery, setViewGallery] = useState(false);
-  const [targetId, setTargetId] = useState(null);
-
-  useEffect(() => {
-    // ini bisa dihapus nanti dan diganti data API
-    const galleryData = imgData.find((b) => b.idGambar === Number(idGambar));
-    setGallery(galleryData);
-  }, [idGambar]);
 
   const handleDelete = () => {
     console.log("Hallo");
   };
-
-  if (!gallery) return <div>Loading...</div>;
   return (
     <div className="bg-dark/70 fixed inset-0 z-50 flex items-center justify-center">
       <div className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
@@ -46,18 +38,18 @@ export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
         </button>
         <div className="group flex h-full w-full">
           <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">
-            <img
-              src={gallery.namaGambar}
+            {/* <img
+              src={url_img}
               className="h-full w-full object-cover opacity-60 transition-all duration-600 group-hover:scale-105"
               alt="viewGallery"
-            />
+            /> */}
           </div>
           <div className="bg-dark/80 group-hover:bg-dark/20 absolute bottom-0 left-0 w-full px-10 py-4 transition duration-500 group-hover:translate-y-2 md:top-0 md:right-0 md:left-auto md:w-5/12 md:bg-white md:group-hover:translate-y-0 md:group-hover:bg-white">
             <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
-              {gallery.title}
+              {target.role}
             </h3>
             <p className="md:text-primary text-xs font-medium text-white md:text-base">
-              {gallery.author}
+              {target.username}
             </p>
           </div>
         </div>
@@ -83,7 +75,6 @@ export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
         handleDelete={handleDelete}
         view={viewDelate}
         setView={setViewDelate}
-        targetId={targetId}
       />
     </div>
   );

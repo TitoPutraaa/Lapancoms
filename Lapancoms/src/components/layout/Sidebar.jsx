@@ -72,10 +72,10 @@ export default function Sidebar() {
             <div className="shadow-soft h-full w-full overflow-y-auto rounded-2xl px-3 py-4">
               <div className="mt-6 mb-10">
                 <h1 className="text-dark mb-2 text-center text-2xl font-medium">
-                  {admin.username}
+                  {admin?.username}
                 </h1>
                 <p className="bg-secondary mx-auto w-fit rounded-full px-2 py-0.5 text-xs">
-                  {admin.role}
+                  {admin?.role}
                 </p>
               </div>
               <ul className="space-y-2.5 font-medium">

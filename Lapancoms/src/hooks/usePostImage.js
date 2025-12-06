@@ -1,50 +1,61 @@
 import { useState } from "react";
+import galleryApi from "../api/galleryApi";
 
 export default function usePostImage() {
-  const [titleImg, setTitleImg] = useState("");
-  const [image, setImage] = useState(null); // berisi file asli
-  const [preview, setPreview] = useState(null); // only for preview
+  const [judulGambar, setJudulGambar] = useState("");
+  const [namaGambar, setNamaGambar] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
-    setTitleImg(e.target.value);
+    setJudulGambar(e.target.value);
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // validate type
+    // VALIDATE using "file" — NOT namaGambar state
     if (!file.type.startsWith("image/")) {
       alert("File harus gambar");
       return;
     }
 
-    // validate size
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Image maximal 2MB");
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Max file size 5MB");
       return;
     }
 
-    setImage(file);
+    // Set state
+    setNamaGambar(file);
     setPreview(URL.createObjectURL(file));
+
+    console.log("Selected:", file);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!image) {
-      alert("Pilih Gambar terlebih dahulu");
+    if (!namaGambar) {
+      alert("Pilih gambar dulu");
       return;
     }
 
-    setTitleImg("");
-    setImage("");
-    setPreview("");
+    const formData = new FormData();
+    formData.append("judulGambar", judulGambar);
+    formData.append("namaGambar", namaGambar);
+
+    try {
+      const response = await galleryApi.add(formData);
+      console.log("Uploaded:", response.data);
+    } catch (err) {
+      console.log("FAILED:", err.response?.data);
+    }
   };
 
   return {
-    titleImg,
+    judulGambar,
     preview,
+    namaGambar,
     handleChange,
     handleFileChange,
     handleSubmit,

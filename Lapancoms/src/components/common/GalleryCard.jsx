@@ -6,7 +6,7 @@ export default function GalleryCard({
   idGambar,
   title,
   author,
-  image,
+  gambar,
   fromFeature,
 }) {
   const [viewGallery, setViewGallery] = useState(false);
@@ -16,7 +16,7 @@ export default function GalleryCard({
       <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
         <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
           <img
-            src={image}
+            src={gambar}
             alt="ImgBlog"
             className="h-full w-full object-cover transition duration-600 group-hover:scale-105"
           />
