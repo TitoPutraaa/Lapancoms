@@ -9,4 +9,5 @@ export const GalleryContext = createContext({
 export const BlogContext = createContext({
   blogs: null,
   setBlogs: () => {},
+  loadGallerys: () => {},
 });

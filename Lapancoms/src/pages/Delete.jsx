@@ -1,10 +1,9 @@
 import BlogCardV2 from "../components/common/BlogCardV2";
-import { blogData } from "../assets/DataDummy.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import GalleryCard from "../components/common/GalleryCard.jsx";
 import { useContext, useState } from "react";
-import { GalleryContext } from "../api/content/ContentContext.jsx";
+import { BlogContext, GalleryContext } from "../api/content/ContentContext.jsx";
 import GalleryView from "../components/common/GalleryView.jsx";
 // import { useState } from "react";
 export default function Delete() {
@@ -13,6 +12,7 @@ export default function Delete() {
   const fromFeature = "delete";
 
   const { gallerys } = useContext(GalleryContext);
+  const { blogs } = useContext(BlogContext);
   const [gallery, setGallery] = useState({});
   const [viewGallery, setViewGallery] = useState(false);
   return (
@@ -25,15 +25,14 @@ export default function Delete() {
               <BtnViewAll />
             </Link>
           </div>
-          <div className="flex flex-row gap-2">
-            {blogData.slice(0, 4).map((data) => (
+          <div className="flex flex-wrap gap-x-2 gap-y-4">
+            {blogs.slice(0, 4).map((data, index) => (
               <BlogCardV2
-                key={data.idBlog}
-                idBlog={data.idBlog}
-                title={data.title}
-                date={data.date}
-                author={data.author}
-                image={data.tamnel}
+                key={index}
+                title={data.judul}
+                image={`http://localhost:8000/storage/${data.namaGambar}`}
+                author={data.admin.username}
+                date={data.tglBlog}
                 fromFeature={fromFeature}
               />
             ))}

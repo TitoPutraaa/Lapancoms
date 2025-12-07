@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { BlogContext } from "./ContentContext";
-import galleryApi from "../galleryApi";
+import blogApi from "../blogApi";
 
-export default function GallerysProvider({ children }) {
+export default function BlogProvider({ children }) {
   const [blogs, setBlogs] = useState(null);
 
   async function loadBlogs() {
-    const { data } = await galleryApi.getAll();
+    const { data } = await blogApi.getAll();
     setBlogs(data);
   }
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function GallerysProvider({ children }) {
   }, []);
 
   return (
-    <BlogContext.Provider value={{ setBlogs, blogs }}>
+    <BlogContext.Provider value={{ setBlogs, blogs, loadBlogs }}>
       {children}
     </BlogContext.Provider>
   );

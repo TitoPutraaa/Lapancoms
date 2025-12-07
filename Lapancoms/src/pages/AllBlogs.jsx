@@ -1,9 +1,12 @@
-import { blogData } from "../assets/DataDummy";
 import BackBtn from "../components/common/BackBtn";
 import { Link, useLocation } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2";
+import { BlogContext } from "../api/content/ContentContext";
+import { useContext } from "react";
 
 export default function AllBlogs() {
+  const { blogs } = useContext(BlogContext);
+
   const location = useLocation();
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
   let url = "/admin";
@@ -24,15 +27,14 @@ export default function AllBlogs() {
           </div>
         </Link>
       </div>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-5">
-        {blogData.map((data) => (
+      <div className="flex flex-wrap gap-x-2 gap-y-4">
+        {blogs.slice(0, 4).map((data, index) => (
           <BlogCardV2
-            key={data.idBlog}
-            idBlog={data.idBlog}
-            title={data.title}
-            date={data.date}
-            author={data.author}
-            image={data.tamnel}
+            key={index}
+            title={data.judul}
+            image={`http://localhost:8000/storage/${data.namaGambar}`}
+            author={data.admin.username}
+            date={data.tglBlog}
             fromFeature={fromFeature}
           />
         ))}
