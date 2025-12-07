@@ -1,21 +1,49 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import useMediaQuery from "../../hooks/useMediaQueryA";
+import useClickOutside from "../../hooks/useClickOutside";
 
 const AdminLayout = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(true);
+  const isMd = useMediaQuery("(min-width: 768px)");
+
+  useEffect(() => {
+    if (isMd) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [isMd]);
 
   const hideSidebar = location.pathname.startsWith("/admin/delete/deleteBlog/");
   const hideSidebar2 = location.pathname.startsWith("/admin/template");
   const hideSidebar3 = location.pathname.startsWith("/admin/dashboard/blog/");
+  const sidebarRef = useRef(null);
+  useClickOutside(sidebarRef, () => setIsOpen(false));
 
   return (
-    <div className="flex min-h-screen w-full p-4">
-      {!hideSidebar3 && !hideSidebar2 && !hideSidebar && <Sidebar />}
-      <div className="flex-1 overflow-hidden pb-5 lg:ml-3">
-        {/* <Suspense fallback>
-          <Outlet />
-        </Suspense> */}
+    <div className="min-h-screen w-full">
+      <div className="relative flex">
+        {!isMd && isOpen && (
+          <div className="bg-dark/80 fixed inset-0 z-99 backdrop-blur-sm"></div>
+        )}
+        {!hideSidebar3 && !hideSidebar2 && !hideSidebar && (
+          <div
+            ref={!isMd ? sidebarRef : null}
+            className={`md:mx-4 ${isOpen ? "w-64" : "w-13"} ${!isMd ? "fixed z-101" : "block"} transition-all duration-500`}
+          >
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} isMd={isMd} />
+          </div>
+        )}
+        <div
+          className={`h-fit w-full flex-1 overflow-hidden pb-5 ${!isMd ? "ml-16" : ""}`}
+        >
+          <Suspense fallback>
+            <Outlet />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

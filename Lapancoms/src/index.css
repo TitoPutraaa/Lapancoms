@@ -57,17 +57,26 @@
 }
 
 /* Setting sidebar for mobile view */
-.sideMenu.active div {
+/* .sideMenu.active div {
   @apply bg-secondary;
+} */
+.sideMenu.active .animateSBar {
+  @apply w-full;
 }
 .sideMenu.active svg {
   @apply text-accent;
 }
-.sideMenu.active svg:nth-of-type(2) {
-  @apply text-primary rotate-360;
-}
 .sideMenu.active span {
   @apply text-primary;
+}
+.sideMenu.activeDMenu span {
+  @apply text-primary;
+}
+.sideMenu.activeDMenu svg {
+  @apply text-accent;
+}
+.sideMenu.activeDMenu div {
+  @apply bg-secondary;
 }
 
 /* this's for hidden eye in input element */

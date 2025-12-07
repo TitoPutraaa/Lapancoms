@@ -49,9 +49,9 @@ export default function AppRouter() {
           <Route path="template" element={<Template />} />
 
           {/* SUPERADMIN ONLY */}
-          {/* <Route element={<PrivateRoute allowedRoles={["superadmin"]} />}>
-            <Route path="manageAdmin" element={<ManageAdmin />} />
-            <Route path="updateLandingPage" element={<UpdateLP />} />
+          {/* <Route element={<PrivateRoute allowedRoles={["superadmin"]} />}> */}
+          <Route path="manageAdmin" element={<ManageAdmin />} />
+          {/* <Route path="updateLandingPage" element={<UpdateLP />} />
           </Route> */}
         </Route>
         {/* </Route> */}

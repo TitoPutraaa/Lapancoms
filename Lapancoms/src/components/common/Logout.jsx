@@ -24,10 +24,12 @@ export default function Logout() {
     <>
       <div
         onClick={handleClick}
-        className="text-dark group hover:bg-danger flex w-full rounded-lg p-2 px-12"
+        className="text-dark group hover:bg-danger flex w-full items-center overflow-hidden rounded-md py-2"
       >
-        <BsBoxArrowRight className="text-dark group-hover:text-dark h-5 w-5 shrink-0 transition duration-75" />
-        <span className="group-hover:text-dark ms-3">Logout</span>
+        <BsBoxArrowRight className="text-dark mx-3 shrink-0 transition duration-75 group-hover:text-white" />
+        <span className="ml-0.5 text-nowrap group-hover:text-white">
+          Logout
+        </span>
       </div>
     </>
   );
