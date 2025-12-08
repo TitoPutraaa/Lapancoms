@@ -2,6 +2,7 @@ import { assets } from "../assets/assets";
 import BlogCard from "../components/common/BlogCard";
 import { blogData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
+import {BsArrowLeft, BsArrowRight, BsArrowUpCircle} from "react-icons/bs";
 
 export default function LandingPage() {
   return (
@@ -107,25 +108,43 @@ export default function LandingPage() {
       </div>
 
       {/* Section Blog */}
-      <section>
-        <div className="">
-          <h2 className="m-10 text-4xl font-semibold">
-            Latest Stories from Croatia
-          </h2>
-        </div>
-        <div className="mx-2 flex">
-          {blogData.slice(0, 3).map((data) => (
-            <div className="mx-3 mb-10">
-              <BlogCard
-                key={data.title}
-                title={data.title}
-                date={data.date}
-                author={data.author}
-              />
+        <section>
+          <div className="flex justify-between">
+          <div className="">
+            <h2 className="m-10 text-4xl font-semibold">
+              Latest Stories from Croatia
+            </h2>
+          </div>
+          <div className=" mt-15 mr-7">
+              <button className="rounded-full bg-emerald-600 hover:bg-emerald-700 font-medium text-white md:px-8 md:py-3 transition">
+                View All
+              </button>
+          </div>
+          </div>
+          <div className="flex justify-center">
+          <div className="mx-2 flex">
+            {blogData.slice(0, 5  ).map((data) => (
+              <div className="mx-3 mb-10">
+                <BlogCard
+                  key={data.title}
+                  title={data.title}
+                  date={data.date}
+                  author={data.author}
+                />
+              </div>
+            ))}
+          </div>
+          </div> 
+          <div className="flex justify-end gap-3 mr-5">
+            <div className=" bg-gray-600 p-2 rounded-full w-fit" >
+              <BsArrowLeft className="text-2xl"/>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="bg-green-700 p-2 rounded-full w-fit  " >
+              <BsArrowRight className="text-2xl"/>
+            </div>
+          </div>
+          
+        </section>
 
       {/*Section About*/}
       <section>
@@ -134,14 +153,14 @@ export default function LandingPage() {
           <h2 className="mb-4 text-4xl font-semibold">
             Beautiful Italy Let's travel
           </h2>
-          <div className="shadow-soft mx-4 flex w-full gap-10 rounded-xl md:mx-auto">
+          <div className="shadow-soft mx-4 flex w-full gap-10 rounded-2xl md:mx-auto">
             <img
               src={assets.imageAbout}
               alt="promotional"
-              className="h-[550px] w-full max-w-lg shrink-0 rounded-l-xl md:block"
+              className="h-[550px] w-full max-w-lg shrink-0 rounded-2xl md:block"
             />
             <div>
-              <div className="mt-40 pr-6">
+              <div className="flex flex-col gap-35 mt-40 pr-6">
                 <p className="">
                   But I must explain to you how all this mistaken idea of
                   denouncing pleasure and praising pain was born and I will give
@@ -153,9 +172,9 @@ export default function LandingPage() {
                   consequences that are extremly painful. Nor again is there
                   anyone who loves or pursues.
                 </p>
-                <div className="flex justify-end">
-                  <button className="mt-40 bg-amber-50 px-6 py-2">
-                    Read More
+                <div>
+                  <button className="flex w-full justify-end text-black gap-5">
+                    Read More <BsArrowRight className="text-3xl bg-green-700 rounded-2xl"/>
                   </button>
                 </div>
               </div>
@@ -171,13 +190,13 @@ export default function LandingPage() {
             <h2 className="mb-3 text-4xl font-semibold">
               Experience OurcBest Facility
             </h2>
-            <p className="mb-2 ">
+            <p className="mb-2 mr-210">
               Discover new attractions and experiences to match your interests.
             </p>
           </div>
-          <div className="flex justify-between ">
-            <div className="shadow-soft ">
-              <img src={assets.imageBlog} alt="" className=" w-170" />
+          <div className="flex justify-between">
+            <div className="shadow-soft rounded-4xl ">
+              <img src={assets.imageBlog} alt="" className=" w-170 rounded-4xl" />
               <div className="ml-6">
                 <h3 className="mb-5  mt-9 text-3xl">Our Facility</h3>
                 <p className="w-sm">
@@ -187,21 +206,19 @@ export default function LandingPage() {
                     <div className=" flex justify-end px-5 pb-1">
                   <Link>
                     <div className="">
-                       <div className="h-10 w-10 bg-dark rounded-full ">
-                          -
+                       <div className=" text-white bg-black rounded-full ">
+                          <BsArrowRight className="text-5xl"/>
                        </div>
                     </div>
                   </Link>
                   </div>
               </div>
             </div>
-
-            <div >
-            
+            <div >           
               <div className=" gap-5 flex flex-col ">
-                <div className=" shadow-soft w-120 ">
+                <div className=" shadow-soft w-120 rounded-2xl">
                   <div className="">
-                  <img src={assets.imageFacility} alt="" className="w-full h-full object-cover "/>
+                  <img src={assets.imageFacility} alt="" className="w-full h-full object-cover rounded-2xl "/>
                   </div>
                   <div className="px-5">
                   <h3 className=" mt-4  ">Our Event</h3>
@@ -213,16 +230,16 @@ export default function LandingPage() {
                   <div className=" flex justify-end px-5 pb-1">
                   <Link>
                     <div className="">
-                       <div className="h-6 w-6 bg-dark rounded-full ">
-                          -
+                       <div className=" text-white bg-dark rounded-full ">
+                        <BsArrowRight className="text-3xl"/>
                        </div>
                     </div>
                   </Link>
                   </div>
                 </div>
-                <div className=" shadow-soft w-120 ">
+                <div className=" shadow-soft w-120 rounded-2xl">
                   <div className="">
-                  <img src={assets.imageFacility} alt="" className="w-full h-full object-cover "/>
+                  <img src={assets.imageFacility} alt="" className="w-full h-full object-cover rounded-2xl "/>
                   </div>
                   <div className="px-5">
                   <h3 className=" mt-4  ">Our Event</h3>
@@ -234,8 +251,8 @@ export default function LandingPage() {
                   <div className=" flex justify-end px-5 pb-1">
                   <Link>
                     <div className="">
-                       <div className="h-6 w-6 bg-dark rounded-full ">
-                          -
+                       <div className=" text-white  bg-dark rounded-full ">
+                          <BsArrowRight className="text-3xl"/>
                        </div>
                     </div>
                   </Link>
@@ -275,13 +292,12 @@ export default function LandingPage() {
       {/* Section Gallery */}
       <section> 
         <div>
-        <h1 className="mx-auto text-center text-3xl font-semibold">
-          Our Latest Creations
+        <h1 className="text-center">
+          EXPLORE MORE
         </h1>
-        <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
-          A visual collection of our most recent works - each piece crafted with
-          intention, emotion, and style.
-        </p>
+        <h4 className="mx-auto text-center text-3xl font-semibold">
+          Our International Packages
+        </h4>
         <div className="mx-auto mt-12 flex max-w-5xl flex-wrap items-center justify-center gap-4">
           <div className="group relative overflow-hidden rounded-lg">
             <img
@@ -706,6 +722,7 @@ export default function LandingPage() {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="text-white hover:text-black"
                   >
                     <path
                       d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
@@ -725,6 +742,7 @@ export default function LandingPage() {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="text-white hover:text-black"
                   >
                     <path
                       d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5"
@@ -744,7 +762,7 @@ export default function LandingPage() {
                 </div>
               </Link>
               <Link>
-                <div className="">
+                <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -753,10 +771,10 @@ export default function LandingPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-twitter size-6 hover:text-indigo-500"
+                    className="lucide lucide-twitter size-5 text-white hover:text-black"
                     aria-hidden="true"
                   >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"></path>
                   </svg>
                 </div>
               </Link>
@@ -765,14 +783,14 @@ export default function LandingPage() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
-                    height="24"
+                    height="24" 
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-youtube size-6.5 hover:text-indigo-500"
+                    className="lucide lucide-youtube size-8 text-white hover:text-black"
                     aria-hidden="true"
                   >
                     <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
