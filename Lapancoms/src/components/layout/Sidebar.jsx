@@ -137,7 +137,11 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                       <li>
                         <NavLink className="sideMenu" to="postBlog">
                           <div
-                            onClick={() => setIsOpenDropM(false)}
+                            onClick={
+                              !isOpen || !isMd
+                                ? () => setIsOpenDropM(false)
+                                : null
+                            }
                             className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg py-2 transition duration-75"
                           >
                             <BsFileText className="text-dark mr-2 ml-3 shrink-0 transition duration-75" />
@@ -150,7 +154,11 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                       <li>
                         <NavLink className="sideMenu" to="postImage">
                           <div
-                            onClick={() => setIsOpenDropM(false)}
+                            onClick={
+                              !isOpen || !isMd
+                                ? () => setIsOpenDropM(false)
+                                : null
+                            }
                             className="text-dark group hover:bg-secondary flex w-full items-center rounded-lg py-2 transition duration-75"
                           >
                             <BsImage className="text-dark mr-2 ml-3 shrink-0 transition duration-75" />
