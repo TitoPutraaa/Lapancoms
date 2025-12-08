@@ -57,12 +57,12 @@
 }
 
 /* Setting sidebar for mobile view */
-/* .sideMenu.active div {
+.sideMenu.active div {
   @apply bg-secondary;
-} */
-.sideMenu.active .animateSBar {
-  @apply w-full;
 }
+/* .sideMenu.active .animateSBar {
+  @apply w-full;
+} */
 .sideMenu.active svg {
   @apply text-accent;
 }

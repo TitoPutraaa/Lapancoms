@@ -17,7 +17,7 @@ export default function BlogCardV2({
     console.log("error");
   }
   return (
-    <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
+    <div className="shadow-soft max-w-40 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
       <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
         <img
           src={image}

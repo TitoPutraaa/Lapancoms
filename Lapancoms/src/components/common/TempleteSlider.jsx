@@ -43,7 +43,7 @@ export default function TempleSlider({ images, onSelect, errTmplt }) {
                 setSelect(index);
                 onSelect(item.value);
               }}
-              className={`shadow-soft hover:shadow-primary hover:border-primary w- h-full w-full cursor-pointer rounded-lg border-2 bg-white ${select === index ? "shadow-primary border-primary " : errTmplt ? "border-danger " : "border-transparent"}`}
+              className={`shadow-soft hover:shadow-primary hover:border-primary h-full w-full cursor-pointer rounded-lg border-2 bg-white ${select === index ? "shadow-primary border-primary " : errTmplt ? "border-danger " : "border-transparent"}`}
             >
               <img
                 className="h-full w-full object-cover"

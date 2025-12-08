@@ -70,7 +70,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                 <NavLink to="dashboard" className="sideMenu group relative">
                   <div
                     onClick={() => setIsOpenDropM(false)}
-                    className="text-dark hover:bg-secondary/20 relative flex w-full items-center overflow-hidden rounded-md py-2"
+                    className="text-dark hover:bg-secondary relative flex w-full items-center overflow-hidden rounded-md py-2"
                   >
                     <BsGridFill className="text-dark group-hover:text-accent mx-3 shrink-0 transition duration-75" />
                     <span className="group-hover:text-primary ml-0.5">
