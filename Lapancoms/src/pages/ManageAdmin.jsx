@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import AddAdmin from "../components/common/AddAdmin";
 import adminApi from "../api/adminApi";
 import DeletedAdmin from "../components/common/DeletedAdmin";
+import { BsPlusCircle } from "react-icons/bs";
+import { HiOutlineUserPlus } from "react-icons/hi2";
 
 function ManageAdmin() {
   const [amount, setAmount] = useState("10");
@@ -34,19 +36,24 @@ function ManageAdmin() {
   }, []); // just load the server once
 
   return (
-    <div className="p-4">
+    <div className="mt-10 mr-4">
       <h2 className="text-dark mb-2 text-2xl font-medium">ManageAdmin</h2>
       <p className="text-sm text-slate-400">Admin List</p>
       <div className="mb-6 flex justify-end">
         <button
           type="button"
           onClick={() => setViewAdd(true)}
-          className="bg-secondary text-primary hover:bg-secondary/90 cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold hover:shadow-lg"
+          className="bg-secondary text-primary group relative h-10 w-40 cursor-pointer overflow-hidden rounded-xl text-sm font-semibold"
         >
-          Add new Admin
+          <BsPlusCircle className="absolute top-1/2 left-3 z-1 -translate-y-1/2 text-base transition-all duration-500 group-hover:-left-4 group-hover:opacity-0" />
+          <HiOutlineUserPlus className="text-accent absolute top-1/2 right-1 -translate-y-1/2 text-xl opacity-0 transition-all duration-500 group-hover:right-2 group-hover:opacity-100" />
+          <span className="bg-accent absolute top-0 bottom-0 left-0 w-full rounded-xl opacity-0 transition-all duration-500 group-hover:w-32 group-hover:opacity-100"></span>
+          <span className="absolute top-1/2 right-2 -translate-y-1/2 text-nowrap transition-all duration-500 group-hover:right-10 group-hover:text-white">
+            Add new Admin
+          </span>
         </button>
       </div>
-      <h2 className="mb-2 ml-1"> total admins : {admins.length}</h2>
+      {/* <h2 className="mb-2 ml-1"> total admins : {admins.length}</h2> */}
       <div className="relative mb-10 overflow-x-auto">
         <table className="text-primary w-full text-left text-sm rtl:text-right">
           <thead className="text-dark bg-gray-50 text-xs uppercase">
@@ -57,8 +64,11 @@ function ManageAdmin() {
               <th scope="col" className="px-6 py-3 font-semibold">
                 Username
               </th>
+              <th scope="col" className="px-6 py-3 font-semibold text-nowrap">
+                Post Blog
+              </th>
               <th scope="col" className="px-6 py-3 font-semibold">
-                Password
+                Gallery
               </th>
               <th scope="col" className="px-6 py-3 font-semibold">
                 Action
@@ -77,6 +87,10 @@ function ManageAdmin() {
                 <td className="px-6 py-4 font-medium whitespace-nowrap">
                   {data.username}
                 </td>
+                {/* Ini untuk Post Blog */}
+                <td className="px-6 py-4">{data.password}</td>
+
+                {/* Ini untuk Gallery */}
                 <td className="px-6 py-4">{data.password}</td>
                 <td className="px-6 py-4">
                   <button
@@ -100,7 +114,7 @@ function ManageAdmin() {
         <select
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="w-16 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+          className="focus:accent-accent focus:ring-accent w-16 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
         >
           <option value="10">10</option>
           <option value="20">20</option>

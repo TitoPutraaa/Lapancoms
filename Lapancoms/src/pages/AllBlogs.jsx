@@ -15,7 +15,7 @@ export default function AllBlogs() {
     console.log("error");
   }
   return (
-    <div className="mt-10">
+    <div className="mt-10 mr-4">
       <div className="mb-5 flex justify-between">
         <h2 className="text-dark text-2xl font-medium">All Blog</h2>
         <Link to={url} replace>
@@ -24,7 +24,7 @@ export default function AllBlogs() {
           </div>
         </Link>
       </div>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-5">
+      <div className="flex flex-wrap gap-x-3 gap-y-5">
         {blogData.map((data) => (
           <BlogCardV2
             key={data.idBlog}

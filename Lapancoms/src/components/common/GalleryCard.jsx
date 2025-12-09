@@ -1,15 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import GalleryView from "./GalleryView";
-
 export default function GalleryCard({
   idGambar,
   title,
   author,
   image,
   fromFeature,
+  onSelect,
 }) {
-  const [viewGallery, setViewGallery] = useState(false);
+  // const [viewGallery, setViewGallery] = useState(false);
 
   return (
     <>
@@ -29,7 +26,8 @@ export default function GalleryCard({
             <p className="text-xs font-normal md:text-sm">{author}</p>
 
             <button
-              onClick={() => setViewGallery(true)}
+              // onClick={() => setViewGallery(true)}
+              onClick={() => onSelect(idGambar)}
               className="bg-secondary border-primary/20 group relative w-19 cursor-pointer overflow-hidden rounded-2xl border py-0.5 text-left leading-none md:w-20"
             >
               <span className="bg-primary absolute top-0 bottom-0 left-0 w-13 -translate-x-full rounded-r-2xl transition duration-600 group-hover:translate-x-0 md:w-14"></span>
@@ -54,13 +52,6 @@ export default function GalleryCard({
             </button>
           </div>
         </div>
-        {viewGallery && (
-          <GalleryView
-            setViewGallery={setViewGallery}
-            fromFeature={fromFeature}
-            idGambar={idGambar}
-          />
-        )}
       </div>
     </>
   );

@@ -15,7 +15,7 @@ export default function AllGallery() {
     console.log("error");
   }
   return (
-    <div className="mt-10">
+    <div className="mt-10 mr-4">
       <div className="mb-5 flex justify-between">
         <h2 className="text-dark text-2xl font-medium">All Gallery</h2>
         <Link to={url} replace>
@@ -24,7 +24,7 @@ export default function AllGallery() {
           </div>
         </Link>
       </div>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-5">
+      <div className="flex flex-wrap gap-x-3 gap-y-5">
         {imgData.slice(0, 8).map((data) => (
           <GalleryCard
             key={data.idGambar}

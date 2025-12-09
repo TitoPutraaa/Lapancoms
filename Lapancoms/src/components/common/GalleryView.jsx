@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { imgData } from "../../assets/DataDummy";
-import { BsTrash } from "react-icons/bs";
+import { BsTrash, BsX } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
   const [gallery, setGallery] = useState(null);
 
   const [viewDelate, setViewDelate] = useState(false);
-  // const [viewGallery, setViewGallery] = useState(false);
   const [targetId, setTargetId] = useState(null);
+  const modalImgRef = useRef(null);
+  useClickOutside(modalImgRef, () => setViewGallery(false));
 
   useEffect(() => {
     // ini bisa dihapus nanti dan diganti data API
@@ -22,27 +24,17 @@ export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
 
   if (!gallery) return <div>Loading...</div>;
   return (
-    <div className="bg-dark/70 fixed inset-0 z-50 flex items-center justify-center">
-      <div className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
+    <div className="bg-dark/90 fixed inset-0 z-110 flex items-center justify-center">
+      <div
+        ref={modalImgRef}
+        className="relative z-50 w-xs overflow-hidden rounded-2xl sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl"
+      >
         <button
           onClick={() => setViewGallery(false)}
           type="button"
-          className="md:text-primary hover:text-tertiary hover:text-danger md: absolute top-4 right-4 z-50 inline-flex size-3 cursor-pointer items-center justify-center bg-transparent text-sm text-white transition duration-500 hover:scale-110 md:size-4"
+          className="md:text-primary hover:text-danger absolute top-3 right-3 z-50 cursor-pointer bg-transparent text-white transition duration-500 hover:scale-110"
         >
-          <svg
-            className=""
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 14"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-            />
-          </svg>
+          <BsX className="text-2xl" />
         </button>
         <div className="group flex h-full w-full">
           <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">

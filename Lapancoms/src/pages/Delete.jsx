@@ -1,15 +1,25 @@
-import BlogCardV2 from "../components/common/BlogCardV2";
 import { blogData, imgData } from "../assets/DataDummy.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import GalleryCard from "../components/common/GalleryCard.jsx";
 import BlogSlider from "../components/common/BlogSlider.jsx";
 import GallerySlider from "../components/common/GallerySlider.jsx";
+import { useState } from "react";
+import GalleryView from "../components/common/GalleryView.jsx";
 // import { useState } from "react";
 export default function Delete() {
   const location = useLocation();
   const hideContent = location.pathname.startsWith("/admin/delete/deleteBlog/"); // if open blog
   const fromFeature = "delete";
+
+  const [idGallery, setIdGallery] = useState(null);
+  const [viewGallery, setViewGallery] = useState(false);
+
+  const handleSelect = (id) => {
+    // mengambil id pada setiap cardImg yang diklik
+    setIdGallery(id);
+    setViewGallery(true);
+    // console.log(id);
+  };
   return (
     <>
       {!hideContent && (
@@ -35,9 +45,20 @@ export default function Delete() {
             </Link>
           </div>
           <div className="relative">
-            <GallerySlider imgData={imgData} fromFeature={fromFeature} />
+            <GallerySlider
+              imgData={imgData}
+              fromFeature={fromFeature}
+              onSelect={handleSelect}
+            />
           </div>
         </div>
+      )}
+      {viewGallery && (
+        <GalleryView
+          setViewGallery={setViewGallery}
+          fromFeature={fromFeature}
+          idGambar={idGallery}
+        />
       )}
       <Outlet />
     </>

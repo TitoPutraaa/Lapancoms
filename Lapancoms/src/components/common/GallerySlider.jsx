@@ -1,19 +1,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState, useRef } from "react";
-import BlogCardV2 from "./BlogCardV2";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import GalleryCard from "./GalleryCard";
 
-export default function GallerySlider({ imgData, fromFeature }) {
-  // const [select, setSelect] = useState(null);
+export default function GallerySlider({ imgData, fromFeature, onSelect }) {
   const swiperRef = useRef(null);
-  const [isBeginning, setIsBeginning] = useState(true); // check apakah sudah diawal
-  const [isEnd, setIsEnd] = useState(false); // check apakah sudah diakhir
+  const [isBeginning, setIsBeginning] = useState(true); // check apakah card sudah diawal
+  const [isEnd, setIsEnd] = useState(false); // check apakah card sudah diakhir
   const [isLocked, setIsLocked] = useState(false);
 
   const checkEdgePosition = (swiper) => {
@@ -38,6 +34,8 @@ export default function GallerySlider({ imgData, fromFeature }) {
       >
         {imgData.slice(0, 8).map((data) => (
           <SwiperSlide className="w-auto!">
+            {/* ini actifkan jika yang diselect card fullnya */}
+            {/* <div onClick={() => onSelect(data.idGambar)}>*/}
             <GalleryCard
               key={data.idGambar}
               idGambar={data.idGambar}
@@ -45,7 +43,9 @@ export default function GallerySlider({ imgData, fromFeature }) {
               author={data.author}
               image={data.namaGambar}
               fromFeature={fromFeature}
+              onSelect={onSelect} // ini actifkan jika yang diselect buttomnya
             />
+            {/* </div> */}
           </SwiperSlide>
         ))}
       </Swiper>

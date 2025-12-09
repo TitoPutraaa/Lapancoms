@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useImmer } from "use-immer";
 import adminApi from "../../api/adminApi";
+import { FiCheck, FiEye, FiEyeOff, FiLogIn } from "react-icons/fi";
+import { MdCheckCircle, MdDoneAll } from "react-icons/md";
+import { BsCheckLg } from "react-icons/bs";
+import { HiCheckCircle } from "react-icons/hi2";
 
 export default function AddAdmin({ view, setView, loadAdmins }) {
   const [invisible, setInvisible] = useState(true);
@@ -39,13 +43,13 @@ export default function AddAdmin({ view, setView, loadAdmins }) {
   };
 
   return (
-    <div className="bg-dark/40 fixed inset-0 z-50 flex items-center justify-center">
-      <div className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-8 py-10 sm:w-md md:h-[422px] md:w-3xl lg:h-[550px] lg:w-4xl">
-        <div className="mb-8 w-full text-center">
-          <div className="text-dark mb-4 text-2xl">
-            <i className="fa-solid fa-arrow-right-to-bracket"></i>
+    <div className="bg-dark/80 fixed inset-0 z-110 flex items-center justify-center">
+      <div className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-5 py-6 sm:w-md md:h-[422px]">
+        <div className="mb-8 flex w-full flex-col items-center gap-4 text-center">
+          <div className="w-fit">
+            <FiLogIn className="text-dark stroke-3 text-xl md:text-2xl" />
           </div>
-          <h2 className="text-dark text-2xl font-semibold">
+          <h2 className="text-dark text-xl font-semibold sm:text-2xl">
             Sign Up new Admin
           </h2>
         </div>
@@ -91,7 +95,7 @@ export default function AddAdmin({ view, setView, loadAdmins }) {
                   className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer select-none"
                   onClick={toggleInvisible}
                 >
-                  {invisible ? "👁" : "😫"}
+                  {invisible ? <FiEye /> : <FiEyeOff />}
                 </span>
               </div>
             </div>
@@ -101,6 +105,7 @@ export default function AddAdmin({ view, setView, loadAdmins }) {
             >
               Confirm
             </button>
+            <FiCheck />
             <button
               onClick={() => setView(false)}
               type="button"

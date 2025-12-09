@@ -58,9 +58,9 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                 className="cursor-pointer items-center focus:outline-none"
               >
                 {!isOpen ? (
-                  <BsList className="text-primary mx-2.5 size-5" />
+                  <BsList className="text-dark mx-2.5 size-5" />
                 ) : (
-                  <BsX className="text-primary mx-2.5 size-5" />
+                  <BsX className="text-dark mx-2.5 size-5" />
                 )}
               </button>
             </div>
@@ -69,7 +69,14 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
               <li>
                 <NavLink to="dashboard" className="sideMenu group relative">
                   <div
-                    onClick={() => setIsOpenDropM(false)}
+                    onClick={
+                      isMd
+                        ? () => setIsOpenDropM(false)
+                        : () => {
+                            setIsOpenDropM(false);
+                            setIsOpen(false);
+                          }
+                    }
                     className="text-dark hover:bg-secondary relative flex w-full items-center overflow-hidden rounded-md py-2"
                   >
                     <BsGridFill className="text-dark group-hover:text-accent mx-3 shrink-0 transition duration-75" />
@@ -114,7 +121,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                 {isOpenDropM && (
                   <div
                     className={` ${!isOpen ? "shadow-soft absolute top-0 left-full ml-3 w-30 rounded bg-white px-1 " : " ml-7"}`}
-                    ref={!isMd ? dropBarRef : null}
+                    ref={!isMd || !isOpen ? dropBarRef : null}
                   >
                     <div className="relative">
                       <button
@@ -176,7 +183,14 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
               <li>
                 <NavLink className="sideMenu group relative" to="delete">
                   <div
-                    onClick={() => setIsOpenDropM(false)}
+                    onClick={
+                      isMd
+                        ? () => setIsOpenDropM(false)
+                        : () => {
+                            setIsOpenDropM(false);
+                            setIsOpen(false);
+                          }
+                    }
                     className="text-dark group hover:bg-secondary flex w-full items-center overflow-hidden rounded-md py-2"
                   >
                     <BsTrash className="text-dark group-hover:text-accent mx-3 shrink-0 transition duration-75" />
@@ -206,7 +220,14 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                 <li>
                   <NavLink className="sideMenu group relative" to="manageAdmin">
                     <div
-                      onClick={() => setIsOpenDropM(false)}
+                      onClick={
+                        isMd
+                          ? () => setIsOpenDropM(false)
+                          : () => {
+                              setIsOpenDropM(false);
+                              setIsOpen(false);
+                            }
+                      }
                       className="text-dark group hover:bg-secondary flex w-full items-center overflow-hidden rounded-md py-2"
                     >
                       <BsPersonGear className="text-dark group-hover:text-accent mx-3 shrink-0 transition duration-75" />
@@ -228,7 +249,14 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                     to="updateLandingPage"
                   >
                     <div
-                      onClick={() => setIsOpenDropM(false)}
+                      onClick={
+                        isMd
+                          ? () => setIsOpenDropM(false)
+                          : () => {
+                              setIsOpenDropM(false);
+                              setIsOpen(false);
+                            }
+                      }
                       className="text-dark group hover:bg-secondary flex w-full items-center overflow-hidden rounded-md py-2"
                     >
                       <BsClockHistory className="text-dark group-hover:text-accent mx-3 shrink-0 transition duration-75" />
