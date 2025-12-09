@@ -19,9 +19,7 @@ export default function AllBlogs() {
       <div className="mb-5 flex justify-between">
         <h2 className="text-dark text-2xl font-medium">All Blog</h2>
         <Link to={url} replace>
-          <div className="">
-            <BackBtn />
-          </div>
+          <BackBtn />
         </Link>
       </div>
       <div className="flex flex-wrap gap-x-3 gap-y-5">

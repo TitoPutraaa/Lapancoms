@@ -1,9 +1,23 @@
 import { useState } from "react";
 import { useImmer } from "use-immer";
 import adminApi from "../../api/adminApi";
-import { FiCheck, FiEye, FiEyeOff, FiLogIn } from "react-icons/fi";
+import {
+  FiCheck,
+  FiEye,
+  FiEyeOff,
+  FiLogIn,
+  FiX,
+  FiXCircle,
+} from "react-icons/fi";
 import { MdCheckCircle, MdDoneAll } from "react-icons/md";
-import { BsCheckLg } from "react-icons/bs";
+import {
+  Bs2CircleFill,
+  BsCheck2Square,
+  BsCheckCircle,
+  BsCheckCircleFill,
+  BsCheckLg,
+  BsCheckSquareFill,
+} from "react-icons/bs";
 import { HiCheckCircle } from "react-icons/hi2";
 
 export default function AddAdmin({ view, setView, loadAdmins }) {
@@ -44,7 +58,7 @@ export default function AddAdmin({ view, setView, loadAdmins }) {
 
   return (
     <div className="bg-dark/80 fixed inset-0 z-110 flex items-center justify-center">
-      <div className="relative z-50 w-xs overflow-hidden rounded-2xl bg-white px-5 py-6 sm:w-md md:h-[422px]">
+      <div className="relative z-50 w-4/5 overflow-hidden rounded-2xl bg-white px-5 py-6 sm:w-md">
         <div className="mb-8 flex w-full flex-col items-center gap-4 text-center">
           <div className="w-fit">
             <FiLogIn className="text-dark stroke-3 text-xl md:text-2xl" />
@@ -95,23 +109,34 @@ export default function AddAdmin({ view, setView, loadAdmins }) {
                   className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer select-none"
                   onClick={toggleInvisible}
                 >
-                  {invisible ? <FiEye /> : <FiEyeOff />}
+                  {invisible ? (
+                    <FiEye className="text-gray-600" />
+                  ) : (
+                    <FiEyeOff className="text-gray-600" />
+                  )}
                 </span>
               </div>
             </div>
             <button
               type="submit"
-              className="bg-primary hover:bg-primary/95 mb-3 w-full cursor-pointer rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
+              className="bg-primary group focus:ring-accent relative mb-3 w-full cursor-pointer overflow-hidden rounded-xl px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:outline-none"
             >
-              Confirm
+              <span className="bg-secondary absolute -top-5 -left-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:left-full group-hover:translate-x-full"></span>
+              <span className="bg-accent absolute top-full -left-8 h-15 w-15 rounded-full transition-all duration-500 group-hover:top-3 group-hover:-left-3"></span>
+              <span className="bg-accent absolute -right-8 bottom-full h-15 w-15 rounded-full transition-all duration-500 group-hover:-right-3 group-hover:bottom-3"></span>
+              <span className="relative z-1 text-white">Confirm</span>
             </button>
-            <FiCheck />
+
             <button
               onClick={() => setView(false)}
               type="button"
-              className="text-primary w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
+              className="text-primary group focus:ring-accent relative w-full cursor-pointer overflow-hidden rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-center text-sm font-medium transition-colors focus:ring-2 focus:outline-none"
             >
-              Cancel
+              <span className="bg-accent absolute -top-5 -left-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:left-full"></span>
+              <span className="bg-accent absolute -top-5 -right-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:right-full"></span>
+              <span className="group-hover:text-accent relative z-1 transition-all duration-500">
+                Cancel
+              </span>
             </button>
           </form>
         </div>

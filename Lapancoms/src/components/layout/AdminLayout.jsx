@@ -38,7 +38,7 @@ const AdminLayout = () => {
           </div>
         )}
         <div
-          className={`h-fit w-full flex-1 overflow-hidden pb-5 ${!isMd ? "ml-16" : ""}`}
+          className={`h-fit w-full flex-1 overflow-hidden ${!isMd && !hideSidebar3 && !hideSidebar2 && !hideSidebar ? "ml-16" : ""}`}
         >
           <Suspense fallback>
             <Outlet />

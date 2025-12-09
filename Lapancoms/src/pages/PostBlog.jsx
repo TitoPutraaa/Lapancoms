@@ -18,7 +18,7 @@ export default function PostBlog() {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 mr-4">
       <h1 className="text-dark mb-5 text-2xl font-medium">Post Blog</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-6 w-full md:w-sm">
@@ -33,7 +33,7 @@ export default function PostBlog() {
             name="title"
             id="title"
             required
-            className="text-dark focus:border-primary focus:ring-primary block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm"
+            className="text-dark focus:border-primary focus:ring-primary block w-full rounded-xl border border-slate-300 bg-white p-2.5 text-sm"
             placeholder="Input your title"
             onChange={handleChange}
           />
@@ -48,16 +48,25 @@ export default function PostBlog() {
         <div className="mr-2 flex w-full gap-4 sm:w-lg">
           <Link
             to="../dashboard"
-            className="text-primary hover:border-primary w-full rounded-lg border-2 border-slate-300 bg-white py-3 text-center font-medium transition-colors duration-500"
+            className="text-primary group hover:border-accent relative w-full overflow-hidden rounded-xl border-2 border-slate-300 bg-white py-2 text-center font-medium transition-colors duration-500"
           >
-            Cancel
+            <span className="bg-accent absolute -top-5 -left-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:left-full"></span>
+            <span className="bg-accent absolute -top-5 -right-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:right-full"></span>
+            <span className="group-hover:text-accent relative z-1 text-sm transition-all duration-500 sm:text-base">
+              Cancel
+            </span>
           </Link>
 
           <button
             type="submit"
-            className="bg-primary hover:bg-primary/90 w-full cursor-pointer rounded-lg border-2 py-3 font-medium text-white transition-colors duration-500"
+            className="group bg-primary relative w-full cursor-pointer overflow-hidden rounded-xl border-2 py-2 font-medium text-white transition-colors duration-500"
           >
-            Confirm
+            <span className="bg-secondary absolute -top-5 -left-10 h-20 w-5 rotate-45 transition-all duration-500 group-hover:left-full group-hover:translate-x-full"></span>
+            <span className="bg-accent absolute top-full -left-8 h-15 w-15 rounded-full transition-all duration-500 group-hover:top-3 group-hover:-left-3"></span>
+            <span className="bg-accent absolute -right-8 bottom-full h-15 w-15 rounded-full transition-all duration-500 group-hover:-right-3 group-hover:bottom-3"></span>
+            <span className="relative z-1 text-sm text-white sm:text-base">
+              Confirm
+            </span>
           </button>
         </div>
       </form>

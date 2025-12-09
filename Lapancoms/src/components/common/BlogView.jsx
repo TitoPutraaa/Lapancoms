@@ -2,6 +2,8 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { blogData, blogDataTemplate1 } from "../../assets/DataDummy";
 import { useEffect, useState } from "react";
 import BtnDeleteM from "./BtnDeleteM";
+import { BsArrowLeft, BsTrash } from "react-icons/bs";
+import { FaReply } from "react-icons/fa";
 
 export default function BlogView() {
   const { id } = useParams();
@@ -40,11 +42,15 @@ export default function BlogView() {
 
   if (!blog) return <div>Loading...</div>;
   return (
-    <div className="w-full p-10">
-      <div className="mb-8 flex justify-between">
+    <div className="bg-secondary w-full pb-8">
+      <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
         <Link to={url} replace>
-          <div className="text-primary shadow-soft w-fit cursor-pointer rounded-lg px-10 py-3 text-sm">
-            Back
+          <div className="group relative w-25 cursor-pointer overflow-hidden rounded-xl bg-white transition duration-500 ease-in-out md:w-29">
+            <BsArrowLeft className="text-primary absolute top-1/2 left-6 z-1 -translate-y-1/2 stroke-1 text-sm opacity-100 transition-all duration-500 group-hover:-left-4 group-hover:opacity-0" />
+            <FaReply className="text-accent absolute top-1/2 right-0 z-1 -translate-y-1/2 scale-50 text-xs opacity-0 transition-all duration-500 group-hover:right-2.5 group-hover:scale-100 group-hover:opacity-100 md:text-sm" />
+            <div className="text-primary group-hover:bg-accent w-full rounded-xl bg-white py-1.5 pr-4.5 text-right text-sm transition-all duration-500 group-hover:w-18 group-hover:text-white md:pr-6 md:text-base md:group-hover:w-21">
+              Back
+            </div>
           </div>
         </Link>
         {fromFeature === "delete" && (
@@ -52,25 +58,32 @@ export default function BlogView() {
             onClick={() => {
               setViewDelate(true);
             }}
-            className="bg-danger shadow-soft w-fit cursor-pointer rounded-lg px-10 py-3 text-sm text-white"
+            className="bg-secondary group relative w-19 cursor-pointer overflow-hidden rounded-xl py-1 text-left md:w-26 md:py-1.5"
           >
-            Delete
+            <span className="bg-danger absolute top-0 bottom-0 left-0 w-19 rounded-xl transition duration-600 group-hover:translate-x-6 md:w-26 md:group-hover:translate-x-8"></span>
+            <span className="text-danger absolute top-1/2 left-1.5 -translate-y-1/2 scale-110 text-sm opacity-0 transition duration-500 group-hover:opacity-100 md:text-lg">
+              <BsTrash />
+            </span>
+            <span className="group-hover:text-secondary relative z-1 block w-19 text-center text-xs text-white transition duration-600 group-hover:translate-x-3 md:w-26 md:text-base md:group-hover:translate-x-4">
+              Delete
+            </span>
           </button>
         )}
       </div>
-      <div>
-        <div className="shadow-soft mx-auto w-4xl overflow-hidden rounded-xl px-10 py-4 lg:w-5xl xl:w-6xl">
-          <h1 className="text-primary mt-6 mb-10 w-2xl text-5xl font-semibold">
-            {blog.title}
-          </h1>
-          <div className="mb-16 h-[474px] w-full overflow-hidden rounded-xl">
-            <img
-              src={blog.tamnel}
-              alt="viewBlog"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="flex flex-wrap gap-6">{blog.text}</div>
+
+      <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
+        <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+          {blog.title}
+        </h1>
+        <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <img
+            src={blog.tamnel}
+            alt="viewBlog"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
+          {blog.text}
         </div>
       </div>
 

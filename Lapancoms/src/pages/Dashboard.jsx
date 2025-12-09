@@ -38,7 +38,7 @@ export default function Dashboard() {
       )}
 
       {!hideContent && (
-        <div className="mt-10 mr-4">
+        <div className="mt-10 mr-4 mb-4">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-dark text-2xl font-medium">Gallery</h2>
             <Link to={"../allGallery"} state={{ fromFeature: fromFeature }}>
