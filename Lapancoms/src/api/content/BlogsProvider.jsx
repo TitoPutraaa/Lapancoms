@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { BlogContext } from "./ContentContext";
-import galleryApi from "../galleryApi";
+import blogApi from "../blogApi";
 
 export default function GallerysProvider({ children }) {
   const [blogs, setBlogs] = useState(null);
 
   async function loadBlogs() {
-    const { data } = await galleryApi.getAll();
+    const { data } = await blogApi.getAll();
     setBlogs(data);
   }
   useEffect(() => {
