@@ -1,10 +1,9 @@
 import GalleryCard from "../components/common/GalleryCard";
-import { blogData } from "../assets/DataDummy.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { useContext, useState } from "react";
-import { GalleryContext } from "../api/content/ContentContext.jsx";
+import { BlogContext, GalleryContext } from "../api/content/ContentContext.jsx";
 import GalleryView from "../components/common/GalleryView.jsx";
 
 export default function Dashboard() {
@@ -13,8 +12,10 @@ export default function Dashboard() {
   const fromFeature = "view";
 
   const { gallerys } = useContext(GalleryContext);
+  const { blogs } = useContext(BlogContext);
   const [gallery, setGallery] = useState({});
   const [viewGallery, setViewGallery] = useState(false);
+  console.log("blogs", blogs);
 
   return (
     <>
@@ -26,15 +27,14 @@ export default function Dashboard() {
               <BtnViewAll />
             </Link>
           </div>
-          <div className="flex flex-row gap-2">
-            {blogData.slice(0, 4).map((data) => (
+          <div className="flex flex-wrap gap-x-2 gap-y-4">
+            {blogs.slice(0, 4).map((data, index) => (
               <BlogCardV2
-                key={data.idBlog}
-                idBlog={data.idBlog}
-                title={data.title}
-                date={data.date}
-                author={data.author}
-                image={data.tamnel}
+                key={index}
+                title={data.judul}
+                image={`http://localhost:8000/storage/${data.namaGambar}`}
+                author={data.admin.username}
+                date={data.tglBlog}
                 fromFeature={fromFeature}
               />
             ))}

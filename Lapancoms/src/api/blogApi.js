@@ -3,7 +3,8 @@ import axiosAdmin from "./axiosAdmin";
 
 const blogApi = {
   getAll: () => apiHandler(axiosAdmin.get("/blog")),
-  getById: (idGambar) => apiHandler(axiosAdmin.get(`/blog/${idGambar}`)),
+  getById: (idBlog) => apiHandler(axiosAdmin.get(`/blog/${idBlog}`)),
+  delete: (idBlog) => apiHandler(axiosAdmin.get(`/blog/${idBlog}`)),
   add: (data) =>
     apiHandler(
       axiosAdmin.post("/blog", data, {
@@ -12,7 +13,6 @@ const blogApi = {
         },
       }),
     ),
-  delete: (idGambar) => apiHandler(axiosAdmin.put(`/blog/${idGambar}`)),
 };
 
 export default blogApi;

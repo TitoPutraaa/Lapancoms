@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BlogContext } from "./ContentContext";
 import blogApi from "../blogApi";
 
-export default function GallerysProvider({ children }) {
+export default function BlogProvider({ children }) {
   const [blogs, setBlogs] = useState(null);
 
   async function loadBlogs() {
@@ -14,7 +14,7 @@ export default function GallerysProvider({ children }) {
   }, []);
 
   return (
-    <BlogContext.Provider value={{ setBlogs, blogs }}>
+    <BlogContext.Provider value={{ setBlogs, blogs, loadBlogs }}>
       {children}
     </BlogContext.Provider>
   );
