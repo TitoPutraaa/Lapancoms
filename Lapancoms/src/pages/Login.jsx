@@ -1,7 +1,7 @@
 import "../index.css";
 import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 import { AdminContext } from "../auth/AdminContext";
 import { useImmer } from "use-immer";
 import adminApi from "../api/adminApi";
@@ -48,7 +48,7 @@ export default function Login() {
         setToken(token);
       }
 
-      navigate("/admin/dashboard");
+      navigate("/admin/dashboard", replace);
     } catch (error) {
       setError(error.response?.data);
       console.log(error.response);

@@ -11,7 +11,7 @@ export default function BtnDeleteM({ content, view, setView, targetId }) {
   const handleDelete = async (id) => {
     await galleryApi.delete(id);
     await loadGallerys();
-    navigate("/admin/delete");
+    navigate("/admin/dashboard");
   };
 
   return (
