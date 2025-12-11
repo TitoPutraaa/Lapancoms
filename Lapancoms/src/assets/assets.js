@@ -8,12 +8,30 @@ import template3 from "./template3.png";
 import template4 from "./template4.png";
 import template5 from "./template5.png";
 import blogOrImg from "./blogOrImg.jpg";
+import imagePublic from "./imagePublic.png";
+import imageBlog from "./imageBlog.png";
+import imageAbout from "./imageAbout.png";
+import imageFacility from "./imageFacility.png";
+import logo from "./logo.png";
+import logoFooter from "./logoFooter.png";
+import imageMaps from "./imageMaps.png";
+import imageAlamat from "./imageAlamat.png";
 
 export const assets = {
   blogCardImg,
   loginIMG,
   viewBlog,
   viewGallery,
+  imagePublic,
+  imageBlog,
+  imageAbout,
+  imageFacility,
+  logo,
+  logoFooter,
+  imageMaps,
+  imageAlamat,
+  
+};
   template1,
   template2,
   template3,
