@@ -1,25 +1,13 @@
-import { blogData, imgData } from "../assets/DataDummy.jsx";
+import { blogData } from "../assets/DataDummy.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import BlogSlider from "../components/common/BlogSlider.jsx";
 import GallerySlider from "../components/common/GallerySlider.jsx";
-import GalleryView from "../components/common/GalleryView.jsx";
-import { useState } from "react";
 
 export default function Dashboard() {
   const location = useLocation();
   const hideContent = location.pathname.startsWith("/admin/dashboard/blog/"); // if open blog
   const fromFeature = "view";
-
-  const [idGallery, setIdGallery] = useState(null);
-  const [viewGallery, setViewGallery] = useState(false);
-
-  const handleSelect = (id) => {
-    // mengambil id pada setiap cardImg yang diklik
-    setIdGallery(id);
-    setViewGallery(true);
-    // console.log(id);
-  };
 
   return (
     <>
@@ -46,20 +34,9 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="relative">
-            <GallerySlider
-              imgData={imgData}
-              fromFeature={fromFeature}
-              onSelect={handleSelect} // ini akan menselect card penuh / btn view saja -> selectnya bisa diatur
-            />
+            <GallerySlider fromFeature={fromFeature} />
           </div>
         </div>
-      )}
-      {viewGallery && (
-        <GalleryView
-          setViewGallery={setViewGallery}
-          fromFeature={fromFeature}
-          idGambar={idGallery}
-        />
       )}
       <Outlet />
     </>

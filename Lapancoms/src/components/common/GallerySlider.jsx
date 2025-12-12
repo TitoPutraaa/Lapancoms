@@ -2,15 +2,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import GalleryCard from "./GalleryCard";
+import GalleryView from "./GalleryView";
+import galleryApi from "../../api/galleryApi";
 
-export default function GallerySlider({ imgData, fromFeature, onSelect }) {
+export default function GallerySlider({ fromFeature }) {
   const swiperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true); // check apakah card sudah diawal
   const [isEnd, setIsEnd] = useState(false); // check apakah card sudah diakhir
   const [isLocked, setIsLocked] = useState(false);
+  const [viewGallery, setViewGallery] = useState(false);
+  const [idGallery, setIdGallery] = useState(null);
+  const [gallerys, setGallerys] = useState([]);
+
+  const loadGallery = async () => {
+    try {
+      const fetchGallerys = await galleryApi.getAll();
+      setGallerys(fetchGallerys.data.data);
+      console.log("all", fetchGallerys.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadGallery();
+  }, []);
+
+  const handleSelect = (id) => {
+    setIdGallery(id);
+    setViewGallery(true);
+    console.log("id selec", id);
+  };
 
   const checkEdgePosition = (swiper) => {
     setIsBeginning(swiper.activeIndex === 0);
@@ -32,20 +57,19 @@ export default function GallerySlider({ imgData, fromFeature, onSelect }) {
         spaceBetween={10}
         slidesPerView={"auto"}
       >
-        {imgData.slice(0, 8).map((data) => (
+        {gallerys?.slice(0, 8).map((data) => (
           <SwiperSlide className="w-auto!">
             {/* ini actifkan jika yang diselect card fullnya */}
-            {/* <div onClick={() => onSelect(data.idGambar)}>*/}
-            <GalleryCard
-              key={data.idGambar}
-              idGambar={data.idGambar}
-              title={data.title}
-              author={data.author}
-              image={data.namaGambar}
-              fromFeature={fromFeature}
-              onSelect={onSelect} // ini actifkan jika yang diselect buttomnya
-            />
-            {/* </div> */}
+            <div onClick={() => handleSelect(data)}>
+              <GalleryCard
+                key={data.idGambar}
+                idGambar={data.idGambar}
+                title={data.judulGambar}
+                author={data.username}
+                image={`http://localhost:8000/storage/${data.namaGambar}`}
+                fromFeature={fromFeature}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -66,6 +90,14 @@ export default function GallerySlider({ imgData, fromFeature, onSelect }) {
       >
         <BsArrowRight className="text-primary group-hover:text-secondary stroke-1 text-sm transition duration-400 group-hover:translate-x-0.5" />
       </button>
+
+      {viewGallery && (
+        <GalleryView
+          setViewGallery={setViewGallery}
+          fromFeature={fromFeature}
+          data={idGallery}
+        />
+      )}
     </>
   );
 }

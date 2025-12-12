@@ -2,15 +2,31 @@ import BackBtn from "../components/common/BackBtn";
 import GalleryCard from "../components/common/GalleryCard";
 import { Link, useLocation } from "react-router-dom";
 import { GalleryContext } from "../api/content/ContentContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import GalleryView from "../components/common/GalleryView.jsx";
+import galleryApi from "../api/galleryApi.js";
 
 export default function AllGallery() {
   const location = useLocation();
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
   const [viewGallery, setViewGallery] = useState(false);
-  const { gallerys } = useContext(GalleryContext);
   const [gallery, setGallery] = useState({});
+
+  const [gallerys, setGallerys] = useState([]);
+
+  const loadGallery = async () => {
+    try {
+      const fetchGallerys = await galleryApi.getAll();
+      setGallerys(fetchGallerys.data.data);
+      console.log("all", fetchGallerys.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadGallery();
+  }, []);
 
   let url = "/admin";
   if (fromFeature === "view") {
@@ -42,8 +58,8 @@ export default function AllGallery() {
               <GalleryCard
                 key={index}
                 title={data.judulGambar}
-                gambar={`http://localhost:8000/storage/${data.namaGambar}`}
-                author={data.admin.username}
+                image={`http://localhost:8000/storage/${data.namaGambar}`}
+                author={data.username}
                 fromFeature={fromFeature}
               />
             </div>

@@ -1,28 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { imgData } from "../../assets/DataDummy";
+import { useRef, useState } from "react";
 import { BsTrash, BsX } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
 import useClickOutside from "../../hooks/useClickOutside";
 
-export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
-  const [gallery, setGallery] = useState(null);
+export default function GalleryView({ setViewGallery, fromFeature, data }) {
+  const [del, setDel] = useState(null);
 
   const [viewDelate, setViewDelate] = useState(false);
-  const [targetId, setTargetId] = useState(null);
   const modalImgRef = useRef(null);
   useClickOutside(modalImgRef, () => setViewGallery(false));
 
-  useEffect(() => {
-    // ini bisa dihapus nanti dan diganti data API
-    const galleryData = imgData.find((b) => b.idGambar === Number(idGambar));
-    setGallery(galleryData);
-  }, [idGambar]);
-
-  const handleDelete = () => {
-    console.log("Hallo");
-  };
-
-  if (!gallery) return <div>Loading...</div>;
   return (
     <div className="bg-dark/90 fixed inset-0 z-110 flex items-center justify-center">
       <div
@@ -39,24 +26,26 @@ export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
         <div className="group flex h-full w-full">
           <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">
             <img
-              src={gallery.namaGambar}
+              src={data.namaGambar}
               className="h-full w-full object-cover opacity-60 transition-all duration-600 group-hover:scale-105"
               alt="viewGallery"
             />
           </div>
           <div className="bg-dark/80 group-hover:bg-dark/20 absolute bottom-0 left-0 w-full px-10 py-4 transition duration-500 group-hover:translate-y-2 md:top-0 md:right-0 md:left-auto md:w-5/12 md:bg-white md:group-hover:translate-y-0 md:group-hover:bg-white">
             <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
-              {gallery.title}
+              {data.judulGambar}
             </h3>
             <p className="md:text-primary text-xs font-medium text-white md:text-base">
-              {gallery.author}
+              {data.username}
             </p>
           </div>
         </div>
         {fromFeature === "delete" && (
           <button
             onClick={() => {
-              setViewDelate(true);
+              {
+                (setViewDelate(true), setDel(data.idGambar));
+              }
             }}
             className="bg-secondary border-danger/20 group absolute right-4 bottom-4 w-19 cursor-pointer overflow-hidden rounded-2xl border py-1 text-left md:w-26 md:py-1.5"
           >
@@ -72,10 +61,9 @@ export default function GalleryView({ setViewGallery, fromFeature, idGambar }) {
       </div>
       <BtnDeleteM
         content={"gallery"}
-        handleDelete={handleDelete}
         view={viewDelate}
         setView={setViewDelate}
-        targetId={targetId}
+        targetId={del}
       />
     </div>
   );
