@@ -12,6 +12,7 @@ export default function BtnDeleteM({ content, view, setView, targetId }) {
     await galleryApi.delete(id);
     await loadGallerys();
     navigate("/admin/dashboard");
+    console.log("id tar", id);
   };
 
   return (

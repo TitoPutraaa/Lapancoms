@@ -1,14 +1,12 @@
 import { useRef, useState } from "react";
 import { BsTrash, BsX } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
-import useClickOutside from "../../hooks/useClickOutside";
+// import useClickOutside from "../../hooks/useClickOutside";
 
 export default function GalleryView({ setViewGallery, fromFeature, data }) {
-  const [del, setDel] = useState(null);
-
   const [viewDelate, setViewDelate] = useState(false);
   const modalImgRef = useRef(null);
-  useClickOutside(modalImgRef, () => setViewGallery(false));
+  // useClickOutside(modalImgRef, () => setViewGallery(false));
 
   return (
     <div className="bg-dark/90 fixed inset-0 z-110 flex items-center justify-center">
@@ -44,7 +42,7 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
           <button
             onClick={() => {
               {
-                (setViewDelate(true), setDel(data.idGambar));
+                setViewDelate(true);
               }
             }}
             className="bg-secondary border-danger/20 group absolute right-4 bottom-4 w-19 cursor-pointer overflow-hidden rounded-2xl border py-1 text-left md:w-26 md:py-1.5"
@@ -63,7 +61,7 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
         content={"gallery"}
         view={viewDelate}
         setView={setViewDelate}
-        targetId={del}
+        targetId={data.idGambar}
       />
     </div>
   );

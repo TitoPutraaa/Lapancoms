@@ -9,7 +9,7 @@ const galleryApi = {
         "Content-Type": "multipart/form-data",
       },
     }),
-  delete: (idGambar) => axiosAdmin.put(`/gallery/${idGambar}`),
+  delete: (idGambar) => axiosAdmin.delete(`/gallery/${idGambar}`),
 };
 
 export default galleryApi;
