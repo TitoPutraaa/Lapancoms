@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
   const [error, setError] = useState("");
-  const { setToken, setAdmin } = useContext(AdminContext);
+  const { setToken } = useContext(AdminContext);
 
   const [form, setForm] = useImmer({ username: "", password: "" });
 
@@ -45,11 +45,12 @@ export default function Login() {
       if (token) {
         try {
           localStorage.setItem("token", token);
+          localStorage.setItem("username", username);
+          localStorage.setItem("role", role);
         } catch (e) {
           console.log(e.error || "failed set token");
         }
         setToken(token);
-        setAdmin({ username, role });
       }
 
       navigate("/admin/dashboard", replace);

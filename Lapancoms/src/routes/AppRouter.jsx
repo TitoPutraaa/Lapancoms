@@ -32,7 +32,7 @@ export default function AppRouter() {
         <Route path="/admin/login" element={<Login />} />
 
         {/* <Route
-          element={<PrivateRoute allowedRoles={["admin", "superadmin"]} />}
+          element={<PrivateRoute allowedRoles={["admin", "super-admin"]} />}
         > */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
@@ -49,12 +49,12 @@ export default function AppRouter() {
           <Route path="template" element={<Template />} />
 
           {/* SUPERADMIN ONLY */}
-          {/* <Route element={<PrivateRoute allowedRoles={["superadmin"]} />}> */}
+          {/* <Route element={<PrivateRoute allowedRoles={["super-admin"]} />}> */}
           <Route path="manageAdmin" element={<ManageAdmin />} />
-          {/* <Route path="updateLandingPage" element={<UpdateLP />} />
-          </Route> */}
+          <Route path="updateLandingPage" element={<UpdateLP />} />
+          {/* </Route> */}
+          {/* </Route> */}
         </Route>
-        {/* </Route> */}
       </Routes>
     </Router>
   );

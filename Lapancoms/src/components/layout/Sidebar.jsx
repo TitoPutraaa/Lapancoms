@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import useClickOutside from "../../hooks/useClickOutside";
 import Logout from "../common/Logout";
@@ -21,7 +21,6 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
 
   const [isOpenDropM, setIsOpenDropM] = useState(false);
   const dropBarRef = useRef(null);
-  const { admin } = useContext(AdminContext);
 
   useClickOutside(dropBarRef, () => setIsOpenDropM(false));
   const isPostSection =
@@ -43,10 +42,10 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                 className={`ml-16 ${!isOpen ? "opacity-0" : "opacity-100"} transition-all duration-200`}
               >
                 <h1 className="text-dark mb-1 text-center text-2xl font-semibold">
-                  {admin.username}
+                  {localStorage.getItem("username")}
                 </h1>
                 <p className="bg-accent text-secondary mx-auto w-fit rounded-full px-3 py-1 text-xs">
-                  {admin.role}
+                  {localStorage.getItem("role")}
                 </p>
               </div>
               <button
@@ -208,7 +207,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
             </ul>
 
             {/* SuperAdmin */}
-            {admin.role === "super-admin" && (
+            {localStorage.getItem("role") === "super-admin" && (
               <div>
                 <h2
                   className={`text-dark mx-3 overflow-hidden font-medium text-nowrap ${!isOpen ? "absolute opacity-0" : "mt-10 mb-4 opacity-100"} transition-all duration-200`}

@@ -10,6 +10,8 @@ export default function Logout() {
     try {
       const res = await adminApi.logout();
       localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      localStorage.removeItem("role");
       console.log(res);
       if (res.status === 200) {
         navigate("/admin/login");
