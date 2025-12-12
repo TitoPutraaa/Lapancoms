@@ -66,7 +66,7 @@ export default function GallerySlider({ fromFeature }) {
                 idGambar={data.idGambar}
                 title={data.judulGambar}
                 author={data.username}
-                image={`http://localhost:8000/storage/${data.namaGambar}`}
+                image={data.namaGambar}
                 fromFeature={fromFeature}
               />
             </div>

@@ -1,10 +1,12 @@
 export default function GalleryCard({ title, author, image, fromFeature }) {
+  const url = `http://127.0.0.1:8000/storage/galery/${image}`;
+
   return (
     <>
       <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
         <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
           <img
-            src={`http://localhost:8000/storage/${image}`}
+            src={url}
             alt="ImgBlog"
             className="h-full w-full object-cover transition duration-600 group-hover:scale-105"
           />

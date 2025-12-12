@@ -7,6 +7,7 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
   const [viewDelate, setViewDelate] = useState(false);
   const modalImgRef = useRef(null);
   // useClickOutside(modalImgRef, () => setViewGallery(false));
+  const url = `http://127.0.0.1:8000/storage/galery/${data.namaGambar}`;
 
   return (
     <div className="bg-dark/90 fixed inset-0 z-110 flex items-center justify-center">
@@ -24,7 +25,7 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
         <div className="group flex h-full w-full">
           <div className="bg-dark h-full w-full transition duration-500 md:w-7/12">
             <img
-              src={data.namaGambar}
+              src={url}
               className="h-full w-full object-cover opacity-60 transition-all duration-600 group-hover:scale-105"
               alt="viewGallery"
             />
