@@ -1,7 +1,7 @@
 import "../index.css";
 import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 import { AdminContext } from "../auth/AdminContext";
 import { useImmer } from "use-immer";
 import adminApi from "../api/adminApi";
@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
   const [error, setError] = useState("");
-  const { setToken } = useContext(AdminContext);
+  const { setToken, setAdmin } = useContext(AdminContext);
 
   const [form, setForm] = useImmer({ username: "", password: "" });
 
@@ -39,6 +39,9 @@ export default function Login() {
       });
       // store token first so axios interceptor can read it when AdminProvider fetches /me
       const token = res.data?.token;
+      const username = res.data.user.username;
+      const role = res.data.user.role;
+
       if (token) {
         try {
           localStorage.setItem("token", token);
@@ -46,9 +49,10 @@ export default function Login() {
           console.log(e.error || "failed set token");
         }
         setToken(token);
+        setAdmin({ username, role });
       }
 
-      navigate("/admin/dashboard");
+      navigate("/admin/dashboard", replace);
     } catch (error) {
       setError(error.response?.data);
       console.log(error.response);
