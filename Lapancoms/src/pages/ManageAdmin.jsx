@@ -21,6 +21,8 @@ function ManageAdmin() {
     }
   };
 
+  console.log("del", idDel);
+
   async function handleDelete(idAdmin) {
     try {
       await adminApi.destroy(idAdmin);
@@ -88,10 +90,10 @@ function ManageAdmin() {
                   {data.username}
                 </td>
                 {/* Ini untuk Post Blog */}
-                <td className="px-6 py-4">{data.password}</td>
+                <td className="px-6 py-4">6</td>
 
                 {/* Ini untuk Gallery */}
-                <td className="px-6 py-4">{data.password}</td>
+                <td className="px-6 py-4">69</td>
                 <td className="px-6 py-4">
                   <button
                     onClick={() => {
