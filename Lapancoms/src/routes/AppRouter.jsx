@@ -31,29 +31,29 @@ export default function AppRouter() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/login" element={<Login />} />
 
-        {/* <Route
+        <Route
           element={<PrivateRoute allowedRoles={["admin", "super-admin"]} />}
-        > */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Navigate to="/admin/dashboard" replace />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route path="blog/:id" element={<BlogView />} />
-          </Route>
-          <Route path="allBlogs" element={<AllBlogs />} />
-          <Route path="allGallery" element={<AllGallery />} />
-          <Route path="postBlog" element={<PostBlog />} />
-          <Route path="postImage" element={<PostImage />} />
-          <Route path="delete" element={<Delete />}>
-            <Route path="deleteBlog/:id" element={<BlogView />} />
-          </Route>
-          <Route path="template" element={<Template />} />
+        >
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route path="blog/:id" element={<BlogView />} />
+            </Route>
+            <Route path="allBlogs" element={<AllBlogs />} />
+            <Route path="allGallery" element={<AllGallery />} />
+            <Route path="postBlog" element={<PostBlog />} />
+            <Route path="postImage" element={<PostImage />} />
+            <Route path="delete" element={<Delete />}>
+              <Route path="deleteBlog/:id" element={<BlogView />} />
+            </Route>
+            <Route path="template" element={<Template />} />
 
-          {/* SUPERADMIN ONLY */}
-          {/* <Route element={<PrivateRoute allowedRoles={["super-admin"]} />}> */}
-          <Route path="manageAdmin" element={<ManageAdmin />} />
-          <Route path="updateLandingPage" element={<UpdateLP />} />
-          {/* </Route> */}
-          {/* </Route> */}
+            {/* SUPERADMIN ONLY */}
+            <Route element={<PrivateRoute allowedRoles={["super-admin"]} />}>
+              <Route path="manageAdmin" element={<ManageAdmin />} />
+              <Route path="updateLandingPage" element={<UpdateLP />} />
+            </Route>
+          </Route>
         </Route>
       </Routes>
     </Router>
