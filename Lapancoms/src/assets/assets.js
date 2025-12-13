@@ -30,8 +30,7 @@ export const assets = {
   logoFooter,
   imageMaps,
   imageAlamat,
-  
-};
+
   template1,
   template2,
   template3,

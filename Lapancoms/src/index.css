@@ -47,13 +47,15 @@
   }
 }
 
-/* custom css class */
-@layer components {
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
+html {
+  @apply scroll-smooth;
+}
+
+.navActive {
+  @apply text-accent;
+}
+.navActive span {
+  @apply bg-accent w-full opacity-100;
 }
 
 /* Setting sidebar for mobile view */

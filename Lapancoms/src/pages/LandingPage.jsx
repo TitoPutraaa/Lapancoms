@@ -3,120 +3,50 @@ import BlogCard from "../components/common/BlogCard";
 import { blogData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
 import { BsArrowLeft, BsArrowRight, BsArrowUpCircle } from "react-icons/bs";
+import Navbar from "../components/layout/Navbar";
 
 export default function LandingPage() {
   return (
     <div>
       {/* Navbar */}
-      <div className="fixed z-50 w-full">
-        <nav className="">
-          <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-            <a className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src={assets.logo} className="h-10" alt="" />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Travelog
-              </span>
-            </a>
-            <button
-              data-collapse-toggle="navbar-default"
-              type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden dark:text-gray-400"
-              aria-controls="navbar-default"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="h-5 w-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
-            <div
-              className="hidden w-full md:block md:w-auto"
-              id="navbar-default"
-            >
-              <ul className="mt-4 flex flex-col gap-5 rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0">
-                <li>
-                  <a href="#" className="text-white">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    News
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Facility
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Maps
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Gallery
-                  </a>
-                </li>
-              </ul>
+      <Navbar />
+      {/* Hero Section */}
+      <section id="home">
+        <div className="relative h-dvh">
+          <div className="absolute inset-0">
+            <img
+              src={assets.imagePublic}
+              className="h-full w-full object-cover"
+              alt=""
+            />
+          </div>
+          <div className="absolute top-1/2 right-0 left-0 z-9 -translate-y-1/2">
+            <div className="container ml-30 w-2xl px-5">
+              <h1 className="mb-10 w-2xl text-white">
+                It's A Big World Out There Go Explore
+              </h1>
+              <p className="mb-20 w-lg text-white">
+                Discover new attractions and experience to match yuor interests
+                and travet style
+              </p>
+              <button className="block rounded-full bg-emerald-600 px-8 py-2 font-medium text-white transition duration-500 group-hover:translate-x-1 md:px-8 md:py-3">
+                Learn More
+              </button>
             </div>
           </div>
-        </nav>
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative h-dvh">
-        <div className="absolute inset-0">
-          <img
-            src={assets.imagePublic}
-            className="h-full w-full object-cover"
-            alt=""
-          />
         </div>
-        <div className="absolute top-1/2 right-0 left-0 z-9 -translate-y-1/2">
-          <div className="container ml-30 w-2xl px-5">
-            <h1 className="mb-10 w-2xl text-white">
-              It's A Big World Out There Go Explore
-            </h1>
-            <p className="mb-20 w-lg text-white">
-              Discover new attractions and experience to match yuor interests
-              and travet style
-            </p>
-            <button className="block rounded-full bg-emerald-600 px-8 py-2 font-medium text-white transition duration-500 group-hover:translate-x-1 md:px-8 md:py-3">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* Section Blog */}
-      <section>
+      <section id="news">
         <div className="flex justify-between">
           <div className="">
             <h2 className="m-10 text-4xl font-semibold">
               Latest Stories from Croatia
             </h2>
           </div>
-          <div className=" mt-15 mr-7">
-            <button className="rounded-full bg-emerald-600 hover:bg-emerald-700 font-medium text-white md:px-8 md:py-3 transition">
+          <div className="mt-15 mr-7">
+            <button className="rounded-full bg-emerald-600 font-medium text-white transition hover:bg-emerald-700 md:px-8 md:py-3">
               View All
             </button>
           </div>
@@ -135,18 +65,18 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-        <div className="flex justify-end gap-3 mr-5">
-          <div className=" bg-gray-600 p-2 rounded-full w-fit">
+        <div className="mr-5 flex justify-end gap-3">
+          <div className="w-fit rounded-full bg-gray-600 p-2">
             <BsArrowLeft className="text-2xl" />
           </div>
-          <div className="bg-green-700 p-2 rounded-full w-fit  ">
+          <div className="w-fit rounded-full bg-green-700 p-2">
             <BsArrowRight className="text-2xl" />
           </div>
         </div>
       </section>
 
       {/*Section About*/}
-      <section>
+      <section id="about">
         <div className="container mx-auto w-full">
           <h2 className="font-semibold">About Page</h2>
           <h2 className="mb-4 text-4xl font-semibold">
@@ -159,7 +89,7 @@ export default function LandingPage() {
               className="h-[550px] w-full max-w-lg shrink-0 rounded-2xl md:block"
             />
             <div>
-              <div className="flex flex-col gap-35 mt-40 pr-6">
+              <div className="mt-40 flex flex-col gap-35 pr-6">
                 <p className="">
                   But I must explain to you how all this mistaken idea of
                   denouncing pleasure and praising pain was born and I will give
@@ -172,9 +102,9 @@ export default function LandingPage() {
                   anyone who loves or pursues.
                 </p>
                 <div>
-                  <button className="flex w-full justify-end text-black gap-5">
+                  <button className="flex w-full justify-end gap-5 text-black">
                     Read More{" "}
-                    <BsArrowRight className="text-3xl bg-green-700 rounded-2xl" />
+                    <BsArrowRight className="rounded-2xl bg-green-700 text-3xl" />
                   </button>
                 </div>
               </div>
@@ -184,33 +114,33 @@ export default function LandingPage() {
       </section>
 
       {/* Section Facility */}
-      <section className="mb-10">
-        <div className=" px-10">
+      <section id="facility" className="mb-10">
+        <div className="px-10">
           <div className="mt-10">
             <h2 className="mb-3 text-4xl font-semibold">
               Experience OurcBest Facility
             </h2>
-            <p className="mb-2 mr-210">
+            <p className="mr-210 mb-2">
               Discover new attractions and experiences to match your interests.
             </p>
           </div>
           <div className="flex justify-between">
-            <div className="shadow-soft rounded-4xl ">
+            <div className="shadow-soft rounded-4xl">
               <img
                 src={assets.imageBlog}
                 alt=""
-                className=" w-170 rounded-4xl"
+                className="w-170 rounded-4xl"
               />
               <div className="ml-6">
-                <h3 className="mb-5  mt-9 text-3xl">Our Facility</h3>
+                <h3 className="mt-9 mb-5 text-3xl">Our Facility</h3>
                 <p className="w-sm">
                   Discover new attraction adn experiences to match your
                   interests.
                 </p>
-                <div className=" flex justify-end px-5 pb-1">
+                <div className="flex justify-end px-5 pb-1">
                   <Link>
                     <div className="">
-                      <div className=" text-white bg-black rounded-full ">
+                      <div className="rounded-full bg-black text-white">
                         <BsArrowRight className="text-5xl" />
                       </div>
                     </div>
@@ -219,51 +149,51 @@ export default function LandingPage() {
               </div>
             </div>
             <div>
-              <div className=" gap-5 flex flex-col ">
-                <div className=" shadow-soft w-120 rounded-2xl">
+              <div className="flex flex-col gap-5">
+                <div className="shadow-soft w-120 rounded-2xl">
                   <div className="">
                     <img
                       src={assets.imageFacility}
                       alt=""
-                      className="w-full h-full object-cover rounded-2xl "
+                      className="h-full w-full rounded-2xl object-cover"
                     />
                   </div>
                   <div className="px-5">
-                    <h3 className=" mt-4  ">Our Event</h3>
-                    <p className="mt-2  t">
+                    <h3 className="mt-4">Our Event</h3>
+                    <p className="t mt-2">
                       Discover new attraction adn experiences to match your
                       interests.
                     </p>
                   </div>
-                  <div className=" flex justify-end px-5 pb-1">
+                  <div className="flex justify-end px-5 pb-1">
                     <Link>
                       <div className="">
-                        <div className=" text-white bg-dark rounded-full ">
+                        <div className="bg-dark rounded-full text-white">
                           <BsArrowRight className="text-3xl" />
                         </div>
                       </div>
                     </Link>
                   </div>
                 </div>
-                <div className=" shadow-soft w-120 rounded-2xl">
+                <div className="shadow-soft w-120 rounded-2xl">
                   <div className="">
                     <img
                       src={assets.imageFacility}
                       alt=""
-                      className="w-full h-full object-cover rounded-2xl "
+                      className="h-full w-full rounded-2xl object-cover"
                     />
                   </div>
                   <div className="px-5">
-                    <h3 className=" mt-4  ">Our Event</h3>
-                    <p className="mt-2  t">
+                    <h3 className="mt-4">Our Event</h3>
+                    <p className="t mt-2">
                       Discover new attraction adn experiences to match your
                       interests.
                     </p>
                   </div>
-                  <div className=" flex justify-end px-5 pb-1">
+                  <div className="flex justify-end px-5 pb-1">
                     <Link>
                       <div className="">
-                        <div className=" text-white  bg-dark rounded-full ">
+                        <div className="bg-dark rounded-full text-white">
                           <BsArrowRight className="text-3xl" />
                         </div>
                       </div>
@@ -277,12 +207,12 @@ export default function LandingPage() {
       </section>
 
       {/* Section Maps */}
-      <section>
-        <div className=" relative">
+      <section id="maps">
+        <div className="relative">
           <div className="m-10">
             <img src={assets.imageMaps} alt="" />
           </div>
-          <div className="absolute flex top-1/2 left-25 -translate-y-1/2 gap-10">
+          <div className="absolute top-1/2 left-25 flex -translate-y-1/2 gap-10">
             <div className="">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0612823106626!2d115.27926447416915!3d-8.590106787203071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23e273396d515%3A0x4b3b9a132034718c!2sPoliteknik%20Negeri%20Bali%20Kampus%20Gianyar!5e0!3m2!1sid!2sid!4v1763982286469!5m2!1sid!2sid"
@@ -302,7 +232,7 @@ export default function LandingPage() {
       </section>
 
       {/* Section Gallery */}
-      <section>
+      <section id="gallery">
         <div>
           <h1 className="text-center">EXPLORE MORE</h1>
           <h4 className="mx-auto text-center text-3xl font-semibold">
