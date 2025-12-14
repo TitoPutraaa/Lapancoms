@@ -1,30 +1,30 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import { blogData, blogDataTemplate1 } from "../../assets/DataDummy";
 import { useEffect, useState } from "react";
 import BtnDeleteM from "./BtnDeleteM";
 import { BsArrowLeft, BsTrash } from "react-icons/bs";
 import { FaReply } from "react-icons/fa";
+import blogApi from "../../api/blogApi";
 
 export default function BlogView() {
   const { id } = useParams();
-  const [blog, setBlog] = useState(null);
   const location = useLocation();
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
-
   const [viewDelate, setViewDelate] = useState(false);
-  const [targetId, setTargetId] = useState(null);
+  const [blog, setBlog] = useState(null);
+  console.log("id View", id);
+
+  const loadBlosId = async (id) => {
+    try {
+      const res = await blogApi.getById(id);
+      setBlog(res.data.data);
+      console.log("blog", res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    // ini data dummy, ini diganti API
-    const blogFromData = blogData.find((b) => b.idBlog === Number(id));
-    const blogFromTemplate = blogDataTemplate1.find(
-      (b) => b.idBlog === Number(id),
-    );
-    const blog = {
-      ...blogFromData,
-      ...blogFromTemplate,
-    };
-    setBlog(blog);
+    loadBlosId(id);
   }, [id]);
 
   let url = "/admin/dashboard";
@@ -35,12 +35,6 @@ export default function BlogView() {
   } else {
     console.log("error");
   }
-
-  const handleDelete = () => {
-    console.log("Hallo");
-  };
-
-  if (!blog) return <div>Loading...</div>;
   return (
     <div className="bg-secondary w-full pb-8">
       <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
@@ -89,10 +83,9 @@ export default function BlogView() {
 
       <BtnDeleteM
         content={"blog"}
-        handleDelete={handleDelete}
         view={viewDelate}
         setView={setViewDelate}
-        targetId={targetId}
+        targetId={id}
       />
     </div>
   );

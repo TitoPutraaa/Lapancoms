@@ -59,7 +59,6 @@ export default function GallerySlider({ fromFeature }) {
       >
         {gallerys?.slice(0, 8).map((data) => (
           <SwiperSlide className="w-auto!">
-            {/* ini actifkan jika yang diselect card fullnya */}
             <div onClick={() => handleSelect(data)}>
               <GalleryCard
                 key={data.idGambar}

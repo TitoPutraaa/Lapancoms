@@ -1,11 +1,26 @@
 import BackBtn from "../components/common/BackBtn";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2";
-import { BlogContext } from "../api/content/ContentContext";
-import { useContext } from "react";
+import { useEffect, useState } from "react";
+import blogApi from "../api/blogApi";
 
 export default function AllBlogs() {
-  const { blogs } = useContext(BlogContext);
+  const [Blogs, setBlogs] = useState();
+  const [navigate] = useNavigate();
+
+  const loadBlogs = async () => {
+    try {
+      const res = await blogApi.getAll();
+      setBlogs(res.data.data);
+      console.log("all blog", res.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadBlogs();
+  }, []);
 
   const location = useLocation();
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
@@ -28,15 +43,22 @@ export default function AllBlogs() {
         </Link>
       </div>
       <div className="flex flex-wrap gap-x-2 gap-y-4">
-        {blogs.slice(0, 4).map((data, index) => (
-          <BlogCardV2
-            key={index}
-            title={data.judul}
-            image={`http://localhost:8000/storage/${data.namaGambar}`}
-            author={data.admin.username}
-            date={data.tglBlog}
-            fromFeature={fromFeature}
-          />
+        {Blogs.map((data) => (
+          <SwiperSlide className="w-auto!">
+            <div
+              onClick={() => navigate(`/admin/dashboard/blog/${data.idBlog}`)}
+            >
+              <BlogCardV2
+                key={data.idBlog}
+                idBlog={data.idBlog}
+                title={data.title}
+                date={data.date}
+                author={data.author}
+                image={data.tamnel}
+                fromFeature={fromFeature}
+              />
+            </div>
+          </SwiperSlide>
         ))}
       </div>
     </div>

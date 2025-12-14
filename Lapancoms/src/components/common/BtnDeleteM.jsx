@@ -1,19 +1,34 @@
 import { BsTrash } from "react-icons/bs";
 import galleryApi from "../../api/galleryApi";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { GalleryContext } from "../../api/content/ContentContext";
+import { useContext, useState } from "react";
+import { BlogContext, GalleryContext } from "../../api/content/ContentContext";
+import blogApi from "../../api/blogApi";
 
 export default function BtnDeleteM({ content, view, setView, targetId }) {
   const { loadGallerys } = useContext(GalleryContext);
+  const { loadBlogs } = useContext(BlogContext);
   const navigate = useNavigate();
+  const [handleDelete, setHandleDelete] = useState();
   if (!view) return null;
-  const handleDelete = async (id) => {
-    await galleryApi.delete(id);
-    await loadGallerys();
-    navigate("/admin/dashboard");
-    console.log("id tar", id);
-  };
+
+  if (content === "gallery") {
+    const handleDelete = async (id) => {
+      await galleryApi.delete(id);
+      await loadGallerys();
+      navigate("/admin/dashboard");
+      console.log("id tar", id);
+    };
+    setHandleDelete(handleDelete);
+  } else if (content === "blog") {
+    const handleDelete = async (id) => {
+      await blogApi.delete(id);
+      await loadBlogs();
+      navigate("/admin/dashboard");
+      console.log("id tar", id);
+    };
+    setHandleDelete(handleDelete);
+  }
 
   return (
     <>

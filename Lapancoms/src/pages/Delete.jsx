@@ -1,4 +1,3 @@
-import { blogData } from "../assets/DataDummy.jsx";
 import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import BlogSlider from "../components/common/BlogSlider.jsx";
@@ -22,7 +21,7 @@ export default function Delete() {
             </Link>
           </div>
           <div className="relative">
-            <BlogSlider blogData={blogData} fromFeature={fromFeature} />
+            <BlogSlider fromFeature={fromFeature} />
           </div>
         </div>
       )}

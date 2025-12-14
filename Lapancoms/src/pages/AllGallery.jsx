@@ -49,7 +49,7 @@ export default function AllGallery() {
           </Link>
         </div>
         <div className="flex flex-wrap gap-x-2 gap-y-4">
-          {gallerys.slice(0, 8).map((data, index) => (
+          {gallerys.map((data, index) => (
             <div
               onClick={() => {
                 (setViewGallery(true), setGallery(data));

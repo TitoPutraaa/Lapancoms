@@ -4,16 +4,35 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import BlogCardV2 from "./BlogCardV2";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import blogApi from "../../api/blogApi";
+import BlogView from "./BlogView";
+import { useNavigate } from "react-router-dom";
 
-export default function BlogSlider({ blogData, fromFeature }) {
+export default function BlogSlider({ fromFeature }) {
   // const [select, setSelect] = useState(null);
   const swiperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true); // check apakah sudah diawal
   const [isEnd, setIsEnd] = useState(false); // check apakah sudah diakhir
   const [isLocked, setIsLocked] = useState(false);
+  const [Blogs, setBlogs] = useState();
+  const [navigate] = useNavigate();
+
+  const loadBlogs = async () => {
+    try {
+      const res = await blogApi.getAll();
+      setBlogs(res.data.data);
+      console.log("all blog", res.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadBlogs();
+  }, []);
 
   const checkEdgePosition = (swiper) => {
     setIsBeginning(swiper.activeIndex === 0);
@@ -35,17 +54,21 @@ export default function BlogSlider({ blogData, fromFeature }) {
         spaceBetween={10}
         slidesPerView={"auto"}
       >
-        {blogData.slice(0, 4).map((data) => (
+        {Blogs.slice(0, 4).map((data) => (
           <SwiperSlide className="w-auto!">
-            <BlogCardV2
-              key={data.idBlog}
-              idBlog={data.idBlog}
-              title={data.title}
-              date={data.date}
-              author={data.author}
-              image={data.tamnel}
-              fromFeature={fromFeature}
-            />
+            <div
+              onClick={() => navigate(`/admin/dashboard/blog/${data.idBlog}`)}
+            >
+              <BlogCardV2
+                key={data.idBlog}
+                idBlog={data.idBlog}
+                title={data.title}
+                date={data.date}
+                author={data.author}
+                image={data.tamnel}
+                fromFeature={fromFeature}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
