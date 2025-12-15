@@ -1,7 +1,7 @@
 import { BsTrash } from "react-icons/bs";
 import galleryApi from "../../api/galleryApi";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { BlogContext, GalleryContext } from "../../api/content/ContentContext";
 import blogApi from "../../api/blogApi";
 

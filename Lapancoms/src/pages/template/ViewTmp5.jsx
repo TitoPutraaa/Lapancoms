@@ -1,0 +1,22 @@
+import dummy from "../../../public/dummy.png";
+
+export default function ViewTmp5({ data }) {
+  //   const urlImage = `http://127.0.0.1:8000/storage/tmp1/${data?.img1}`;
+  return (
+    <>
+      <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+        {/* {data?.judul} */} Template 5
+      </h1>
+      <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+        <img
+          src={dummy}
+          alt="viewBlog"
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
+        {/* {data?.text1} */} textttttttttttttttttttttttttttttttttttttttttttttt
+      </div>
+    </>
+  );
+}

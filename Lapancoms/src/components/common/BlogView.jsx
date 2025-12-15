@@ -4,19 +4,27 @@ import BtnDeleteM from "./BtnDeleteM";
 import { BsArrowLeft, BsTrash } from "react-icons/bs";
 import { FaReply } from "react-icons/fa";
 import blogApi from "../../api/blogApi";
+import ViewTmp1 from "../../pages/template/ViewTmp1";
+import ViewTmp2 from "../../pages/template/ViewTmp2";
+import ViewTmp3 from "../../pages/template/ViewTmp3";
+import ViewTmp4 from "../../pages/template/ViewTmp4";
+import ViewTmp5 from "../../pages/template/ViewTmp5";
 
 export default function BlogView() {
   const params = useParams();
   const [viewDelate, setViewDelate] = useState(false);
   const [blog, setBlog] = useState({});
+  const [kdTmp, setKdTmp] = useState(null);
   const id = params.id;
   const fromFeature = params.feature;
-  const urlImage = `http://127.0.0.1:8000/storage/tmp1/${blog[0]?.img1}`;
 
   const loadBlogId = async (id) => {
     try {
       const res = await blogApi.getById(id);
       setBlog(res.data.data);
+      console.log(res.data.data);
+
+      setKdTmp(res.data.data[0]?.kdTemplate);
     } catch (error) {
       console.log(error);
     }
@@ -25,6 +33,21 @@ export default function BlogView() {
   useEffect(() => {
     loadBlogId(id);
   }, [id]);
+
+  function showTmp() {
+    switch (kdTmp) {
+      case 1:
+        return <ViewTmp1 data={blog[0]} />;
+      case 2:
+        return <ViewTmp2 data={blog[0]} />;
+      case 3:
+        return <ViewTmp3 data={blog[0]} />;
+      case 4:
+        return <ViewTmp4 data={blog[0]} />;
+      case 5:
+        return <ViewTmp5 data={blog[0]} />;
+    }
+  }
 
   let url = `/admin/${fromFeature}`;
   return (
@@ -58,19 +81,7 @@ export default function BlogView() {
       </div>
 
       <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-        <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
-          {blog[0]?.judul}
-        </h1>
-        <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
-          <img
-            src={urlImage}
-            alt="viewBlog"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          {blog[0]?.text1}
-        </div>
+        {showTmp()}
       </div>
 
       <BtnDeleteM
