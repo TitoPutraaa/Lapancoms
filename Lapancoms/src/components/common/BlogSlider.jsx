@@ -1,6 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,7 +6,6 @@ import { useState, useRef, useEffect } from "react";
 import BlogCardV2 from "./BlogCardV2";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import blogApi from "../../api/blogApi";
-import BlogView from "./BlogView";
 import { useNavigate } from "react-router-dom";
 
 export default function BlogSlider({ fromFeature }) {
@@ -17,14 +14,13 @@ export default function BlogSlider({ fromFeature }) {
   const [isBeginning, setIsBeginning] = useState(true); // check apakah sudah diawal
   const [isEnd, setIsEnd] = useState(false); // check apakah sudah diakhir
   const [isLocked, setIsLocked] = useState(false);
-  const [Blogs, setBlogs] = useState();
-  const [navigate] = useNavigate();
+  const [Blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   const loadBlogs = async () => {
     try {
       const res = await blogApi.getAll();
       setBlogs(res.data.data);
-      console.log("all blog", res.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
     }
@@ -54,17 +50,19 @@ export default function BlogSlider({ fromFeature }) {
         spaceBetween={10}
         slidesPerView={"auto"}
       >
-        {Blogs.slice(0, 4).map((data) => (
+        {Blogs.slice(0, 6).map((data) => (
           <SwiperSlide className="w-auto!">
             <div
-              onClick={() => navigate(`/admin/dashboard/blog/${data.idBlog}`)}
+              onClick={() =>
+                navigate(`/admin/${fromFeature}/blog/${data.idBlog}`)
+              }
             >
               <BlogCardV2
                 key={data.idBlog}
                 idBlog={data.idBlog}
-                title={data.title}
-                date={data.date}
-                author={data.author}
+                title={data.judul}
+                date={data.tglBlog}
+                author={data.username}
                 image={data.tamnel}
                 fromFeature={fromFeature}
               />

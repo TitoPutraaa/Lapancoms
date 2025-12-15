@@ -9,18 +9,21 @@ export default function BlogCardV2({
   fromFeature,
 }) {
   let url = `/admin`;
-  if (fromFeature === "view") {
+  if (fromFeature === "dashboard") {
     url = `../dashboard/blog/${idBlog}`;
   } else if (fromFeature === "delete") {
-    url = `../delete/deleteBlog/${idBlog}`;
+    url = `../delete/blog/${idBlog}`;
   } else {
-    console.log("error");
+    console.log("error from blog card");
   }
+
+  const urlImage = `http://127.0.0.1:8000/storage/tmp1/${image}`;
+
   return (
     <div className="shadow-soft max-w-40 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
       <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
         <img
-          src={image}
+          src={urlImage}
           alt="ImgBlog"
           className="h-full w-full object-cover transition duration-600 group-hover:scale-105"
         />

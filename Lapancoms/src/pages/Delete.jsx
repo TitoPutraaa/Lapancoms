@@ -2,8 +2,6 @@ import BtnViewAll from "../components/common/BtnViewAll.jsx";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import BlogSlider from "../components/common/BlogSlider.jsx";
 import GallerySlider from "../components/common/GallerySlider.jsx";
-import GalleryView from "../components/common/GalleryView.jsx";
-import { GalleryContext } from "../api/content/ContentContext.jsx";
 // import { useState } from "react";
 export default function Delete() {
   const location = useLocation();

@@ -6,6 +6,8 @@ import BtnDeleteM from "./BtnDeleteM";
 export default function GalleryView({ setViewGallery, fromFeature, data }) {
   const [viewDelate, setViewDelate] = useState(false);
   const modalImgRef = useRef(null);
+  console.log("FF gal", fromFeature);
+
   // useClickOutside(modalImgRef, () => setViewGallery(false));
   const url = `http://127.0.0.1:8000/storage/galery/${data.namaGambar}`;
 

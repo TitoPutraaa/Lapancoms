@@ -6,7 +6,7 @@ import GallerySlider from "../components/common/GallerySlider.jsx";
 export default function Dashboard() {
   const location = useLocation();
   const hideContent = location.pathname.startsWith("/admin/dashboard/blog/"); // if open blog
-  const fromFeature = "view";
+  const fromFeature = "dashboard";
 
   return (
     <>

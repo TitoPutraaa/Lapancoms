@@ -18,7 +18,6 @@ export default function AllGallery() {
     try {
       const fetchGallerys = await galleryApi.getAll();
       setGallerys(fetchGallerys.data.data);
-      console.log("all", fetchGallerys.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
     }
