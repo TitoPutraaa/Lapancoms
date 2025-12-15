@@ -1,7 +1,7 @@
 import { BsTrash } from "react-icons/bs";
 import galleryApi from "../../api/galleryApi";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BlogContext, GalleryContext } from "../../api/content/ContentContext";
 import blogApi from "../../api/blogApi";
 
@@ -9,27 +9,32 @@ export default function BtnDeleteM({ content, view, setView, targetId }) {
   const { loadGallerys } = useContext(GalleryContext);
   const { loadBlogs } = useContext(BlogContext);
   const navigate = useNavigate();
-  const [handleDelete, setHandleDelete] = useState();
-  if (!view) return null;
 
-  if (content === "gallery") {
-    const handleDelete = async (id) => {
-      await galleryApi.delete(id);
-      await loadGallerys();
-      navigate("/admin/dashboard");
-      console.log("id tar", id);
-    };
-    setHandleDelete(handleDelete);
-  } else if (content === "blog") {
-    const handleDelete = async (id) => {
-      await blogApi.delete(id);
-      await loadBlogs();
-      navigate("/admin/dashboard");
-      console.log("id tar", id);
-    };
-    setHandleDelete(handleDelete);
+  async function handleDelete(id) {
+    if (content === "gallery") {
+      try {
+        await galleryApi.delete(id);
+        await loadGallerys();
+        navigate("/admin/delete");
+        console.log("id tar", id);
+      } catch (error) {
+        console.log("error del", error);
+      }
+    } else if (content === "blog") {
+      try {
+        await blogApi.delete(id);
+        await loadBlogs();
+        navigate("/admin/delete");
+        console.log("id tar", id);
+      } catch (error) {
+        console.log("error del", error);
+      }
+    } else {
+      console.log("error to del");
+    }
   }
 
+  if (!view) return null;
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
