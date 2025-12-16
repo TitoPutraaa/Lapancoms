@@ -4,29 +4,25 @@ import { BsArrowLeft, BsCloudUpload } from "react-icons/bs";
 import { FaReply } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import { MdAddPhotoAlternate } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function Template1() {
-  const {
-    dataForm,
-    preview,
-    handleFileChange,
-    content,
-    setContent,
-    handleSubmit,
-    navigate,
-  } = useTemplate1();
+  const navigate = useNavigate();
+  const { preview, handleFileChange, handleChange, handleSubmit } =
+    useTemplate1();
 
-  if (!dataForm) return <p>Loading 123... </p>;
+  const judul = localStorage.getItem("judul");
 
   return (
     <div className="bg-secondary w-full pb-8">
       <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {
-            localStorage.removeItem("dataFormPostB");
+            localStorage.removeItem("judul");
+            localStorage.removeItem("template");
             localStorage.removeItem("Image1");
             localStorage.removeItem("EdContent1");
-            navigate("/admin/postBlog");
+            navigate("/admin/postBlog", { replace: true });
           }}
           className="group relative w-25 cursor-pointer overflow-hidden rounded-xl bg-white transition duration-500 ease-in-out md:w-29"
         >
@@ -52,7 +48,7 @@ export default function Template1() {
       <div>
         <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
           <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
-            {dataForm.title}
+            {judul}
           </h1>
           <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
             {!preview && (
@@ -105,11 +101,7 @@ export default function Template1() {
           </div>
 
           <div className="w-full pb-6">
-            <TextEditor
-              value={content}
-              onChange={setContent}
-              className={"h-full"}
-            />
+            <TextEditor onChange={handleChange} className={"h-full"} />
           </div>
         </div>
       </div>

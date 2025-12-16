@@ -1,4 +1,3 @@
-import useDataFormPB from "../../hooks/useDataFormPB";
 import Template1 from "../common/Template1";
 import Template2 from "../common/Template2";
 import Template3 from "../common/Template3";
@@ -6,11 +5,10 @@ import Template4 from "../common/Template4";
 import Template5 from "../common/Template5";
 
 export default function Temple() {
-  const { dataForm } = useDataFormPB();
+  const tmp = localStorage.getItem("template");
+  console.log("tmp case", tmp);
 
-  if (!dataForm) return <p>Loading</p>;
-
-  switch (dataForm.template) {
+  switch (tmp) {
     case "1":
       return <Template1 />;
     case "2":

@@ -18,7 +18,6 @@ export default function usePostImage() {
     const file = e.target.files[0];
     if (!file) return;
 
-    // VALIDATE using "file" — NOT namaGambar state
     if (!file.type.startsWith("image/")) {
       alert("File harus gambar");
       return;
@@ -40,7 +39,7 @@ export default function usePostImage() {
     e.preventDefault();
 
     if (!namaGambar) {
-      alert("Pilih gambar dulu");
+      alert("please add an image");
       return;
     }
 

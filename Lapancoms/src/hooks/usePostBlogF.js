@@ -1,39 +1,30 @@
-import { useState } from "react";
+import { useImmer } from "use-immer";
 
 export default function usePostBlogF() {
-  const [errTmplt, setErrTmplt] = useState(false);
-  const [dataFormPostB, setDataFormPostB] = useState({
-    title: "",
-    template: "",
-  });
+  const [form, setForm] = useImmer({ judul: "", template: "" });
 
   const handleChange = (e) => {
-    setDataFormPostB({
-      ...dataFormPostB,
-      [e.target.name]: e.target.value,
+    setForm((draft) => {
+      draft.judul = e.target.value;
     });
-    setErrTmplt(false);
   };
 
   const handleSelect = (e) => {
-    setDataFormPostB({
-      ...dataFormPostB,
-      template: e,
+    setForm((draft) => {
+      draft.template = e;
+      console.log("usePost", e);
     });
-    setErrTmplt(false);
   };
 
   const validateTmplt = () => {
-    if (!dataFormPostB.template) {
-      setErrTmplt(true);
+    if (!form) {
       return false;
     }
     return true;
   };
 
   return {
-    dataFormPostB,
-    errTmplt,
+    form,
     handleChange,
     handleSelect,
     validateTmplt,
