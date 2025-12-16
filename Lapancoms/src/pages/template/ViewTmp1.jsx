@@ -1,5 +1,5 @@
 export default function ViewTmp1({ data }) {
-  const urlImage = `http://127.0.0.1:8000/storage/tmp1/${data?.img1}`;
+  const urlImage = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
   return (
     <>
       <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">

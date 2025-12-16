@@ -22,9 +22,10 @@ export default function BlogView() {
     try {
       const res = await blogApi.getById(id);
       setBlog(res.data.data);
-      console.log(res.data.data);
+      console.log("f view", res.data.data);
 
       setKdTmp(res.data.data[0]?.kdTemplate);
+      // setKdTmp(3);
     } catch (error) {
       console.log(error);
     }
