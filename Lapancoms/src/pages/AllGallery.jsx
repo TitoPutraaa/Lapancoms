@@ -1,7 +1,6 @@
 import BackBtn from "../components/common/BackBtn";
 import GalleryCard from "../components/common/GalleryCard";
 import { Link, useLocation } from "react-router-dom";
-import { GalleryContext } from "../api/content/ContentContext";
 import { useEffect, useState } from "react";
 import GalleryView from "../components/common/GalleryView.jsx";
 import galleryApi from "../api/galleryApi.js";

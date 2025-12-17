@@ -16,11 +16,13 @@ export default function GallerySlider({ fromFeature }) {
   const [viewGallery, setViewGallery] = useState(false);
   const [idGallery, setIdGallery] = useState(null);
   const [gallerys, setGallerys] = useState([]);
+  const [onDel, setOnDel] = useState(false);
 
   const loadGallery = async () => {
     try {
       const fetchGallerys = await galleryApi.getAll();
       setGallerys(fetchGallerys.data.data);
+      setOnDel(false);
     } catch (error) {
       console.error("Error loading admins:", error);
     }
@@ -28,7 +30,7 @@ export default function GallerySlider({ fromFeature }) {
 
   useEffect(() => {
     loadGallery();
-  }, []);
+  }, [onDel]);
 
   const handleSelect = (id) => {
     setIdGallery(id);
@@ -93,6 +95,7 @@ export default function GallerySlider({ fromFeature }) {
         <GalleryView
           setViewGallery={setViewGallery}
           fromFeature={fromFeature}
+          onDel={setOnDel}
           data={idGallery}
         />
       )}

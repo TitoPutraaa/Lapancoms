@@ -3,7 +3,12 @@ import { BsTrash, BsX } from "react-icons/bs";
 import BtnDeleteM from "./BtnDeleteM";
 // import useClickOutside from "../../hooks/useClickOutside";
 
-export default function GalleryView({ setViewGallery, fromFeature, data }) {
+export default function GalleryView({
+  setViewGallery,
+  fromFeature,
+  onDel,
+  data,
+}) {
   const [viewDelate, setViewDelate] = useState(false);
   const modalImgRef = useRef(null);
   console.log("FF gal", fromFeature);
@@ -63,6 +68,7 @@ export default function GalleryView({ setViewGallery, fromFeature, data }) {
       <BtnDeleteM
         content={"gallery"}
         view={viewDelate}
+        onDel={onDel}
         setView={setViewDelate}
         targetId={data.idGambar}
       />
