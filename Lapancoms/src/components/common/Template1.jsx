@@ -21,10 +21,8 @@ export default function Template1() {
           onClick={() => {
             localStorage.removeItem("judul");
             localStorage.removeItem("template");
-            localStorage.removeItem("draft_template1_text1");
-            localStorage.removeItem("draft_template1_img1_preview");
-            localStorage.removeItem("Image1");
-            localStorage.removeItem("EdContent1");
+            localStorage.removeItem("prev_img1");
+            localStorage.removeItem("prev_text1");
             navigate("/admin/postBlog", { replace: true });
           }}
           className="group relative w-25 cursor-pointer overflow-hidden rounded-xl bg-white transition duration-500 ease-in-out md:w-29"
