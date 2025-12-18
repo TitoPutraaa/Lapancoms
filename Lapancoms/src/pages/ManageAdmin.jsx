@@ -16,6 +16,7 @@ function ManageAdmin() {
     try {
       const fetchAdmins = await adminApi.getAll();
       setAdmins(fetchAdmins.data.data);
+      console.log("all min", fetchAdmins.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
     }
@@ -90,10 +91,10 @@ function ManageAdmin() {
                   {data.username}
                 </td>
                 {/* Ini untuk Post Blog */}
-                <td className="px-6 py-4">6</td>
+                <td className="px-6 py-4">{data.blogPost}</td>
 
                 {/* Ini untuk Gallery */}
-                <td className="px-6 py-4">69</td>
+                <td className="px-6 py-4">{data.galleryPost}</td>
                 <td className="px-6 py-4">
                   <button
                     onClick={() => {
