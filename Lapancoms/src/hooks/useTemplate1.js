@@ -4,13 +4,21 @@ import blogApi from "../api/blogApi";
 
 export default function useTemplate1() {
   const navigate = useNavigate();
-  const [preview, setPreview] = useState(null);
-  const [text1, setText1] = useState("");
+  const [preview, setPreview] = useState(() =>
+    localStorage.getItem("draft_template1_img1_preview"),
+  );
+  const [text1, setText1] = useState(() => {
+    const saved = localStorage.getItem("draft_template1_text1");
+    return saved ? JSON.parse(saved) : null;
+  });
   const [img1, setImg1] = useState(() => localStorage.getItem("img1") || null);
 
-  const handleChange = (e) => {
-    const value = e?.target?.value;
-    setText1(localStorage.setItem("text1", value));
+  const handleQuillChange = (content, delta, source, editor) => {
+    if (source !== "user") return;
+
+    const deltaValue = editor.getContents();
+    setText1(deltaValue);
+    localStorage.setItem("draft_template1_text1", JSON.stringify(deltaValue));
   };
 
   const handleFileChange = (e) => {
@@ -34,11 +42,9 @@ export default function useTemplate1() {
     const reader = new FileReader();
     reader.onloadend = () => {
       setPreview(reader.result);
-      localStorage.setItem("img1", reader.result);
+      localStorage.setItem("draft_template1_img1_preview", reader.result);
     };
     reader.readAsDataURL(file);
-
-    console.log("Selected:", file);
   };
 
   const handleSubmit = async (e) => {
@@ -52,7 +58,7 @@ export default function useTemplate1() {
     const formData = new FormData();
     formData.append("judul", localStorage.getItem("judul"));
     formData.append("kdTemplate", localStorage.getItem("template"));
-    formData.append("text1", text1);
+    formData.append("text1", JSON.stringify(text1));
     formData.append("img1", img1);
 
     try {
@@ -60,6 +66,8 @@ export default function useTemplate1() {
       console.log("Uploaded:", response.data);
       localStorage.removeItem("judul");
       localStorage.removeItem("img1");
+      localStorage.removeItem("draft_template1_text1");
+      localStorage.removeItem("draft_template1_img1_preview");
       navigate("/admin/dashboard", { replace: true });
     } catch (err) {
       console.log("FAILED:", err.response?.data);
@@ -73,9 +81,10 @@ export default function useTemplate1() {
   };
 
   return {
+    text1,
     preview,
     handleFileChange,
-    handleChange,
+    handleQuillChange,
     handleSubmit,
   };
 }

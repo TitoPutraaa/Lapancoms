@@ -5,10 +5,11 @@ import { FaReply } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill-new";
 
 export default function Template1() {
   const navigate = useNavigate();
-  const { preview, handleFileChange, handleChange, handleSubmit } =
+  const { text1, preview, handleFileChange, handleQuillChange, handleSubmit } =
     useTemplate1();
 
   const judul = localStorage.getItem("judul");
@@ -20,6 +21,8 @@ export default function Template1() {
           onClick={() => {
             localStorage.removeItem("judul");
             localStorage.removeItem("template");
+            localStorage.removeItem("draft_template1_text1");
+            localStorage.removeItem("draft_template1_img1_preview");
             localStorage.removeItem("Image1");
             localStorage.removeItem("EdContent1");
             navigate("/admin/postBlog", { replace: true });
@@ -88,7 +91,7 @@ export default function Template1() {
             {preview && (
               <img
                 src={preview}
-                alt="viewBlog"
+                alt="preview"
                 className="h-full w-full object-cover"
               />
             )}
@@ -101,7 +104,11 @@ export default function Template1() {
           </div>
 
           <div className="w-full pb-6">
-            <TextEditor onChange={handleChange} className={"h-full"} />
+            <ReactQuill
+              theme="snow"
+              value={text1}
+              onChange={handleQuillChange}
+            />
           </div>
         </div>
       </div>
