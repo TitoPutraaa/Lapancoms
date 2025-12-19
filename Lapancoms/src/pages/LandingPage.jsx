@@ -267,23 +267,20 @@ export default function LandingPage() {
       {/* Section Maps */}
       <section> 
         <div className=" relative">
-          <div className="m-10"> 
+          <div className="m-5 bg-accent"> 
             <img src={assets.imageMaps} alt="" />
           </div>
-          <div className="absolute flex top-1/2 left-25 -translate-y-1/2 gap-10">
-          <div className="">
+          <div className="absolute flex top-1/2 -translate-y-1/2 gap-10">
+          <div className="w-screen h-screen">
             <iframe
+              className="w-10/10"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0612823106626!2d115.27926447416915!3d-8.590106787203071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23e273396d515%3A0x4b3b9a132034718c!2sPoliteknik%20Negeri%20Bali%20Kampus%20Gianyar!5e0!3m2!1sid!2sid!4v1763982286469!5m2!1sid!2sid"
               width={600}
               height={450}
               style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
+              allowFullScreen loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </div>
-          <div className="">
-            <img src={assets.imageAlamat} alt="" />
           </div>
           </div>
         </div>
