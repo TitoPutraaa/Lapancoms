@@ -5,6 +5,7 @@ import { FiSend } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill-new";
 import DropImg from "./DropImg";
+import "react-quill-new/dist/quill.snow.css";
 
 export default function Template1() {
   const navigate = useNavigate();
