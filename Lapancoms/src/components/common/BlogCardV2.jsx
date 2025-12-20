@@ -1,3 +1,4 @@
+import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export default function BlogCardV2({
@@ -8,18 +9,24 @@ export default function BlogCardV2({
   image,
   fromFeature,
 }) {
-  let url = `/admin`;
-  if (fromFeature === "view") {
+  let url = `*`;
+  if (fromFeature === "dashboard") {
     url = `../dashboard/blog/${idBlog}`;
   } else if (fromFeature === "delete") {
-    url = `../delete/deleteBlog/${idBlog}`;
+    url = `../delete/blog/${idBlog}`;
+  } else if (fromFeature === "lp") {
+    url = `../blog/${idBlog}`;
   } else {
-    console.log("error");
+    console.log("error from blog card");
   }
+
+  // const urlImage = `http://127.0.0.1:8000/storage/template/${image}`;
+
   return (
-    <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
+    <div className="shadow-soft max-w-40 overflow-hidden rounded-xl bg-white sm:max-w-52 lg:max-w-56">
       <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
         <img
+          // src={urlImage}
           src={image}
           alt="ImgBlog"
           className="h-full w-full object-cover transition duration-600 group-hover:scale-105"
@@ -57,21 +64,7 @@ export default function BlogCardV2({
               <span className="text-primary group-hover:text-secondary relative z-1 ml-2 w-fit text-xs transition duration-500 md:text-sm">
                 {fromFeature === "delete" ? "Select" : "View"}
               </span>
-              <svg
-                className="text-primary absolute top-1/2 right-2 ml-2 h-3 w-3 -translate-y-1/2 transition duration-500 group-hover:-rotate-45"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
+              <BsArrowRight className="text-primary absolute top-1/2 right-2 ml-2 h-3 w-3 -translate-y-1/2 stroke-1 transition duration-500 group-hover:-rotate-45" />
             </button>
           </Link>
         </div>

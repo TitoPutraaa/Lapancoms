@@ -115,3 +115,7 @@ ol {
 .ql-editor h3 {
   @apply font-poppins text-primary text-xl font-semibold md:text-2xl lg:text-3xl;
 }
+
+/* .blog-lp .swiper-wrapper {
+  transition-timing-function: linear !important;
+} */

@@ -1,11 +1,21 @@
 import { assets } from "../assets/assets";
 import BlogCard from "../components/common/BlogCard";
-import { blogData } from "../assets/DataDummy";
+import { blogData, imgData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
-import { BsArrowLeft, BsArrowRight, BsArrowUpCircle } from "react-icons/bs";
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsArrowRightShort,
+  BsArrowUpCircle,
+  BsArrowUpRight,
+  BsBoxArrowInUpRight,
+  BsBoxArrowUpRight,
+} from "react-icons/bs";
 import Navbar from "../components/layout/Navbar";
+import BlogSliderLp from "../components/common/BlogSliderLp";
 
 export default function LandingPage() {
+  const fromFeature = "lp";
   return (
     <div>
       {/* Navbar */}
@@ -38,45 +48,28 @@ export default function LandingPage() {
       </section>
 
       {/* Section Blog */}
-      <section id="news">
-        <div className="flex justify-between">
-          <div className="">
-            <h2 className="m-10 text-4xl font-semibold">
-              Latest Stories from Croatia
-            </h2>
+      <section id="news" className="pt-18">
+        <div className="px-4">
+          <div className="mb-5 flex items-center justify-between">
+            <div className="">
+              <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">
+                Latest Stories from Croatia
+              </h2>
+            </div>
+            <div className="">
+              {/* <button className="rounded-full bg-emerald-600 font-medium text-white transition hover:bg-emerald-700 md:px-8 md:py-3">
+                View All
+              </button> */}
+            </div>
           </div>
-          <div className="mt-15 mr-7">
-            <button className="rounded-full bg-emerald-600 font-medium text-white transition hover:bg-emerald-700 md:px-8 md:py-3">
-              View All
-            </button>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <div className="mx-2 flex">
-            {blogData.slice(0, 5).map((data) => (
-              <div className="mx-3 mb-10">
-                <BlogCard
-                  key={data.title}
-                  title={data.title}
-                  date={data.date}
-                  author={data.author}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mr-5 flex justify-end gap-3">
-          <div className="w-fit rounded-full bg-gray-600 p-2">
-            <BsArrowLeft className="text-2xl" />
-          </div>
-          <div className="w-fit rounded-full bg-green-700 p-2">
-            <BsArrowRight className="text-2xl" />
+          <div className="relative overflow-hidden">
+            <BlogSliderLp fromFeature={fromFeature} />
           </div>
         </div>
       </section>
 
       {/*Section About*/}
-      <section id="about">
+      <section id="about" className="pt-18">
         <div className="container mx-auto w-full">
           <h2 className="font-semibold">About Page</h2>
           <h2 className="mb-4 text-4xl font-semibold">
@@ -114,9 +107,9 @@ export default function LandingPage() {
       </section>
 
       {/* Section Facility */}
-      <section id="facility" className="mb-10">
+      <section id="facility" className="pt-18">
         <div className="px-10">
-          <div className="mt-10">
+          <div className="">
             <h2 className="mb-3 text-4xl font-semibold">
               Experience OurcBest Facility
             </h2>
@@ -207,9 +200,9 @@ export default function LandingPage() {
       </section>
 
       {/* Section Maps */}
-      <section id="maps">
+      <section id="maps" className="pt-18">
         <div className="relative">
-          <div className="m-10">
+          <div className="">
             <img src={assets.imageMaps} alt="" />
           </div>
           <div className="absolute top-1/2 left-25 flex -translate-y-1/2 gap-10">
@@ -232,349 +225,38 @@ export default function LandingPage() {
       </section>
 
       {/* Section Gallery */}
-      <section id="gallery">
-        <div>
-          <h1 className="text-center">EXPLORE MORE</h1>
-          <h4 className="mx-auto text-center text-3xl font-semibold">
-            Our International Packages
-          </h4>
-          <div className="mx-auto mt-12 flex max-w-5xl flex-wrap items-center justify-center gap-4">
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&w=736&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
+      <section id="gallery" className="pt-18">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h3 className="text-dark mb-1 text-sm font-bold uppercase md:text-lg">
+              EXPLORE MORE
+            </h3>
+            <h2 className="text-2xl font-semibold text-gray-400 capitalize sm:text-3xl md:text-4xl">
+              Our International Packages
+            </h2>
+          </div>
+          <div className="mt-8 columns-2 gap-2 sm:columns-3 md:columns-4">
+            {imgData.map((img) => (
+              <div className="relative mb-2 overflow-hidden rounded-lg md:mb-2">
+                <img
+                  src={img.namaGambar}
+                  alt="image"
+                  className="w-full object-cover"
+                  loading="lazy"
+                />
+
+                <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-2 text-white opacity-0 transition-opacity duration-400 hover:opacity-100 lg:p-4">
+                  <h1 className="text-sm font-medium lg:text-xl">
+                    {img.title}
+                  </h1>
+                  <button className="group relative flex w-fit cursor-pointer items-center gap-1 pr-2 text-xs text-gray-500 hover:text-gray-400 md:text-sm">
+                    View
+                    <BsBoxArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <BsArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-100 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-2 group-hover:scale-80 group-hover:opacity-0" />
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1649265825072-f7dd6942baed?q=80&w=798&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?q=80&w=687&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1729086046027-09979ade13fd?q=80&w=862&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1601568494843-772eb04aca5d?q=80&w=687&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1585687501004-615dfdfde7f1?q=80&w=703&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&w=736&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="group relative overflow-hidden rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1649265825072-f7dd6942baed?q=80&w=798&auto=format&fit=crop"
-                alt="image"
-                className="size-56 object-cover object-top"
-              />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <h1 className="text-xl font-medium">Image Title</h1>
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-sm text-white/70"
-                >
-                  Show More
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.125 1.625H11.375V4.875"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.41602 7.58333L11.3743 1.625"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9.75 7.04167V10.2917C9.75 10.579 9.63586 10.8545 9.4327 11.0577C9.22953 11.2609 8.95398 11.375 8.66667 11.375H2.70833C2.42102 11.375 2.14547 11.2609 1.9423 11.0577C1.73914 10.8545 1.625 10.579 1.625 10.2917V4.33333C1.625 4.04602 1.73914 3.77047 1.9423 3.5673C2.14547 3.36414 2.42102 3.25 2.70833 3.25H5.95833"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
