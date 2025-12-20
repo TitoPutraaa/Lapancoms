@@ -2,13 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import blogApi from "../../api/blogApi";
 
-export default function useTemplate1() {
+export default function useTemplate3() {
   const navigate = useNavigate();
   const [img1, setImg1] = useState(null);
   const [img2, setImg2] = useState(null);
   const [img3, setImg3] = useState(null);
-  const [img4, setImg4] = useState(null);
-
   const [preview1, setPreview1] = useState(() =>
     localStorage.getItem("prev_img1"),
   );
@@ -17,9 +15,6 @@ export default function useTemplate1() {
   );
   const [preview3, setPreview3] = useState(() =>
     localStorage.getItem("prev_img3"),
-  );
-  const [preview4, setPreview4] = useState(() =>
-    localStorage.getItem("prev_img4"),
   );
 
   const [text1, setText1] = useState(() => {
@@ -50,7 +45,6 @@ export default function useTemplate1() {
     setText2(deltaValue);
     localStorage.setItem("prev_text2", JSON.stringify(deltaValue));
   };
-
   const handleChangeText3 = (content, delta, source, editor) => {
     if (source !== "user") return;
 
@@ -137,32 +131,6 @@ export default function useTemplate1() {
     reader.readAsDataURL(file);
   };
 
-  const handleFileChange4 = (e) => {
-    const file = e.target.files[0];
-    console.log("e target", e.target.files);
-
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      alert("File harus gambar");
-      return;
-    }
-
-    if (file.size > 5 * 1024 * 1024) {
-      alert("Max file size 5MB");
-      return;
-    }
-
-    // Set state
-    setImg4(file);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreview4(reader.result);
-      localStorage.setItem("prev_img4", reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -178,10 +146,6 @@ export default function useTemplate1() {
       alert("please add an image");
       return;
     }
-    if (!img4) {
-      alert("please add an image");
-      return;
-    }
 
     const formData = new FormData();
     formData.append("judul", localStorage.getItem("judul"));
@@ -192,7 +156,6 @@ export default function useTemplate1() {
     formData.append("img1", img1);
     formData.append("img2", img2);
     formData.append("img3", img3);
-    formData.append("img4", img4);
 
     try {
       const response = await blogApi.add(formData);
@@ -205,7 +168,6 @@ export default function useTemplate1() {
       localStorage.removeItem("prev_img1");
       localStorage.removeItem("prev_img2");
       localStorage.removeItem("prev_img3");
-      localStorage.removeItem("prev_img4");
       navigate("/admin/dashboard", { replace: true });
     } catch (err) {
       console.log("FAILED:", err.response?.data);
@@ -221,11 +183,9 @@ export default function useTemplate1() {
     preview1,
     preview2,
     preview3,
-    preview4,
     handleFileChange1,
     handleFileChange2,
     handleFileChange3,
-    handleFileChange4,
     handleChangeText1,
     handleChangeText2,
     handleChangeText3,

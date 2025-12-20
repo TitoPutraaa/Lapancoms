@@ -14,7 +14,7 @@ export default function ViewTmp3({ data }) {
     <div className="bg-gray-100">
       <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
         <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
-          INI TEMPLATE 3 Desa Wisata Yang Diakui di Dunia
+          {data?.judul}
         </h1>
         <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img
