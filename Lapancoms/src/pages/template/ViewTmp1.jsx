@@ -36,22 +36,22 @@ export default function ViewTmp1({ data }) {
             quaerat!
           </p>
           <p>
-            Minus tenetur deleniti deserunt qui enim, praesentium sed
-            temporibus, inventore consequatur, vitae velit totam iure itaque
-            sapiente? Quae, eveniet excepturi laudantium voluptate doloremque
-            vitae animi porro modi nobis officia pariatur dolorum enim cumque
-            voluptates amet aperiam facere. In ratione, similique nobis illum at
-            rerum ducimus ea accusamus! Quia et qui at voluptatibus aspernatur
-            quas harum iste fugiat quasi iure molestiae expedita illum deserunt
-            libero molestias dolor, maxime unde commodi possimus animi. Eius ut
-            officia impedit magnam maiores? Repellat ipsa nam minima est quas
-            tenetur blanditiis magnam voluptatem voluptas laudantium ex odio
-            error architecto, iure consectetur dignissimos animi numquam nihil
-            in illum fugit laborum reiciendis! Repellat, eaque doloribus!
-            Aperiam recusandae, animi, voluptatem tenetur hic, distinctio optio
-            autem illo reiciendis obcaecati maiores architecto. Quod ab
-            dignissimos illo minima veritatis aliquam repudiandae repellendus
-            laudantium accusantium error doloribus vero, est inventore.
+          Minus tenetur deleniti deserunt qui enim, praesentium sed temporibus,
+          inventore consequatur, vitae velit totam iure itaque sapiente? Quae,
+          eveniet excepturi laudantium voluptate doloremque vitae animi porro
+          modi nobis officia pariatur dolorum enim cumque voluptates amet
+          aperiam facere. In ratione, similique nobis illum at rerum ducimus ea
+          accusamus! Quia et qui at voluptatibus aspernatur quas harum iste
+          fugiat quasi iure molestiae expedita illum deserunt libero molestias
+          dolor, maxime unde commodi possimus animi. Eius ut officia impedit
+          magnam maiores? Repellat ipsa nam minima est quas tenetur blanditiis
+          magnam voluptatem voluptas laudantium ex odio error architecto, iure
+          consectetur dignissimos animi numquam nihil in illum fugit laborum
+          reiciendis! Repellat, eaque doloribus! Aperiam recusandae, animi,
+          voluptatem tenetur hic, distinctio optio autem illo reiciendis
+          obcaecati maiores architecto. Quod ab dignissimos illo minima
+          veritatis aliquam repudiandae repellendus laudantium accusantium error
+          doloribus vero, est inventore.
           </p>
         </div>
       </div>
