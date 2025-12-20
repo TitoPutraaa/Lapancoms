@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import blogApi from "../api/blogApi";
+import blogApi from "../../api/blogApi";
 
 export default function useTemplate1() {
   const navigate = useNavigate();
+  const [img1, setImg1] = useState(null);
   const [preview, setPreview] = useState(() =>
     localStorage.getItem("prev_img1"),
   );
+
   const [text1, setText1] = useState(() => {
     const saved = localStorage.getItem("prev_text1");
     return saved ? JSON.parse(saved) : null;
   });
-  const [img1, setImg1] = useState(null);
 
   const handleQuillChange = (content, delta, source, editor) => {
     if (source !== "user") return;
