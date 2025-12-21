@@ -73,7 +73,7 @@ export default function LandingPage() {
       </section>
 
       {/*Section About*/}
-      <section id="about" className="pt-18">
+      <section id="about" className="">
         <div className="container mx-auto w-full">
           <h2 className="font-semibold">About Page</h2>
           <h2 className="mb-4 text-4xl font-semibold">
@@ -112,22 +112,24 @@ export default function LandingPage() {
 
       {/* Section Facility */}
       <section id="facility" className="pt-18">
-        <div className="px-10">
-          <div className="">
-            <h2 className="mb-3 text-4xl font-semibold">
+        <div className="bg-amber-900 px-4">
+          <div className="bg-accent mb-6">
+            <h2 className="mb-2 text-2xl font-semibold sm:text-3xl md:text-4xl">
               Experience OurcBest Facility
             </h2>
-            <p className="mr-210 mb-2">
+            <p className="mb-2 text-sm md:text-base lg:mr-210">
               Discover new attractions and experiences to match your interests.
             </p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between gap-4 bg-amber-700 md:flex-row">
             <div className="shadow-soft rounded-4xl">
-              <img
-                src={assets.imageBlog}
-                alt=""
-                className="w-170 rounded-4xl"
-              />
+              <div className="overflow-hidden rounded-xl">
+                <img
+                  src={assets.imageBlog}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <div className="ml-6">
                 <h3 className="mt-9 mb-5 text-3xl">Our Facility</h3>
                 <p className="w-sm">
@@ -146,7 +148,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div>
-              <div className="flex flex-col gap-5">
+              <div className="flex gap-5 md:flex-col">
                 <div className="shadow-soft w-120 rounded-2xl">
                   <div className="">
                     <img
@@ -204,7 +206,7 @@ export default function LandingPage() {
       </section>
 
       {/* Section Maps */}
-      <section id="maps" className="pt-18">
+      {/* <section id="maps" className="pt-18">
         <div className="relative">
           <div className="">
             <img src={assets.imageMaps} alt="" />
@@ -226,7 +228,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Section Gallery */}
       <section id="gallery" className="pt-18">
