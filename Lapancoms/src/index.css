@@ -33,6 +33,10 @@
     color: #ffa500;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     margin: 0;
     /* display: flex; */ /* blm terlalu dipakai */

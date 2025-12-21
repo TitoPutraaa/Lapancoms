@@ -249,3 +249,28 @@ export const imgData = [
     namaGambar: assets.imageMaps,
   },
 ];
+
+export const dataLp = [
+  {
+    idPage: 1,
+    idAdmin: 1,
+
+    home_h1: "It's A Big World Out There Go Explore",
+    home_p1:
+      "Discover new attractions and experience to match yuor interests and travet style",
+
+    about_h1: "Beautiful Italy Let's travel",
+    about_p1:
+      "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound the actual teachings of the great explorer of the truth, the master- builder of human happiness. No one rejects, dislike, or avoids plasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremly painful. Nor again is there Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam corrupti esse exercitationem minus expedita. Id accusantium placeat voluptates sit velit vero quos, perspiciatis inventore, tenetur quisquam illum? Voluptatibus, optio qui! Architecto error nam porro expedita, aperiam totam excepturi illo corrupti, minus, impedit nobis. Pariatur nihil consequuntur odio, iure ad incidunt cum saepe, exercitationem provident explicabo nostrum vitae officiis deserunt necessitatibus.",
+
+    map_h1: "Come and Visit us",
+    map_p1:
+      " discover new attractions and experiences to match your interests.",
+
+    footer_p1:
+      "Lorem ipsum dolor sit amet Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, iste.",
+    instagram: "https://www.instagram.com",
+    facebook: "https://www.facebook.com",
+    youtube: "https://www.youtube.com",
+  },
+];

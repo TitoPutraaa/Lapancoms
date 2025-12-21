@@ -104,9 +104,7 @@ export default function Navbar() {
               className="group sm:hidden"
             >
               <span className="sr-only">Open main menu</span>
-              <BsList
-                className={`cursor-pointer text-2xl transition duration-300 group-hover:text-gray-200 ${navTextClass}`}
-              />
+              <BsList className={`cursor-pointer text-2xl ${navTextClass}`} />
             </button>
 
             <div className={navWrapperClass}>

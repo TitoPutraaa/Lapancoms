@@ -28,6 +28,7 @@ export default function AppRouter() {
         <Route path="/demo" element={<Demo />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LandingPage />} />
+        <Route path="/allBlogs" element={<AllBlogs />} />
         <Route path="/blog/:id" element={<BlogView />} />
         <Route path="/admin/login" element={<Login />} />
 

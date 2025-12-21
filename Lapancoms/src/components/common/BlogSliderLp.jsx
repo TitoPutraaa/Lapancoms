@@ -73,7 +73,7 @@ export default function BlogSliderLp({ fromFeature }) {
         <button
           type="button"
           onClick={() => swiperRef.current.slidePrev()}
-          className={`group overflow-hidden rounded-full border border-transparent p-2 transition duration-500 hover:border-white hover:bg-green-800 sm:right-6 ${isLocked ? "hidden" : "block"} ${isBeginning ? "pointer-events-none cursor-not-allowed bg-gray-500 opacity-50" : "bg-green-700 opacity-100"}`}
+          className={`group overflow-hidden rounded-full border border-transparent p-2 transition duration-500 select-none hover:border-white hover:bg-green-800 sm:right-6 ${isLocked ? "hidden" : "block"} ${isBeginning ? "pointer-events-none cursor-not-allowed bg-gray-500 opacity-50 " : "cursor-pointer bg-green-700 opacity-100"}`}
         >
           <BsArrowLeft className="group-hover:text-secondary stroke-1 text-base text-white transition duration-400 group-hover:translate-x-0.5 md:text-xl" />
         </button>
@@ -81,7 +81,7 @@ export default function BlogSliderLp({ fromFeature }) {
         <button
           type="button"
           onClick={() => swiperRef.current.slideNext()}
-          className={`group overflow-hidden rounded-full border border-transparent p-2 transition duration-500 hover:border-white hover:bg-green-800 sm:right-6 ${isLocked ? "hidden" : "block"} ${isEnd ? "pointer-events-none cursor-not-allowed bg-gray-500 opacity-50" : "bg-green-700 opacity-100"}`}
+          className={`group overflow-hidden rounded-full border border-transparent p-2 transition duration-500 select-none hover:border-white hover:bg-green-800 sm:right-6 ${isLocked ? "hidden" : "block"} ${isEnd ? "pointer-events-none cursor-not-allowed bg-gray-500 opacity-50" : "cursor-pointer bg-green-700 opacity-100"}`}
         >
           <BsArrowRight className="group-hover:text-secondary stroke-1 text-base text-white transition duration-400 group-hover:translate-x-0.5 md:text-xl" />
         </button>
