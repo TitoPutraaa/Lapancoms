@@ -52,7 +52,7 @@ export default function Template1() {
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
             {!preview && <DropImg id={"dropzone-file"} />}
             <input
               id="dropzone-file"

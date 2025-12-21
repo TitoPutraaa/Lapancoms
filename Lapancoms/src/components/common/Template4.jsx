@@ -72,8 +72,8 @@ export default function Template4() {
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="flex">
-            <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="gap=5 flex items-center">
+            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview1 && <DropImg id={"dropImg1"} />}
               <input
                 id="dropImg1"
@@ -97,7 +97,7 @@ export default function Template4() {
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-1/2 pb-6">
               <ReactQuill
                 theme="snow"
                 value={text1}

@@ -63,8 +63,8 @@ export default function Template5() {
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="flex">
-            <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="flex items-center gap-5">
+            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview1 && <DropImg id={"dropImg1"} />}
               <input
                 id="dropImg1"
@@ -88,7 +88,7 @@ export default function Template5() {
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-1/2 pb-6">
               <ReactQuill
                 theme="snow"
                 value={text1}
@@ -98,8 +98,8 @@ export default function Template5() {
           </div>
 
           {/* IMAGE 2 */}
-          <div className="flex flex-row-reverse">
-            <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="flex flex-row-reverse items-center gap-5">
+            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview2 && <DropImg id={"dropImg2"} />}
               <input
                 id="dropImg2"
@@ -123,7 +123,7 @@ export default function Template5() {
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-1/2 pb-6">
               <ReactQuill
                 theme="snow"
                 value={text2}
