@@ -18,13 +18,21 @@ import {
 } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { publicGalleryApi, publicLP } from "../api/publicApi";
+import GalleryView from "../components/common/GalleryView";
 
 export default function LandingPage() {
   const fromFeature = "lp";
   const menu = ["home", "news", "about", "facility", "maps", "gallery"];
+  const [viewGallery, setViewGallery] = useState(false);
+  const [idGallery, setIdGallery] = useState(null);
   const [lpData, setLpData] = useState({});
   const [gallerys, setGallerys] = useState([]);
-  const url = `http://127.0.0.1:8000/storage/galery/${gallerys[0].namaGambar}`;
+
+  const handleSelect = (id) => {
+    setIdGallery(id);
+    setViewGallery(true);
+    console.log("id selec", id);
+  };
 
   const handleClickMenu = (id) => {
     document.getElementById(id)?.scrollIntoView();
@@ -290,24 +298,26 @@ export default function LandingPage() {
             </h2>
           </div>
           <div className="mt-8 columns-2 gap-2 sm:columns-3 md:columns-4">
-            {gallerys?.map((img) => (
-              <div className="relative mb-2 overflow-hidden rounded-lg md:mb-2">
-                <img
-                  src={url}
-                  alt="image"
-                  className="w-full object-cover"
-                  loading="lazy"
-                />
+            {gallerys?.map((img, index) => (
+              <div onClick={() => handleSelect(img)}>
+                <div className="relative mb-2 overflow-hidden rounded-lg md:mb-2">
+                  <img
+                    src={`http://127.0.0.1:8000/storage/galery/${gallerys[index]?.namaGambar}`}
+                    alt="image"
+                    className="w-full object-cover"
+                    loading="lazy"
+                  />
 
-                <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-2 text-white opacity-0 transition-opacity duration-400 hover:opacity-100 lg:p-4">
-                  <h1 className="text-sm font-medium lg:text-xl">
-                    {img.title}
-                  </h1>
-                  <button className="group relative flex w-fit cursor-pointer items-center gap-1 pr-2 text-xs text-gray-500 hover:text-gray-400 md:text-sm">
-                    View
-                    <BsBoxArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <BsArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-100 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-2 group-hover:scale-80 group-hover:opacity-0" />
-                  </button>
+                  <div className="absolute inset-0 flex flex-col justify-end bg-black/50 p-2 text-white opacity-0 transition-opacity duration-400 hover:opacity-100 lg:p-4">
+                    <h1 className="text-sm font-medium lg:text-xl">
+                      {img.judulGambar}
+                    </h1>
+                    <button className="group relative flex w-fit cursor-pointer items-center gap-1 pr-2 text-xs text-gray-500 hover:text-gray-400 md:text-sm">
+                      View
+                      <BsBoxArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      <BsArrowUpRight className="absolute top-1/2 left-full -translate-y-1/2 stroke-1 opacity-100 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-2 group-hover:scale-80 group-hover:opacity-0" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -399,6 +409,13 @@ export default function LandingPage() {
           </p>
         </div>
       </footer>
+      {viewGallery && (
+        <GalleryView
+          setViewGallery={setViewGallery}
+          fromFeature={fromFeature}
+          data={idGallery}
+        />
+      )}
     </>
   );
 }
