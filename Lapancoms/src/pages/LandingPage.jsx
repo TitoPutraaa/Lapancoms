@@ -18,6 +18,7 @@ import {
   FaPaperPlane,
 } from "react-icons/fa6";
 import { useState } from "react";
+import BlogSlider from "../components/common/BlogSlider";
 
 export default function LandingPage() {
   const fromFeature = "lp";
@@ -70,7 +71,7 @@ export default function LandingPage() {
           <div className="mb-5 flex items-center justify-between">
             <div className="">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                Latest Stories from Croatia
+                BLOGS
               </h2>
             </div>
             <Link to={"../allBlogs"} state={{ fromFeature: fromFeature }}>

@@ -5,31 +5,29 @@ import "swiper/css/pagination";
 import { useState, useRef, useEffect } from "react";
 import BlogCardV2 from "./BlogCardV2";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-// import blogApi from "../../api/blogApi";
 import { useNavigate } from "react-router-dom";
-import { blogData } from "../../assets/DataDummy";
+import { publicBlogApi } from "../../api/publicApi";
 
 export default function BlogSliderLp({ fromFeature }) {
-  // const [select, setSelect] = useState(null);
   const swiperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true); // check apakah sudah diawal
   const [isEnd, setIsEnd] = useState(false); // check apakah sudah diakhir
   const [isLocked, setIsLocked] = useState(false);
-  // const [Blogs, setBlogs] = useState([]);
+  const [Blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
-  // const loadBlogs = async () => {
-  //   try {
-  //     const res = await blogApi.getAll();
-  //     setBlogs(res.data.data);
-  //   } catch (error) {
-  //     console.error("Error loading admins:", error);
-  //   }
-  // };
+  const loadBlogs = async () => {
+    try {
+      const res = await publicBlogApi.getAll();
+      setBlogs(res.data.data);
+    } catch (error) {
+      console.error("Error loading admins:", error);
+    }
+  };
 
-  // useEffect(() => {
-  //   loadBlogs();
-  // }, []);
+  useEffect(() => {
+    loadBlogs();
+  }, []);
 
   const checkEdgePosition = (swiper) => {
     setIsBeginning(swiper.activeIndex === 0);
@@ -51,9 +49,11 @@ export default function BlogSliderLp({ fromFeature }) {
         spaceBetween={10}
         slidesPerView={"auto"}
       >
-        {blogData.slice(0, 10).map((data) => (
+        {Blogs.slice(0, 10).map((data) => (
           <SwiperSlide className="w-auto!">
-            <div onClick={() => navigate(`/blog/${data.idBlog}`)}>
+            <div
+              onClick={() => navigate(`/${fromFeature}/blog/${data.idBlog}`)}
+            >
               <BlogCardV2
                 key={data.idBlog}
                 idBlog={data.idBlog}

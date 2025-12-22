@@ -13,8 +13,10 @@ export default function BlogCardV2({
     url = `../dashboard/blog/${idBlog}`;
   } else if (fromFeature === "delete") {
     url = `../delete/blog/${idBlog}`;
+  } else if (fromFeature === "lp") {
+    url = `/`;
   } else {
-    console.log("error from blog card");
+    console.log("error from blog card, url back");
   }
 
   const urlImage = `http://127.0.0.1:8000/storage/template/${image}`;

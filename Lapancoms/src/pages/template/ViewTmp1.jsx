@@ -20,8 +20,8 @@ export default function ViewTmp1({ data }) {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <div dangerouslySetInnerHTML={{ __html: text1 }} />
+        <div className="text-primary flex w-28 flex-wrap gap-6 pb-6 text-sm sm:text-base">
+          <div className="" dangerouslySetInnerHTML={{ __html: text1 }} />
         </div>
       </div>
     </div>

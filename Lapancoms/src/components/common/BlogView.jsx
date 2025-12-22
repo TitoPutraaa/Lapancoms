@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import BtnDeleteM from "./BtnDeleteM";
 import { BsArrowLeft, BsTrash } from "react-icons/bs";
 import { FaReply } from "react-icons/fa";
-import blogApi from "../../api/blogApi";
 import ViewTmp1 from "../../pages/template/ViewTmp1";
 import ViewTmp2 from "../../pages/template/ViewTmp2";
 import ViewTmp3 from "../../pages/template/ViewTmp3";
 import ViewTmp4 from "../../pages/template/ViewTmp4";
 import ViewTmp5 from "../../pages/template/ViewTmp5";
+import { publicBlogApi } from "../../api/publicApi";
 
 export default function BlogView() {
   const params = useParams();
@@ -20,7 +20,7 @@ export default function BlogView() {
 
   const loadBlogId = async (id) => {
     try {
-      const res = await blogApi.getById(id);
+      const res = await publicBlogApi.getById(id);
       setBlog(res.data.data);
       console.log("f view", res.data.data);
 
@@ -51,6 +51,9 @@ export default function BlogView() {
   }
 
   let url = `/admin/${fromFeature}`;
+  if (fromFeature === "lp") {
+    url = "/";
+  }
   return (
     <div className="bg-secondary w-full pb-8">
       <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
