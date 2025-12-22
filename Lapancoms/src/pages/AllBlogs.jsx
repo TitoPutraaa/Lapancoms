@@ -28,6 +28,10 @@ export default function AllBlogs() {
   console.log("ff all", fromFeature);
 
   let urlBack = `/admin/${fromFeature}`;
+
+  if (fromFeature === "lp") {
+    urlBack = "/";
+  }
   return (
     <div className="mt-10">
       <div className="mb-5 flex justify-between">

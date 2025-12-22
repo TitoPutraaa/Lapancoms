@@ -30,6 +30,7 @@ export default function AppRouter() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path=":feature/blog/:id" element={<BlogView />} />
+        <Route path="allBlogs" element={<AllBlogs />} />
 
         <Route
           element={<PrivateRoute allowedRoles={["admin", "super-admin"]} />}
