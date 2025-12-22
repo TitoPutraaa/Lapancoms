@@ -3,7 +3,6 @@ import { imgData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import BlogSliderLp from "../components/common/BlogSliderLp";
-import { dataLp } from "../assets/DataDummy";
 import {
   BsArrowRight,
   BsArrowUpRight,
@@ -18,12 +17,14 @@ import {
   FaPaperPlane,
 } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { publicLP } from "../api/publicApi";
+import { publicGalleryApi, publicLP } from "../api/publicApi";
 
 export default function LandingPage() {
   const fromFeature = "lp";
   const menu = ["home", "news", "about", "facility", "maps", "gallery"];
   const [lpData, setLpData] = useState({});
+  const [gallerys, setGallerys] = useState([]);
+  const url = `http://127.0.0.1:8000/storage/galery/${gallerys[0].namaGambar}`;
 
   const handleClickMenu = (id) => {
     document.getElementById(id)?.scrollIntoView();
@@ -39,8 +40,19 @@ export default function LandingPage() {
     }
   };
 
+  const loadGallery = async () => {
+    try {
+      const res = await publicGalleryApi.getAll();
+      setGallerys(res.data.data);
+      console.log("gal", res.data.data);
+    } catch (error) {
+      console.log("gal lp", error);
+    }
+  };
+
   useEffect(() => {
     loadLP();
+    loadGallery();
   }, []);
 
   return (
@@ -278,10 +290,10 @@ export default function LandingPage() {
             </h2>
           </div>
           <div className="mt-8 columns-2 gap-2 sm:columns-3 md:columns-4">
-            {imgData.map((img) => (
+            {gallerys?.map((img) => (
               <div className="relative mb-2 overflow-hidden rounded-lg md:mb-2">
                 <img
-                  src={img.namaGambar}
+                  src={url}
                   alt="image"
                   className="w-full object-cover"
                   loading="lazy"
