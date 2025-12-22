@@ -17,17 +17,32 @@ import {
   FaYoutube,
   FaPaperPlane,
 } from "react-icons/fa6";
-import { useState } from "react";
-import BlogSlider from "../components/common/BlogSlider";
+import { useEffect, useState } from "react";
+import { publicLP } from "../api/publicApi";
 
 export default function LandingPage() {
   const fromFeature = "lp";
   const menu = ["home", "news", "about", "facility", "maps", "gallery"];
-  const [lpData, setLpData] = useState(dataLp[0]);
+  const [lpData, setLpData] = useState({});
 
   const handleClickMenu = (id) => {
     document.getElementById(id)?.scrollIntoView();
   };
+
+  const loadLP = async () => {
+    try {
+      const res = await publicLP.getAll();
+      setLpData(res.data.data);
+      console.log("lp", res.data.data[0]);
+    } catch (error) {
+      console.log("lp", error);
+    }
+  };
+
+  useEffect(() => {
+    loadLP();
+  }, []);
+
   return (
     <>
       {/* Navbar */}
@@ -46,10 +61,10 @@ export default function LandingPage() {
           <div className="absolute right-0 bottom-15 left-0 z-9 px-6 sm:bottom-30 md:bottom-1/2 md:translate-y-1/2 lg:px-30">
             <div className="container mx-auto">
               <h1 className="mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
-                {lpData.home_h1}
+                {lpData[0]?.home_h1}
               </h1>
               <p className="mb-20 text-sm text-white md:text-base lg:w-120">
-                {lpData.home_p1}
+                {lpData[0]?.home_p1}
               </p>
               <div onClick={() => handleClickMenu("news")}>
                 <div className="group relative w-31 cursor-pointer overflow-hidden rounded-xl bg-white md:w-35">
@@ -95,7 +110,7 @@ export default function LandingPage() {
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
           <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            {lpData.about_h1}
+            {lpData[0]?.about_h1}
           </h3>
           <div className="shadow-soft flex w-full flex-col rounded-2xl sm:items-stretch md:flex-row md:gap-5">
             <div className="h-90 w-full shrink-0 self-stretch overflow-hidden rounded-2xl object-cover md:h-auto md:w-80 lg:w-100 xl:w-110">
@@ -107,7 +122,9 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <p className="line-clamp-7 lg:line-clamp-9">{lpData.about_p1}</p>
+              <p className="line-clamp-7 lg:line-clamp-9">
+                {lpData[0]?.about_p1}
+              </p>
               <div className="flex justify-end">
                 <Link>
                   <div className="group hover:text-dark relative flex w-fit justify-end gap-3 text-base font-medium text-gray-800 transition-colors duration-300">
@@ -231,9 +248,9 @@ export default function LandingPage() {
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
             <div className="mb-7 flex flex-col gap-2 px-4 pt-18 text-center">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                {lpData.map_h1}
+                {lpData[0]?.map_h1}
               </h2>
-              <p className="text-sm md:text-base">{lpData.map_p1}</p>
+              <p className="text-sm md:text-base">{lpData[0]?.map_p1}</p>
             </div>
             <div className="h-110">
               <iframe
@@ -298,7 +315,7 @@ export default function LandingPage() {
                 </h2>
               </div>
               <p className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
-                {lpData.footer_p1}
+                {lpData[0]?.footer_p1}
               </p>
             </div>
 
@@ -341,27 +358,21 @@ export default function LandingPage() {
             </p>
             <div className="flex gap-4">
               <a
-                href={lpData.facebook}
+                href={lpData[0]?.facebook}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaFacebook />
               </a>
               <a
-                href={lpData.instagram}
+                href={lpData[0]?.instagram}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaInstagram />
               </a>
               <a
-                href=""
-                className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
-              >
-                <FaXTwitter />
-              </a>
-              <a
-                href={lpData.youtube}
+                href={lpData[0]?.youtube}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
