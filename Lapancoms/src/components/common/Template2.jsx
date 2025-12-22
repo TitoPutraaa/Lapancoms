@@ -83,7 +83,7 @@ export default function Template2() {
               {preview1 && (
                 <label
                   htmlFor="dropImg1"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
                 ></label>
               )}
             </div>
@@ -118,7 +118,7 @@ export default function Template2() {
               {preview2 && (
                 <label
                   htmlFor="dropImg2"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
                 ></label>
               )}
             </div>

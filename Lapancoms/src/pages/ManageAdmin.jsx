@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AddAdmin from "../components/common/AddAdmin";
 import adminApi from "../api/adminApi";
 import DeletedAdmin from "../components/common/DeletedAdmin";
-import { BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle, BsTrash } from "react-icons/bs";
 import { HiOutlineUserPlus } from "react-icons/hi2";
 
 function ManageAdmin() {
@@ -104,7 +104,7 @@ function ManageAdmin() {
                     className="text-danger hover:text-danger/80 cursor-pointer"
                     aria-label={`Delete admin ${data.username}`}
                   >
-                    <i className="fa-solid fa-trash"></i>
+                    <BsTrash />
                   </button>
                 </td>
               </tr>

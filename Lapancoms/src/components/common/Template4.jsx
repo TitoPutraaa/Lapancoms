@@ -72,7 +72,7 @@ export default function Template4() {
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="gap=5 flex items-center">
+          <div className="gap=5 flex flex-row-reverse items-center">
             <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview1 && <DropImg id={"dropImg1"} />}
               <input

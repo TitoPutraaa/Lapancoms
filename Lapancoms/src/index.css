@@ -120,7 +120,7 @@ ol {
   @apply text-primary font-poppins text-sm sm:text-base;
 }
 .ql-editor h1 {
-  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-5xl;
+  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
 }
 .ql-editor h2 {
   @apply font-poppins text-primary text-2xl font-semibold md:text-3xl lg:text-4xl;
