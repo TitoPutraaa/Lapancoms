@@ -99,7 +99,11 @@ export default function UpdateLP() {
                   <>
                     <ReactQuill
                       theme="snow"
-                      value={lpData[0]?.home_h1}
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.home_h1
+                      }
                       modules={{ toolbar: toolbarOptions }}
                       onChange={handleQuillChange}
                       className=""
@@ -127,7 +131,11 @@ export default function UpdateLP() {
                     // dangerouslySetInnerHTML={{ __html: home_h1 }}
                   >
                     <ReactQuill
-                      value={lpData[0]?.home_h1}
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.home_h1
+                      }
                       readOnly
                       theme="bubble"
                     />
