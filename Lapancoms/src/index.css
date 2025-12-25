@@ -107,8 +107,14 @@ input::-webkit-outer-spin-button {
   color: #131313;
   background-color: #ffff;
 }
+.hero-title .ql-editor {
+  font-size: 1.5rem;
+  font-weight: 700;
+  overflow: hidden;
+  padding: 0;
+}
 
-/* Style text Editor */
+/* Style text Editor 
 .ql-editor.ql-blank {
   @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
 }
@@ -119,16 +125,17 @@ input::-webkit-outer-spin-button {
 ol {
   @apply text-primary font-poppins text-sm sm:text-base;
 }
-.ql-editor h1 {
-  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
-}
 .ql-editor h2 {
   @apply font-poppins text-primary text-2xl font-semibold md:text-3xl lg:text-4xl;
 }
 .ql-editor h3 {
   @apply font-poppins text-primary text-xl font-semibold md:text-2xl lg:text-3xl;
-}
+} 
+.ql-editor h1 {
+  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
+} */
 
 /* .blog-lp .swiper-wrapper {
   transition-timing-function: linear !important;
-} */
+}
+  

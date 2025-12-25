@@ -1,5 +1,7 @@
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 
+import "react-quill-new/dist/quill.bubble.css";
+
 export default function ViewTmp4({ data }) {
   const img1 = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
   const img2 = `http://127.0.0.1:8000/storage/template/${data?.img2}`;
@@ -26,7 +28,7 @@ export default function ViewTmp4({ data }) {
             />
           </div>
           <div className="text-primary flex w-full flex-wrap gap-6 pb-6 text-sm sm:text-base">
-            <div dangerouslySetInnerHTML={{ __html: text1 }} />
+            <ReactQuill value={text1} theme="bubble" readOnly />
           </div>
         </div>
 
@@ -38,7 +40,7 @@ export default function ViewTmp4({ data }) {
           />
         </div>
         <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <div dangerouslySetInnerHTML={{ __html: text2 }} />
+          <ReactQuill value={text2} theme="bubble" readOnly />
         </div>
         <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img
@@ -48,7 +50,7 @@ export default function ViewTmp4({ data }) {
           />
         </div>
         <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <div dangerouslySetInnerHTML={{ __html: text3 }} />
+          <ReactQuill value={text3} theme="bubble" readOnly />
         </div>
         <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img

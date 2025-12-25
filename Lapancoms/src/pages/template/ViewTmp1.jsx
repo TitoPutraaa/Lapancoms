@@ -1,4 +1,6 @@
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.bubble.css";
 
 export default function ViewTmp1({ data }) {
   const urlImage = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
@@ -21,7 +23,7 @@ export default function ViewTmp1({ data }) {
           />
         </div>
         <div className="text-primary flex w-28 flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <div className="" dangerouslySetInnerHTML={{ __html: text1 }} />
+          <ReactQuill value={text1} theme="bubble" readOnly />
         </div>
       </div>
     </div>

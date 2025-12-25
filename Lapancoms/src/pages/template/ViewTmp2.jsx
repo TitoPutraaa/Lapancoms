@@ -1,4 +1,7 @@
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import ReactQuill from "react-quill-new";
+
+import "react-quill-new/dist/quill.bubble.css";
 
 export default function ViewTmp2({ data }) {
   const img1 = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
@@ -23,10 +26,9 @@ export default function ViewTmp2({ data }) {
             />
           </div>
           <div className="text-primary w-1/2 gap-6 pb-6 text-sm sm:text-base">
-            <div
-              className="ql-editor wrap-anywhere"
-              dangerouslySetInnerHTML={{ __html: text1 }}
-            />
+            <div className="ql-editor wrap-anywhere">
+              <ReactQuill value={text1} theme="bubble" readOnly />
+            </div>
           </div>
         </div>
         <div className="mt-7 flex gap-5">
@@ -38,7 +40,7 @@ export default function ViewTmp2({ data }) {
             />
           </div>
           <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-            <div className="" dangerouslySetInnerHTML={{ __html: text2 }} />
+            <ReactQuill value={text2} theme="bubble" readOnly />
           </div>
         </div>
       </div>

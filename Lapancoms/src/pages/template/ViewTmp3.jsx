@@ -1,4 +1,5 @@
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import "react-quill-new/dist/quill.bubble.css";
 
 export default function ViewTmp3({ data }) {
   const img1 = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
@@ -24,7 +25,7 @@ export default function ViewTmp3({ data }) {
           />
         </div>
         <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <div dangerouslySetInnerHTML={{ __html: text1 }} />
+          <ReactQuill value={text1} theme="bubble" readOnly />
         </div>
         <div className="flex items-center gap-5">
           <div className="mb-8 size-90 shrink-0 overflow-hidden">
@@ -35,7 +36,7 @@ export default function ViewTmp3({ data }) {
             />
           </div>
           <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-            <div dangerouslySetInnerHTML={{ __html: text2 }} />
+            <ReactQuill value={text2} theme="bubble" readOnly />
           </div>
         </div>
         <div className="flex flex-row-reverse items-center gap-5">
@@ -47,7 +48,7 @@ export default function ViewTmp3({ data }) {
             />
           </div>
           <div className="text-primary flex w-full flex-wrap gap-6 pb-6 text-sm sm:text-base">
-            <div dangerouslySetInnerHTML={{ __html: text3 }} />
+            <ReactQuill value={text3} theme="bubble" readOnly />
           </div>
         </div>
       </div>

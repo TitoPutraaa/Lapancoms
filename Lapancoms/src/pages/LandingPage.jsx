@@ -1,8 +1,9 @@
 import { assets } from "../assets/assets";
-import { imgData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import BlogSliderLp from "../components/common/BlogSliderLp";
+
+import "react-quill-new/dist/quill.bubble.css";
 import {
   BsArrowRight,
   BsArrowUpRight,
@@ -19,6 +20,8 @@ import {
 import { useEffect, useState } from "react";
 import { publicGalleryApi, publicLP } from "../api/publicApi";
 import GalleryView from "../components/common/GalleryView";
+import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import ReactQuill from "react-quill-new";
 
 export default function LandingPage() {
   const fromFeature = "lp";
@@ -27,6 +30,12 @@ export default function LandingPage() {
   const [idGallery, setIdGallery] = useState(null);
   const [lpData, setLpData] = useState({});
   const [gallerys, setGallerys] = useState([]);
+  // console.log([lpData[0]?.home_h1]);
+
+  const converter = new QuillDeltaToHtmlConverter(lpData[0]?.home_h1?.ops);
+  const home_h1 = converter.convert();
+
+  console.log("ulp", home_h1);
 
   const handleSelect = (id) => {
     setIdGallery(id);
@@ -80,8 +89,10 @@ export default function LandingPage() {
           </div>
           <div className="absolute right-0 bottom-15 left-0 z-9 px-6 sm:bottom-30 md:bottom-1/2 md:translate-y-1/2 lg:px-30">
             <div className="container mx-auto">
-              <h1 className="mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
-                {lpData[0]?.home_h1}
+              <h1 className="hero-title mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
+                <div>
+                  <ReactQuill value={home_h1} theme="bubble" readOnly />
+                </div>
               </h1>
               <p className="mb-20 text-sm text-white md:text-base lg:w-120">
                 {lpData[0]?.home_p1}
