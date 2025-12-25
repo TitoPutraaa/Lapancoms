@@ -13,14 +13,12 @@ import {
 import {
   FaFacebook,
   FaInstagram,
-  FaXTwitter,
   FaYoutube,
   FaPaperPlane,
 } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { publicGalleryApi, publicLP } from "../api/publicApi";
 import GalleryView from "../components/common/GalleryView";
-import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 import ReactQuill from "react-quill-new";
 
 export default function LandingPage() {

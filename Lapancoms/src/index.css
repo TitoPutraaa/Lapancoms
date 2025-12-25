@@ -114,6 +114,31 @@ input::-webkit-outer-spin-button {
   padding: 0;
 }
 
+.border-lp .ql-bubble{
+  border: 2px dashed black;
+  border-radius: 10px;
+}
+
+.ql-toolbar.ql-snow {
+  background-color: rgb(243, 244, 246, 0.35); 
+  border-radius: 8px 8px 0 0;
+}
+
+.ql-snow .ql-stroke {
+  stroke: black !important;
+}
+.ql-snow .ql-fill {
+  fill: white !important;
+}
+
+
+.ql-snow .ql-picker.ql-header .ql-picker-label::before {
+  color: black;
+  font-weight: bold;
+}
+
+
+
 /* Style text Editor 
 .ql-editor.ql-blank {
   @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];

@@ -30,7 +30,7 @@ export default function UpdateLP() {
   const [viewGallery, setViewGallery] = useState(false);
   const [idGallery, setIdGallery] = useState(null);
   const [gallerys, setGallerys] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
   const [lpData, setLpData] = useState({});
 
   const loadLP = async () => {
@@ -93,9 +93,9 @@ export default function UpdateLP() {
             />
           </div>
           <div className="absolute right-0 bottom-15 left-0 z-9 px-6 sm:bottom-30 md:bottom-1/2 md:translate-y-1/2 lg:px-30">
-            <div className="container mx-auto border-dashed border-white">
-              <h1 className="hero-title mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
-                {isEdit ? (
+            <div className="container mx-auto">
+              <h1 className="hero-title border-lp mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
+                {isEdit === "s1h1" && isEdit !== null ? (
                   <>
                     <ReactQuill
                       theme="snow"
@@ -109,25 +109,27 @@ export default function UpdateLP() {
                       className=""
                     />
 
-                    <button
-                      onClick={() => setIsEdit(false)}
-                      className="text-primary font-poppins rounded-lg border-2 border-gray-200 bg-white text-lg hover:bg-gray-100"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      className="bg-primary font-poppins rounded-lg px-3 py-1 text-base text-white hover:opacity-90"
-                      onClick={() => {
-                        (handleSubmit("home_h1"), setIsEdit(false));
-                      }}
-                    >
-                      POST
-                    </button>
+                    <div>
+                      <button
+                        onClick={() => setIsEdit(null)}
+                        className="text-danger font-poppins mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="font-poppins w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("home_h1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
                   </>
                 ) : (
                   <div
-                    onClick={() => setIsEdit(true)}
-                    className="cursor-pointer border-2 border-dashed border-white"
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("s1h1")}
                     // dangerouslySetInnerHTML={{ __html: home_h1 }}
                   >
                     <ReactQuill
@@ -142,8 +144,54 @@ export default function UpdateLP() {
                   </div>
                 )}
               </h1>
-              <p className="mb-20 text-sm text-white md:text-base lg:w-120">
-                {lpData[0]?.home_p1}
+              <p className="border-lp mb-20 text-sm text-white md:text-base lg:w-120">
+                {isEdit === "s1p1" && isEdit !== null ? (
+                  <>
+                    <ReactQuill
+                      theme="snow"
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.home_p1
+                      }
+                      modules={{ toolbar: toolbarOptions }}
+                      onChange={handleQuillChange}
+                      className="mb-2"
+                    />
+                    <div>
+                      <button
+                        onClick={() => setIsEdit(null)}
+                        className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("home_p1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("s1p1")}
+                    // dangerouslySetInnerHTML={{ __html: home_h1 }}
+                  >
+                    <ReactQuill
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.home_p1
+                      }
+                      readOnly
+                      theme="bubble"
+                    />
+                  </div>
+                )}
               </p>
               <div onClick={() => handleClickMenu("news")}>
                 <div className="group relative w-31 cursor-pointer overflow-hidden rounded-xl bg-white md:w-35">

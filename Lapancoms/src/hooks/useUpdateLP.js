@@ -26,7 +26,10 @@ export default function useUpdateLP() {
 
           break;
         case "home_p1":
-          await UpdateLP.s1p1(localStorage.getItem("content"));
+          console.log(formData);
+          await LandingPageApi.s1p1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
           break;
 
         default:
