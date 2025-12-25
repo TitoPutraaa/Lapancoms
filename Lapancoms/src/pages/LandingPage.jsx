@@ -30,12 +30,8 @@ export default function LandingPage() {
   const [idGallery, setIdGallery] = useState(null);
   const [lpData, setLpData] = useState({});
   const [gallerys, setGallerys] = useState([]);
-  // console.log([lpData[0]?.home_h1]);
 
-  const converter = new QuillDeltaToHtmlConverter(lpData[0]?.home_h1?.ops);
-  const home_h1 = converter.convert();
-
-  console.log("ulp", home_h1);
+  console.log("ulp", lpData[0]);
 
   const handleSelect = (id) => {
     setIdGallery(id);
@@ -91,11 +87,19 @@ export default function LandingPage() {
             <div className="container mx-auto">
               <h1 className="hero-title mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
                 <div>
-                  <ReactQuill value={home_h1} theme="bubble" readOnly />
+                  <ReactQuill
+                    value={lpData[0]?.home_h1?.ops}
+                    theme="bubble"
+                    readOnly
+                  />
                 </div>
               </h1>
               <p className="mb-20 text-sm text-white md:text-base lg:w-120">
-                {lpData[0]?.home_p1}
+                <ReactQuill
+                  value={lpData[0]?.home_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />
               </p>
               <div onClick={() => handleClickMenu("news")}>
                 <div className="group relative w-31 cursor-pointer overflow-hidden rounded-xl bg-white md:w-35">
@@ -141,7 +145,11 @@ export default function LandingPage() {
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
           <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            {lpData[0]?.about_h1}
+            <ReactQuill
+              value={lpData[0]?.about_h1?.ops}
+              theme="bubble"
+              readOnly
+            />
           </h3>
           <div className="shadow-soft flex w-full flex-col rounded-2xl sm:items-stretch md:flex-row md:gap-5">
             <div className="h-90 w-full shrink-0 self-stretch overflow-hidden rounded-2xl object-cover md:h-auto md:w-80 lg:w-100 xl:w-110">
@@ -154,7 +162,11 @@ export default function LandingPage() {
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
               <p className="line-clamp-7 lg:line-clamp-9">
-                {lpData[0]?.about_p1}
+                <ReactQuill
+                  value={lpData[0]?.home_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />{" "}
               </p>
               <div className="flex justify-end">
                 <Link>
@@ -279,9 +291,17 @@ export default function LandingPage() {
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
             <div className="mb-7 flex flex-col gap-2 px-4 pt-18 text-center">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                {lpData[0]?.map_h1}
+                <ReactQuill
+                  value={lpData[0]?.map_h1?.ops}
+                  theme="bubble"
+                  readOnly
+                />{" "}
               </h2>
-              <p className="text-sm md:text-base">{lpData[0]?.map_p1}</p>
+              <ReactQuill
+                value={lpData[0]?.map_p1?.ops}
+                theme="bubble"
+                readOnly
+              />{" "}
             </div>
             <div className="h-110">
               <iframe
@@ -348,7 +368,11 @@ export default function LandingPage() {
                 </h2>
               </div>
               <p className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
-                {lpData[0]?.footer_p1}
+                <ReactQuill
+                  value={lpData[0]?.footer_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />{" "}
               </p>
             </div>
 
