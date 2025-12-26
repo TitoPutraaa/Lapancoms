@@ -1,11 +1,9 @@
-import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.bubble.css";
 
 export default function ViewTmp1({ data }) {
   const urlImage = `http://127.0.0.1:8000/storage/template/${data?.img1}`;
-  const converter = new QuillDeltaToHtmlConverter(data?.text1?.ops);
-  const text1 = converter.convert();
+
   console.log("is obj?", typeof data.text1); // should be "object"
   console.log("is array?", data.text1.ops); // should be array
 
@@ -23,7 +21,7 @@ export default function ViewTmp1({ data }) {
           />
         </div>
         <div className="text-primary flex w-28 flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <ReactQuill value={text1} theme="bubble" readOnly />
+          <ReactQuill value={data?.text1?.ops} theme="bubble" readOnly />
         </div>
       </div>
     </div>
