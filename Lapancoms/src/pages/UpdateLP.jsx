@@ -111,7 +111,9 @@ export default function UpdateLP() {
 
                     <div>
                       <button
-                        onClick={() => setIsEdit(null)}
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
                         className="text-danger font-poppins mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg hover:bg-gray-100"
                       >
                         Cancel
@@ -144,7 +146,7 @@ export default function UpdateLP() {
                   </div>
                 )}
               </h1>
-              <p className="border-lp mb-20 text-sm text-white md:text-base lg:w-120">
+              <div className="border-lp mb-20 text-sm text-white md:text-base lg:w-120">
                 {isEdit === "s1p1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -160,7 +162,9 @@ export default function UpdateLP() {
                     />
                     <div>
                       <button
-                        onClick={() => setIsEdit(null)}
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
                         className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
                       >
                         Cancel
@@ -179,7 +183,6 @@ export default function UpdateLP() {
                   <div
                     className="cursor-pointer"
                     onClick={() => setIsEdit("s1p1")}
-                    // dangerouslySetInnerHTML={{ __html: home_h1 }}
                   >
                     <ReactQuill
                       value={
@@ -192,7 +195,7 @@ export default function UpdateLP() {
                     />
                   </div>
                 )}
-              </p>
+              </div>
               <div onClick={() => handleClickMenu("news")}>
                 <div className="group relative w-31 cursor-pointer overflow-hidden rounded-xl bg-white md:w-35">
                   <FaPaperPlane className="text-accent absolute top-1/2 left-0 -translate-y-1/2 stroke-1 opacity-0 transition-all duration-500 group-hover:translate-x-2 group-hover:opacity-100" />
@@ -237,7 +240,11 @@ export default function UpdateLP() {
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
           <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            {lpData[0]?.about_h1}
+            <ReactQuill
+              value={lpData[0]?.about_h1?.ops}
+              theme="bubble"
+              readOnly
+            />
           </h3>
           <div className="shadow-soft flex w-full flex-col rounded-2xl sm:items-stretch md:flex-row md:gap-5">
             <div className="h-90 w-full shrink-0 self-stretch overflow-hidden rounded-2xl object-cover md:h-auto md:w-80 lg:w-100 xl:w-110">
@@ -249,9 +256,13 @@ export default function UpdateLP() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <p className="line-clamp-7 lg:line-clamp-9">
-                {lpData[0]?.about_p1}
-              </p>
+              <div className="line-clamp-7 lg:line-clamp-9">
+                <ReactQuill
+                  value={lpData[0]?.about_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />
+              </div>
               <div className="flex justify-end">
                 <Link>
                   <div className="group hover:text-dark relative flex w-fit justify-end gap-3 text-base font-medium text-gray-800 transition-colors duration-300">
@@ -375,9 +386,17 @@ export default function UpdateLP() {
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
             <div className="mb-7 flex flex-col gap-2 px-4 pt-18 text-center">
               <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                {lpData[0]?.map_h1}
+                <ReactQuill
+                  value={lpData[0]?.map_h1?.ops}
+                  theme="bubble"
+                  readOnly
+                />{" "}
               </h2>
-              <p className="text-sm md:text-base">{lpData[0]?.map_p1}</p>
+              <ReactQuill
+                value={lpData[0]?.map_p1?.ops}
+                theme="bubble"
+                readOnly
+              />{" "}
             </div>
             <div className="h-110">
               <iframe
@@ -409,6 +428,7 @@ export default function UpdateLP() {
               <div onClick={() => handleSelect(img)}>
                 <div className="relative mb-2 overflow-hidden rounded-lg md:mb-2">
                   <img
+                    key={index}
                     src={`http://127.0.0.1:8000/storage/galery/${gallerys[index]?.namaGambar}`}
                     alt="image"
                     className="w-full object-cover"
@@ -443,9 +463,13 @@ export default function UpdateLP() {
                   Travellian
                 </h2>
               </div>
-              <p className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
-                {lpData[0]?.footer_p1}
-              </p>
+              <div className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
+                <ReactQuill
+                  value={lpData[0]?.footer_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />
+              </div>
             </div>
 
             <div className="flex w-full justify-around md:w-fit md:gap-17 lg:gap-30 xl:gap-35">

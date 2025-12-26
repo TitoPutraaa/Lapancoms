@@ -1,5 +1,4 @@
 import axiosAdmin from "./axiosAdmin";
-import axiosPublic from "./axiosPublic";
 
 const LandingPageApi = {
   s1h1: (data) => axiosAdmin.post("/landingpage/s1h1", data),

@@ -31,6 +31,44 @@ export default function useUpdateLP() {
           setUpd(upd ? false : true);
           localStorage.removeItem("content");
           break;
+        case "about_h1":
+          console.log(formData);
+          await LandingPageApi.s2h1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+
+          break;
+        case "about_p1":
+          console.log(formData);
+          await LandingPageApi.s2p1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+          break;
+        case "map_h1":
+          console.log(formData);
+          await LandingPageApi.s3h1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+
+          break;
+        case "map_p1":
+          console.log(formData);
+          await LandingPageApi.s3p1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+          break;
+        case "footer_p1":
+          console.log(formData);
+          await LandingPageApi.fp1(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+          break;
+        case "link":
+          console.log(formData);
+          await LandingPageApi.link(formData);
+          setUpd(upd ? false : true);
+          localStorage.removeItem("content");
+          break;
 
         default:
           break;

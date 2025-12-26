@@ -92,13 +92,13 @@ export default function LandingPage() {
                   />
                 </div>
               </h1>
-              <p className="mb-20 text-sm text-white md:text-base lg:w-120">
+              <div className="mb-20 text-sm text-white md:text-base lg:w-120">
                 <ReactQuill
                   value={lpData[0]?.home_p1?.ops}
                   theme="bubble"
                   readOnly
                 />
-              </p>
+              </div>
               <div onClick={() => handleClickMenu("news")}>
                 <div className="group relative w-31 cursor-pointer overflow-hidden rounded-xl bg-white md:w-35">
                   <FaPaperPlane className="text-accent absolute top-1/2 left-0 -translate-y-1/2 stroke-1 opacity-0 transition-all duration-500 group-hover:translate-x-2 group-hover:opacity-100" />
@@ -159,13 +159,13 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <p className="line-clamp-7 lg:line-clamp-9">
+              <div className="line-clamp-7 lg:line-clamp-9">
                 <ReactQuill
-                  value={lpData[0]?.home_p1?.ops}
+                  value={lpData[0]?.about_p1?.ops}
                   theme="bubble"
                   readOnly
                 />{" "}
-              </p>
+              </div>
               <div className="flex justify-end">
                 <Link>
                   <div className="group hover:text-dark relative flex w-fit justify-end gap-3 text-base font-medium text-gray-800 transition-colors duration-300">
@@ -365,13 +365,13 @@ export default function LandingPage() {
                   Travellian
                 </h2>
               </div>
-              <p className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
+              <div className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
                 <ReactQuill
                   value={lpData[0]?.footer_p1?.ops}
                   theme="bubble"
                   readOnly
                 />{" "}
-              </p>
+              </div>
             </div>
 
             <div className="flex w-full justify-around md:w-fit md:gap-17 lg:gap-30 xl:gap-35">
