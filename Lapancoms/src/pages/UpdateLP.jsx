@@ -239,12 +239,52 @@ export default function UpdateLP() {
       <section className="pt-18" id="about">
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
-          <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            <ReactQuill
-              value={lpData[0]?.about_h1?.ops}
-              theme="bubble"
-              readOnly
-            />
+          <h3 className="border-lp mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
+            {isEdit === "s2h1" && isEdit !== null ? (
+              <>
+                <ReactQuill
+                  theme="snow"
+                  value={
+                    localStorage.getItem("content")
+                      ? JSON.parse(localStorage.getItem("content"))
+                      : lpData[0]?.about_h1
+                  }
+                  modules={{ toolbar: toolbarOptions }}
+                  onChange={handleQuillChange}
+                  className="mb-2"
+                />
+                <div>
+                  <button
+                    onClick={() => {
+                      (setIsEdit(null), localStorage.removeItem("content"));
+                    }}
+                    className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                    onClick={() => {
+                      (handleSubmit("about_h1"), setIsEdit(null));
+                    }}
+                  >
+                    POST
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="cursor-pointer" onClick={() => setIsEdit("s2h1")}>
+                <ReactQuill
+                  value={
+                    localStorage.getItem("content")
+                      ? JSON.parse(localStorage.getItem("content"))
+                      : lpData[0]?.about_h1
+                  }
+                  readOnly
+                  theme="bubble"
+                />
+              </div>
+            )}
           </h3>
           <div className="shadow-soft flex w-full flex-col rounded-2xl sm:items-stretch md:flex-row md:gap-5">
             <div className="h-90 w-full shrink-0 self-stretch overflow-hidden rounded-2xl object-cover md:h-auto md:w-80 lg:w-100 xl:w-110">
@@ -256,12 +296,55 @@ export default function UpdateLP() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <div className="line-clamp-7 lg:line-clamp-9">
-                <ReactQuill
-                  value={lpData[0]?.about_p1?.ops}
-                  theme="bubble"
-                  readOnly
-                />
+              <div className="border-lp line-clamp-7 lg:line-clamp-9">
+                {isEdit === "s2p1" && isEdit !== null ? (
+                  <>
+                    <ReactQuill
+                      theme="snow"
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.about_p1
+                      }
+                      modules={{ toolbar: toolbarOptions }}
+                      onChange={handleQuillChange}
+                      className="mb-2"
+                    />
+                    <div>
+                      <button
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
+                        className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("about_p1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("s2p1")}
+                  >
+                    <ReactQuill
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.about_p1
+                      }
+                      readOnly
+                      theme="bubble"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex justify-end">
                 <Link>
@@ -384,19 +467,107 @@ export default function UpdateLP() {
             />
           </div>
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
-            <div className="mb-7 flex flex-col gap-2 px-4 pt-18 text-center">
-              <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-                <ReactQuill
-                  value={lpData[0]?.map_h1?.ops}
-                  theme="bubble"
-                  readOnly
-                />{" "}
+            <div className="mb-7 flex flex-col gap-2 px-4 pt-18">
+              <h2 className="border-lp text-2xl font-bold sm:text-3xl md:text-4xl">
+                {isEdit === "s3h1" && isEdit !== null ? (
+                  <>
+                    <ReactQuill
+                      theme="snow"
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.map_h1
+                      }
+                      modules={{ toolbar: toolbarOptions }}
+                      onChange={handleQuillChange}
+                      className="mb-2"
+                    />
+                    <div>
+                      <button
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
+                        className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("map_h1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("s3h1")}
+                  >
+                    <ReactQuill
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.map_h1
+                      }
+                      readOnly
+                      theme="bubble"
+                    />
+                  </div>
+                )}
               </h2>
-              <ReactQuill
-                value={lpData[0]?.map_p1?.ops}
-                theme="bubble"
-                readOnly
-              />{" "}
+              <div className="border-lp">
+                {isEdit === "s3p1" && isEdit !== null ? (
+                  <>
+                    <ReactQuill
+                      theme="snow"
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.map_p1
+                      }
+                      modules={{ toolbar: toolbarOptions }}
+                      onChange={handleQuillChange}
+                      className="mb-2"
+                    />
+                    <div>
+                      <button
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
+                        className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("map_p1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("s3p1")}
+                  >
+                    <ReactQuill
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.map_p1
+                      }
+                      readOnly
+                      theme="bubble"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
             <div className="h-110">
               <iframe
@@ -463,12 +634,55 @@ export default function UpdateLP() {
                   Travellian
                 </h2>
               </div>
-              <div className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
-                <ReactQuill
-                  value={lpData[0]?.footer_p1?.ops}
-                  theme="bubble"
-                  readOnly
-                />
+              <div className="border-lp text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
+                {isEdit === "footer_p1" && isEdit !== null ? (
+                  <>
+                    <ReactQuill
+                      theme="snow"
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.footer_p1
+                      }
+                      modules={{ toolbar: toolbarOptions }}
+                      onChange={handleQuillChange}
+                      className="mb-2"
+                    />
+                    <div>
+                      <button
+                        onClick={() => {
+                          (setIsEdit(null), localStorage.removeItem("content"));
+                        }}
+                        className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                        onClick={() => {
+                          (handleSubmit("footer_p1"), setIsEdit(null));
+                        }}
+                      >
+                        POST
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setIsEdit("footer_p1")}
+                  >
+                    <ReactQuill
+                      value={
+                        localStorage.getItem("content")
+                          ? JSON.parse(localStorage.getItem("content"))
+                          : lpData[0]?.footer_p1
+                      }
+                      readOnly
+                      theme="bubble"
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
