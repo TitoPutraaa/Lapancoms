@@ -63,13 +63,6 @@ export default function useUpdateLP() {
           setUpd(upd ? false : true);
           localStorage.removeItem("content");
           break;
-        case "link":
-          console.log(formData);
-          await LandingPageApi.link(formData);
-          setUpd(upd ? false : true);
-          localStorage.removeItem("content");
-          break;
-
         default:
           break;
       }
@@ -78,9 +71,50 @@ export default function useUpdateLP() {
     }
   };
 
+  const handleSubmitLink = async (target) => {
+    const formData = new FormData();
+
+    try {
+      switch (target) {
+        case "instagram":
+          formData.append(target, localStorage.getItem("ig"));
+          formData.append("facebook", localStorage.getItem("fb"));
+          formData.append("youtube", localStorage.getItem("yt"));
+          console.log("form link", formData);
+          await LandingPageApi.link(formData);
+          setUpd(upd ? false : true);
+
+          break;
+        case "facebook":
+          formData.append("instagram", localStorage.getItem("ig"));
+          formData.append(target, localStorage.getItem("fb"));
+          formData.append("youtube", localStorage.getItem("yt"));
+          console.log("form link", formData);
+          await LandingPageApi.link(formData);
+          setUpd(upd ? false : true);
+
+          break;
+        case "youtube":
+          formData.append("instagram", localStorage.getItem("ig"));
+          formData.append("facebook", localStorage.getItem("fb"));
+          formData.append(target, localStorage.getItem("yt"));
+          console.log("form link", formData);
+          await LandingPageApi.link(formData);
+          setUpd(upd ? false : true);
+
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     handleQuillChange,
     handleSubmit,
+    handleSubmitLink,
     upd,
   };
 }

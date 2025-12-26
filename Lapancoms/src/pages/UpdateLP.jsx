@@ -23,7 +23,8 @@ import ReactQuill from "react-quill-new";
 import useUpdateLP from "../hooks/useUpdateLP";
 
 export default function UpdateLP() {
-  const { upd, handleQuillChange, handleSubmit } = useUpdateLP();
+  const { upd, handleQuillChange, handleSubmit, handleSubmitLink } =
+    useUpdateLP();
 
   const fromFeature = "lp";
   const menu = ["home", "news", "about", "facility", "maps", "gallery"];
@@ -32,6 +33,32 @@ export default function UpdateLP() {
   const [gallerys, setGallerys] = useState([]);
   const [isEdit, setIsEdit] = useState(null);
   const [lpData, setLpData] = useState({});
+
+  function handleChangeLink(e) {
+    switch (isEdit) {
+      case "instagram":
+        localStorage.setItem("ig", lpData[0]?.instagram);
+        localStorage.setItem("fb", lpData[0]?.facebook);
+        localStorage.setItem("yt", lpData[0]?.youtube);
+        localStorage.setItem("ig", e.target.value);
+        break;
+      case "facebook":
+        localStorage.setItem("ig", lpData[0]?.instagram);
+        localStorage.setItem("fb", lpData[0]?.facebook);
+        localStorage.setItem("yt", lpData[0]?.youtube);
+        localStorage.setItem("fb", e.target.value);
+        break;
+      case "youtube":
+        localStorage.setItem("ig", lpData[0]?.instagram);
+        localStorage.setItem("fb", lpData[0]?.facebook);
+        localStorage.setItem("yt", lpData[0]?.youtube);
+        localStorage.setItem("yt", e.target.value);
+        break;
+
+      default:
+        break;
+    }
+  }
 
   const loadLP = async () => {
     try {
@@ -725,27 +752,81 @@ export default function UpdateLP() {
             </p>
             <div className="flex gap-4">
               <a
-                href={lpData[0]?.facebook}
+                onClick={() => setIsEdit("facebook")}
+                // href={lpData[0]?.facebook}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaFacebook />
+                {lpData[0]?.facebook}
               </a>
               <a
-                href={lpData[0]?.instagram}
+                onClick={() => setIsEdit("instagram")}
+                // href={lpData[0]?.instagram}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaInstagram />
+
+                {lpData[0]?.instagram}
               </a>
               <a
-                href={lpData[0]?.youtube}
+                onClick={() => setIsEdit("youtube")}
+                // href={lpData[0]?.youtube}
                 target="_blank"
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaYoutube />
+                {lpData[0]?.youtube}
               </a>
             </div>
+            {/* ini gua masih bingung cara munculin respon berhasilnya gmn */}
+            {isEdit === "instagram" ||
+            isEdit === "facebook" ||
+            isEdit === "youtube" ||
+            isEdit !== null ? (
+              <>
+                <div>
+                  <label htmlFor="updatelink" className="mr-2 text-white">
+                    New {isEdit} :
+                  </label>
+                  <input
+                    onChange={handleChangeLink}
+                    name="updatalink"
+                    type="text"
+                    className="h-3/4"
+                    placeholder={`https://www.${isEdit}.com/`}
+                  />
+                </div>
+                <div>
+                  <button
+                    onClick={() => {
+                      (setIsEdit(null),
+                        localStorage.removeItem("ig"),
+                        localStorage.removeItem("yt"),
+                        localStorage.removeItem("fb"));
+                    }}
+                    className="text-danger mr-4 w-32 cursor-pointer rounded-lg border-2 border-gray-200 bg-white text-lg font-semibold hover:bg-gray-100"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="w-32 cursor-pointer rounded-lg bg-emerald-600 px-3 py-1 text-base font-semibold text-white hover:opacity-90"
+                    onClick={() => {
+                      (handleSubmitLink(isEdit),
+                        setIsEdit(null),
+                        localStorage.removeItem("ig"),
+                        localStorage.removeItem("yt"),
+                        localStorage.removeItem("fb"));
+                    }}
+                  >
+                    POST
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
         <div className="h-auto w-full border-t border-white text-center xl:container xl:mx-auto">
