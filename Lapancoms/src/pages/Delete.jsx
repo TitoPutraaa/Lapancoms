@@ -18,7 +18,7 @@ export default function Delete() {
               <BtnViewAll />
             </Link>
           </div>
-          <div className="relative">
+          <div className="relative h-56 sm:h-70">
             <BlogSlider fromFeature={fromFeature} />
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function Delete() {
               <BtnViewAll />
             </Link>
           </div>
-          <div className="relative">
+          <div className="relative h-56 sm:h-70">
             <GallerySlider fromFeature={fromFeature} />
           </div>
         </div>

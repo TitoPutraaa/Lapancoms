@@ -1,5 +1,4 @@
 import { assets } from "../assets/assets";
-import { imgData } from "../assets/DataDummy";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import BlogSliderLp from "../components/common/BlogSliderLp";

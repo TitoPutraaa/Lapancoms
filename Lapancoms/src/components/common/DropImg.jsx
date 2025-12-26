@@ -16,7 +16,7 @@ export default function DropImg({ id }) {
           Format: .jpeg, .png & Max file size: 2 MB
         </p>
         <label
-          htmlFor="dropzone-file"
+          htmlFor={id}
           type="button"
           className="group relative cursor-pointer overflow-hidden rounded-lg bg-white px-5 py-1.5 font-medium text-white"
         >

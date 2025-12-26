@@ -71,7 +71,7 @@ export default function Template1() {
             {preview && (
               <label
                 htmlFor="dropzone-file"
-                className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
               ></label>
             )}
           </div>

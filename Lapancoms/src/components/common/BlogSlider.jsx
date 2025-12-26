@@ -7,6 +7,7 @@ import BlogCardV2 from "./BlogCardV2";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import blogApi from "../../api/blogApi";
 import { useNavigate } from "react-router-dom";
+import Load from "./Load";
 
 export default function BlogSlider({ fromFeature }) {
   // const [select, setSelect] = useState(null);
@@ -16,13 +17,17 @@ export default function BlogSlider({ fromFeature }) {
   const [isLocked, setIsLocked] = useState(false);
   const [Blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+  const [isLoad, setIsLoad] = useState(false);
 
   const loadBlogs = async () => {
     try {
+      setIsLoad(true);
       const res = await blogApi.getAll();
       setBlogs(res.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
+    } finally {
+      setIsLoad(false);
     }
   };
 
@@ -87,6 +92,8 @@ export default function BlogSlider({ fromFeature }) {
       >
         <BsArrowRight className="text-primary group-hover:text-secondary stroke-1 text-sm transition duration-400 group-hover:translate-x-0.5" />
       </button>
+
+      {isLoad && <Load />}
     </>
   );
 }

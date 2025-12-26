@@ -1,9 +1,10 @@
 export default function GalleryCard({ title, author, image, fromFeature }) {
   const url = `http://127.0.0.1:8000/storage/galery/${image}`;
+  console.log(url);
 
   return (
     <>
-      <div className="shadow-soft max-w-40 shrink-0 overflow-hidden rounded-xl sm:max-w-52 lg:max-w-56">
+      <div className="shadow-soft w-40 shrink-0 overflow-hidden rounded-xl sm:w-52 lg:w-56">
         <div className="group relative h-36 overflow-hidden rounded-b-xl sm:h-46">
           <img
             src={url}

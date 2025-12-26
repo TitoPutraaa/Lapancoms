@@ -7,6 +7,7 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import GalleryCard from "./GalleryCard";
 import GalleryView from "./GalleryView";
 import galleryApi from "../../api/galleryApi";
+import Load from "./Load";
 
 export default function GallerySlider({ fromFeature }) {
   const swiperRef = useRef(null);
@@ -17,14 +18,18 @@ export default function GallerySlider({ fromFeature }) {
   const [idGallery, setIdGallery] = useState(null);
   const [gallerys, setGallerys] = useState([]);
   const [onDel, setOnDel] = useState(false);
+  const [isLoad, setIsLoad] = useState(false);
 
   const loadGallery = async () => {
     try {
+      setIsLoad(true);
       const fetchGallerys = await galleryApi.getAll();
       setGallerys(fetchGallerys.data.data);
       setOnDel(false);
     } catch (error) {
       console.error("Error loading admins:", error);
+    } finally {
+      setIsLoad(false);
     }
   };
 
@@ -99,6 +104,8 @@ export default function GallerySlider({ fromFeature }) {
           data={idGallery}
         />
       )}
+
+      {isLoad && <Load />}
     </>
   );
 }

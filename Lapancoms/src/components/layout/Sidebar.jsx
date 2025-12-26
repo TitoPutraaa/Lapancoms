@@ -36,15 +36,15 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
           {/* Content */}
           <div className="py-8">
             <div
-              className={`flex items-start justify-between ${!isOpen ? "mb-0 -translate-x-40.5" : "mb-8 translate-x-0 "} transition-all duration-500`}
+              className={`relative flex items-start justify-between ${!isOpen ? "mb-0 " : "mb-8 "} transition-all duration-500`}
             >
               <div
-                className={`ml-16 ${!isOpen ? "opacity-0" : "opacity-100"} transition-all duration-200`}
+                className={` ${!isOpen ? "-translate-x-10 text-nowrap opacity-0" : "translate-x-0 wrap-break-word opacity-100"} mx-auto w-45 transition-all duration-200`}
               >
                 <h1 className="text-dark mb-1 text-center text-2xl font-semibold">
                   {localStorage.getItem("username")}
                 </h1>
-                <p className="bg-accent text-secondary mx-auto w-fit rounded-full px-3 py-1 text-xs">
+                <p className="bg-accent text-secondary mx-auto w-fit rounded-full px-3 py-1 text-xs text-nowrap">
                   {localStorage.getItem("role")}
                 </p>
               </div>
@@ -54,7 +54,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMd }) {
                   setIsOpenDropM(false);
                 }}
                 type="button"
-                className="cursor-pointer items-center focus:outline-none"
+                className="absolute top-0 right-0 cursor-pointer items-center focus:outline-none"
               >
                 {!isOpen ? (
                   <BsList className="text-dark mx-2.5 size-5" />
