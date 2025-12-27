@@ -107,8 +107,39 @@ input::-webkit-outer-spin-button {
   color: #131313;
   background-color: #ffff;
 }
+.hero-title .ql-editor {
+  font-size: 1.5rem;
+  font-weight: 700;
+  overflow: hidden;
+  padding: 0;
+}
 
-/* Style text Editor */
+.border-lp .ql-bubble{
+  border: 2px dashed black;
+  border-radius: 10px;
+}
+
+.ql-toolbar.ql-snow {
+  background-color: rgb(243, 244, 246, 0.35); 
+  border-radius: 8px 8px 0 0;
+}
+
+.ql-snow .ql-stroke {
+  stroke: black !important;
+}
+.ql-snow .ql-fill {
+  fill: white !important;
+}
+
+
+.ql-snow .ql-picker.ql-header .ql-picker-label::before {
+  color: black;
+  font-weight: bold;
+}
+
+
+
+/* Style text Editor 
 .ql-editor.ql-blank {
   @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
 }
@@ -119,16 +150,17 @@ input::-webkit-outer-spin-button {
 ol {
   @apply text-primary font-poppins text-sm sm:text-base;
 }
-.ql-editor h1 {
-  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
-}
 .ql-editor h2 {
   @apply font-poppins text-primary text-2xl font-semibold md:text-3xl lg:text-4xl;
 }
 .ql-editor h3 {
   @apply font-poppins text-primary text-xl font-semibold md:text-2xl lg:text-3xl;
-}
+} 
+.ql-editor h1 {
+  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
+} */
 
 /* .blog-lp .swiper-wrapper {
   transition-timing-function: linear !important;
-} */
+}
+  
