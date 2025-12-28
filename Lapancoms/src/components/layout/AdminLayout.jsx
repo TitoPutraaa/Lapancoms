@@ -20,6 +20,7 @@ const AdminLayout = () => {
   const hideSidebar = location.pathname.startsWith("/admin/delete/deleteBlog/");
   const hideSidebar2 = location.pathname.startsWith("/admin/template");
   const hideSidebar3 = location.pathname.startsWith("/admin/dashboard/blog/");
+  const hideSidebar4 = location.pathname.startsWith("/admin/updateLandingPage");
   const sidebarRef = useRef(null);
   useClickOutside(sidebarRef, () => setIsOpen(false));
 
@@ -29,7 +30,7 @@ const AdminLayout = () => {
         {!isMd && isOpen && (
           <div className="bg-dark/80 fixed inset-0 z-99 backdrop-blur-sm"></div>
         )}
-        {!hideSidebar3 && !hideSidebar2 && !hideSidebar && (
+        {!hideSidebar3 && !hideSidebar2 && !hideSidebar && !hideSidebar4 && (
           <div
             ref={!isMd ? sidebarRef : null}
             className={`md:mx-4 ${isOpen ? "w-64" : "w-13"} ${!isMd ? "fixed z-101" : "block"} transition-all duration-500`}

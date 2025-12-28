@@ -758,7 +758,7 @@ export default function UpdateLP() {
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaFacebook />
-                {lpData[0]?.facebook}
+                {/* {lpData[0]?.facebook} */}
               </a>
               <a
                 onClick={() => setIsEdit("instagram")}
@@ -768,7 +768,7 @@ export default function UpdateLP() {
               >
                 <FaInstagram />
 
-                {lpData[0]?.instagram}
+                {/* {lpData[0]?.instagram} */}
               </a>
               <a
                 onClick={() => setIsEdit("youtube")}
@@ -777,7 +777,7 @@ export default function UpdateLP() {
                 className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaYoutube />
-                {lpData[0]?.youtube}
+                {/* {lpData[0]?.youtube} */}
               </a>
             </div>
             {/* ini gua masih bingung cara munculin respon berhasilnya gmn */}
