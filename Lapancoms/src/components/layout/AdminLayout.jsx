@@ -21,6 +21,7 @@ const AdminLayout = () => {
   const hideSidebar2 = location.pathname.startsWith("/admin/template");
   const hideSidebar3 = location.pathname.startsWith("/admin/dashboard/blog/");
   const hideSidebar4 = location.pathname.startsWith("/admin/updateLandingPage");
+  const hideSidebar5 = location.pathname.startsWith("/admin/delete/blog/");
   const sidebarRef = useRef(null);
   useClickOutside(sidebarRef, () => setIsOpen(false));
 
@@ -30,14 +31,18 @@ const AdminLayout = () => {
         {!isMd && isOpen && (
           <div className="bg-dark/80 fixed inset-0 z-99 backdrop-blur-sm"></div>
         )}
-        {!hideSidebar3 && !hideSidebar2 && !hideSidebar && !hideSidebar4 && (
-          <div
-            ref={!isMd ? sidebarRef : null}
-            className={`md:mx-4 ${isOpen ? "w-64" : "w-13"} ${!isMd ? "fixed z-101" : "block"} transition-all duration-500`}
-          >
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} isMd={isMd} />
-          </div>
-        )}
+        {!hideSidebar3 &&
+          !hideSidebar2 &&
+          !hideSidebar &&
+          !hideSidebar4 &&
+          !hideSidebar5 && (
+            <div
+              ref={!isMd ? sidebarRef : null}
+              className={`md:mx-4 ${isOpen ? "w-64" : "w-13"} ${!isMd ? "fixed z-101" : "block"} transition-all duration-500`}
+            >
+              <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} isMd={isMd} />
+            </div>
+          )}
         <div
           className={`h-fit w-full flex-1 overflow-hidden ${!isMd && !hideSidebar3 && !hideSidebar2 && !hideSidebar ? "ml-16" : ""}`}
         >
