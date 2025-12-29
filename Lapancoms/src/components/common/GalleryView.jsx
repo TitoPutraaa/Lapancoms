@@ -11,7 +11,7 @@ export default function GalleryView({
 }) {
   const [viewDelate, setViewDelate] = useState(false);
   const modalImgRef = useRef(null);
-  console.log("FF gal", fromFeature);
+  console.log("FF", fromFeature);
 
   // useClickOutside(modalImgRef, () => setViewGallery(false));
   const url = `http://127.0.0.1:8000/storage/galery/${data.namaGambar}`;
@@ -41,9 +41,14 @@ export default function GalleryView({
             <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
               {data.judulGambar}
             </h3>
-            <p className="md:text-primary text-xs font-medium text-white md:text-base">
-              {data.username}
-            </p>
+
+            {fromFeature !== "lp" ? (
+              <p className="md:text-primary text-xs font-medium text-white md:text-base">
+                {data.username}
+              </p>
+            ) : (
+              <p></p>
+            )}
           </div>
         </div>
         {fromFeature === "delete" && (
