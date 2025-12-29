@@ -83,7 +83,7 @@ export default function LandingPage() {
           </div>
           <div className="absolute right-0 bottom-15 left-0 z-9 px-6 sm:bottom-30 md:bottom-1/2 md:translate-y-1/2 lg:px-30">
             <div className="container mx-auto">
-              <h1 className="hero-title mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
+              <h1 className="lp-white hero-title mb-5 text-4xl font-semibold md:text-5xl lg:w-170">
                 <div>
                   <ReactQuill
                     value={lpData[0]?.home_h1?.ops}
@@ -92,7 +92,7 @@ export default function LandingPage() {
                   />
                 </div>
               </h1>
-              <div className="mb-20 text-sm text-white md:text-base lg:w-120">
+              <div className="lp-white mb-20 text-sm text-white md:text-base lg:w-120">
                 <ReactQuill
                   value={lpData[0]?.home_p1?.ops}
                   theme="bubble"
@@ -142,7 +142,7 @@ export default function LandingPage() {
       <section className="pt-18" id="about">
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
-          <h3 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h3 className="lp mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
             <ReactQuill
               value={lpData[0]?.about_h1?.ops}
               theme="bubble"
@@ -159,7 +159,7 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <div className="line-clamp-7 lg:line-clamp-9">
+              <div className="lp line-clamp-7 lg:line-clamp-9">
                 <ReactQuill
                   value={lpData[0]?.about_p1?.ops}
                   theme="bubble"
@@ -288,18 +288,18 @@ export default function LandingPage() {
           </div>
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
             <div className="mb-7 flex flex-col gap-2 px-4 pt-18 text-center">
-              <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+              <h2 className="lp text-2xl font-bold sm:text-3xl md:text-4xl">
                 <ReactQuill
                   value={lpData[0]?.map_h1?.ops}
                   theme="bubble"
                   readOnly
                 />{" "}
+                <ReactQuill
+                  value={lpData[0]?.map_p1?.ops}
+                  theme="bubble"
+                  readOnly
+                />{" "}
               </h2>
-              <ReactQuill
-                value={lpData[0]?.map_p1?.ops}
-                theme="bubble"
-                readOnly
-              />{" "}
             </div>
             <div className="h-110">
               <iframe
@@ -365,7 +365,7 @@ export default function LandingPage() {
                   Travellian
                 </h2>
               </div>
-              <div className="text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
+              <div className="lp-white text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
                 <ReactQuill
                   value={lpData[0]?.footer_p1?.ops}
                   theme="bubble"

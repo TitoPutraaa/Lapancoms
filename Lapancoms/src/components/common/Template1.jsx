@@ -15,7 +15,7 @@ export default function Template1() {
   const judul = localStorage.getItem("judul");
 
   return (
-    <div className="bg-secondary w-full pb-8">
+    <div className="bg-secondary min-h-screen w-full pb-8">
       <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {

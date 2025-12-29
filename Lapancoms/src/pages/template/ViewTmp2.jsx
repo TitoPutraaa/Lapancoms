@@ -9,7 +9,7 @@ export default function ViewTmp2({ data }) {
   return (
     <div className="bg-gray-100">
       <div className="rounded-xlpx-4 mx-auto w-full transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-        <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+        <h1 className="text-primary mb-5 pt-5 text-2xl font-semibold capitalize sm:text-2xl lg:text-4xl">
           {data?.judul}
         </h1>
         <div className="flex gap-5">

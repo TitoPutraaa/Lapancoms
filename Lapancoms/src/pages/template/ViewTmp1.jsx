@@ -20,7 +20,7 @@ export default function ViewTmp1({ data }) {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="text-primary flex w-28 flex-wrap gap-6 pb-6 text-sm sm:text-base">
+        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
           <ReactQuill value={data?.text1?.ops} theme="bubble" readOnly />
         </div>
       </div>

@@ -122,7 +122,7 @@ export default function UpdateLP() {
           </div>
           <div className="absolute right-0 bottom-15 left-0 z-9 px-6 sm:bottom-30 md:bottom-1/2 md:translate-y-1/2 lg:px-30">
             <div className="container mx-auto">
-              <h1 className="hero-title border-lp mb-5 text-4xl font-semibold text-white md:text-5xl lg:w-170">
+              <h1 className="hero-title border-lp lp-white mb-5 text-4xl font-semibold md:text-5xl lg:w-170">
                 {isEdit === "s1h1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -174,7 +174,7 @@ export default function UpdateLP() {
                   </div>
                 )}
               </h1>
-              <div className="border-lp mb-20 text-sm text-white md:text-base lg:w-120">
+              <div className="border-lp lp-white mb-20 text-sm md:text-base lg:w-120">
                 {isEdit === "s1p1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -267,7 +267,7 @@ export default function UpdateLP() {
       <section className="pt-18" id="about">
         <div className="container mx-auto w-full px-4 lg:px-6">
           <h2 className="mb-1 font-semibold md:text-lg">About Page</h2>
-          <h3 className="border-lp mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h3 className="lp border-lp mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
             {isEdit === "s2h1" && isEdit !== null ? (
               <>
                 <ReactQuill
@@ -301,7 +301,10 @@ export default function UpdateLP() {
                 </div>
               </>
             ) : (
-              <div className="cursor-pointer" onClick={() => setIsEdit("s2h1")}>
+              <div
+                className="lp cursor-pointer"
+                onClick={() => setIsEdit("s2h1")}
+              >
                 <ReactQuill
                   value={
                     localStorage.getItem("content")
@@ -324,7 +327,7 @@ export default function UpdateLP() {
             </div>
 
             <div className="flex flex-col justify-around gap-10 px-6 py-5 text-sm md:mr-4 md:text-base">
-              <div className="border-lp line-clamp-7 lg:line-clamp-9">
+              <div className="lp border-lp line-clamp-7 lg:line-clamp-9">
                 {isEdit === "s2p1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -496,7 +499,7 @@ export default function UpdateLP() {
           </div>
           <div className="absolute top-0 left-0 h-full w-full flex-col gap-10">
             <div className="mb-7 flex flex-col gap-2 px-4 pt-18">
-              <h2 className="border-lp text-2xl font-bold sm:text-3xl md:text-4xl">
+              <h2 className="lp border-lp text-2xl font-bold sm:text-3xl md:text-4xl">
                 {isEdit === "s3h1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -546,7 +549,7 @@ export default function UpdateLP() {
                   </div>
                 )}
               </h2>
-              <div className="border-lp">
+              <div className="lp border-lp">
                 {isEdit === "s3p1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -662,7 +665,7 @@ export default function UpdateLP() {
                   Travellian
                 </h2>
               </div>
-              <div className="border-lp text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
+              <div className="lp-white border-lp text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
                 {isEdit === "footer_p1" && isEdit !== null ? (
                   <>
                     <ReactQuill
@@ -756,7 +759,7 @@ export default function UpdateLP() {
                 onClick={() => setIsEdit("facebook")}
                 // href={lpData[0]?.facebook}
                 target="_blank"
-                className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
+                className="border-2 border-dashed border-black p-1 text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaFacebook />
                 {/* {lpData[0]?.facebook} */}
@@ -765,7 +768,7 @@ export default function UpdateLP() {
                 onClick={() => setIsEdit("instagram")}
                 // href={lpData[0]?.instagram}
                 target="_blank"
-                className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
+                className="border-2 border-dashed border-black p-1 text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaInstagram />
 
@@ -775,7 +778,7 @@ export default function UpdateLP() {
                 onClick={() => setIsEdit("youtube")}
                 // href={lpData[0]?.youtube}
                 target="_blank"
-                className="text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
+                className="border-2 border-dashed border-black p-1 text-gray-400 transition-colors duration-500 hover:text-gray-100 md:text-xl lg:text-2xl"
               >
                 <FaYoutube />
                 {/* {lpData[0]?.youtube} */}

@@ -16,7 +16,7 @@ export default function ViewTmp4({ data }) {
           {data?.judul}
         </h1>
         <div className="flex flex-row-reverse gap-5">
-          <div className="mb-8 h-30 w-30 shrink-0 overflow-hidden rounded-xl">
+          <div className="mb-8 h-40 w-40 shrink-0 overflow-hidden rounded-xl">
             <img
               src={img1}
               alt="viewBlog"

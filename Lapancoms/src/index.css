@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
+@import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite/";
@@ -107,6 +108,7 @@ input::-webkit-outer-spin-button {
   color: #131313;
   background-color: #ffff;
 }
+
 .hero-title .ql-editor {
   font-size: 1.5rem;
   font-weight: 700;
@@ -114,9 +116,25 @@ input::-webkit-outer-spin-button {
   padding: 0;
 }
 
+.ql-editor {
+  @apply text-primary  font-poppins  ;
+}
+
+.lp-white .ql-editor {
+  color: white
+}
+
+.lp .ql-editor {
+color : black
+}
+
 .border-lp .ql-bubble{
   border: 2px dashed black;
   border-radius: 10px;
+}
+
+.ql-bubble .ql-editor{
+  overflow-wrap: anywhere ;
 }
 
 .ql-toolbar.ql-snow {
@@ -124,9 +142,10 @@ input::-webkit-outer-spin-button {
   border-radius: 8px 8px 0 0;
 }
 
-.ql-snow .ql-stroke {
-  stroke: black !important;
-}
+
+/* .ql-snow .ql-stroke {
+  stroke: red  ;
+} */
 .ql-snow .ql-fill {
   fill: white !important;
 }
@@ -136,6 +155,7 @@ input::-webkit-outer-spin-button {
   color: black;
   font-weight: bold;
 }
+
 
 
 
