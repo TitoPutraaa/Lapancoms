@@ -9,7 +9,7 @@ import adminApi from "../api/adminApi";
 export default function Login() {
   const navigate = useNavigate();
   const [invisible, setInvisible] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const { setToken } = useContext(AdminContext);
 
   const [form, setForm] = useImmer({ username: "", password: "" });
@@ -56,7 +56,7 @@ export default function Login() {
       navigate("/admin/dashboard", replace);
     } catch (error) {
       setError(error.response?.data);
-      console.log(error.response);
+      console.log("login error", error.response?.data);
     }
   };
 
@@ -93,7 +93,11 @@ export default function Login() {
                   placeholder="Enter username"
                   required
                 />
-                <p className="text-danger">{error?.errors?.username[0]}</p>
+                {error && (
+                  <div className="text-danger text-end text-[1rem]">
+                    {error.username}
+                  </div>
+                )}{" "}
               </div>
 
               <div className="mb-8">
@@ -121,7 +125,11 @@ export default function Login() {
                     {invisible ? "👁" : "😫"}
                   </span>
                 </div>
-                <p className="text-danger">{error?.message?.password}</p>
+                {error && (
+                  <div className="text-danger mt-1 text-end text-[1rem]">
+                    {error.password}
+                  </div>
+                )}
               </div>
               <button
                 type="submit"

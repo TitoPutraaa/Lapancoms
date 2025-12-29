@@ -21,6 +21,7 @@ import { publicGalleryApi, publicLP } from "../api/publicApi";
 import GalleryView from "../components/common/GalleryView";
 import ReactQuill from "react-quill-new";
 import useUpdateLP from "../hooks/useUpdateLP";
+import UpdLPNavbar from "../components/layout/UpdLPNavbar";
 
 export default function UpdateLP() {
   const { upd, handleQuillChange, handleSubmit, handleSubmitLink } =
@@ -107,7 +108,7 @@ export default function UpdateLP() {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      <UpdLPNavbar />
 
       {/* Hero Section */}
       <section id="home">
