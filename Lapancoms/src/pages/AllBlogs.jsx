@@ -2,7 +2,6 @@ import BackBtn from "../components/common/BackBtn";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2";
 import { useEffect, useState } from "react";
-import blogApi from "../api/blogApi";
 import { SwiperSlide } from "swiper/react";
 import { publicBlogApi } from "../api/publicApi";
 
