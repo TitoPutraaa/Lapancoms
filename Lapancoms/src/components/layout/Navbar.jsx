@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BsList, BsX } from "react-icons/bs";
 import { FaPaperPlane } from "react-icons/fa";
+import { GrAttraction } from "react-icons/gr";
 import useMediaQuery from "../../hooks/useMediaQueryA";
 
 export default function Navbar() {
@@ -93,9 +94,9 @@ export default function Navbar() {
               href="/"
               className={`flex cursor-pointer items-center space-x-3 md:space-x-4 ${navTextClass}`}
             >
-              <FaPaperPlane className="text-2xl md:text-3xl" />
+              <GrAttraction className="text-2xl md:text-3xl" />
               <span className="text-xl font-medium whitespace-nowrap md:text-2xl">
-                Travelog
+                Konoha
               </span>
             </a>
             <button
@@ -115,9 +116,10 @@ export default function Navbar() {
                 className={`relative justify-between px-6 py-4 sm:hidden ${isOpen ? "flex" : "hidden"}`}
               >
                 <a href="/" className="text-dark flex items-center space-x-3">
-                  <FaPaperPlane className="text-2xl" />
+                  <GrAttraction className="text-2xl" />
+                  x``
                   <span className="self-center text-xl font-semibold whitespace-nowrap">
-                    Travelog
+                    Konoha
                   </span>
                 </a>
                 <button

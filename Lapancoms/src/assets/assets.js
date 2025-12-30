@@ -16,6 +16,8 @@ import logo from "./logo.png";
 import logoFooter from "./logoFooter.png";
 import imageMaps from "./imageMaps.png";
 import imageAlamat from "./imageAlamat.png";
+import konoha from "./konoha.png";
+import patungKonoha from "./patungKonoha.png";
 
 export const assets = {
   blogCardImg,
@@ -30,6 +32,8 @@ export const assets = {
   logoFooter,
   imageMaps,
   imageAlamat,
+  konoha,
+  patungKonoha,
 
   template1,
   template2,
