@@ -10,34 +10,44 @@ export default function ViewTmp4({ data }) {
   const img4 = `http://127.0.0.1:8000/storage/template/${data?.img4}`;
 
   return (
-    <div className="bg-gray-100">
-      <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-        <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
-          {data?.judul}
-        </h1>
-        <div className="flex flex-row-reverse gap-5">
-          <div className="mb-8 h-40 w-40 shrink-0 overflow-hidden rounded-xl">
-            <img
-              src={img1}
-              alt="viewBlog"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="text-primary flex w-full flex-wrap gap-6 pb-6 text-sm sm:text-base">
-            <ReactQuill value={data?.text1?.ops} theme="bubble" readOnly />
-          </div>
+    <div className="w-full bg-white px-4 sm:px-6">
+      <h1 className="text-dark mb-5 pt-8 text-2xl font-semibold capitalize sm:pt-10 sm:text-2xl lg:text-4xl">
+        {data?.judul}
+      </h1>
+      <div className="pb-10">
+        <div className="float-right mb-1 ml-3 h-45 w-35 overflow-hidden rounded-xl sm:h-50 sm:w-40">
+          <img
+            src={img1}
+            alt="viewBlog"
+            className="h-full w-full object-cover"
+          />
         </div>
+        <ReactQuill
+          className="editorTxtBlog clearPdEditorBlog viewEditorBlogF"
+          value={data?.text1?.ops}
+          theme="bubble"
+          readOnly
+        />
+        <div className="clear-both"></div>
+      </div>
 
-        <div className="mb-7 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+      <div className="pb-10">
+        <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img
             src={img2}
             alt="viewBlog"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <ReactQuill value={data?.text2?.ops} theme="bubble" readOnly />
-        </div>
+        <ReactQuill
+          className="editorTxtBlog clearPdEditorBlog"
+          value={data?.text2?.ops}
+          theme="bubble"
+          readOnly
+        />
+      </div>
+
+      <div className="pb-10">
         <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img
             src={img3}
@@ -45,10 +55,16 @@ export default function ViewTmp4({ data }) {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="text-primary flex flex-wrap gap-6 pb-6 text-sm sm:text-base">
-          <ReactQuill value={data?.text3?.ops} theme="bubble" readOnly />
-        </div>
-        <div className="mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+        <ReactQuill
+          className="editorTxtBlog clearPdEditorBlog"
+          value={data?.text3?.ops}
+          theme="bubble"
+          readOnly
+        />
+      </div>
+
+      <div className="pb-10">
+        <div className="h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
           <img
             src={img4}
             alt="viewBlog"

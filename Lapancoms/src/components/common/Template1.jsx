@@ -16,7 +16,7 @@ export default function Template1() {
 
   return (
     <div className="bg-secondary min-h-screen w-full pb-8">
-      <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
+      <div className="mx-auto mb-6 flex justify-between pt-6 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {
             localStorage.removeItem("judul");
@@ -47,8 +47,8 @@ export default function Template1() {
         </button>
       </div>
       <div>
-        <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-          <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+        <div className="mx-auto w-full rounded-xl bg-white px-4 sm:w-xl sm:px-6 sm:shadow lg:w-3xl">
+          <h1 className="mb-5 pt-8 text-2xl font-semibold capitalize sm:pt-10 sm:text-3xl lg:text-4xl">
             {judul}
           </h1>
           {/* IMAGE */}
@@ -76,8 +76,9 @@ export default function Template1() {
             )}
           </div>
 
-          <div className="w-full pb-6">
+          <div className="w-full pb-10">
             <ReactQuill
+              className="editorTxtBlog"
               theme="snow"
               value={text1}
               onChange={handleQuillChange}

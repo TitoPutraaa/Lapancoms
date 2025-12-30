@@ -84,7 +84,7 @@ export default function BlogView() {
         )}
       </div>
 
-      <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
+      <div className="mx-auto w-full overflow-hidden rounded-xl sm:w-xl sm:shadow lg:w-3xl">
         {showTmp()}
       </div>
 

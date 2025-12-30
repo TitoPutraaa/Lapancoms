@@ -46,7 +46,7 @@ function ManageAdmin() {
         <button
           type="button"
           onClick={() => setViewAdd(true)}
-          className="bg-secondary border-primary/20 text-primary group relative h-9.5 w-40 cursor-pointer overflow-hidden rounded-xl border text-sm font-semibold hover:border-transparent"
+          className="bg-secondary text-primary group relative h-9.5 w-40 cursor-pointer overflow-hidden rounded-xl text-sm font-semibold hover:border-transparent"
         >
           <BsPlusCircle className="absolute top-1/2 left-3 z-1 -translate-y-1/2 text-base transition-all duration-500 group-hover:-left-4 group-hover:opacity-0" />
           <HiOutlineUserPlus className="text-accent absolute top-1/2 right-1 -translate-y-1/2 text-xl opacity-0 transition-all duration-500 group-hover:right-2 group-hover:opacity-100" />

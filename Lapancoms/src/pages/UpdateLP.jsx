@@ -787,8 +787,7 @@ export default function UpdateLP() {
             {/* ini gua masih bingung cara munculin respon berhasilnya gmn */}
             {isEdit === "instagram" ||
             isEdit === "facebook" ||
-            isEdit === "youtube" ||
-            isEdit !== null ? (
+            isEdit === "youtube" ? (
               <>
                 <div>
                   <label htmlFor="updatelink" className="mr-2 text-white">

@@ -4,6 +4,7 @@ import BlogCardV2 from "../components/common/BlogCardV2";
 import { useEffect, useState } from "react";
 import blogApi from "../api/blogApi";
 import { SwiperSlide } from "swiper/react";
+import { publicBlogApi } from "../api/publicApi";
 
 export default function AllBlogs() {
   const [Blogs, setBlogs] = useState([]);
@@ -12,7 +13,7 @@ export default function AllBlogs() {
 
   const loadBlogs = async () => {
     try {
-      const res = await blogApi.getAll();
+      const res = await publicBlogApi.getAll();
       setBlogs(res.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
@@ -27,29 +28,27 @@ export default function AllBlogs() {
   const fromFeature = location.state?.fromFeature; //dapat dari state Link
   console.log("ff all", fromFeature);
 
+  let url = `/admin/${fromFeature}/blog/`;
   let urlBack = `/admin/${fromFeature}`;
 
   if (fromFeature === "lp") {
     urlBack = "/";
+    url = `/${fromFeature}/blog/`;
   }
   return (
-    <div className="mt-10">
-      <div className="mb-5 flex justify-between">
+    <div
+      className={`pt-10 ${fromFeature === "lp" ? "container mx-auto px-4 sm:px-6" : "mr-4"}`}
+    >
+      <div className="mb-6 flex items-center justify-between">
         <h2 className="text-dark text-2xl font-medium">All Blog</h2>
         <Link to={urlBack} replace>
-          <div className="">
-            <BackBtn />
-          </div>
+          <BackBtn />
         </Link>
       </div>
       <div className="flex flex-wrap gap-x-2 gap-y-4">
         {Blogs.map((data) => (
           <SwiperSlide className="w-auto!">
-            <div
-              onClick={() =>
-                navigate(`/admin/${fromFeature}/blog/${data.idBlog}`)
-              }
-            >
+            <div onClick={() => navigate(url + `${data.idBlog}`)}>
               <BlogCardV2
                 key={data.idBlog}
                 idBlog={data.idBlog}

@@ -1,18 +1,18 @@
 import { BsCloudUpload } from "react-icons/bs";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
-export default function DropImg({ id }) {
+export default function DropImg({ id, size = null }) {
   return (
     <label
       htmlFor={id}
-      className="flex h-full w-full cursor-pointer flex-col items-center justify-center border-2 border-slate-200 bg-gray-50 hover:bg-gray-200"
+      className={`flex h-full w-full cursor-pointer flex-col items-center justify-center ${size ? "scale-80 sm:scale-95" : "border-2 border-slate-200 bg-gray-50 hover:bg-gray-200"}`}
     >
-      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+      <div className="flex flex-col items-center justify-center px-2 pt-5 pb-6">
         <BsCloudUpload className="text-primary mb-2 h-8 w-8 text-sm md:mb-4 md:text-base" />
         <p className="text-primary mb-1 text-xs font-medium md:mb-1.5 md:text-sm">
           Drop file or browse
         </p>
-        <p className="mb-2 text-xs text-slate-500 md:text-sm">
+        <p className="mb-2 text-center text-xs text-slate-500 md:text-sm">
           Format: .jpeg, .png & Max file size: 2 MB
         </p>
         <label

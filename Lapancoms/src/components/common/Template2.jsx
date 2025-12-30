@@ -25,7 +25,7 @@ export default function Template2() {
 
   return (
     <div className="bg-secondary w-full pb-8">
-      <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
+      <div className="mx-auto mb-6 flex justify-between pt-6 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {
             localStorage.removeItem("judul");
@@ -58,13 +58,13 @@ export default function Template2() {
         </button>
       </div>
       <div>
-        <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-          <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+        <div className="mx-auto w-full rounded-xl bg-white px-4 sm:w-xl sm:px-6 sm:shadow lg:w-3xl">
+          <h1 className="mb-5 pt-8 text-2xl font-semibold capitalize sm:pt-10 sm:text-3xl lg:text-4xl">
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="flex gap-5">
-            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="flex w-full gap-2 pb-10 sm:gap-4 lg:gap-6">
+            <div className="xs:h-75 relative h-60 w-1/2 shrink-0 overflow-hidden rounded-xl sm:h-80 lg:h-110 lg:w-5/12">
               {!preview1 && <DropImg id={"dropImg1"} />}
               <input
                 id="dropImg1"
@@ -88,8 +88,9 @@ export default function Template2() {
               )}
             </div>
 
-            <div className="w-1/2 pb-6">
+            <div className="w-full min-w-0">
               <ReactQuill
+                className="editorTxtBlog"
                 theme="snow"
                 value={text1}
                 onChange={handleChangeText1}
@@ -98,8 +99,8 @@ export default function Template2() {
           </div>
 
           {/* IMAGE 2 */}
-          <div className="flex gap-5">
-            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          <div className="flex w-full gap-2 pb-10 sm:gap-4 lg:gap-6">
+            <div className="xs:h-75 relative mb-8 h-60 w-1/2 shrink-0 overflow-hidden rounded-xl sm:h-80 lg:h-110 lg:w-5/12">
               {!preview2 && <DropImg id={"dropImg2"} />}
               <input
                 id="dropImg2"
@@ -123,8 +124,9 @@ export default function Template2() {
               )}
             </div>
 
-            <div className="w-1/2 pb-6">
+            <div className="w-full min-w-0">
               <ReactQuill
+                className="editorTxtBlog"
                 theme="snow"
                 value={text2}
                 onChange={handleChangeText2}

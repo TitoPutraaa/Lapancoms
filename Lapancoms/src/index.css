@@ -15,6 +15,7 @@
   --shadow-soft: 0 4px 4px rgba(0, 0, 0, 0.25);
   --color-success: #a2f7b7;
   --color-danger: #e0272a;
+  --breakpoint-xs: 30rem;
 
   /* --color-primary: #734a00;
   --color-secondary: #ffa500;
@@ -117,31 +118,30 @@ input::-webkit-outer-spin-button {
 }
 
 .ql-editor {
-  @apply text-primary  font-poppins  ;
+  @apply text-dark font-poppins;
 }
 
 .lp-white .ql-editor {
-  color: white
+  color: white;
 }
 
 .lp .ql-editor {
-color : black
+  color: black;
 }
 
-.border-lp .ql-bubble{
+.border-lp .ql-bubble {
   border: 2px dashed black;
   border-radius: 10px;
 }
 
-.ql-bubble .ql-editor{
-  overflow-wrap: anywhere ;
+.ql-bubble .ql-editor {
+  overflow-wrap: anywhere;
 }
 
 .ql-toolbar.ql-snow {
-  background-color: rgb(243, 244, 246, 0.35); 
+  background-color: rgb(243, 244, 246, 0.35);
   border-radius: 8px 8px 0 0;
 }
-
 
 /* .ql-snow .ql-stroke {
   stroke: red  ;
@@ -150,37 +150,29 @@ color : black
   fill: white !important;
 }
 
-
 .ql-snow .ql-picker.ql-header .ql-picker-label::before {
   color: black;
   font-weight: bold;
 }
 
+/* Style text Editor Blog */
+.editorTxtBlog .ql-container .ql-editor h1 {
+  @apply mb-3 text-2xl font-semibold capitalize sm:text-3xl lg:text-4xl;
+}
+.editorTxtBlog .ql-container .ql-editor h2 {
+  @apply mb-3 text-xl font-semibold sm:text-2xl lg:text-3xl;
+}
+.editorTxtBlog .ql-container .ql-editor h3 {
+  @apply mb-3 text-lg font-semibold sm:text-xl lg:text-2xl;
+}
+.editorTxtBlog .ql-container .ql-editor :is(p, ol, ul) {
+  @apply mb-2 text-sm sm:text-base;
+}
 
+.clearPdEditorBlog .ql-container .ql-editor {
+  @apply p-0;
+}
 
-
-/* Style text Editor 
-.ql-editor.ql-blank {
-  @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
+.viewEditorBlogF .ql-container .ql-editor {
+  @apply inline;
 }
-.ql-editor {
-  @apply min-h-auto sm:min-h-[200px] md:min-h-[180px] lg:min-h-[250px];
-}
-.ql-editor p,
-ol {
-  @apply text-primary font-poppins text-sm sm:text-base;
-}
-.ql-editor h2 {
-  @apply font-poppins text-primary text-2xl font-semibold md:text-3xl lg:text-4xl;
-}
-.ql-editor h3 {
-  @apply font-poppins text-primary text-xl font-semibold md:text-2xl lg:text-3xl;
-} 
-.ql-editor h1 {
-  @apply font-poppins text-primary text-3xl font-semibold md:text-4xl lg:text-3xl;
-} */
-
-/* .blog-lp .swiper-wrapper {
-  transition-timing-function: linear !important;
-}
-  

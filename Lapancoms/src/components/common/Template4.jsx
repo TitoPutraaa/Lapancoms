@@ -31,7 +31,7 @@ export default function Template4() {
 
   return (
     <div className="bg-secondary w-full pb-8">
-      <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
+      <div className="mx-auto mb-6 flex justify-between pt-6 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {
             localStorage.removeItem("judul");
@@ -67,14 +67,16 @@ export default function Template4() {
         </button>
       </div>
       <div>
-        <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-          <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
+        <div className="mx-auto w-full rounded-xl bg-white px-4 sm:w-xl sm:px-6 sm:shadow lg:w-3xl">
+          <h1 className="mb-5 pt-8 text-2xl font-semibold capitalize sm:pt-10 sm:text-3xl lg:text-4xl">
             {judul}
           </h1>
           {/* IMAGE */}
-          <div className="flex flex-row-reverse justify-evenly gap-5">
-            <div className="relative mb-8 h-40 w-40 overflow-hidden rounded-xl sm:h-40 lg:h-40">
-              {!preview1 && <DropImg id={"dropImg1"} />}
+          <div className="flex flex-row-reverse gap-2 pb-10 sm:gap-3">
+            <div
+              className={`relative h-45 w-35 shrink-0 overflow-hidden rounded-xl bg-gray-50 hover:bg-gray-200 sm:h-50 sm:w-40 ${preview1 ? "" : "border-2 border-slate-200"}`}
+            >
+              {!preview1 && <DropImg id={"dropImg1"} size={"minimize"} />}
               <input
                 id="dropImg1"
                 type="file"
@@ -92,13 +94,14 @@ export default function Template4() {
               {preview1 && (
                 <label
                   htmlFor="dropImg1"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
                 ></label>
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-full min-w-0">
               <ReactQuill
+                className="editorTxtBlog"
                 theme="snow"
                 value={text1}
                 onChange={handleChangeText1}
@@ -107,7 +110,7 @@ export default function Template4() {
           </div>
 
           {/* IMAGE 2 */}
-          <div>
+          <div className="pb-10">
             <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview2 && <DropImg id={"dropImg2"} />}
               <input
@@ -127,13 +130,14 @@ export default function Template4() {
               {preview2 && (
                 <label
                   htmlFor="dropImg2"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
                 ></label>
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-full">
               <ReactQuill
+                className="editorTxtBlog"
                 theme="snow"
                 value={text2}
                 onChange={handleChangeText2}
@@ -142,7 +146,7 @@ export default function Template4() {
           </div>
 
           {/* IMAGE 3 */}
-          <div>
+          <div className="pb-10">
             <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
               {!preview3 && <DropImg id={"dropImg3"} />}
               <input
@@ -162,13 +166,14 @@ export default function Template4() {
               {preview3 && (
                 <label
                   htmlFor="dropImg3"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
                 ></label>
               )}
             </div>
 
-            <div className="w-full pb-6">
+            <div className="w-full">
               <ReactQuill
+                className="editorTxtBlog"
                 theme="snow"
                 value={text3}
                 onChange={handleChangeText3}
@@ -177,28 +182,30 @@ export default function Template4() {
           </div>
 
           {/* IMAGE 4 */}
-          <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
-            {!preview4 && <DropImg id={"dropImg4"} />}
-            <input
-              id="dropImg4"
-              type="file"
-              className="hidden"
-              onChange={handleFileChange4}
-            />
-
-            {preview4 && (
-              <img
-                src={preview4}
-                alt="preview"
-                className="h-full w-full object-cover"
+          <div className="pb-10">
+            <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+              {!preview4 && <DropImg id={"dropImg4"} />}
+              <input
+                id="dropImg4"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange4}
               />
-            )}
-            {preview4 && (
-              <label
-                htmlFor="dropImg4"
-                className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
-              ></label>
-            )}
+
+              {preview4 && (
+                <img
+                  src={preview4}
+                  alt="preview"
+                  className="h-full w-full object-cover"
+                />
+              )}
+              {preview4 && (
+                <label
+                  htmlFor="dropImg4"
+                  className="group text-dark absolute inset-0 cursor-pointer bg-transparent"
+                ></label>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function Template3() {
 
   return (
     <div className="bg-secondary w-full pb-8">
-      <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
+      <div className="mx-auto mb-6 flex justify-between pt-6 sm:w-xl lg:w-3xl">
         <div
           onClick={() => {
             localStorage.removeItem("judul");
@@ -63,112 +63,114 @@ export default function Template3() {
           </span>
         </button>
       </div>
-      <div>
-        <div className="mx-auto w-full rounded-xl bg-white px-4 transition-all duration-500 sm:w-xl sm:shadow lg:w-3xl">
-          <h1 className="text-primary mb-5 pt-5 text-xl font-semibold capitalize sm:text-2xl lg:text-3xl">
-            {judul}
-          </h1>
 
-          {/* IMAGE 1*/}
-          <div className="relative mb-8 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
-            {!preview1 && <DropImg id={"dropImg1"} />}
+      <div className="mx-auto w-full rounded-xl bg-white px-4 sm:w-xl sm:px-6 sm:shadow lg:w-3xl">
+        <h1 className="mb-5 pt-8 text-2xl font-semibold capitalize sm:pt-10 sm:text-3xl lg:text-4xl">
+          {judul}
+        </h1>
+
+        {/* IMAGE 1*/}
+        <div className="relative mb-6 h-75 w-full overflow-hidden rounded-xl sm:h-80 lg:h-95">
+          {!preview1 && <DropImg id={"dropImg1"} />}
+          <input
+            id="dropImg1"
+            type="file"
+            className="hidden"
+            onChange={handleFileChange1}
+          />
+
+          {preview1 && (
+            <img
+              src={preview1}
+              alt="preview1"
+              className="h-full w-full object-cover"
+            />
+          )}
+          {preview1 && (
+            <label
+              htmlFor="dropImg1"
+              className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+            ></label>
+          )}
+        </div>
+
+        <div className="w-full pb-10">
+          <ReactQuill
+            className="editorTxtBlog"
+            theme="snow"
+            value={text1}
+            onChange={handleChangeText1}
+          />
+        </div>
+        {/* IMAGE 2*/}
+        <div className="mb-8 flex gap-2 pb-10 sm:gap-4">
+          <div className="xs:size-50 relative size-40 shrink-0 overflow-hidden rounded-full bg-gray-50 hover:bg-gray-200 sm:size-60 lg:size-80">
+            {!preview2 && <DropImg id={"dropImg2"} size={"minimize"} />}
             <input
-              id="dropImg1"
+              id="dropImg2"
               type="file"
               className="hidden"
-              onChange={handleFileChange1}
+              onChange={handleFileChange2}
             />
 
-            {preview1 && (
+            {preview2 && (
               <img
-                src={preview1}
-                alt="preview1"
+                src={preview2}
+                alt="preview"
                 className="h-full w-full object-cover"
               />
             )}
-            {preview1 && (
+            {preview2 && (
               <label
-                htmlFor="dropImg1"
+                htmlFor="dropImg2"
                 className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
               ></label>
             )}
           </div>
 
-          <div className="w-full pb-6">
+          <div className="w-full min-w-0">
             <ReactQuill
+              className="editorTxtBlog"
               theme="snow"
-              value={text1}
-              onChange={handleChangeText1}
+              value={text2}
+              onChange={handleChangeText2}
             />
           </div>
-          {/* IMAGE 2*/}
-          <div className="flex items-center gap-5">
-            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-full sm:h-80 lg:h-95">
-              {!preview2 && <DropImg id={"dropImg2"} />}
-              <input
-                id="dropImg2"
-                type="file"
-                className="hidden"
-                onChange={handleFileChange2}
-              />
+        </div>
 
-              {preview2 && (
-                <img
-                  src={preview2}
-                  alt="preview"
-                  className="h-full w-full object-cover"
-                />
-              )}
-              {preview2 && (
-                <label
-                  htmlFor="dropImg2"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
-                ></label>
-              )}
-            </div>
+        {/* IMAGE 3 */}
+        <div className="flex flex-row-reverse gap-2 pb-10 sm:gap-4">
+          <div className="xs:size-50 relative size-40 shrink-0 overflow-hidden rounded-full bg-gray-50 hover:bg-gray-200 sm:size-60 lg:size-80">
+            {!preview3 && <DropImg id={"dropImg3"} size={"minimize"} />}
+            <input
+              id="dropImg3"
+              type="file"
+              className="hidden"
+              onChange={handleFileChange3}
+            />
 
-            <div className="w-1/2 pb-6">
-              <ReactQuill
-                theme="snow"
-                value={text2}
-                onChange={handleChangeText2}
+            {preview3 && (
+              <img
+                src={preview3}
+                alt="preview"
+                className="h-full w-full object-cover"
               />
-            </div>
+            )}
+            {preview3 && (
+              <label
+                htmlFor="dropImg3"
+                className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
+              ></label>
+            )}
           </div>
 
-          {/* IMAGE 3 */}
-          <div className="flex flex-row-reverse items-center gap-5">
-            <div className="relative mb-8 h-75 w-1/2 overflow-hidden rounded-full sm:h-80 lg:h-95">
-              {!preview3 && <DropImg id={"dropImg3"} />}
-              <input
-                id="dropImg3"
-                type="file"
-                className="hidden"
-                onChange={handleFileChange3}
-              />
-
-              {preview3 && (
-                <img
-                  src={preview3}
-                  alt="preview"
-                  className="h-full w-full object-cover"
-                />
-              )}
-              {preview3 && (
-                <label
-                  htmlFor="dropImg3"
-                  className="group text-dang absolute inset-0 cursor-pointer bg-transparent"
-                ></label>
-              )}
-            </div>
-
-            <div className="w-1/2 pb-6">
-              <ReactQuill
-                theme="snow"
-                value={text3}
-                onChange={handleChangeText3}
-              />
-            </div>
+          <div className="w-full min-w-0">
+            <ReactQuill
+              className="editorTxtBlog"
+              theme="snow"
+              value={text3}
+              onChange={handleChangeText3}
+            />
           </div>
         </div>
       </div>
