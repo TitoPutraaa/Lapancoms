@@ -24,6 +24,7 @@ export default function BlogSlider({ fromFeature }) {
       setIsLoad(true);
       const res = await blogApi.getAll();
       setBlogs(res.data.data);
+      console.log("blogsld", res.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);
     } finally {

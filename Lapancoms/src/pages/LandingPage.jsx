@@ -76,7 +76,7 @@ export default function LandingPage() {
         <div className="relative h-120 sm:h-150 md:h-dvh">
           <div className="absolute inset-0">
             <img
-              src={assets.imagePublic}
+              src={assets.patungKonoha}
               className="h-full w-full object-cover"
               alt=""
             />

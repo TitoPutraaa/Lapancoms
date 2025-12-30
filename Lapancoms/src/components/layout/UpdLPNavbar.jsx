@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BsList, BsX } from "react-icons/bs";
+import { GrAttraction } from "react-icons/gr";
 import { FaPaperPlane } from "react-icons/fa";
 import useMediaQuery from "../../hooks/useMediaQueryA";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdLPNavbar() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const [isScrollDown, setIsScrollDown] = useState(false);
@@ -70,6 +73,12 @@ export default function UpdLPNavbar() {
     }, 500);
   };
 
+  const handleExit = (id) => {
+    if (id === "EXIT") {
+      navigate("/admin/dashboard");
+    }
+  };
+
   // Styling
   const navBgClass =
     !isScrollDown && !isAtTop
@@ -89,15 +98,14 @@ export default function UpdLPNavbar() {
       >
         <nav className={`${navBgClass} transition-all duration-300`}>
           <div className="relative container mx-auto flex flex-wrap items-center justify-between px-4 py-4 lg:px-8">
-            <a
-              href="/"
+            <div
               className={`flex cursor-pointer items-center space-x-3 md:space-x-4 ${navTextClass}`}
             >
-              <FaPaperPlane className="text-2xl md:text-3xl" />
+              <GrAttraction className="text-2xl md:text-3xl" />
               <span className="text-xl font-medium whitespace-nowrap md:text-2xl">
-                Travelog
+                Konoha
               </span>
-            </a>
+            </div>
             <button
               onClick={() => setIsOpen(true)}
               type="button"
@@ -115,9 +123,9 @@ export default function UpdLPNavbar() {
                 className={`relative justify-between px-6 py-4 sm:hidden ${isOpen ? "flex" : "hidden"}`}
               >
                 <a href="/" className="text-dark flex items-center space-x-3">
-                  <FaPaperPlane className="text-2xl" />
+                  <GrAttraction className="text-2xl" />
                   <span className="self-center text-xl font-semibold whitespace-nowrap">
-                    Travelog
+                    Konoha
                   </span>
                 </a>
                 <button
@@ -131,7 +139,7 @@ export default function UpdLPNavbar() {
                 <span className="absolute right-22 bottom-0 left-4 h-0.5 rounded-full bg-gray-300"></span>
               </div>
               <ul
-                className={`mt-1 flex-col gap-5 px-6 py-4 text-sm font-medium sm:mt-0 sm:flex sm:flex-row sm:py-1 md:gap-7 md:text-base ${isOpen ? "flex" : "hidden"}`}
+                className={`mt-1 flex-col gap-5 py-4 pr-7 text-sm font-medium sm:mt-0 sm:flex sm:flex-row sm:py-1 md:gap-7 md:text-base ${isOpen ? "flex px-6" : "hidden"}`}
               >
                 {sectionIds.map((id) => (
                   <li key={id}>
@@ -139,6 +147,7 @@ export default function UpdLPNavbar() {
                       onClick={() => {
                         handleClick(id);
                         setIsOpen(false);
+                        handleExit(id);
                       }}
                       className={`group text-dark/50 relative cursor-pointer py-1 first-letter:uppercase sm:px-1 ${active === id ? "navActive" : ""} ${!isScrollDown && !isAtTop ? "hover:text-gray-700 sm:text-gray-500" : " sm:text-white"}`}
                     >
