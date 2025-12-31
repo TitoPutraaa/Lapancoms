@@ -14,6 +14,7 @@ Project ini dikembangkan sebagai bagian dari **Project Akademik Program Studi Te
 - Menghubungkan pengguna dengan backend melalui **REST API**
 - Menyediakan dashboard admin untuk pengelolaan konten
 - Mengelola state dan alur navigasi aplikasi
+- Proteksi halaman berdasarkan role
 
 🧑 **Sistem memiliki 3 jenis pengguna:**
 
@@ -27,20 +28,18 @@ Project ini dikembangkan sebagai bagian dari **Project Akademik Program Studi Te
 
 🌐 **Public Website**
 
-- Landing page (Home, About, Map, Footer)
+- Landing page (Home, About,, Map, Footer)
 - Halaman Blog
-- Galeri Desa Wisata
+- Galeri Desa
 - Tampilan responsif (desktop & mobile)
 
-🔐 **Autentikasi**
+🔝 **Update Public Website**
 
-- Halaman login Admin & Super Admin
-- Proteksi halaman berdasarkan role
-- Redirect otomatis sesuai hak akses
+- Memperbarui informasi pada Public landingpage
 
 📝 **Manajemen Konten (Admin & Super Admin)**
 
-- Membuat dan mengedit blog
+- Membuat atau menambahkan blog
 - Menggunakan beberapa template blog
 - Upload dan hapus gambar galeri
 - Pengaturan visibilitas konten
@@ -50,3 +49,4 @@ Project ini dikembangkan sebagai bagian dari **Project Akademik Program Studi Te
 - Menambahkan admin baru
 - Menghapus admin
 - Melihat daftar admin
+- Memperbarui informasi Pada Public Landingpage
