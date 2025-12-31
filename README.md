@@ -1,20 +1,52 @@
-Lapancoms Project
+<h1 align="center">🏘️ Frontend CMS Desa Wisata</h1>
 
-cara Memulai :
+Frontend application untuk **Content Management System (CMS) Desa Wisata** yang berfungsi sebagai antarmuka pengguna (user interface) bagi **Public, Admin, dan Super Admin** dalam mengakses dan mengelola konten website.
 
-    1.buat folder kosong untuk menempatkan folder ini
-    2.buka command prop pada folder tersebut
-    3.untuk mengcopy project ini ketik : git clone https://github.com/TitoPutraaa/Lapancoms.git
-    4.untuk membuka vs code ketik : code .
-    5.untuk masuk ke project ketik pada command promp di cmd : cd .\Lapancoms\Lapancoms
-    6.ketik : npm install
-    7.untuk menyalakan servernya ketik : npm run dev
-    8.untuk membuka di webiste ketik : o
+Project ini dikembangkan sebagai bagian dari **Project Akademik Program Studi Teknologi Rekayasa Perangkat Lunak, Semester 3 – Politeknik Negeri Bali**.
 
-Folder yang boleh di ubah :
+---
 
-    assets
-    components
-    pages
+## 📌 Deskripsi Singkat
 
-jika ada kendala tanyain ajeee
+🎨 **Frontend ini bertanggung jawab untuk:**
+
+- Menyajikan tampilan website Desa Wisata yang informatif dan interaktif
+- Menghubungkan pengguna dengan backend melalui **REST API**
+- Menyediakan dashboard admin untuk pengelolaan konten
+- Mengelola state dan alur navigasi aplikasi
+
+🧑 **Sistem memiliki 3 jenis pengguna:**
+
+- **Public** → Mengakses informasi desa wisata (landing page, blog, galeri)
+- **Admin** → Mengelola konten blog & galeri miliknya
+- **Super Admin** → Mengelola seluruh konten dan admin
+
+---
+
+## 🪶 Fitur Utama
+
+🌐 **Public Website**
+
+- Landing page (Home, About, Map, Footer)
+- Halaman Blog
+- Galeri Desa Wisata
+- Tampilan responsif (desktop & mobile)
+
+🔐 **Autentikasi**
+
+- Halaman login Admin & Super Admin
+- Proteksi halaman berdasarkan role
+- Redirect otomatis sesuai hak akses
+
+📝 **Manajemen Konten (Admin & Super Admin)**
+
+- Membuat dan mengedit blog
+- Menggunakan beberapa template blog
+- Upload dan hapus gambar galeri
+- Pengaturan visibilitas konten
+
+👤 **Manajemen Admin (Super Admin)**
+
+- Menambahkan admin baru
+- Menghapus admin
+- Melihat daftar admin
