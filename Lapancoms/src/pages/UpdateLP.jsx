@@ -115,7 +115,7 @@ export default function UpdateLP() {
         <div className="relative h-120 sm:h-150 md:h-dvh">
           <div className="absolute inset-0">
             <img
-              src={assets.patungKonoha}
+              src={assets.BgMain}
               className="h-full w-full object-cover"
               alt=""
             />
@@ -320,7 +320,7 @@ export default function UpdateLP() {
           <div className="shadow-soft flex w-full flex-col rounded-2xl sm:items-stretch md:flex-row md:gap-5">
             <div className="h-90 w-full shrink-0 self-stretch overflow-hidden rounded-2xl object-cover md:h-auto md:w-80 lg:w-100 xl:w-110">
               <img
-                src={assets.imageAbout}
+                src={assets.Bg1}
                 alt="promotional"
                 className="h-full w-full object-cover"
               />
@@ -399,24 +399,24 @@ export default function UpdateLP() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mb-6">
             <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:text-4xl">
-              Experience OurcBest Facility
+              Keunikan dan Daya Tarik
             </h2>
             <p className="mb-2 text-sm md:text-base">
-              Discover new attractions and experiences to match your interests.
+              Pemandangan alam perbukitan yang sejuk di lereng.
             </p>
           </div>
           <div className="flex flex-col gap-4 md:flex-row">
             <div className="shadow-soft rounded-xl md:flex-1 md:self-start">
               <div className="group h-70 overflow-hidden rounded-lg sm:h-90 md:h-80 md:rounded-xl lg:h-110 xl:h-125">
                 <img
-                  src={assets.imageBlog}
+                  src={assets.Bg2}
                   alt=""
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="px-5 py-5">
                 <h3 className="mb-2 text-xl font-semibold md:text-2xl">
-                  Our Facility
+                  Sawah Terasering UNESCO
                 </h3>
                 <p className="mb-2 text-sm md:mb-4 md:text-base">
                   Discover new attraction adn experiences to match your
@@ -435,14 +435,14 @@ export default function UpdateLP() {
               <div className="shadow-soft flex-1 overflow-hidden rounded-xl sm:self-start">
                 <div className="group h-70 overflow-hidden rounded-lg sm:h-50 md:rounded-xl">
                   <img
-                    src={assets.imageFacility}
+                    src={assets.BgMain}
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="px-5 py-5">
                   <h3 className="md:text-text-2xl mb-2 text-xl font-semibold">
-                    Our Event
+                    Panorama Alam
                   </h3>
                   <p className="mb-2 text-sm md:mb-4 md:text-base">
                     Discover new attraction adn experiences to match your
@@ -460,14 +460,14 @@ export default function UpdateLP() {
               <div className="shadow-soft flex-1 overflow-hidden rounded-xl sm:self-start">
                 <div className="group h-70 overflow-hidden rounded-lg sm:h-50 md:rounded-xl">
                   <img
-                    src={assets.imageFacility}
+                    src={assets.Bg3}
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="px-5 py-5">
                   <h3 className="mb-2 text-xl font-semibold md:text-2xl">
-                    Accomodation
+                    Aktivitas Wisata
                   </h3>
                   <p className="mb-2 text-sm md:mb-4 md:text-base">
                     discover new attractions and experiences to match your
@@ -603,8 +603,7 @@ export default function UpdateLP() {
             <div className="h-110">
               <iframe
                 className="h-full w-full object-cover"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0612823106626!2d115.27926447416915!3d-8.590106787203071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23e273396d515%3A0x4b3b9a132034718c!2sPoliteknik%20Negeri%20Bali%20Kampus%20Gianyar!5e0!3m2!1sid!2sid!4v1763982286469!5m2!1sid!2sid"
-                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63159.32019825788!2d115.11879995000001!3d-8.356572550000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd227bedf45cc29%3A0x5030bfbca831a80!2sJatiluwih%2C%20Penebel%2C%20Tabanan%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1767160199438!5m2!1sen!2sid"                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -662,7 +661,7 @@ export default function UpdateLP() {
               <div className="flex gap-2">
                 <img src={assets.logoFooter} alt="" className="size-8" />
                 <h2 className="text-3xl font-semibold md:text-4xl">
-                  Travellian
+                  Jatiluwih
                 </h2>
               </div>
               <div className="lp-white border-lp text-center text-sm text-gray-200 sm:w-100 md:w-auto md:text-left lg:text-base xl:w-130">
