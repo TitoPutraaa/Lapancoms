@@ -18,6 +18,10 @@ import imageMaps from "./imageMaps.png";
 import imageAlamat from "./imageAlamat.png";
 import konoha from "./konoha.png";
 import patungKonoha from "./patungKonoha.png";
+import BgMain from "./BgMain.jpg";
+import Bg1 from "./Bg1.jpg";
+import Bg2 from "./Bg2.jpg";
+import Bg3 from "./Bg3.jpeg";
 
 export const assets = {
   blogCardImg,
@@ -34,6 +38,10 @@ export const assets = {
   imageAlamat,
   konoha,
   patungKonoha,
+  BgMain,
+  Bg1,
+  Bg2,
+  Bg3,
 
   template1,
   template2,
