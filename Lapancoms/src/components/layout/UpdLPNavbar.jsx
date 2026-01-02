@@ -103,7 +103,7 @@ export default function UpdLPNavbar() {
             >
               <GrAttraction className="text-2xl md:text-3xl" />
               <span className="text-xl font-medium whitespace-nowrap md:text-2xl">
-                Konoha
+                Jatiluwih
               </span>
             </div>
             <button
@@ -125,7 +125,7 @@ export default function UpdLPNavbar() {
                 <a href="/" className="text-dark flex items-center space-x-3">
                   <GrAttraction className="text-2xl" />
                   <span className="self-center text-xl font-semibold whitespace-nowrap">
-                    Konoha
+                    Jatiluwih
                   </span>
                 </a>
                 <button

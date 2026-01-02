@@ -96,7 +96,7 @@ export default function Navbar() {
             >
               <GrAttraction className="text-2xl md:text-3xl" />
               <span className="text-xl font-medium whitespace-nowrap md:text-2xl">
-                Konoha
+                Jatiluwih
               </span>
             </a>
             <button
@@ -119,7 +119,7 @@ export default function Navbar() {
                   <GrAttraction className="text-2xl" />
                   x``
                   <span className="self-center text-xl font-semibold whitespace-nowrap">
-                    Konoha
+                    Jatiluwih
                   </span>
                 </a>
                 <button
