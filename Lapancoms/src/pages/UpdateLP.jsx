@@ -27,7 +27,8 @@ export default function UpdateLP() {
   const { upd, handleQuillChange, handleSubmit, handleSubmitLink } =
     useUpdateLP();
 
-  const fromFeature = "lp";
+  const fromFeature = "updLP";
+  const backBtn = "lpUpd";
   const menu = ["home", "news", "about", "facility", "maps", "gallery"];
   const [viewGallery, setViewGallery] = useState(false);
   const [idGallery, setIdGallery] = useState(null);
@@ -247,7 +248,10 @@ export default function UpdateLP() {
                 BLOGS
               </h2>
             </div>
-            <Link to={"../allBlogs"} state={{ fromFeature: fromFeature }}>
+            <Link
+              to={"../../publicAllBlogs"}
+              state={{ fromFeature: fromFeature, backBtn: backBtn }}
+            >
               <div className="group relative w-26 cursor-pointer overflow-hidden rounded-xl bg-white transition duration-500 md:w-29">
                 <BsArrowRight className="text-accent absolute top-1/2 left-0 -translate-y-1/2 stroke-1 opacity-0 transition duration-500 group-hover:translate-x-2 group-hover:opacity-100" />
                 <div className="group-hover:bg-accent relative z-1 w-fit rounded-xl bg-emerald-600 px-2.5 py-1.5 text-sm text-white transition-all duration-500 group-hover:translate-x-7 md:px-3 md:text-base">
@@ -603,7 +607,8 @@ export default function UpdateLP() {
             <div className="h-110">
               <iframe
                 className="h-full w-full object-cover"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63159.32019825788!2d115.11879995000001!3d-8.356572550000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd227bedf45cc29%3A0x5030bfbca831a80!2sJatiluwih%2C%20Penebel%2C%20Tabanan%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1767160199438!5m2!1sen!2sid"                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63159.32019825788!2d115.11879995000001!3d-8.356572550000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd227bedf45cc29%3A0x5030bfbca831a80!2sJatiluwih%2C%20Penebel%2C%20Tabanan%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1767160199438!5m2!1sen!2sid"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

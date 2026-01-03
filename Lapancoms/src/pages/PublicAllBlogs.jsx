@@ -34,6 +34,11 @@ export default function PublicAllBlogs() {
     urlBack = "/";
     url = `/${fromFeature}/blog/`;
   }
+  if (fromFeature === "updLP") {
+    urlBack = "../admin/updateLandingPage";
+    url = `/${fromFeature}/blog/`;
+  }
+
   return (
     <div
       className={`pt-10 ${fromFeature === "lp" ? "container mx-auto px-4 sm:px-6" : "mr-4"}`}

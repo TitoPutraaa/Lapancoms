@@ -54,6 +54,9 @@ export default function BlogView() {
   if (fromFeature === "lp") {
     url = "/";
   }
+  if (fromFeature === "updLP") {
+    url = "../admin/updateLandingPage";
+  }
   return (
     <div className="bg-secondary w-full pb-8">
       <div className="mx-auto mb-6 flex justify-between pt-6 transition-all duration-500 sm:w-xl lg:w-3xl">
