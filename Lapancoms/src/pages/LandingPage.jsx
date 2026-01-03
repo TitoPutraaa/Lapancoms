@@ -122,7 +122,7 @@ export default function LandingPage() {
                 Blogs
               </h2>
             </div>
-            <Link to={"../allBlogs"} state={{ fromFeature: fromFeature }}>
+            <Link to={"../publicAllBlogs"} state={{ fromFeature: fromFeature }}>
               <div className="group relative w-26 cursor-pointer overflow-hidden rounded-xl bg-white transition duration-500 md:w-29">
                 <BsArrowRight className="text-accent absolute top-1/2 left-0 -translate-y-1/2 stroke-1 opacity-0 transition duration-500 group-hover:translate-x-2 group-hover:opacity-100" />
                 <div className="group-hover:bg-accent relative z-1 w-fit rounded-xl bg-emerald-600 px-2.5 py-1.5 text-sm text-white transition-all duration-500 group-hover:translate-x-7 md:px-3 md:text-base">
@@ -167,7 +167,7 @@ export default function LandingPage() {
                 />{" "}
               </div>
               <div className="flex justify-end">
-                <Link>
+                <Link to={"../lp/blog/0062"} state={{ fromFeature: fromFeature }}>
                   <div className="group hover:text-dark relative flex w-fit justify-end gap-3 text-base font-medium text-gray-800 transition-colors duration-300">
                     <span className="relative mr-6">
                       Read More

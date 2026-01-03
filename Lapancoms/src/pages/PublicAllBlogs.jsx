@@ -3,16 +3,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import BlogCardV2 from "../components/common/BlogCardV2";
 import { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
-import { blogApi } from "../api/blogApi";
+import { publicBlogApi } from "../api/publicApi";
 
-export default function AllBlogs() {
+export default function PublicAllBlogs() {
   const [Blogs, setBlogs] = useState([]);
 
   const navigate = useNavigate();
 
   const loadBlogs = async () => {
     try {
-      const res = await blogApi.getAll();
+      const res = await publicBlogApi.getAll();
       setBlogs(res.data.data);
     } catch (error) {
       console.error("Error loading admins:", error);

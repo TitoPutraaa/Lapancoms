@@ -9,6 +9,7 @@ import AdminLayout from "../components/layout/AdminLayout";
 import Dashboard from "../pages/Dashboard";
 import LandingPage from "../pages/LandingPage";
 import AllBlogs from "../pages/AllBlogs";
+import PublicAllBlogs from "../pages/PublicAllBlogs";
 import AllGallery from "../pages/AllGallery";
 import Login from "../pages/Login";
 import PostBlog from "../pages/PostBlog";
@@ -30,7 +31,7 @@ export default function AppRouter() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path=":feature/blog/:id" element={<BlogView />} />
-        <Route path="/allBlogs" element={<AllBlogs />} />
+        <Route path="/publicAllBlogs" element={<PublicAllBlogs />} />
 
         <Route
           element={<PrivateRoute allowedRoles={["admin", "super-admin"]} />}
