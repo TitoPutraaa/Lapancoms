@@ -1,6 +1,6 @@
 import axiosAdmin from "./axiosAdmin";
 
-const blogApi = {
+export const blogApi = {
   getAll: () => axiosAdmin.get("/blog"),
   getById: (idBlog) => axiosAdmin.get(`/blog/${idBlog}`),
   delete: (idBlog) => axiosAdmin.delete(`/blog/${idBlog}`),
