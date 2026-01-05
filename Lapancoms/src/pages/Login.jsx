@@ -5,6 +5,10 @@ import { replace, useNavigate } from "react-router-dom";
 import { AdminContext } from "../auth/AdminContext";
 import { useImmer } from "use-immer";
 import adminApi from "../api/adminApi";
+import {
+  FiEye,
+  FiEyeOff,
+} from "react-icons/fi";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -126,7 +130,7 @@ export default function Login() {
                     className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer select-none"
                     onClick={toggleInvisible}
                   >
-                    {invisible ? "👁" : "😫"}
+                    {invisible ? <FiEyeOff className="text-gray-600" /> : <FiEye className="text-gray-600" />}
                   </span>
                 </div>
                 {error && (

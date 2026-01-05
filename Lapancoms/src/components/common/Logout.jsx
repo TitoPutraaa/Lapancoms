@@ -1,26 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import adminApi from "../../api/adminApi";
 import { BsBoxArrowRight } from "react-icons/bs";
+import { useState } from "react";
+import ComfirmLogout from "./ConfirmLogout";
 
 export default function Logout() {
-  const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
   const handleClick = async (e) => {
+    setIsVisible(true)
+
     e.preventDefault();
 
-    try {
-      const res = await adminApi.logout();
-      localStorage.removeItem("token");
-      localStorage.removeItem("username");
-      localStorage.removeItem("role");
-      console.log(res);
-      if (res.status === 200) {
-        navigate("/admin/login");
-      }
-    } catch (error) {
-      {
-        console.log(error);
-      }
-    }
+
   };
   return (
     <>
@@ -33,6 +24,9 @@ export default function Logout() {
           Logout
         </span>
       </div>
+      {isVisible && (
+        <ComfirmLogout setIsVisible={setIsVisible}/>
+      )}
     </>
   );
 }
