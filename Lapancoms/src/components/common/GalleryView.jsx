@@ -38,7 +38,7 @@ export default function GalleryView({
             />
           </div>
           <div className="bg-dark/80 group-hover:bg-dark/20 absolute bottom-0 left-0 w-full px-10 py-4 transition duration-500 group-hover:translate-y-2 md:top-0 md:right-0 md:left-auto md:w-5/12 md:bg-white md:group-hover:translate-y-0 md:group-hover:bg-white">
-            <h3 className="md:text-primary mb-2 truncate text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
+            <h3 className="md:text-primary mb-2 text-xl font-bold wrap-break-word text-white sm:text-2xl md:mt-7 md:mb-5 md:text-4xl">
               {data.judulGambar}
             </h3>
 

@@ -11,6 +11,7 @@ export default function Login() {
   const [invisible, setInvisible] = useState(true);
   const [error, setError] = useState(null);
   const { setToken } = useContext(AdminContext);
+  const [isLoad, setIsLoad] = useState(false);
 
   const [form, setForm] = useImmer({ username: "", password: "" });
 
@@ -33,6 +34,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      setIsLoad(true);
       const res = await adminApi.login({
         username: form.username,
         password: form.password,
@@ -57,6 +59,8 @@ export default function Login() {
     } catch (error) {
       setError(error.response?.data);
       console.log("login error", error.response?.data);
+    } finally{
+      setIsLoad(false);
     }
   };
 
@@ -133,9 +137,19 @@ export default function Login() {
               </div>
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary/95 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
+                className="bg-primary hover:bg-primary/95 relative h-10 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-sky-600 focus:outline-none"
               >
-                Login
+                {isLoad ? (
+                  <span className="absolute inset-0 flex items-center justify-center bg-white">
+                    <span className="text-dark mr-5">Loading </span>
+                    <span className="relative h-6 w-6 overflow-hidden rounded-full">
+                      <span className="absolute inset-0 border-[#eee6dd]" />
+                      <span className="border-dark absolute inset-0 animate-[spin_1.2s_linear_infinite] rounded-b-md border" />
+                    </span>
+                  </span>
+                ) : (
+                  "Login"
+                )}
               </button>
             </form>
           </div>

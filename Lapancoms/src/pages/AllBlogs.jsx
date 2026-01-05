@@ -36,7 +36,7 @@ export default function AllBlogs() {
   }
   return (
     <div
-      className={`pt-10 ${fromFeature === "lp" ? "container mx-auto px-4 sm:px-6" : "mr-4"}`}
+      className={`pt-10 ${fromFeature === "updLP" ? "container mx-auto px-4 sm:px-6" : "mr-4"}`}
     >
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-dark text-2xl font-medium">All Blog</h2>

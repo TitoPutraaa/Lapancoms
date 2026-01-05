@@ -19,7 +19,7 @@ export default function BlogCardV2({
     console.log("error from blog card, url back");
   }
 
-  const urlImage = `http://127.0.0.1:8000/storage/template/${image}`;
+  const urlImage = `http://localhost:8000/storage/template/${image}`;
 
   return (
     <div className="shadow-soft w-40 overflow-hidden rounded-xl sm:w-52 lg:w-56">
